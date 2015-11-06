@@ -15,9 +15,9 @@
       <a class="navbar-brand" href="#">
         <img alt="Brand" src="/img/substa label.png">
       </a>
-      <div class-"navbar-
+      <div class-"navbar-></div>
       <div>
-    </div>
+
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
