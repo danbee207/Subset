@@ -14,6 +14,7 @@ import substa.model.DBManager;
 
 /**
  * Servlet implementation class PersonManagement
+ * @author Danbee Park
  */
 @WebServlet("/PersonManagement")
 public class PersonManagement extends HttpServlet {

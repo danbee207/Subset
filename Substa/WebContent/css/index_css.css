@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.SubstaLabel {
+  font-size: 120px;
+  font-family: "Tahoma";
+  color: rgb(35, 31, 32);
+  line-height: 1.2;
+  text-align: left;
+  -moz-transform: matrix( 0.63403019614242,0,0,0.69495320845823,0,0);
+  -webkit-transform: matrix( 0.63403019614242,0,0,0.69495320845823,0,0);
+  -ms-transform: matrix( 0.63403019614242,0,0,0.69495320845823,0,0);
+  position: absolute;
+  left: 34.852px;
+  top: 9px;
+  z-index: 21;
+}
+
+
