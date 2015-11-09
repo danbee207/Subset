@@ -96,7 +96,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><span id="AccountName"><%if(LoginUser!=null){LoginUser.getEmail();}%></span>
+      	<li><span id="AccountName"><%if(LoginUser!=null){%><%=LoginUser.getEmail()%><%}%></span>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

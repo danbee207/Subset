@@ -105,7 +105,7 @@ public class DBManager {
 					user.setLast(rs.getString("LastName"));
 					user.setAddress(rs.getString("Address"));
 					user.setZipcode(rs.getInt("ZipCode"));
-					user.setTelephone(rs.getInt("Telephone"));
+					user.setTelephone(rs.getLong("Telephone"));
 					user.setEmail(rs.getString("Email"));
 					user.setPw(rs.getString("pw"));
 				}
@@ -179,7 +179,7 @@ public class DBManager {
 			
 			try{
 				
-				String sqlQuery = "SELECT * FROM Employer WHERE EmployeeID=?";
+				String sqlQuery = "SELECT * FROM Employee WHERE EmployeeID=?";
 				ps=conn.prepareStatement(sqlQuery);
 				ps.setInt(1, user.getSsn());
 				
