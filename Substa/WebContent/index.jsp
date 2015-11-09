@@ -96,7 +96,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><p class="navbar-text"><%if(LoginUser!=null){%>Hello,<b><%=LoginUser.getLast()%></b>!<%}%></p>
+      	<li><p class="navbar-text"><%if(LoginUser!=null){%>Hello, <b><%=LoginUser.getLast()%></b>!<%}%></p>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -147,6 +147,25 @@
         <button type="submit" class="btn btn-primary"  >Sign in</button>
       </div>
        </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade bs-example-modal-sm" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Logout</h4>
+      </div>
+      
+      <div class="modal-body">
+         Do you want to log out ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" data-target="Logout" >Yes</button>
+      </div>
+      
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
