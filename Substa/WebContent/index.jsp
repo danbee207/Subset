@@ -132,7 +132,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Sing in</h4>
       </div>
-      <form method="post" action="SignIn" name="signIn" >
+      <form method="post" action="UserLogin" name="signIn" >
       <div class="modal-body">
          
         <div class="form-group">

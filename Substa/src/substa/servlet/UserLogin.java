@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,17 +17,23 @@ import substa.beans.Employer;
 import substa.beans.User;
 import substa.model.DBManager;
 
-
-
 /**
- * Servlet implementation class SignIn
+ * Servlet implementation class UserLogin
  * @author Danbee Park
  */
-@WebServlet("/SignIn")
-public class SignIn extends HttpServlet {
+@WebServlet(
+		urlPatterns = { "/UserLogin" }, 
+		initParams = { 
+				@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"), 
+				@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark"), 
+				@WebInitParam(name = "dbUser", value = "danpark"), 
+				@WebInitParam(name = "dbPass", value = "110142214")
+		})
+public class UserLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	private DBManager db;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -50,6 +57,7 @@ public class SignIn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -59,8 +67,7 @@ public class SignIn extends HttpServlet {
 		// TODO Auto-generated method stub
 		signIn(request,response);
 	}
-	
-	protected void signIn(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+protected void signIn(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
 		
 		HttpSession session = request.getSession(true);
 
