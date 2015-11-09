@@ -18,7 +18,7 @@
     </init-param>
     <init-param>
       <param-name>dbUrl</param-name>
-      <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark?useUnicode=true&amp;characterEncoding=UTF-8</param-value>
+      <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark</param-value>
     </init-param>
     <init-param>
       <param-name>dbUser</param-name>
@@ -30,7 +30,7 @@
     </init-param>
   </servlet>
    <servlet>
-    <servlet-name>Signin</servlet-name>
+    <servlet-name>SignIn</servlet-name>
     <servlet-class>substa.servlet.PersonManagement</servlet-class>
     <init-param>
       <param-name>jdbcDriver</param-name>
@@ -38,7 +38,7 @@
     </init-param>
     <init-param>
       <param-name>dbUrl</param-name>
-      <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark?useUnicode=true&amp;characterEncoding=UTF-8</param-value>
+      <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark</param-value>
     </init-param>
     <init-param>
       <param-name>dbUser</param-name>

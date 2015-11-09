@@ -84,7 +84,7 @@ public class DBManager {
 	public User getUser(String email,String pw){
 		
 		User user = null;
-		
+		System.out.println(this.getDbURL() + " " + this.getDbuser());
 		Connection conn = getConnection();
 		if(conn!=null){
 			PreparedStatement ps =null;

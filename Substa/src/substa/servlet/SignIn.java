@@ -30,8 +30,8 @@ public class SignIn extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignIn(ServletConfig config) throws ServletException {
-        super();
+	public void init(ServletConfig config) throws ServletException {
+        super.init();
         // TODO Auto-generated constructor stub
         db = new DBManager();
 		db.setDbURL(config.getInitParameter("dbUrl"));
@@ -70,7 +70,7 @@ public class SignIn extends HttpServlet {
 		
 		String email = request.getParameter("signInId");
 		String pw = request.getParameter("signInPw");
-		
+		System.out.println("here getpost/ email : "+ email);
 		User user = db.getUser(email,pw);
 		if(user!=null){
 			session.setAttribute("LoginUser", user);

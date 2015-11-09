@@ -15,8 +15,10 @@
 	
 <body>
 <%
-	boolean isCustomer = (boolean)session.getAttribute("isCustomer");
-	User LoginUser = (User)session.getAttribute("LoginUser");
+		boolean isCustomer =true;
+		User LoginUser = (User)session.getAttribute("LoginUser");
+		if(LoginUser!=null)
+			 isCustomer = (boolean)session.getAttribute("isCustomer");
 	
 %>
 
@@ -109,7 +111,7 @@
           	<li><a href="#">History</a>
           	<%} %>
             <li class="divider"></li>
-            <%if(LoginUser!=null){ %>
+            <%if(LoginUser==null){ %>
             <li><a href="#" data-toggle="modal" data-target="#singinModal">Sign in</a></li>
             <%}else{ %>
             <li><a href="#">Log out</a></li>
@@ -130,21 +132,21 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Sing in</h4>
       </div>
+      <form method="post" action="SignIn" name="signIn" >
       <div class="modal-body">
-         <form role="form" method="post" action="signin" name="signIn" >
+         
         <div class="form-group">
           <label for="SigninId">ID</label> <input type="text" name="signInId" class="form-control" placeholder="ex)abc@substa.com">
         </div>
         <div class="form-group">
          <label for="SigninPassword">Password</label><input type="password" name="signInPw" class="form-control" >
         </div>
-        
-      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary"  >Sign in</button>
       </div>
+       </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
