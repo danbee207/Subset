@@ -57,7 +57,6 @@ public class UserLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -77,7 +76,7 @@ protected void signIn(HttpServletRequest request, HttpServletResponse response) 
 		
 		String email = request.getParameter("signInId");
 		String pw = request.getParameter("signInPw");
-		System.out.println("here getpost/ email : "+ email);
+		
 		User user = db.getUser(email,pw);
 		if(user!=null){
 			session.setAttribute("LoginUser", user);

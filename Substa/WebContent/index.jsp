@@ -4,6 +4,7 @@
 <%@ page import="substa.beans.User" %>
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -163,7 +164,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" data-target="Logout" onclick="Logout" >Yes</button>
+        <button type="button" class="btn btn-primary" onclick="Logout" >Yes</button>
       </div>
       
     </div><!-- /.modal-content -->
