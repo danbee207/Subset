@@ -114,7 +114,7 @@
             <%if(LoginUser==null){ %>
             <li><a href="#" data-toggle="modal" data-target="#singinModal">Sign in</a></li>
             <%}else{ %>
-            <li><a href="#">Log out</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#logoutModal">Log out</a></li>
             <%} %>
           </ul>
         </li>
@@ -163,7 +163,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" data-target="Logout" >Yes</button>
+        <button type="button" class="btn btn-primary" data-target="Logout" onclick="Logout" >Yes</button>
       </div>
       
     </div><!-- /.modal-content -->
