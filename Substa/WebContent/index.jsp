@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="substa.beans.User"%>
+<%@ page import="java.lang.Boolean" %>
+<%@ page import="substa.beans.User" %>
+<%@ page import="substa.beans.Customer"%>
+<%@ page import="substa.beans.Employer" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +15,9 @@
 	
 <body>
 <%
+	boolean isCustomer = (boolean)session.getAttribute("isCustomer");
 	User LoginUser = (User)session.getAttribute("LoginUser");
+	
 %>
 
 <div id="wrapper">
@@ -96,12 +101,19 @@
           <% if(LoginUser==null){ %>
           	<li class="disabled"><a hef="#">My Bidding Process</a>
           	<li class="disabled"><a href="#">History</a>
-          	<%}else{ %>
+          	<%}else if(isCustomer && LoginUser !=null){%>
           	<li><a hef="#">My Bidding Process</a>
+          	<li><a href="#">History</a>
+          	<%}else if(!isCustomer && LoginUser !=null){ %>
+          	<li><a hef="#">Customer Management</a>
           	<li><a href="#">History</a>
           	<%} %>
             <li class="divider"></li>
+            <%if(LoginUser!=null){ %>
             <li><a href="#" data-toggle="modal" data-target="#singinModal">Sign in</a></li>
+            <%}else{ %>
+            <li><a href="#">Log out</a></li>
+            <%} %>
           </ul>
         </li>
       </ul>

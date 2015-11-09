@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.Customer;
+import substa.beans.Employer;
 import substa.beans.User;
 import substa.model.DBManager;
 
@@ -72,6 +74,17 @@ public class SignIn extends HttpServlet {
 		User user = db.getUser(email,pw);
 		if(user!=null){
 			session.setAttribute("LoginUser", user);
+			Customer customer= db.getCustomer(user);
+			
+			if(customer==null){
+				Employer employee = db.getEmployer(user);
+				session.setAttribute("employeeInfo", employee);
+				session.setAttribute("isCustomer", false);
+			}else{
+				session.setAttribute("customerInfo", customer);
+				session.setAttribute("isCustomer", true);
+			}
+			
 			String targetPage = "index.jsp";
 			response.sendRedirect(targetPage);
 		}else{										//error

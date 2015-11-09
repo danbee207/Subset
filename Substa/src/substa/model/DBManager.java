@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import substa.beans.Customer;
+import substa.beans.Employer;
 import substa.beans.User;
 
 public class DBManager {
@@ -123,6 +125,87 @@ public class DBManager {
 		
 		return user;
 		
+	}
+	
+	public Customer getCustomer(User user){
+		
+		Customer customer = null;
+		
+		Connection conn = getConnection();
+		if(conn!=null){
+			
+			PreparedStatement ps =null;
+			ResultSet rs =null;
+			
+			try{
+				
+				String sqlQuery = "SELECT * FROM Customer WHERE CustomerID=?";
+				ps=conn.prepareStatement(sqlQuery);
+				ps.setInt(1, user.getSsn());
+				
+				rs = ps.executeQuery();
+				while(rs.next()){
+					customer = (Customer) user;
+					customer.setCreditCardNum(rs.getLong("CreditCardNum"));
+					customer.setRating(rs.getFloat("Rating"));
+				}
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					rs.close();
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+			
+		}
+		
+		return customer;
+		
+	}
+	
+	public Employer getEmployer(User user){
+		Employer employee = null;
+		
+		Connection conn = getConnection();
+		if(conn!=null){
+			
+			PreparedStatement ps =null;
+			ResultSet rs =null;
+			
+			try{
+				
+				String sqlQuery = "SELECT * FROM Employer WHERE EmployeeID=?";
+				ps=conn.prepareStatement(sqlQuery);
+				ps.setInt(1, user.getSsn());
+				
+				rs = ps.executeQuery();
+				while(rs.next()){
+					employee = (Employer) user;
+					employee.setLevel(rs.getInt("Level"));
+					employee.setStartDate(rs.getDate("StartDate"));
+					employee.setHourlyRate(rs.getFloat("HourlyRate"));
+				}
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					rs.close();
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+			
+		}
+		
+		return employee;
 	}
 
 }
