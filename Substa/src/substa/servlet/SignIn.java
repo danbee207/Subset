@@ -1,0 +1,90 @@
+package substa.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import substa.beans.User;
+import substa.model.DBManager;
+
+
+
+/**
+ * Servlet implementation class SignIn
+ * @author Danbee Park
+ */
+@WebServlet("/SignIn")
+public class SignIn extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	private DBManager db;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SignIn(ServletConfig config) throws ServletException {
+        super();
+        // TODO Auto-generated constructor stub
+        db = new DBManager();
+		db.setDbURL(config.getInitParameter("dbUrl"));
+		db.setDbuser(config.getInitParameter("dbUser"));
+		db.setDbpass(config.getInitParameter("dbPass"));
+
+		try {
+			Class.forName(config.getInitParameter("jdbcDriver"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		signIn(request,response);
+	}
+	
+	protected void signIn(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		
+		HttpSession session = request.getSession(true);
+
+		response.setHeader("Cache-Control", "no-cache"); // no cache for HTTP 1.1
+		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
+		response.setDateHeader("Expires", 0); // always expires
+		
+		String email = request.getParameter("signInId");
+		String pw = request.getParameter("signInPw");
+		
+		User user = db.getUser(email,pw);
+		if(user!=null){
+			session.setAttribute("LoginUser", user);
+			String targetPage = "index.jsp";
+			response.sendRedirect(targetPage);
+		}else{										//error
+			noUserInfoMsg(response);
+		}
+	}
+	protected void noUserInfoMsg(HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('Invalid Email or Password');");
+		out.println("history.back();");
+		out.println("</script>");
+	}
+
+}

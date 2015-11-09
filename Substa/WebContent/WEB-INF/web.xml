@@ -9,26 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  <servlet-name>PersonManagement</servlet-name>
-  <servlet-class>substa.servlet.PersonManagement</servlet-class>
-  <init-param>
-  <param-name>jdbcDriver</param-name>
-  <param-value>com.mysql.jdbc.Driver</param-value>
-  </init-param>
+    <servlet-name>PersonManagement</servlet-name>
+    <servlet-class>substa.servlet.PersonManagement</servlet-class>
     <init-param>
-  <param-name>dbUrl</param-name>
-  <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark?useUnicode=true&amp;characterEncoding=UTF-8</param-value>
-  </init-param>
+      <param-name>jdbcDriver</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
     <init-param>
-  <param-name>dbUser</param-name>
-  <param-value>danpark</param-value>
-  </init-param>
-  <init-param>
-  <param-name>dbPass</param-name>
-  <param-value>110142214</param-value>
-  </init-param>
+      <param-name>dbUrl</param-name>
+      <param-value>jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark?useUnicode=true&amp;characterEncoding=UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbUser</param-name>
+      <param-value>danpark</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbPass</param-name>
+      <param-value>110142214</param-value>
+    </init-param>
   </servlet>
-  
 </web-app>

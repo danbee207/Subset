@@ -8,6 +8,13 @@ public class User {
 
 	private String first;
 	private String last;
+	private String address;
+	private int zipcode;
+	private long telephone;
+	private int ssn;
+	private String email;
+	private String pw;
+	
 	public String getFirst() {
 		return first;
 	}
@@ -19,6 +26,42 @@ public class User {
 	}
 	public void setLast(String last) {
 		this.last = last;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+	public long getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(long telephone) {
+		this.telephone = telephone;
+	}
+	public int getSsn() {
+		return ssn;
+	}
+	public void setSsn(int ssn) {
+		this.ssn = ssn;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	
 	

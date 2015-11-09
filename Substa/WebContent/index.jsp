@@ -12,10 +12,10 @@
 	
 <body>
 <%
-	Object LoginUser = session.getAttribute("LoginUser");
+	User LoginUser = (User)session.getAttribute("LoginUser");
 %>
 
-
+<div id="wrapper">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
  	<div class="navbar-header">
@@ -89,6 +89,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+      	<li><span id="AccountName"><%if(LoginUser!=null){LoginUser.getEmail();}%></span>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -107,19 +108,23 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<div class="modal fade" id="singinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+</div>
+<div id="containerBody">
+</div>
+<div class="modal fade bs-example-modal-sm" id="singinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Sing in</h4>
       </div>
       <div class="modal-body">
-         <form >
+         <form role="form" method="post" action="signin" name="signIn" >
         <div class="form-group">
-          <label for="SigninId">ID</label> <input type="text" class="form-control" placeholder="ex)abc@substa.com">
-          <label for="SigninPassword">Password</label><input type="password" class="form-control" >
+          <label for="SigninId">ID</label> <input type="text" name="signInId" class="form-control" placeholder="ex)abc@substa.com">
+        </div>
+        <div class="form-group">
+         <label for="SigninPassword">Password</label><input type="password" name="signInPw" class="form-control" >
         </div>
         
       </form>
