@@ -9,7 +9,7 @@ function Logout(){
 }
 function goTosignup(){
 	
-	window.location.assign("Substa/singup.html");
+	window.location.assign("singup.html");
 	
 	
 }
