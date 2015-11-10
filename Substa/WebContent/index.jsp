@@ -164,7 +164,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" onclick="Logout" >Yes</button>
+        <button type="button" class="btn btn-primary" onclick="Logout()" >Yes</button>
       </div>
       
     </div><!-- /.modal-content -->
@@ -172,6 +172,6 @@
 </div><!-- /.modal -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-
+<script type="text/javascript" src="js/index_js.js"></script>
 </body>
 </html>

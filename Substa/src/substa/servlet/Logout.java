@@ -50,15 +50,7 @@ public class Logout extends HttpServlet {
 		System.out.println("Hello");
 		HttpSession session = request.getSession(false);
 
-		response.setHeader("Cache-Control", "no-cache"); // no cache for HTTP 1.1
-		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
-		response.setDateHeader("Expires", 0); // always expires
-		
-		session.setAttribute("LoginUser", null);
-		session.setAttribute("isCustomer", null);
-		
-
-		String targetPage = "index.jsp";
-		response.sendRedirect(targetPage);
+		session.invalidate();
+		response.sendRedirect("");
 	}
 }
