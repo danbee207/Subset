@@ -101,6 +101,7 @@ public class DBManager {
 				
 				while(rs.next()){
 					user = new User();
+					user.setSsn(rs.getInt("SSN"));
 					user.setFirst(rs.getString("FirstName"));
 					user.setLast(rs.getString("LastName"));
 					user.setAddress(rs.getString("Address"));
@@ -144,8 +145,10 @@ public class DBManager {
 				ps.setInt(1, user.getSsn());
 				
 				rs = ps.executeQuery();
+				System.out.println(user.getSsn());
 				while(rs.next()){
-					customer = (Customer) user;
+					System.out.println("here customer");
+					customer = new Customer(user);
 					customer.setCreditCardNum(rs.getLong("CreditCardNum"));
 					customer.setRating(rs.getFloat("Rating"));
 				}
@@ -185,7 +188,7 @@ public class DBManager {
 				
 				rs = ps.executeQuery();
 				while(rs.next()){
-					employee = (Employer) user;
+					employee = new Employer(user);
 					employee.setLevel(rs.getInt("Level"));
 					employee.setStartDate(rs.getDate("StartDate"));
 					employee.setHourlyRate(rs.getFloat("HourlyRate"));
@@ -207,5 +210,5 @@ public class DBManager {
 		
 		return employee;
 	}
-
+	
 }

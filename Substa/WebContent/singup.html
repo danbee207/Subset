@@ -7,7 +7,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 </head>
-<body>
+<body onload="onloadHide();">
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="page-header">
@@ -30,30 +30,43 @@
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-5">
+					<div class="col-sm-5" id="nameDiv">
 						<input type="email" class="form-control" name="email"
-							placeholder="ex)abc@substa.com">
+							placeholder="ex)abc@substa.com"
+							onchange="checkingEmailFormat(this); return false;">
+						
+							<span class="glyphicon glyphicon-ok form-control-feedback"
+								aria-hidden="true"></span> <span id="inputSuccess2Status"
+								class="sr-only">(success)</span>
+						
+						<div id="emailBad">
+							<span class="glyphicon glyphicon-remove form-control-feedback"
+								aria-hidden="true"></span> <span id="inputError2Status"
+								class="sr-only">(error)</span>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-5">
 						<input type="password" class="form-control" name="password"
-							placeholder="Password">
+							placeholder="Password"
+							onchange="checkingPasswordFormat(this); reutrn false;">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">SSN</label>
 					<div class="col-sm-5">
 						<input type="tel" class="form-control" name="ssn"
-							placeholder="Social Security Number">
+							placeholder="Social Security Number"
+							onchange="checkingSSN(this);return false;">
 					</div>
 				</div>
 
 
 
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Steet</label>
+					<label for="inputEmail3" class="col-sm-2 control-label">Street</label>
 					<div class="col-sm-5">
 						<input type="text" class="form-control"
 							placeholder="Street Address">
@@ -146,10 +159,12 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-6 col-sm-12">
-						<button type="submit" class="btn btn-default onclick="location.href="index.jsp">Cancel</button>
-						<button type="submit" class="btn btn-primary" onclick="goToServlet(this);">Sign in</button>
+						<button type="submit" class="btn btn-default onclick="
+							location.href="index.jsp">Cancel</button>
+						<button type="submit" class="btn btn-primary"
+							onclick="goToServlet(this);">Sign in</button>
 					</div>
-					
+
 				</div>
 		</div>
 
@@ -160,5 +175,6 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/signup_js.js"></script>
 </body>
 </html>

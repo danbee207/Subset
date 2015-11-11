@@ -101,16 +101,16 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-          <% if(LoginUser==null){ %>
+          <% if(LoginUser==null || isCustomer){ %>
           	<li class="disabled"><a hef="#">My Bidding Process</a>
           	<li class="disabled"><a href="#">History</a>
-          	<%}else if(isCustomer && LoginUser !=null){%>
-          	<li><a hef="#">My Bidding Process</a>
+          	<%}else{if(isCustomer){ %>
+          	<li><a href="#">My Bidding Process</a>
           	<li><a href="#">History</a>
-          	<%}else if(!isCustomer && LoginUser !=null){ %>
-          	<li><a hef="#">Customer Management</a>
+          	<%}else{ %>
+          	<li><a href="#">Customer Management</a>
           	<li><a href="#">History</a>
-          	<%} %>
+          	<%}}System.out.println("isCustomer="+isCustomer); %>
             <li class="divider"></li>
             <%if(LoginUser==null){ %>
             <li><a href="#" data-toggle="modal" data-target="#singinModal">Sign in</a></li>

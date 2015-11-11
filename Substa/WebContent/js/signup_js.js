@@ -1,10 +1,25 @@
 /**
  * 
  */
-
+function onloadHide(){
+	$("#emailGood").hide();
+	$("#emailBad").hide();
+	
+	
+	return false;
+}
 function checkingEmailFormat(email){
 	
+	var emailEl = document.getElementsByName("email");
+	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
+    if (!filter.test(email.value)) {
+    	document.getElementsByName("email").setAttribute("aria-describedby","inputSuccess2Status");
+    	$("#emailGood").show();
+    }else{
+    	$("#emailBad").show();
+    }
+    return false;
 }
 
 function checkingPasswordFormat(pw){

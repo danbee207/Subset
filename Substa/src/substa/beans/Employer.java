@@ -8,6 +8,21 @@ public class Employer extends User{
 	private Date startDate;
 	private float hourlyRate;
 	
+	public Employer(){
+		super();
+	}
+	public Employer(User user){
+		this.setSsn(user.getSsn());
+		this.setFirst(user.getFirst());
+		this.setLast(user.getLast());
+		this.setEmail(user.getEmail());
+		this.setPw(user.getPw());
+		this.setAddress(user.getAddress());
+		this.setPw(user.getPw());
+		this.setZipcode(user.getZipcode());
+	}
+	
+	
 	public int getLevel() {
 		return level;
 	}
