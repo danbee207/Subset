@@ -153,19 +153,13 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 	</div>
+	<div id="blankforBody"></div>
+	<div class="jumbotron">
+		<h1>Hello, Guest!</h1>
+		<p>Our site supports ~~~~.</p>
+	</div>
 	<div id="containerBody">
-		<div id="blankforBody">
-			
-			
-			
-			
-		
-		</div>
-		<div class="jumbotron">
-			<h1>Hello, Guest!</h1>
-			<p>Our site supports ~~~~.</p>
-		</div>
-		<h2>you are interested in...</h2>
+		<h2>You are interested in...</h2>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -206,7 +200,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 		<h2>Deadline Soon!</h2>
 		<div class="row">
@@ -217,8 +211,76 @@
 						<h3>Thumbnail label</h3>
 						<p>...</p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Bid</a> <a
-								href="#" class="btn btn-default" role="button">Button</a>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>You Get them!</h2>
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Thumbnail label</h3>
+						<p>...</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Up</a> <a
+								href="#" class="btn btn-default" role="button">Cancel</a>
 						</p>
 					</div>
 				</div>
