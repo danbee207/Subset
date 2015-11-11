@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Substa - signup</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 
 </head>
 <body onload="onloadHide();">
@@ -13,11 +12,11 @@
 			<div class="page-header">
 				<h1>Welcome to Substa!</h1>
 			</div>
-
+			<p class="lead">It's glad that you are our family! Please type contents below!</p>
 
 			<form class="form-horizontal" method="post" action="Singup">
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">First
+					<label for="inputEmail3" class="col-sm-4 control-label">First
 						Name</label>
 					<div class="col-sm-2">
 						<input type="tel" class="form-control" name="firstName">
@@ -28,17 +27,17 @@
 						<input type="tel" class="form-control" name="lastName">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-5" id="nameDiv">
+				<div id="emailDiv" class="form-group">
+					<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+					<div class="col-sm-5">
 						<input type="email" class="form-control" name="email"
 							placeholder="ex)abc@substa.com"
 							onchange="checkingEmailFormat(this); return false;">
-						
+						<div id="emailGood">
 							<span class="glyphicon glyphicon-ok form-control-feedback"
 								aria-hidden="true"></span> <span id="inputSuccess2Status"
 								class="sr-only">(success)</span>
-						
+						</div>
 						<div id="emailBad">
 							<span class="glyphicon glyphicon-remove form-control-feedback"
 								aria-hidden="true"></span> <span id="inputError2Status"
@@ -47,15 +46,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					<label for="inputPassword3" class="col-sm-4 control-label">Password</label>
 					<div class="col-sm-5">
 						<input type="password" class="form-control" name="password"
 							placeholder="Password"
-							onchange="checkingPasswordFormat(this); reutrn false;">
+							onchange="checkingPasswordFormat(this);">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">SSN</label>
+					<label for="inputEmail3" class="col-sm-4 control-label">SSN</label>
 					<div class="col-sm-5">
 						<input type="tel" class="form-control" name="ssn"
 							placeholder="Social Security Number"
@@ -66,7 +65,7 @@
 
 
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Street</label>
+					<label for="inputEmail3" class="col-sm-4 control-label">Street</label>
 					<div class="col-sm-5">
 						<input type="text" class="form-control"
 							placeholder="Street Address">
@@ -75,7 +74,7 @@
 
 				</div>
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">City</label>
+					<label for="inputEmail3" class="col-sm-4 control-label">City</label>
 					<div class="col-sm-3">
 						<input type="text" class="form-control" placeholder="City">
 					</div>
@@ -145,20 +144,20 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">ZipCode</label>
+					<label for="inputEmail3" class="col-sm-4 control-label">ZipCode</label>
 					<div class="col-sm-2">
 						<input type="tel" class="form-control">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Telephone</label>
+					<label for="inputEmail3" class="col-sm-4 control-label">Telephone</label>
 					<div class="col-sm-5">
 						<input type="tel" class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-6 col-sm-12">
+					<div class="col-sm-offset-3 col-sm-11">
 						<button type="submit" class="btn btn-default onclick="
 							location.href="index.jsp">Cancel</button>
 						<button type="submit" class="btn btn-primary"
@@ -172,6 +171,7 @@
 	</form>
 	</div>
 	</div>
+	<div class="alert alert-success" role="alert">Good! You are our family now!</div>
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>

@@ -1,7 +1,15 @@
 /**
  * 
  */
+var isEmail=false;
+var isPw = false;
+var isSsn=false;
+var isFirstN = false;
+var isLastN = false;
+
 function onloadHide(){
+	
+	$("#emailDiv").attr("class","form-group");
 	$("#emailGood").hide();
 	$("#emailBad").hide();
 	
@@ -13,10 +21,16 @@ function checkingEmailFormat(email){
 	var emailEl = document.getElementsByName("email");
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
-    if (!filter.test(email.value)) {
-    	document.getElementsByName("email").setAttribute("aria-describedby","inputSuccess2Status");
+    if (filter.test(email.value)) {
+    	isEmail=true;
+    	$("#emailDiv").attr("class","form-group has-success has-feedback");
+    	$('[name="email"]').attr("aria-describedby","inputSuccess2Status");
+    	$("#emailBad").hide();
     	$("#emailGood").show();
     }else{
+    	$("#emailDiv").attr("class","form-group has-error has-feedback");
+    	$('[name="email"]').attr("aria-describedby","inputError2Status");
+    	$("#emailGood").hide();
     	$("#emailBad").show();
     }
     return false;
@@ -45,8 +59,13 @@ SSNs used in advertising have rendered those numbers invalid.
 	 */
 }
 function goToServlet(btn){
-	
-	
-	this.submit();
+	if(isEmail && isPw && isSsn && isFirstN && isLastN){
+		
+		this.submit();
+	}
+	else{
+		alert('Fill whole information correctly');
+		return false;
+	}
 }
 

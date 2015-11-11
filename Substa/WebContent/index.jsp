@@ -110,7 +110,7 @@
           	<%}else{ %>
           	<li><a href="#">Customer Management</a>
           	<li><a href="#">History</a>
-          	<%}}System.out.println("isCustomer="+isCustomer); %>
+          	<%}} %>
             <li class="divider"></li>
             <%if(LoginUser==null){ %>
             <li><a href="#" data-toggle="modal" data-target="#singinModal">Sign in</a></li>

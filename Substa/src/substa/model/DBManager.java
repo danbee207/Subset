@@ -145,9 +145,9 @@ public class DBManager {
 				ps.setInt(1, user.getSsn());
 				
 				rs = ps.executeQuery();
-				System.out.println(user.getSsn());
+				
 				while(rs.next()){
-					System.out.println("here customer");
+					
 					customer = new Customer(user);
 					customer.setCreditCardNum(rs.getLong("CreditCardNum"));
 					customer.setRating(rs.getFloat("Rating"));
