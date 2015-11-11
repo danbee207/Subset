@@ -5,5 +5,13 @@
   color : #231F20;
   color : rgb(35, 31, 32);
 }
+#containerBody{
+	width:100%;
+	padding : 3%;
+}
 
-
+#blankforBody{
+	height:20%;
+	margin-top: 40px;
+	
+}
