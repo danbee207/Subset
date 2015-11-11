@@ -12,7 +12,7 @@ function onloadHide(){
 	$("#emailDiv").attr("class","form-group");
 	$("#emailGood").hide();
 	$("#emailBad").hide();
-	
+	$("#alertGood").hide();
 	
 	return false;
 }
@@ -60,7 +60,7 @@ SSNs used in advertising have rendered those numbers invalid.
 }
 function goToServlet(btn){
 	if(isEmail && isPw && isSsn && isFirstN && isLastN){
-		
+		$("#alertGood").show();
 		this.submit();
 	}
 	else{
