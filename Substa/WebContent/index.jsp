@@ -153,12 +153,13 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 	</div>
-	<div id="blankforBody"></div>
-	<div class="jumbotron">
-		<h1>Hello, Guest!</h1>
-		<p>Our site supports ~~~~.</p>
-	</div>
+
 	<div id="containerBody">
+		<div id="blankforBody"></div>
+		<div class="jumbotron">
+			<h1>Hello, Guest!</h1>
+			<p>Our site supports ~~~~.</p>
+		</div>
 		<h2>You are interested in...</h2>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
