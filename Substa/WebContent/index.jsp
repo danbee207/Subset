@@ -288,18 +288,16 @@
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-default">
-	<div class="container-fluid">
+	
+	<div class="container" id="footer">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 		</div>
-		<div class="navbar-footer">
-		
-		Copy@ Right Substa | Stony Brook University
+		<div class="navbar-footer navbar-right" >
+		 <h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
-	<!-- /.container-fluid --> </nav>
-	<div id="footer"></div>
+
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">

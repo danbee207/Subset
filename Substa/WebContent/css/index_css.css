@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+body{
+	padding-bottom:0;
+}
 .SubstaLabel {
   font-family : Tahoma;
   font-size : 30px;
@@ -13,5 +16,11 @@
 #blankforBody{
 	height:20%;
 	margin-top: 40px;
+	
+}
+#footer{
+	padding-right : 5%;
+	width:100%;
+	background-color: #555555;
 	
 }
