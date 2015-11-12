@@ -161,6 +161,13 @@
 			<p>Our site supports ~~~~.</p>
 		</div>
 		<h2>You are interested in...</h2>
+		<nav>
+		<ul class="pager">
+			<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>
+					Older</a></li>
+			<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+		</ul>
+		</nav>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -245,56 +252,15 @@
 				</div>
 			</div>
 		</div>
-		<h2>You Get them!</h2>
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
-	
+
 	<div class="container" id="footer">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 		</div>
-		<div class="navbar-footer navbar-right" >
-		 <h4>Copy@ Right Substa | Stony Brook University</h4>
+		<div class="navbar-footer navbar-right">
+			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
 
