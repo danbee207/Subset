@@ -17,3 +17,10 @@ function goTosignup(){
 	
 	
 }
+function goCategories(btn,user){
+	if(user==null){
+		$('#singinModal').modal('show');
+	}else{
+		location.href="CategoriesShown/category?"+btn.val();
+	}
+}

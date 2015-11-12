@@ -32,12 +32,14 @@
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar">Book</span> <span class="icon-bar">Electronics</span>
-					<span class="icon-bar">Fashion</span> <span class="icon-bar">Home
-						& Garden</span> <span class="icon-bar">Motors</span> <span
-						class="icon-bar">Sporting Goods</span> <span class="icon-bar">Toy
-						& Hobbies</span>
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=LoginUser%>);">Book</span> 
+					<span class="icon-bar" onclick="goCategories(this);">Electronics</span>
+					<span class="icon-bar" onclick="goCategories(this);">Fashion</span> 
+					<span class="icon-bar" onclick="goCategories(this);">Home & Garden</span> 
+					<span class="icon-bar" onclick="goCategories(this);">Motors</span> 
+					<span class="icon-bar" onclick="goCategories(this);">Sporting Goods</span> 
+					<span class="icon-bar" onclick="goCategories(this);">Toy & Hobbies</span>
 				</button>
 				<a class="navbar-brand" href="#"><img src=""></a>
 			</div>
