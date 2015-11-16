@@ -61,7 +61,7 @@
 						data-toggle="dropdown" role="button" aria-expanded="false">Electronics<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
+							<li><a href="#" >Action</a></li>
 							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -77,8 +77,9 @@
 							& Garden<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
+							<li><a href="#">Kitchen</a></li>
 							<li class="divider"></li>
+							<li><a href="#"></a>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Mortors
@@ -164,14 +165,7 @@
 			<h1>Hello, Guest!</h1>
 			<p>Our site supports ~~~~.</p>
 		</div>
-		<h2>You are interested in...</h2>
-		<nav>
-		<ul class="pager">
-			<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>
-					Older</a></li>
-			<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
-		</ul>
-		</nav>
+		<h2>You are interested in...</h2><a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -214,7 +208,7 @@
 			</div>
 
 		</div>
-		<h2>Deadline Soon!</h2>
+		<h2>Deadline Soon!</h2><a href="#"class="btn btn-default" role="button"> more</a>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">

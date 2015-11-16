@@ -18,9 +18,18 @@ body{
 	margin-top: 40px;
 	
 }
+#wrapper{
+	background-color: #fbac47;
+}
 #footer{
 	padding-right : 5%;
 	width:100%;
 	background-color: #fbac47;
+	
+}
+
+#Interestingdetail{
+	
+	text-align :right;
 	
 }
