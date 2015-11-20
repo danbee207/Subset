@@ -50,76 +50,60 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Books
+						data-toggle="dropdown" role="button" aria-expanded="false">Book
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Books</a></li>
-							<li><a href="#">E-books</a></li>
-							<li><a href="#">Textbooks</a></li>
-							<li><a href="#">Magazines</a></li>							
+							<li><a href="#">Action</a></li>
+							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Electronics
-						<span class="caret"></span></a>
+						data-toggle="dropdown" role="button" aria-expanded="false">Electronics<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">TV</a></li>
-							<li><a href="#">Cell Phones</a></li>
-							<li><a href="#">Desktops</a></li>
-							<li><a href="#">Laptops</a></li>
-							<li><a href="#">Home Audio</a></li>
+							<li><a href="#" >Action</a></li>
+							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Fashion
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Women's Clothing</a></li>
-							<li><a href="#">Men's Clothing</a></li>
-							<li><a href="#">Kid's Clothing</a></li>
+							<li><a href="#">Action</a></li>
+							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Home
 							& Garden<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Kitchen & Dining</a></li>
-							<li><a href="#">Futniture</a></li>
-							<li><a href="#">Bedding & Bath</a></li>
-							<li><a href="#">Appliance</a></li>
+							<li><a href="#">Kitchen</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Gardening Supplies</a></li>
+							<li><a href="#"></a>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Mortors
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Cars</a></li>
-							<li><a href="#">Motorcycles</a></li>
-							<li><a href="#">Parts & Accessories</a></li>
-							<li><a href="#">Automotive Tools</a></li>
+							<li><a href="#">Action</a></li>
+							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Sporting
 							Goods<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Team Sports</a></li>
-							<li><a href="#">Leisure Sports</a></li>
-							<li><a href="#">Water Sports</a></li>
+							<li><a href="#">Action</a></li>
+							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Toy
 							& Hobbies <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action Figure</a></li>
-							<li><a href="#">Building Toys</a></li>
-							<li><a href="#">Baby's Toys</a></li>
+							<li><a href="#">Action</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Games</a></li>
-							<li><a href="#">Movies</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
