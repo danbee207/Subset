@@ -23,10 +23,20 @@ function onloadHide(){
 	$("#pwGood").hide();
 	$("#pwBad").hide();
 	
+	$("#nameDiv").attr("class","form-group");
+	$("#firstNameGood").hide();
+	$("#firstNameBad").hide();
+	$("#lastNameGood").hide();
+	$("#lastNmaeBad").hide();
+	
 	$("#alertGood").hide();
 	
 	return false;
 }
+function checkingnameFormat(){
+	
+}
+
 function checkingEmailFormat(email){
 	
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -45,7 +55,7 @@ function checkingEmailFormat(email){
     }
     return false;
 }
-
+function 
 function checkingPasswordFormat(pw){
 	
 	var pwVal = pw.value;
