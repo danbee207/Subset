@@ -143,8 +143,8 @@
     "@navbar-padding-horizontal": "floor((@grid-gutter-width / 2))",
     "@navbar-padding-vertical": "((@navbar-height - @line-height-computed) / 2)",
     "@navbar-collapse-max-height": "340px",
-    "@navbar-default-color": "#fbac47",
-    "@navbar-default-bg": "#fbac47",
+    "@navbar-default-color": "#777",
+    "@navbar-default-bg": "#f8f8f8",
     "@navbar-default-border": "darken(@navbar-default-bg, 6.5%)",
     "@navbar-default-link-color": "#777",
     "@navbar-default-link-hover-color": "#333",
@@ -210,7 +210,7 @@
     "@pager-disabled-color": "@pagination-disabled-color",
     "@jumbotron-padding": "30px",
     "@jumbotron-color": "inherit",
-    "@jumbotron-bg": "#ffffff",
+    "@jumbotron-bg": "#fbac47",
     "@jumbotron-heading-color": "inherit",
     "@jumbotron-font-size": "ceil((@font-size-base * 1.5))",
     "@state-success-text": "#3c763d",
@@ -377,14 +377,21 @@
     "@hr-border": "@gray-lighter"
   },
   "css": [
-    "forms.less",
-    "navs.less",
-    "navbar.less",
-    "jumbotron.less",
-    "dropdowns.less"
+    "jumbotron.less"
   ],
   "js": [
-    "dropdown.js"
+    "alert.js",
+    "button.js",
+    "carousel.js",
+    "dropdown.js",
+    "modal.js",
+    "tooltip.js",
+    "popover.js",
+    "tab.js",
+    "affix.js",
+    "collapse.js",
+    "scrollspy.js",
+    "transition.js"
   ],
-  "customizerUrl": "http://bootstrapk.com/customize/?id=32f4dd846b28a4e21922"
+  "customizerUrl": "http://bootstrapk.com/customize/?id=fc5d85ab65b46cfe9531"
 }

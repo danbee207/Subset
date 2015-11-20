@@ -12,13 +12,23 @@ function onloadHide(){
 	$("#emailDiv").attr("class","form-group");
 	$("#emailGood").hide();
 	$("#emailBad").hide();
+	
+	$("#nameDiv").attr("class","form-group");
+	$("#firstNameGood").hide();
+	$("#firstNameBad").hide();
+	$("#lastNameGood").hide();
+	$("#lastNameBad").hide();
+	
+	$("#pwDiv").attr("class","form-group");
+	$("#pwGood").hide();
+	$("#pwBad").hide();
+	
 	$("#alertGood").hide();
 	
 	return false;
 }
 function checkingEmailFormat(email){
 	
-	var emailEl = document.getElementsByName("email");
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
     if (filter.test(email.value)) {
@@ -38,12 +48,22 @@ function checkingEmailFormat(email){
 
 function checkingPasswordFormat(pw){
 	
+	var pwVal = pw.value;
+	
+	if(pwVal.length>=8 && pwVal.length<=10){
+		$("#pwDiv").attr("class","form-group has-success has-feedback");
+		$('#password').attr("aria-describedby","inputSuccess2Status");
+		$("#pwBad").hide();
+		$("#pwGood").show();
+	}else{
+		("#pwDiv").attr("class","form-group has-error has-feedback");
+		$("#password").attr("aria-describedby","inputError2Status");
+		$("#pwGood").hide();
+		$("#pwBad").show();
+	}
 	
 }
 
-function checkingAddressFormat(address){
-	
-}
 
 function checkingSSN(ssn){
 	

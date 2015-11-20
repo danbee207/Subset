@@ -42,7 +42,7 @@
 					<span class="icon-bar" onclick="goCategories(this);">Sporting Goods</span> 
 					<span class="icon-bar" onclick="goCategories(this);">Toy & Hobbies</span>
 				</button>
-				<a class="navbar-brand" href="#"><img src=""></a>
+			
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -257,14 +257,7 @@
 		
 	</div>
 
-	<div class="container-fluid" id="footer">
-		<div class="navbar-header" id=footerHeader>
-			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
-		</div>
-		<div class="navbar-footer navbar-right">
-			<h4>Copy@ Right Substa | Stony Brook University</h4>
-		</div>
-	</div>
+	
 
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -329,9 +322,18 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<div id="footer" >
+		<div class="container">
+		<div class="navbar-header" id=footerHeader>
+			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
+		</div>
+		<div class="navbar-footer navbar-right">
+			<h4>Copy@ Right Substa | Stony Brook University</h4>
+		</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index_js.js"></script>
 </body>
 </html>

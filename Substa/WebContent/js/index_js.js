@@ -2,11 +2,6 @@
  * @author Danbee Park
  */
 
-$(document).ready(function(){
-	var footerHeight = $("#footerHeader").height();
-	$("#footer").height(footerHegiht+2);
-	
-});
 
 function Logout(){
 	
