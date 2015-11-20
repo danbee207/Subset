@@ -35,7 +35,7 @@ public class CategoriesShown extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		processRequest(request,response);
 	}
 
 	/**
@@ -43,7 +43,13 @@ public class CategoriesShown extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		processRequest(request,response);
+	}
+	
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
+		
+		
 	}
 
 }

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import substa.beans.Customer;
+
 /**
  * Servlet implementation class SingUp
  */
@@ -46,4 +48,11 @@ public class SingUp extends HttpServlet {
 		doGet(request, response);
 	}
 
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
+		Customer customer = new Customer();
+		
+		
+		
+	}
 }

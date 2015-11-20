@@ -12,13 +12,27 @@ function onloadHide(){
 	$("#emailDiv").attr("class","form-group");
 	$("#emailGood").hide();
 	$("#emailBad").hide();
+	
+	$("#nameDiv").attr("class","form-group");
+	$("#firstNameGood").hide();
+	$("#firstNameBad").hide();
+	$("#lastNameGood").hide();
+	$("#lastNameBad").hide();
+	
+	$("#pwDiv").attr("class","form-group");
+	$("#pwGood").hide();
+	$("#pwBad").hide();
+	
+	$("#ssnDiv").attr("class","form-group");
+	$("#ssnGood").hide();
+	$("#ssnBad").hide();
+	
 	$("#alertGood").hide();
 	
 	return false;
 }
 function checkingEmailFormat(email){
 	
-	var emailEl = document.getElementsByName("email");
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
     if (filter.test(email.value)) {
@@ -38,14 +52,40 @@ function checkingEmailFormat(email){
 
 function checkingPasswordFormat(pw){
 	
+	var pwVal = pw.value;
+	console.log("pwValue = "+pwval);
+	if(pwVal.length>=8 && pwVal.length<=10){
+		$("#pwDiv").attr("class","form-group has-success has-feedback");
+		$('#password').attr("aria-describedby","inputSuccess2Status");
+		$("#pwBad").hide();
+		$("#pwGood").show();
+	}else{
+		("#pwDiv").attr("class","form-group has-error has-feedback");
+		$("#password").attr("aria-describedby","inputError2Status");
+		$("#pwGood").hide();
+		$("#pwBad").show();
+	}
 	
 }
 
-function checkingAddressFormat(address){
-	
-}
 
 function checkingSSN(ssn){
+	
+	var ssnVal = ssn.value;
+	var ssnValtoS = ssnVal.toString.length;
+	
+	if(ssnValtoS.length==9){
+		$("#ssnDiv").attr("class","form-group has-success has-feedback");
+		$("#ssn").attr("arai-describedby","inputSuccess2Status");
+		$("#ssnBad").hide();
+		$("#ssnGood").show();
+	}else{
+		$("#ssnDiv").attr("class","form-group has-error has-feedback");
+		$("#ssn").attr("arai-describedby","inputError2Status");
+		$("#ssnGood").hide();
+		$("#ssnBad").show();
+	}
+	
 	
 	/*
 	 * The Social Security number is a nine-digit number in the format "AAA-GG-SSSS". The number is divided into three parts.

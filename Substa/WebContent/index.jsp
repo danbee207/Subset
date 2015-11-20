@@ -42,7 +42,7 @@
 					<span class="icon-bar" onclick="goCategories(this);">Sporting Goods</span> 
 					<span class="icon-bar" onclick="goCategories(this);">Toy & Hobbies</span>
 				</button>
-				<a class="navbar-brand" href="#"><img src=""></a>
+			
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -94,7 +94,7 @@
 							Goods<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=LoginUser%>);">Action</a></li>
 							<li class="divider"></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -165,7 +165,10 @@
 			<h1>Hello, Guest!</h1>
 			<p>Our site supports ~~~~.</p>
 		</div>
-		<h2>You are interested in...</h2><a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		<h2>You are interested in...</h2>
+		<div class="detailsBtn">
+		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		</div>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -208,8 +211,9 @@
 			</div>
 
 		</div>
-		<h2>Deadline Soon!</h2><a href="#"class="btn btn-default" role="button"> more</a>
-		<div class="row">
+		<h2>Deadline Soon!</h2><div class="detailsBtn">
+		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		</div>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<img src="..." alt="...">
@@ -253,14 +257,7 @@
 		
 	</div>
 
-	<div class="container" id="footer">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
-		</div>
-		<div class="navbar-footer navbar-right">
-			<h4>Copy@ Right Substa | Stony Brook University</h4>
-		</div>
-	</div>
+	
 
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -325,9 +322,18 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<div id="footer" >
+		<div class="container">
+		<div class="navbar-header" id=footerHeader>
+			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
+		</div>
+		<div class="navbar-footer navbar-right">
+			<h4>Copy@ Right Substa | Stony Brook University</h4>
+		</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index_js.js"></script>
 </body>
 </html>

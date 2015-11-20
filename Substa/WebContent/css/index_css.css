@@ -22,14 +22,17 @@ body{
 	background-color: #fbac47;
 }
 #footer{
-	padding-right : 5%;
-	width:100%;
+	bottom: 0;
+   height: 60px;
+   position: relative;
+   width: 100%;
+
 	background-color: #fbac47;
 	
 }
 
-#Interestingdetail{
-	
+.detailsBtn{
+	margin-bottom : 5px;
 	text-align :right;
 	
 }

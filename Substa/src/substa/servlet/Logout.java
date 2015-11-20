@@ -47,7 +47,7 @@ public class Logout extends HttpServlet {
 		
 	}
 	protected void logoutProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Hello");
+		
 		HttpSession session = request.getSession(false);
 
 		session.invalidate();
