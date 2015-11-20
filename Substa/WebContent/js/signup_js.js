@@ -35,6 +35,36 @@ function onloadHide(){
 }
 function checkingnameFormat(){
 	
+	var filter = /^[0-9]/;
+	var firstName = $("#firstName").val();
+	var lastName = $("#lastName").val();
+	
+	if(filter.test(firstName)|| filter.test(lastName)){
+		
+		$("#nameDiv").attr("class","form-group has-error has-feedback");
+		if(filter.test(firstName)){
+			$("#firstName").attr("aria-describedby","inputSuccess2Status");
+			$("#firstNameBad").hide();
+			$("#firstNameGood").show();
+			
+		}else{
+			$("#lastName").attr("aria-describedby","inputSuccess2Status");
+			$("#lastNameBad").hide();
+			$("#lastNameGood").show();
+		}
+		
+	}else{
+		$("#nameDiv").attr("class","form-group has-success has-feedback");
+		$("#firstName").attr("aria-describedby","inputSuccess2Status");
+		$("#lastName").attr("aria-describedby","inputSuccess2Status");
+		
+		$("#firstNameBad").hide();
+		$("#firstNameGood").show();
+		
+		$("#lastNameBad").hide();
+		$("#lastNameGood").show();
+	}
+	
 }
 
 function checkingEmailFormat(email){
@@ -55,7 +85,7 @@ function checkingEmailFormat(email){
     }
     return false;
 }
-function 
+ 
 function checkingPasswordFormat(pw){
 	
 	var pwVal = pw.value;
@@ -66,7 +96,7 @@ function checkingPasswordFormat(pw){
 		$("#pwBad").hide();
 		$("#pwGood").show();
 	}else{
-		("#pwDiv").attr("class","form-group has-error has-feedback");
+		$("#pwDiv").attr("class","form-group has-error has-feedback");
 		$("#password").attr("aria-describedby","inputError2Status");
 		$("#pwGood").hide();
 		$("#pwBad").show();
