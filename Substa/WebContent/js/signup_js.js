@@ -67,6 +67,22 @@ function checkingPasswordFormat(pw){
 
 function checkingSSN(ssn){
 	
+	var ssnVal = ssn.value;
+	var ssnValtoS = ssnVal.toString.length;
+	
+	if(ssnValtoS.length==9){
+		$("#ssnDiv").attr("class","form-group has-success has-feedback");
+		$("#ssn").attr("arai-describedby","inputSuccess2Status");
+		$("#ssnBad").hide();
+		$("#ssnGood").show();
+	}else{
+		$("#ssnDiv").attr("class","form-group has-error has-feedback");
+		$("#ssn").attr("arai-describedby","inputError2Status");
+		$("#ssnGood").hide();
+		$("#ssnBad").show();
+	}
+	
+	
 	/*
 	 * The Social Security number is a nine-digit number in the format "AAA-GG-SSSS". The number is divided into three parts.
 The middle two digits are the Group Number. The Group Numbers range from 01 to 99.
