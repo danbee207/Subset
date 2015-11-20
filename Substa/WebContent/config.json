@@ -100,7 +100,7 @@
     "@input-group-addon-bg": "@gray-lighter",
     "@input-group-addon-border-color": "@input-border",
     "@cursor-disabled": "not-allowed",
-    "@dropdown-bg": "#fbac47",
+    "@dropdown-bg": "#fff",
     "@dropdown-border": "rgba(0,0,0,.15)",
     "@dropdown-fallback-border": "#ccc",
     "@dropdown-divider-bg": "#e5e5e5",
@@ -210,7 +210,7 @@
     "@pager-disabled-color": "@pagination-disabled-color",
     "@jumbotron-padding": "30px",
     "@jumbotron-color": "inherit",
-    "@jumbotron-bg": "@gray-lighter",
+    "@jumbotron-bg": "#ffffff",
     "@jumbotron-heading-color": "inherit",
     "@jumbotron-font-size": "ceil((@font-size-base * 1.5))",
     "@state-success-text": "#3c763d",
@@ -380,11 +380,11 @@
     "forms.less",
     "navs.less",
     "navbar.less",
+    "jumbotron.less",
     "dropdowns.less"
   ],
   "js": [
-    "dropdown.js",
-    "modal.js"
+    "dropdown.js"
   ],
-  "customizerUrl": "http://bootstrapk.com/customize/?id=ded88e264b3355d611f2"
+  "customizerUrl": "http://bootstrapk.com/customize/?id=32f4dd846b28a4e21922"
 }

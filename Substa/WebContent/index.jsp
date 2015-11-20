@@ -165,7 +165,10 @@
 			<h1>Hello, Guest!</h1>
 			<p>Our site supports ~~~~.</p>
 		</div>
-		<h2>You are interested in...</h2><a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		<h2>You are interested in...</h2>
+		<div class="detailsBtn">
+		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		</div>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -208,8 +211,9 @@
 			</div>
 
 		</div>
-		<h2>Deadline Soon!</h2><a href="#"class="btn btn-default" role="button"> more</a>
-		<div class="row">
+		<h2>Deadline Soon!</h2><div class="detailsBtn">
+		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		</div>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<img src="..." alt="...">
@@ -253,8 +257,8 @@
 		
 	</div>
 
-	<div class="container" id="footer">
-		<div class="navbar-header">
+	<div class="container-fluid" id="footer">
+		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 		</div>
 		<div class="navbar-footer navbar-right">
