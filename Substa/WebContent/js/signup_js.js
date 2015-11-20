@@ -23,6 +23,10 @@ function onloadHide(){
 	$("#pwGood").hide();
 	$("#pwBad").hide();
 	
+	$("#ssnDiv").attr("class","form-group");
+	$("#ssnGood").hide();
+	$("#ssnBad").hide();
+	
 	$("#alertGood").hide();
 	
 	return false;
@@ -49,7 +53,7 @@ function checkingEmailFormat(email){
 function checkingPasswordFormat(pw){
 	
 	var pwVal = pw.value;
-	
+	console.log("pwValue = "+pwval);
 	if(pwVal.length>=8 && pwVal.length<=10){
 		$("#pwDiv").attr("class","form-group has-success has-feedback");
 		$('#password').attr("aria-describedby","inputSuccess2Status");
