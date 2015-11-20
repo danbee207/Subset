@@ -24,7 +24,7 @@
 						Name</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="firstName"
-							id="firstName">
+							id="firstName" onchange="checkingNameFormat();">
 						<div id="firstNameGood">
 							<span class="glyphicon glyphicon-ok form-control-feedback"
 								aria-hidden="true"></span> <span id="inputSuccess2Status"
@@ -41,7 +41,7 @@
 						Name</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="lastName"
-							id="lastName">
+							id="lastName" onchange="checkingNameFormat();">
 						<div id="lastNameGood">
 							<span class="glyphicon glyphicon-ok form-control-feedback"
 								aria-hidden="true"></span> <span id="inputSuccess2Status"
@@ -79,7 +79,7 @@
 						<input type="password" class="form-control" name="password"
 							id="password" placeholder="Password"
 							onchange="checkingPasswordFormat(this);">
-							<div id="pwGood">
+						<div id="pwGood">
 							<span class="glyphicon glyphicon-ok form-control-feedback"
 								aria-hidden="true"></span> <span id="inputSuccess2Status"
 								class="sr-only">(success)</span>
