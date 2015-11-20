@@ -27,33 +27,10 @@ function onloadHide(){
 	$("#ssnGood").hide();
 	$("#ssnBad").hide();
 	
-	
-	$("#nameDiv").attr("class","form-group");
-	$("#firstNameGood").hide();
-	$("#firstNameBad").hide();
-	$("#lastNameGood").hide();
-	$("#lastNameBad").hide();
-	
 	$("#alertGood").hide();
 	
 	return false;
 }
-
-function checkingNameFormat(first){
-	var firstValue = $("#firstName").val();
-	var lastValue = $("#lastName").val();
-	
-	if(firstValue.match(/[^0-9]/))){
-		
-	}
-	
-	if(lastValue.match(/[^0-9]/)){
-		
-	}
-	
-	
-}
-
 function checkingEmailFormat(email){
 	
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -65,7 +42,6 @@ function checkingEmailFormat(email){
     	$("#emailBad").hide();
     	$("#emailGood").show();
     }else{
-    	isEmail=false;
     	$("#emailDiv").attr("class","form-group has-error has-feedback");
     	$('[name="email"]').attr("aria-describedby","inputError2Status");
     	$("#emailGood").hide();
@@ -77,15 +53,13 @@ function checkingEmailFormat(email){
 function checkingPasswordFormat(pw){
 	
 	var pwVal = pw.value;
-	console.log("pwValue = "+pwVal);
+	console.log("pwValue = "+pwval);
 	if(pwVal.length>=8 && pwVal.length<=10){
-		isPw=true;
-		$("pwDiv").attr("class","form-group has-success has-feedback");
-		$("#password").attr("aria-describedby","inputSuccess2Status");
+		$("#pwDiv").attr("class","form-group has-success has-feedback");
+		$('#password').attr("aria-describedby","inputSuccess2Status");
 		$("#pwBad").hide();
 		$("#pwGood").show();
 	}else{
-		isPw=false;
 		("#pwDiv").attr("class","form-group has-error has-feedback");
 		$("#password").attr("aria-describedby","inputError2Status");
 		$("#pwGood").hide();
@@ -101,13 +75,11 @@ function checkingSSN(ssn){
 	var ssnValtoS = ssnVal.toString.length;
 	
 	if(ssnValtoS.length==9){
-		isSsn=true;
 		$("#ssnDiv").attr("class","form-group has-success has-feedback");
 		$("#ssn").attr("arai-describedby","inputSuccess2Status");
 		$("#ssnBad").hide();
 		$("#ssnGood").show();
 	}else{
-		isSsn=false;
 		$("#ssnDiv").attr("class","form-group has-error has-feedback");
 		$("#ssn").attr("arai-describedby","inputError2Status");
 		$("#ssnGood").hide();
