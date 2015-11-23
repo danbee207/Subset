@@ -23,11 +23,9 @@ function onloadHide(){
 	$("#pwGood").hide();
 	$("#pwBad").hide();
 	
-	$("#nameDiv").attr("class","form-group");
-	$("#firstNameGood").hide();
-	$("#firstNameBad").hide();
-	$("#lastNameGood").hide();
-	$("#lastNmaeBad").hide();
+	$("#ssnDiv").attr("class","form-group");
+	$("#ssnGood").hide();
+	$("#ssnBad").hide();
 	
 	$("#alertGood").hide();
 	
@@ -110,7 +108,7 @@ function checkingSSN(ssn){
 	var ssnVal = ssn.value;
 	var ssnValtoS = ssnVal.toString.length;
 	
-	if(ssnValtoS.length==9){
+	if(ssnValtoS.length==9 && $.isNumeric(ssnVal)){
 		$("#ssnDiv").attr("class","form-group has-success has-feedback");
 		$("#ssn").attr("arai-describedby","inputSuccess2Status");
 		$("#ssnBad").hide();
