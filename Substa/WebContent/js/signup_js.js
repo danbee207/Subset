@@ -33,7 +33,7 @@ function onloadHide(){
 }
 function checkingnameFormat(){
 	
-	var filter = /^[0-9]/;
+	var filter = /[^\d]/g;
 	var firstName = $("#firstName").val();
 	var lastName = $("#lastName").val();
 	
@@ -61,6 +61,9 @@ function checkingnameFormat(){
 		
 		$("#lastNameBad").hide();
 		$("#lastNameGood").show();
+		
+		isFirstN=true;
+		isLastN = true;
 	}
 	
 }
@@ -106,9 +109,17 @@ function checkingPasswordFormat(pw){
 function checkingSSN(ssn){
 	
 	var ssnVal = ssn.value;
-	var ssnValtoS = ssnVal.toString.length;
+	var ssnFirst = ssnVal.substring(0,3);
+	var ssnSecond = ssnVal.substring(3,5);
+	var ssnThrid  = ssnVal.substring(5);
+	var checkSSNcon = true;
 	
-	if(ssnValtoS.length==9 && $.isNumeric(ssnVal)){
+	console.log(ssnVal + " "+ssnFirst + " " + ssnSecond + " " + ssnThrid);
+	
+	if(ssnFirst=='000' || ssnSecond=='00' || ssnThrid=='0000' || ssnFirst=='666' || (parseInt(ssnFirst)>=900 && parseInt(ssnFirst)<=999) ) 
+		checkSSNcon=false;
+	
+	if(ssnVal.length==9 && $.isNumeric(ssnVal) && checkSSNcon){
 		$("#ssnDiv").attr("class","form-group has-success has-feedback");
 		$("#ssn").attr("arai-describedby","inputSuccess2Status");
 		$("#ssnBad").hide();
@@ -132,6 +143,8 @@ SSNs used in advertising have rendered those numbers invalid.
 	 * 
 	 */
 }
+
+
 function goToServlet(btn){
 	if(isEmail && isPw && isSsn && isFirstN && isLastN){
 		$("#alertGood").show();
