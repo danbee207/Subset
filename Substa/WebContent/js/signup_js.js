@@ -33,25 +33,29 @@ function onloadHide(){
 }
 function checkingnameFormat(){
 	
-	var filter = /[^\d]/g;
+	var filter = /^[dg]/;
 	var firstName = $("#firstName").val();
 	var lastName = $("#lastName").val();
 	
-	if(filter.test(firstName)|| filter.test(lastName)){
+	if(!isNaN(Number(firstName))|| !isNaN(Number(lastName))){
 		
+		console.log("problem");
 		$("#nameDiv").attr("class","form-group has-error has-feedback");
-		if(filter.test(firstName)){
-			$("#firstName").attr("aria-describedby","inputSuccess2Status");
-			$("#firstNameBad").hide();
-			$("#firstNameGood").show();
+		if(!isNaN(Number(firstName))){
+			$("#firstName").attr("aria-describedby","inputError2Status");
+			$("#firstNameBad").show();
+			$("#firstNameGood").hide();
 			
 		}else{
-			$("#lastName").attr("aria-describedby","inputSuccess2Status");
-			$("#lastNameBad").hide();
-			$("#lastNameGood").show();
+			$("#lastName").attr("aria-describedby","inputError2Status");
+			$("#lastNameBad").show();
+			$("#lastNameGood").hide();
 		}
 		
 	}else{
+		
+		console.log("perfect");
+		
 		$("#nameDiv").attr("class","form-group has-success has-feedback");
 		$("#firstName").attr("aria-describedby","inputSuccess2Status");
 		$("#lastName").attr("aria-describedby","inputSuccess2Status");
