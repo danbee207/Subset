@@ -211,4 +211,9 @@ public class DBManager {
 		return employee;
 	}
 	
+	public boolean addNewCustomer(Customer customer){
+		
+		return true;
+	}
+	
 }

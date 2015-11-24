@@ -46,10 +46,14 @@ function checkingnameFormat(){
 			$("#firstNameBad").show();
 			$("#firstNameGood").hide();
 			
+			isFirstN = false;
+			
 		}else{
 			$("#lastName").attr("aria-describedby","inputError2Status");
 			$("#lastNameBad").show();
 			$("#lastNameGood").hide();
+			
+			isLastN = false;
 		}
 		
 	}else{
@@ -77,16 +81,21 @@ function checkingEmailFormat(email){
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
     if (filter.test(email.value)) {
-    	isEmail=true;
+      
     	$("#emailDiv").attr("class","form-group has-success has-feedback");
     	$('[name="email"]').attr("aria-describedby","inputSuccess2Status");
     	$("#emailBad").hide();
     	$("#emailGood").show();
+    	
+    	isEmail=true;
+
     }else{
     	$("#emailDiv").attr("class","form-group has-error has-feedback");
     	$('[name="email"]').attr("aria-describedby","inputError2Status");
     	$("#emailGood").hide();
     	$("#emailBad").show();
+    	
+    	isEmail = false;
     }
     return false;
 }
@@ -100,11 +109,15 @@ function checkingPasswordFormat(pw){
 		$('#password').attr("aria-describedby","inputSuccess2Status");
 		$("#pwBad").hide();
 		$("#pwGood").show();
+		
+		isPw=true;
 	}else{
 		$("#pwDiv").attr("class","form-group has-error has-feedback");
 		$("#password").attr("aria-describedby","inputError2Status");
 		$("#pwGood").hide();
 		$("#pwBad").show();
+		
+		isPw=false;
 	}
 	
 }
@@ -128,11 +141,16 @@ function checkingSSN(ssn){
 		$("#ssn").attr("arai-describedby","inputSuccess2Status");
 		$("#ssnBad").hide();
 		$("#ssnGood").show();
+		
+		isSsn=true;
+		
 	}else{
 		$("#ssnDiv").attr("class","form-group has-error has-feedback");
 		$("#ssn").attr("arai-describedby","inputError2Status");
 		$("#ssnGood").hide();
 		$("#ssnBad").show();
+		
+		isSsn=false;
 	}
 	
 	
