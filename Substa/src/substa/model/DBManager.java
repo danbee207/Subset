@@ -10,10 +10,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import substa.beans.BidHistory;
 import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.Item;
+import substa.beans.MailingListHelper;
+import substa.beans.Pair;
 import substa.beans.SalesRecord;
+import substa.beans.SoldItemAuctionInfo;
 import substa.beans.User;
 
 public class DBManager {
@@ -496,7 +500,6 @@ public class DBManager {
 		}
 		return success;
 	}
-	
 	
 	/**
 	 * update a customer's info

@@ -1,6 +1,5 @@
 package substa.model;
 
-
 public class ModelTester {
 
 	static final String DB_URL = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark";

@@ -1,14 +1,18 @@
 package substa.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import substa.beans.Customer;
+import substa.model.DBManager;
 
 /**
  * Servlet implementation class SingUp
@@ -24,20 +28,30 @@ import substa.beans.Customer;
 public class SingUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private DBManager db;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SingUp() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public void init(ServletConfig config) throws ServletException{
+		super.init();
+		
+		db= new DBManager();
+		db.setDbURL(config.getInitParameter("dbUrl"));
+		db.setDbuser(config.getInitParameter("dbUser"));
+		db.setDbpass(config.getInitParameter("dbPass"));
+		
+		try{
+			Class.forName(config.getInitParameter("jdbcDriver"));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -45,13 +59,36 @@ public class SingUp extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		processRequest(request,response);
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		Customer customer = new Customer();
+		HttpSession session = request.getSession(true);
 		
+		response.setHeader("Cache-Control", "no-cache");
+		
+		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
+		response.setDateHeader("Expires", 0); // always expires
+
+		
+		Customer customer = new Customer();
+		customer.setFirst(request.getParameter("firstName"));
+		customer.setLast(request.getParameter("lastName"));
+		customer.setEmail(request.getParameter("email"));
+		customer.setPw(request.getParameter("password"));
+		customer.setSsn(Integer.parseInt(request.getParameter("ssn")));
+		
+		String address = request.getParameter("street")+","+request.getParameter("state");
+		customer.setAddress(address);
+		
+		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
+		customer.setTelephone(Long.parseLong(request.getParameter("tele")));
+		
+		customer.setRating(0);
+		customer.setCreditCardNum(0);
+		
+		db.addNewCustomer(customer);
 		
 		
 	}

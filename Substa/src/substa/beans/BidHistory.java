@@ -1,4 +1,4 @@
-package substa.model;
+package substa.beans;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

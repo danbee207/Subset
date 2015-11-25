@@ -1,4 +1,4 @@
-package substa.model;
+package substa.beans;
 
 public class Pair {
 	private Object first;
