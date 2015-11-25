@@ -26,6 +26,10 @@ public class DBManager {
 	private String dbuser = "";
 	private String dbpass = "";
 
+	public DBManager(){
+		super();
+	}
+	
 	public DBManager(String url, String user, String pw) {
 		dbURL = url;
 		dbuser = user;
@@ -1640,7 +1644,7 @@ public class DBManager {
 				String sqlQuery = "SELECT I.ItemName, A.AuctionID"
 						+ " FROM Item I, Auction A, Post P"
 						+ " WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID"
-						+ " AND I.ItemName LIKE ‘%?%’ AND I.ItemID = A.ItemID";
+						+ " AND I.ItemName LIKE ï¿½%?%ï¿½ AND I.ItemID = A.ItemID";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, keyword);
 				rs = ps.executeQuery();
