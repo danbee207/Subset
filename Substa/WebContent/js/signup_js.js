@@ -1,11 +1,7 @@
 /**
  * 
  */
-var isEmail=false;
-var isPw = false;
-var isSsn=false;
-var isFirstN = false;
-var isLastN = false;
+var isEmail = isPw = isSsn = isFirstN = isLastN = isTel= isZip = false;
 
 function onloadHide(){
 	
@@ -166,19 +162,42 @@ SSNs used in advertising have rendered those numbers invalid.
 	 */
 }
 
+function checkingzip(zip){
+	
+	var numbers = zip.val();
+	if(!isNaN(Number(numbers))){
+		isZip=true;
+	}else{
+		isZip=false;
+}
+
+function checkingTel(tel){
+		
+		var numbers = tel.val();
+		if(!isNaN(Number(numbers))){
+			isTel=true;
+		}else{
+			isTel=false;
+}
+	
+}
+
 function gobackToIndex(){
 	location.href= "./index.jsp";
 	
 }
 
 function goToServlet(btn){
-	if(isEmail && isPw && isSsn && isFirstN && isLastN){
+	
+	
+	
+	if(isEmail && isPw && isSsn && isFirstN && isLastN && isTel && isZip){
 		$("#alertGood").show();
 		this.submit();
 	}
 	else{
 		alert('Fill whole information correctly');
-		wi
+		
 	}
 }
 
