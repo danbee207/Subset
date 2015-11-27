@@ -143,31 +143,62 @@
 		<!-- /.container-fluid --> </nav>
 	</div>
 	<div id="contentBody">
-	<form method="post" action="" name="newAuction">
-		<div id="uploadScene" class="container">
+		<form method="post" action="" name="newAuction">
+			<div id="uploadScene" class="container">
 
-			
-			
-			<div class="form-group">
-			<img src="" alt="no image yet" class="img-rounded">
-		    <label for="exampleInputFile">Upload image</label>
-		    <input type="file" id="ImageFile">
-		    <p class="help-block">Upload image file which you want to see at auction page</p>
-		  </div>
-			<div class="form-group">
-			<label for="newAuction">Title</label>
-			<input type="text" class="form-control" name="title" id="title">
-			</div> 
-			<div class="form-group">
-			<label for="newAuction">Type</label>
-			
-			</div> 
-  </form>
+
+				<div class="form-group">
+					<img src="" alt="no image yet" class="img-rounded"> <label
+						for="exampleInputFile">Upload image</label> <input type="file"
+						id="ImageFile">
+					<p class="help-block">Upload image file which you want to see
+						at auction page</p>
+				</div>
+				<div class="form-group">
+					<label for="titleItem">Title</label> <input type="text"
+						class="form-control" name="title" id="title">
+				</div>
+				<div class="form-group">
+					<label for="BigtypeItem">Type</label>
+					<select class="form-control" name="bType" id="bType">
+						<option>Fashion</option>
+						<option>Kitchen & sports</option>
+						<option></option>
+						<option></option>
+						<option></option>
+						
+					
+					</select>
+					<div id="fashion">
+					<label for="smalltypeItem">SubType</label>
+					
+					<select class="form-control" name="sType" id="bType">
+						
+					</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="num"> How many do you have?  </label>
+					<input type="number" class="form-control" name="num" id="num" min="1">
+				
+				</div>
+				<div class="form-group">
+					<label for="minBid">How much money is your minimum bid?</label>
+					<input type="tel" class="form-control" name="minBid" id="minBid">
+				
+				</div>
+				<div class="form-group">
+					<label for="des">Tell your products in detail.</label>
+					<input tyep="textarea" class="form-control" name="desc" id="desc">
+				</div>
+				
 			</div>
-			
+		</form>
+	</div>
 
 
-		</div>
+
+	</div>
 
 	</div>
 
