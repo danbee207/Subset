@@ -5,223 +5,266 @@
 <title>Substa - signup</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel ="stylesheet" href="css/singup.css">
+<link rel="stylesheet" href="css/singup.css">
 
 </head>
 <body onload="onloadHide();">
-	<div id = wrapper>
-		
-			<div class="page-header">
-				<h1>Welcome to Substa!</h1>
+	<div id=wrapper>
+
+		<div class="page-header">
+			<h1>Welcome to Substa!</h1>
+		</div>
+		<p class="lead">It's glad that you are our family! Please type
+			contents below!</p>
+
+		<form method="post" action="SingUp" name="signUp"
+			class="form-horizontal" method="post" action="Singup">
+			<div class="form-group" id="nameDiv">
+				<label for="firstName" class="col-sm-4 control-label">First
+					Name</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="firstName"
+						id="firstName" onchange="checkingnameFormat();">
+					<div id="firstNameGood">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true"></span> <span id="inputSuccess2Status"
+							class="sr-only">(success)</span>
+					</div>
+					<div id="firstNameBad">
+						<span class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true"></span> <span id="inputError2Status"
+							class="sr-only">(error)</span>
+					</div>
+				</div>
+
+				<label for="lastName" class="col-sm-1 control-label">Last
+					Name</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="lastName"
+						id="lastName" onchange="checkingnameFormat();">
+					<div id="lastNameGood">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true"></span> <span id="inputSuccess2Status"
+							class="sr-only">(success)</span>
+					</div>
+					<div id="lastNameBad">
+						<span class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true"></span> <span id="inputError2Status"
+							class="sr-only">(error)</span>
+					</div>
+				</div>
+
 			</div>
-			<p class="lead">It's glad that you are our family! Please type
-				contents below!</p>
-
-			<form method="post" action="SingUp" name="signUp"
-				class="form-horizontal" method="post" action="Singup">
-				<div class="form-group" id="nameDiv">
-					<label for="firstName" class="col-sm-4 control-label">First
-						Name</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="firstName"
-							id="firstName" onchange="checkingnameFormat();">
-						<div id="firstNameGood">
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-								aria-hidden="true"></span> <span id="inputSuccess2Status"
-								class="sr-only">(success)</span>
-						</div>
-						<div id="firstNameBad">
-							<span class="glyphicon glyphicon-remove form-control-feedback"
-								aria-hidden="true"></span> <span id="inputError2Status"
-								class="sr-only">(error)</span>
-						</div>
+			<div id="emailDiv" class="form-group">
+				<label for="email" class="col-sm-4 control-label">Email</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control" name="email" id="email"
+						placeholder="ex)abc@substa.com"
+						onchange="checkingEmailFormat(this); return false;">
+					<div id="emailGood">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true"></span> <span id="inputSuccess2Status"
+							class="sr-only">(success)</span>
 					</div>
-
-					<label for="lastName" class="col-sm-1 control-label">Last
-						Name</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="lastName"
-							id="lastName" onchange="checkingnameFormat();">
-						<div id="lastNameGood">
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-								aria-hidden="true"></span> <span id="inputSuccess2Status"
-								class="sr-only">(success)</span>
-						</div>
-						<div id="lastNameBad">
-							<span class="glyphicon glyphicon-remove form-control-feedback"
-								aria-hidden="true"></span> <span id="inputError2Status"
-								class="sr-only">(error)</span>
-						</div>
-					</div>
-
-				</div>
-				<div id="emailDiv" class="form-group">
-					<label for="email" class="col-sm-4 control-label">Email</label>
-					<div class="col-sm-5">
-						<input type="email" class="form-control" name="email" id="email"
-							placeholder="ex)abc@substa.com"
-							onchange="checkingEmailFormat(this); return false;">
-						<div id="emailGood">
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-								aria-hidden="true"></span> <span id="inputSuccess2Status"
-								class="sr-only">(success)</span>
-						</div>
-						<div id="emailBad">
-							<span class="glyphicon glyphicon-remove form-control-feedback"
-								aria-hidden="true"></span> <span id="inputError2Status"
-								class="sr-only">(error)</span>
-						</div>
+					<div id="emailBad">
+						<span class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true"></span> <span id="inputError2Status"
+							class="sr-only">(error)</span>
 					</div>
 				</div>
-				<div class="form-group" id="pwDiv">
-					<label for="password" class="col-sm-4 control-label">Password</label>
-					<div class="col-sm-5">
-						<input type="password" class="form-control" name="password"
-							id="password" placeholder="Password"
-							onchange="checkingPasswordFormat(this);">
-						<div id="pwGood">
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-								aria-hidden="true"></span> <span id="inputSuccess2Status"
-								class="sr-only">(success)</span>
-						</div>
-						<div id="pwBad">
-							<span class="glyphicon glyphicon-remove form-control-feedback"
-								aria-hidden="true"></span> <span id="inputError2Status"
-								class="sr-only">(error)</span>
-						</div>
+			</div>
+			<div class="form-group" id="pwDiv">
+				<label for="password" class="col-sm-4 control-label">Password</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control" name="password"
+						id="password" placeholder="Password"
+						onchange="checkingPasswordFormat(this);">
+					<div id="pwGood">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true"></span> <span id="inputSuccess2Status"
+							class="sr-only">(success)</span>
+					</div>
+					<div id="pwBad">
+						<span class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true"></span> <span id="inputError2Status"
+							class="sr-only">(error)</span>
 					</div>
 				</div>
-				<div class="form-group" id="ssnDiv">
-					<label for="ssn" class="col-sm-4 control-label">SSN</label>
-					<div class="col-sm-5">
-						<input type="tel" class="form-control" name="ssn" id="ssn"
-							placeholder="Social Security Number"
-							onchange="checkingSSN(this);return false;">
-						<div id="ssnGood">
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-								aria-hidden="true"></span> <span id="inputSuccess2Status"
-								class="sr-only">(success)</span>
-						</div>
-						<div id="ssnBad">
-							<span class="glyphicon glyphicon-remove form-control-feedback"
-								aria-hidden="true"></span> <span id="inputError2Status"
-								class="sr-only">(error)</span>
-						</div>
+			</div>
+			<div class="form-group" id="ssnDiv">
+				<label for="ssn" class="col-sm-4 control-label">SSN</label>
+				<div class="col-sm-5">
+					<input type="tel" class="form-control" name="ssn" id="ssn"
+						placeholder="Social Security Number"
+						onchange="checkingSSN(this);return false;">
+					<div id="ssnGood">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true"></span> <span id="inputSuccess2Status"
+							class="sr-only">(success)</span>
 					</div>
+					<div id="ssnBad">
+						<span class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true"></span> <span id="inputError2Status"
+							class="sr-only">(error)</span>
+					</div>
+				</div>
 
+			</div>
+
+
+
+			<div class="form-group">
+				<label for="street" class="col-sm-4 control-label">Street</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" name="street" id="street"
+						placeholder="Street Address">
 				</div>
 
 
-
-				<div class="form-group">
-					<label for="street" class="col-sm-4 control-label">Street</label>
-					<div class="col-sm-5">
-						<input type="text" class="form-control" name="street" id="street"
-							placeholder="Street Address">
-					</div>
-
-
+			</div>
+			<div class="form-group">
+				<label for="city" class="col-sm-4 control-label">City</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="City"
+						name="city" id="city" onchange="checkBlank(this);">
 				</div>
-				<div class="form-group">
-					<label for="city" class="col-sm-4 control-label">City</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" placeholder="City"
-							name="city" id="city" onchange="checkBlank(this);">
-					</div>
-					<label for="
+				<label for="
 							state" class="col-sm-1 control-label">State</label>
-					<div class="col-sm-1">
-						<select class="form-control" name="state" id="state">
-							<option>AL</option>
-							<option>AK</option>
-							<option>AS</option>
-							<option>AZ</option>
-							<option>AR</option>
-							<option>CA</option>
-							<option>CO</option>
-							<option>CT</option>
-							<option>DE</option>
-							<option>DC</option>
-							<option>FL</option>
-							<option>GA</option>
-							<option>GU</option>
-							<option>HI</option>
-							<option>ID</option>
-							<option>IL</option>
-							<option>IN</option>
-							<option>IA</option>
-							<option>KS</option>
-							<option>KY</option>
-							<option>LA</option>
-							<option>ME</option>
-							<option>MD</option>
-							<option>MH</option>
-							<option>MA</option>
-							<option>MI</option>
-							<option>FM</option>
-							<option>MN</option>
-							<option>MS</option>
-							<option>MO</option>
-							<option>MT</option>
-							<option>NE</option>
-							<option>NV</option>
-							<option>NH</option>
-							<option>NJ</option>
-							<option>NM</option>
-							<option>NY</option>
-							<option>NC</option>
-							<option>ND</option>
-							<option>MP</option>
-							<option>OH</option>
-							<option>OK</option>
-							<option>OR</option>
-							<option>PW</option>
-							<option>PA</option>
-							<option>PR</option>
-							<option>RI</option>
-							<option>SC</option>
-							<option>SD</option>
-							<option>TN</option>
-							<option>TX</option>
-							<option>UT</option>
-							<option>VT</option>
-							<option>VA</option>
-							<option>VI</option>
-							<option>WA</option>
-							<option>WV</option>
-							<option>WI</option>
-							<option>WY</option>
-						</select>
-					</div>
+				<div class="col-sm-1">
+					<select class="form-control" name="state" id="state">
+						<option>AL</option>
+						<option>AK</option>
+						<option>AS</option>
+						<option>AZ</option>
+						<option>AR</option>
+						<option>CA</option>
+						<option>CO</option>
+						<option>CT</option>
+						<option>DE</option>
+						<option>DC</option>
+						<option>FL</option>
+						<option>GA</option>
+						<option>GU</option>
+						<option>HI</option>
+						<option>ID</option>
+						<option>IL</option>
+						<option>IN</option>
+						<option>IA</option>
+						<option>KS</option>
+						<option>KY</option>
+						<option>LA</option>
+						<option>ME</option>
+						<option>MD</option>
+						<option>MH</option>
+						<option>MA</option>
+						<option>MI</option>
+						<option>FM</option>
+						<option>MN</option>
+						<option>MS</option>
+						<option>MO</option>
+						<option>MT</option>
+						<option>NE</option>
+						<option>NV</option>
+						<option>NH</option>
+						<option>NJ</option>
+						<option>NM</option>
+						<option>NY</option>
+						<option>NC</option>
+						<option>ND</option>
+						<option>MP</option>
+						<option>OH</option>
+						<option>OK</option>
+						<option>OR</option>
+						<option>PW</option>
+						<option>PA</option>
+						<option>PR</option>
+						<option>RI</option>
+						<option>SC</option>
+						<option>SD</option>
+						<option>TN</option>
+						<option>TX</option>
+						<option>UT</option>
+						<option>VT</option>
+						<option>VA</option>
+						<option>VI</option>
+						<option>WA</option>
+						<option>WV</option>
+						<option>WI</option>
+						<option>WY</option>
+					</select>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label for="zipcode" class="col-sm-4 control-label">ZipCode</label>
-					<div class="col-sm-2">
-						<input type="tel" class="form-control" name="zipcode" id="zipcode"
-							onchange="checkingzip(this);" >
-					</div>
+			<div class="form-group">
+				<label for="zipcode" class="col-sm-4 control-label">ZipCode</label>
+				<div class="col-sm-2">
+					<input type="tel" class="form-control" name="zipcode" id="zipcode"
+						onchange="checkingzip(this);">
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label for="tele" class="col-sm-4 control-label">Telephone</label>
-					<div class="col-sm-5">
-						<input type="tel" class="form-control" name="tele" id="tele" onchange="checkingTel(this);">
-					</div>
+			<div class="form-group">
+				<label for="tele" class="col-sm-4 control-label">Telephone</label>
+				<div class="col-sm-5">
+					<input type="tel" class="form-control" name="tele" id="tele"
+						onchange="checkingTel(this);">
 				</div>
-				<br/><br/>
-				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-10">
-						<button type="button" class="btn btn-default" onclick="
+			</div>
+			<br /> <br />
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-10">
+					<button type="button" class="btn btn-default"
+						onclick="
 							gobackToIndex();">Cancel</button>
-						<button type="button" class="btn btn-primary"
-							onclick="goToServlet(this);">Sign in</button>
-					</div>
-
+					<button type="button" class="btn btn-primary"
+						onclick="goToServlet(this);">Sign in</button>
 				</div>
-			</form>
-		
+
+			</div>
+		</form>
+
 	</div>
+	<div class="modal fade" id="IntroModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Before you sign up</h4>
+				</div>
+				<div class="modal-body">
+					<p class="lead">
+					If you do not follow, our web site hesitate to let you in our family. Below is <ins>essential</ins>, Our web site may let you in
+						when you type them all.</p>
+					<dl class="dl-horizontal">
+						<dt>E-mail</dt>
+						<dd>keeps email format,</dd>
+						<dt>Name</dt>
+						<dd>needs only character, it doesn't need number.</dd>
+						<dt>Password</dt>
+						<dd>needs length between 5 and 8.</dd>
+						<dt>SSN</dt>
+						<dd>needs 9 number, but type <mark>123456789</mark> if you don't have it.</dd>
+					</dl>
+					<p class="lead" >
+					 Also, Use only numbers at<mark>Zipcode and telephone</mark>.
+					<br>
+					</p>
+					
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 
 
 	<div class="alert alert-success" role="alert" id="alertGood">Good!

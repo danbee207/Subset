@@ -25,6 +25,8 @@ function onloadHide(){
 	
 	$("#alertGood").hide();
 	
+	$("#IntroModal").modal('show');
+	
 	return false;
 }
 function checkingnameFormat(){
