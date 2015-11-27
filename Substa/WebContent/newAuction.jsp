@@ -5,6 +5,8 @@
 
 <jsp:useBean id="LoginUser" type=substa.beans.User " scope="session" />
 <jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
+<jsp:useBean id="customerInfo" type="substa.beans.Customer"
+	scope="session" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -141,8 +143,32 @@
 		<!-- /.container-fluid --> </nav>
 	</div>
 	<div id="contentBody">
-	
-	
+	<form method="post" action="" name="newAuction">
+		<div id="uploadScene" class="container">
+
+			
+			
+			<div class="form-group">
+			<img src="" alt="no image yet" class="img-rounded">
+		    <label for="exampleInputFile">Upload image</label>
+		    <input type="file" id="ImageFile">
+		    <p class="help-block">Upload image file which you want to see at auction page</p>
+		  </div>
+			<div class="form-group">
+			<label for="newAuction">Title</label>
+			<input type="text" class="form-control" name="title" id="title">
+			</div> 
+			<div class="form-group">
+			<label for="newAuction">Type</label>
+			
+			</div> 
+  </form>
+			</div>
+			
+
+
+		</div>
+
 	</div>
 
 

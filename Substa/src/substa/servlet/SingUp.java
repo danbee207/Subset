@@ -79,7 +79,7 @@ public class SingUp extends HttpServlet {
 		customer.setPw(request.getParameter("password"));
 		customer.setSsn(Integer.parseInt(request.getParameter("ssn")));
 		
-		String address = request.getParameter("street")+","+request.getParameter("state");
+		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
 		customer.setAddress(address);
 		
 		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
@@ -92,6 +92,7 @@ public class SingUp extends HttpServlet {
 						 customer.getPw() + " "+ customer.getSsn() + " "+ customer.getZipcode() +
 						 customer .getTelephone() + " " + customer.getRating() + " " + customer.getCreditCardNum()
 						 );
+		System.out.println("address" + customer.getAddress());
 		
 		
 		

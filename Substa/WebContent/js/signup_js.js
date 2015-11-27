@@ -27,31 +27,50 @@ function onloadHide(){
 	
 	$("#IntroModal").modal('show');
 	
+	initializePage();
+	
+	
 	return false;
 }
+function initializePage(){
+	//initialize
+	$("#firstName").val("");
+	$("#lastName").val("");
+	$("#email").val("");
+	$("#password").val("");
+	$("#ssn").val("");
+	$("#street").val("");
+	$("#city").val("");
+	document.getElementById("state").selectedIndex = 0;
+	$("#zipcode").val("");
+	$("#tele").val("");
+}
+
+
 function checkingnameFormat(){
 	
-	var filter = /^[dg]/;
+	var filter = /^\d+$/;
 	var firstName = $("#firstName").val();
 	var lastName = $("#lastName").val();
 	
-	if(!isNaN(Number(firstName))|| !isNaN(Number(lastName))){
+	isFirstN = !filter.test(firstName);
+	isLastN = !filter.test(lastName);
+	
+	if(!isFirstN || !isLastN){
 		
 		console.log("problem");
 		$("#nameDiv").attr("class","form-group has-error has-feedback");
-		if(!isNaN(Number(firstName))){
+		if(!isFirstN){
 			$("#firstName").attr("aria-describedby","inputError2Status");
 			$("#firstNameBad").show();
 			$("#firstNameGood").hide();
 			
-			isFirstN = false;
 			
 		}else{
 			$("#lastName").attr("aria-describedby","inputError2Status");
 			$("#lastNameBad").show();
 			$("#lastNameGood").hide();
 			
-			isLastN = false;
 		}
 		
 	}else{
@@ -67,9 +86,7 @@ function checkingnameFormat(){
 		
 		$("#lastNameBad").hide();
 		$("#lastNameGood").show();
-		
-		isFirstN=true;
-		isLastN = true;
+
 	}
 	
 }
@@ -166,23 +183,18 @@ SSNs used in advertising have rendered those numbers invalid.
 
 function checkingzip(zip){
 	
-	var numbers = zip.val();
-	if(!isNaN(Number(numbers))){
-		isZip=true;
-	}else{
-		isZip=false;
-}
+	var numbers = zip.value;
+	
+	isZip = $.isNumeric(numbers);
+	
 }
 
 function checkingTel(tel){
 		
-		var numbers = tel.val();
-		if(!isNaN(Number(numbers))){
-			isTel=true;
-		}else{
-			isTel=false;
-		}
-	
+		var numbers = tel.value;
+		
+		isTel = $.isNumeric(numbers);
+		
 }
 
 function gobackToIndex(){
@@ -192,11 +204,13 @@ function gobackToIndex(){
 
 function goToServlet(btn){
 	
-	
+	console.log("email : " + isEmail + "pw: "+isPw + "ssn"+isSsn + 
+				"first : " + isFirstN + "last :" +isLastN + "tel : " + isTel + "zip : " + isZip );
 	
 	if(isEmail && isPw && isSsn && isFirstN && isLastN && isTel && isZip){
 		$("#alertGood").show();
-		this.submit();
+		
+		$('[name="signUp"]').submit();
 	}
 	else{
 		alert('Fill whole information correctly');

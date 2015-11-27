@@ -143,7 +143,7 @@
  %>
 							<li><a href="#">My Bidding Process</a></li>
 							<li><a href="#">History</a></li> 
-							<li><a href="#">Upload an Auction</a></li>
+							<li><a href="newAuction.jsp">Upload an Auction</a></li>
 							<% } else { %>
 							<li><a href="#">Customer Management</a></li>
 							<li><a href="#">History</a></li> <%
