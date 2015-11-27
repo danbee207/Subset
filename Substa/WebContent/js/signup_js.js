@@ -170,6 +170,7 @@ function checkingzip(zip){
 	}else{
 		isZip=false;
 }
+}
 
 function checkingTel(tel){
 		
@@ -178,7 +179,7 @@ function checkingTel(tel){
 			isTel=true;
 		}else{
 			isTel=false;
-}
+		}
 	
 }
 

@@ -136,17 +136,17 @@
 							<%
 								if (LoginUser == null || isCustomer) {
 							%>
-							<li class="disabled"><a hef="#">My Bidding Process</a>
-							<li class="disabled"><a href="#">History</a> <%
+							<li class="disabled"><a hef="#">My Bidding Process</a></li>
+							<li class="disabled"><a href="#">History</a></li> <%
  	} else {
  		if (isCustomer) {
  %>
-							<li><a href="#">My Bidding Process</a>
-							<li><a href="#">History</a> <%
- 	} else {
- %>
-							<li><a href="#">Customer Management</a>
-							<li><a href="#">History</a> <%
+							<li><a href="#">My Bidding Process</a></li>
+							<li><a href="#">History</a></li> 
+							<li><a href="#">Upload an Auction</a></li>
+							<% } else { %>
+							<li><a href="#">Customer Management</a></li>
+							<li><a href="#">History</a></li> <%
  	}
  	}
  %>
@@ -336,6 +336,7 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
+	
 	<div id="footer" >
 		<div class="container">
 		<div class="navbar-header" id=footerHeader>
