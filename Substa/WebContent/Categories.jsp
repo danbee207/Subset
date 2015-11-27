@@ -8,7 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<title>Substa</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -21,7 +23,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
+				<a class="navbar-brand" href="index.jsp"><span class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
