@@ -14,7 +14,6 @@ import substa.beans.BidHistory;
 import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.Item;
-import substa.beans.MailingListHelper;
 import substa.beans.Pair;
 import substa.beans.SalesRecord;
 import substa.beans.SoldItemAuctionInfo;
@@ -1355,7 +1354,7 @@ public class DBManager {
 	 * 
 	 * @Returns a list of MailingListHelper object; Null if query unsuccessful.
 	 *  Note: the list might be empty
-	 */
+	 *//*
 	public List<MailingListHelper> getMallingList() {
 		List<MailingListHelper> list = null;
 		MailingListHelper m = null;
@@ -1394,7 +1393,7 @@ public class DBManager {
 		return list;
 	}
 	
-	
+	*/
 	/* Produce a list of item suggestions for a given customer 
 	 * (based on that customer's past purchases)
 	 * 
@@ -1402,6 +1401,7 @@ public class DBManager {
 	 *  Note: the list might be empty
 	 *  Note 2: the amountSold field of all Item objects returned is null
 	 */
+	
 	public List<Item> getSuggestions(int id) {
 		List<Item> itemList = null;
 		Item i = null;

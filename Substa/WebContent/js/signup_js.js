@@ -166,6 +166,10 @@ SSNs used in advertising have rendered those numbers invalid.
 	 */
 }
 
+function gobackToIndex(){
+	location.href= "./index.jsp";
+	
+}
 
 function goToServlet(btn){
 	if(isEmail && isPw && isSsn && isFirstN && isLastN){
@@ -174,7 +178,7 @@ function goToServlet(btn){
 	}
 	else{
 		alert('Fill whole information correctly');
-		return false;
+		wi
 	}
 }
 

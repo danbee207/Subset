@@ -88,8 +88,11 @@ public class SingUp extends HttpServlet {
 		customer.setRating(0);
 		customer.setCreditCardNum(0);
 		
+		System.out.println(customer.getFirst() +" "+ customer.getLast() + " "+ customer.getEmail()+ 
+						 customer.getPw() + " "+ customer.getSsn() + " "+ customer.getZipcode() +
+						 customer .getTelephone() + " " + customer.getRating() + " " + customer.getCreditCardNum()
+						 );
 		
-		db.addNewCustomer(customer);
 		
 		
 	}
