@@ -1,6 +1,8 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -52,5 +54,15 @@ public class Logout extends HttpServlet {
 
 		session.invalidate();
 		response.sendRedirect("");
+		
+		gotoIndex(response);
+	}
+	
+	protected void gotoIndex(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		out.println("<script type = 'text/javascript'>");
+		out.println("location.href='index.jsp';");
+		out.println("</script>");
 	}
 }
