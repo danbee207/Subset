@@ -7,7 +7,7 @@ public class Item {
 	private String itemType;
 	private int numCopies;
 	private String description;
-	private int amountSold;
+	private String imgsrc;
 
 	public int getItemID() {
 		return itemID;
@@ -49,13 +49,15 @@ public class Item {
 		this.description = description;
 	}
 
-	public int getAmountSold() {
-		return amountSold;
+	public String getImgsrc() {
+		return imgsrc;
 	}
 
-	public void setAmountSold(int amountSold) {
-		this.amountSold = amountSold;
+	public void setImgsrc(String imgsrc) {
+		this.imgsrc = imgsrc;
 	}
+
+	
 
 	
 }

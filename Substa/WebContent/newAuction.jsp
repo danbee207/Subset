@@ -17,7 +17,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/newAuction.css">
 </head>
-<body>
+<body >
 
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -145,7 +145,7 @@
 	</div>
 	<div id="contentBody">
 		<div class="upperPart"></div>
-		<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data">
+		<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data ">
 			<div id="uploadScene" class="container">
 
 
@@ -158,24 +158,25 @@
 				</div>
 				<div id="theOtherPart">
 				<div class="form-group" >
-					<label for="titleItem">Title</label> 
-					<input type="text" class="form-control" name="title" id="title">
+					<label for="titleItem">Name</label> 
+					<input type="text" class="form-control" name="name" id="name">
 				</div>
 				<div class="form-group">
 					<label for="BigtypeItem">Type</label>
-					<select class="form-control" name="bType" id="bType">
-						<option>Fashion</option>
-						<option>Kitchen & sports</option>
+					<select class="form-control" name="bType" id="bType" onchange="changeSubType(this);">
+						<option vlaue="0"></option>
+						<option value="1">Fashion</option>
+						<option value="2">Home & Garden</option>
 						<option></option>
 						<option></option>
 						<option></option>
 						
 					
 					</select>
-					<div id="fashion">
+					<div id="subType">
 					<label for="smalltypeItem">SubType</label>
 					
-					<select class="form-control" name="sType" id="bType">
+					<select class="form-control" name="sType" id="sType">
 						
 					</select>
 					</div>
@@ -245,5 +246,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/newAuction_js.js"></script>	
 </body>
 </html>
