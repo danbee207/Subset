@@ -171,6 +171,7 @@
 	
 	<div id="containerBody">
 		<div id="blankforBody"></div>
+		
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 			  
@@ -193,215 +194,123 @@
 			      		</span>
 			    	</div><!-- /input-group -->
 			    </form>
-			   
-			    <ul class="nav navbar-nav navbar-right">
-			      	<li class="dropdown">
-			        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			        	Sort by<span class="caret"></span></a>
-			        	<ul class="dropdown-menu">
-			          		<li><a href="#">Price: Low to High</a></li>
-			          		<li><a href="#">Price: High to Low</a></li>
-			          		<li><a href="#">Avg. Customer Review</a></li>
-			          		<li><a href="#">From the latest</a></li>
-			        	</ul>
-			      	</li>
-			    </ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
 		
+		<hr class="featurette-divider">
+		
+		<div class="row featurette">
+        	<div class="col-md-8 col-md-push-4">
+        		<div class="col-md-2 col-md-push-10">
+        			
+	        		<input type="text" class="form-control" placeholder="Bid Price">
+				    <span class="input-group-btn">
+				    	<button class="btn btn-primary" type="button">Bid Now</button>
+				    </span>
+        		</div>
+          		<div class="col-md-6 col-md-pull-2">
+          			<h2 class="featurette-heading">Name of Product</span></h2>
+          			<p class="lead">Seller Name: </p>
+          			<p class="lead">Current Bid: </p>
+          			<p class="lead">Ends In: </p>
+          		</div>
+           	</div>
+        	<div class="col-md-4 col-md-pull-8">
+          		<img class="featurette-image img-responsive center-block" data-src="..." alt="Product image">
+        	</div>
+      	</div>
+      	
+      	<div class="row">
+      		<h3>Description of the product</h3>
+      		<p>Description will be placed here.</p>
+      	</div>
+		
+		<hr class="featurette-divider">
+		
 		<div class="row">
-			<div class="col-sm-3 col-md-3">
+			<h4>Products Related To This Item</h4>
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-2 col-md-2">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
 						<h3>Name of Product</h3>
-						<p>Description of product...</p>
 						<p>Current High Bid: </p>
 						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+			
 	</div>
-	
-	<nav>
-  		<div class="text-center">
-	  		<ul class="pagination">
-		  		<li>
-		      		<a href="#" aria-label="Previous">
-		        	<span aria-hidden="true">&laquo;</span>
-		      		</a>
-		    	</li>
-		    	<li><a href="#">1</a></li>
-		    	<li><a href="#">2</a></li>
-		    	<li><a href="#">3</a></li>
-		    	<li><a href="#">4</a></li>
-		    	<li><a href="#">5</a></li>
-		    	<li>
-		      		<a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      	</a>
-		    	</li>
-		  	</ul>
-		</div>
-	</nav>
+		
 	
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
