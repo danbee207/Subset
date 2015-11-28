@@ -179,20 +179,23 @@
 			<h1>Hello, Guest!</h1>
 			<p>Our site supports ~~~~.</p>
 		</div>
+		
 		<h2>You are interested in...</h2>
 		<div class="detailsBtn">
-		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+			<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
 		</div>
+		
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Bid</a> <a
-								href="#" class="btn btn-default" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
@@ -201,11 +204,12 @@
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Bid</a> <a
-								href="#" class="btn btn-default" role="button">Detail</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
@@ -214,64 +218,79 @@
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">Bid</a> <a
-								href="#" class="btn btn-default" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<h2>Deadline Soon!</h2><div class="detailsBtn">
-		<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
-		</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>...</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Up</a> <a
-								href="#" class="btn btn-default" role="button">Cancel</a>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		
+		<h2>Deadline Soon!</h2>
+		<div class="detailsBtn">
+			<a href="#"class="btn btn-default" role="button" id="Interestingdetail"> more</a>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a> 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+		
 
 	
+	<div class="container" id="footer">
+		<div class="navbar-header" id=footerHeader>
+			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
+		</div>
+		<div class="navbar-footer navbar-right">
+			<h4>Copy@ Right Substa | Stony Brook University</h4>
+		</div>
+	</div>
 
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -338,17 +357,6 @@
 	<!-- /.modal -->
 	
 	
-	
-	<div id="footer" >
-		<div class="container">
-		<div class="navbar-header" id=footerHeader>
-			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
-		</div>
-		<div class="navbar-footer navbar-right">
-			<h4>Copy@ Right Substa | Stony Brook University</h4>
-		</div>
-		</div>
-	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index_js.js"></script>

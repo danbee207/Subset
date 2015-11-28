@@ -8,19 +8,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Substa</title>
+<link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/index_css.css">
-<title>Substa</title>
 </head>
 <body>
-	<div id="wrapper">
-		<%
+	<%
 		boolean isCustomer = true;
 		User LoginUser = (User) session.getAttribute("LoginUser");
 		if (LoginUser != null)
 			isCustomer = (boolean) session.getAttribute("isCustomer");
 	%>
+	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -29,14 +30,16 @@
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar">Book</span> <span class="icon-bar">Electronics</span>
-					<span class="icon-bar">Fashion</span> <span class="icon-bar">Home
-						& Garden</span> <span class="icon-bar">Motors</span> <span
-						class="icon-bar">Sporting Goods</span> <span class="icon-bar">Toy
-						& Hobbies</span>
+					<span class="sr-only">Toggle navigation</span> 
+					<spanclass="icon-bar">Book</span> 
+					<span class="icon-bar">Electronics</span>
+					<span class="icon-bar">Fashion</span> 
+					<span class="icon-bar">Home	& Garden</span> 
+					<span class="icon-bar">Motors</span> 
+					<span class="icon-bar">Sporting Goods</span> 
+					<span class="icon-bar">Toy & Hobbies</span>
 				</button>
-				<a class="navbar-brand" href="#"><img src=""></a>
+				
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -166,10 +169,8 @@
 		<!-- /.container-fluid --> </nav>
 	</div>
 	
-	<div id="contentBody">
-		<div class="page-header">
-			<h6></h6>
-		</div>
+	<div id="containerBody">
+		<div id="blankforBody"></div>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 			  
