@@ -134,13 +134,13 @@
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<%
-								if (LoginUser == null || isCustomer) {
+								if (LoginUser == null) {
+									
 							%>
 							<li class="disabled"><a hef="#">My Bidding Process</a></li>
 							<li class="disabled"><a href="#">History</a></li> <%
- 	} else {
- 		if (isCustomer) {
- %>
+ 							} else { if (isCustomer) {
+ 							%>
 							<li><a href="#">My Bidding Process</a></li>
 							<li><a href="#">History</a></li> 
 							<li><a href="newAuction.jsp">Upload an Auction</a></li>
