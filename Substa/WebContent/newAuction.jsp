@@ -3,7 +3,7 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="java.lang.Boolean"%>
 
-<jsp:useBean id="LoginUser" type="substa.beans.User" scope="session" />
+<jsp:useBean id="LoginUser"  type="substa.beans.User" scope="session" />
 <jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
 <jsp:useBean id="customerInfo" type="substa.beans.Customer"
 	scope="session" />
@@ -15,8 +15,7 @@
 <title>Substa</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="css/newAuction.css">
+<link rel="stylesheet" href="css/newAuction.css">
 </head>
 <body>
 
@@ -150,16 +149,17 @@
 			<div id="uploadScene" class="container">
 
 
-				<div class="form-group">
+				<div id="imagePart">
 					<img src="" alt="no image yet" class="img-rounded"> <label
 						for="exampleInputFile">Upload image</label> <input type="file" name="ImageFile"
 						id="ImageFile">
 					<p class="help-block">Upload image file which you want to see
 						at auction page</p>
 				</div>
-				<div class="form-group">
-					<label for="titleItem">Title</label> <input type="text"
-						class="form-control" name="title" id="title">
+				<div id="theOtherPart">
+				<div class="form-group" >
+					<label for="titleItem">Title</label> 
+					<input type="text" class="form-control" name="title" id="title">
 				</div>
 				<div class="form-group">
 					<label for="BigtypeItem">Type</label>
@@ -194,16 +194,13 @@
 					<label for="des">Tell your products in detail.</label>
 					<input tyep="textarea" class="form-control" name="desc" id="desc">
 				</div>
-				
+				</div>
 			</div>
 		</form>
 	</div>
 
 
 
-	</div>
-
-	</div>
 
 
 	<div id="footer">
