@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index_css.css">
 <title>Substa</title>
 </head>
 <body>
@@ -164,15 +165,252 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 	</div>
-	<div id="contentBody"></div>
+	
+	<div id="contentBody">
+		<div class="page-header">
+			<h6></h6>
+		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  
+			    <form class="navbar-form navbar-left" role="search">
+			      	<div class="input-group">
+			    		<span class="input-group-btn">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" 
+								aria-haspopup="true" aria-expanded="false">
+							  Search by <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  	<li><a href="#">Product Name</a></li>
+							  	<li><a href="#">Product Type</a></li>
+							  	<li><a href="#">Seller Name</a></li>
+							</ul>
+			    		</span>
+			      		<input type="text" class="form-control" placeholder="Search for...">
+			      		<span class="input-group-btn">
+			        		<button class="btn btn-default" type="button">Search</button>
+			      		</span>
+			    	</div><!-- /input-group -->
+			    </form>
+			   
+			    <ul class="nav navbar-nav navbar-right">
+			      	<li class="dropdown">
+			        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			        	Sort by<span class="caret"></span></a>
+			        	<ul class="dropdown-menu">
+			          		<li><a href="#">Price: Low to High</a></li>
+			          		<li><a href="#">Price: High to Low</a></li>
+			          		<li><a href="#">Avg. Customer Review</a></li>
+			          		<li><a href="#">From the latest</a></li>
+			        	</ul>
+			      	</li>
+			    </ul>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+		
+		<div class="row">
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid: </p>
+						<p>Sale ends in: </p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<nav>
+  		<div class="text-center">
+	  		<ul class="pagination">
+		  		<li>
+		      		<a href="#" aria-label="Previous">
+		        	<span aria-hidden="true">&laquo;</span>
+		      		</a>
+		    	</li>
+		    	<li><a href="#">1</a></li>
+		    	<li><a href="#">2</a></li>
+		    	<li><a href="#">3</a></li>
+		    	<li><a href="#">4</a></li>
+		    	<li><a href="#">5</a></li>
+		    	<li>
+		      		<a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      	</a>
+		    	</li>
+		  	</ul>
+		</div>
+	</nav>
+	
 	<div class="container" id="footer">
-		<div class="navbar-header">
+		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 		</div>
 		<div class="navbar-footer navbar-right">
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
+
 	<div class="modal fade bs-example-modal-sm" id="logoutModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">
