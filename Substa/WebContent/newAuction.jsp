@@ -3,7 +3,7 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="java.lang.Boolean"%>
 
-<jsp:useBean id="LoginUser" type=substa.beans.User " scope="session" />
+<jsp:useBean id="LoginUser" type="substa.beans.User" scope="session" />
 <jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
 <jsp:useBean id="customerInfo" type="substa.beans.Customer"
 	scope="session" />
@@ -15,6 +15,8 @@
 <title>Substa</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="css/newAuction.css">
 </head>
 <body>
 
@@ -143,13 +145,14 @@
 		<!-- /.container-fluid --> </nav>
 	</div>
 	<div id="contentBody">
-		<form method="post" action="" name="newAuction">
+		<div class="upperPart"></div>
+		<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data">
 			<div id="uploadScene" class="container">
 
 
 				<div class="form-group">
 					<img src="" alt="no image yet" class="img-rounded"> <label
-						for="exampleInputFile">Upload image</label> <input type="file"
+						for="exampleInputFile">Upload image</label> <input type="file" name="ImageFile"
 						id="ImageFile">
 					<p class="help-block">Upload image file which you want to see
 						at auction page</p>
@@ -204,14 +207,17 @@
 
 
 	<div id="footer">
-		<div class="container">
-			<div class="navbar-header" id=footerHeader>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+   <div class="navbar-header" id=footerHeader>
 				<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-footer navbar-right">
 				<h4>Copy@ Right Substa | Stony Brook University</h4>
 			</div>
-		</div>
+  </div>
+</nav>
+	
 	</div>
 	<div class="modal fade bs-example-modal-sm" id="logoutModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.upperPart{
+	height:30%;
+	margin-top: 100px;
+	
+}
+.SubstaLabel {
+  font-family : Tahoma;
+  font-size : 30px;
+  color : #231F20;
+  color : rgb(35, 31, 32);
+}
+#containerBody{
+	width:100%;
+	padding : 3%;
+}
