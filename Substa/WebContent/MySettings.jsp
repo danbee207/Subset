@@ -21,13 +21,12 @@
 	<div id=wrapper>
 
 		<div class="page-header">
-			<h1>Welcome to Substa!</h1>
+			<h1>Edit your information!</h1>
 		</div>
-		<p class="lead">It's glad that you are our family! Please type
-			contents below!</p>
+		
 
 		<form method="post" action="Mysetting" name="editCustomer"
-			class="form-horizontal" method="post" action="Singup">
+			class="form-horizontal" method="post" >
 			<div class="form-group" id="nameDiv">
 				<label for="firstName" class="col-sm-4 control-label">First
 					Name</label>
@@ -214,7 +213,7 @@
 				<div class="col-sm-offset-3 col-sm-10">
 					<button type="button" class="btn btn-danger"
 						onclick="goToServlet(this);">I want to leave!</button>
-					<button type="button" class="btn btn-primary"
+					<button type="button" class="btn btn-warning"
 						onclick="goToServlet(this);">Fix it!</button>
 				</div>
 

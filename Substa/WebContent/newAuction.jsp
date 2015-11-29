@@ -16,6 +16,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/newAuction.css">
+<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+
 </head>
 <body >
 
@@ -187,6 +189,11 @@
 				
 				</div>
 				<div class="form-group">
+					<label for="endTime">When your auction is finished?</label>
+					<input type="text" class="form-control" name="endDate" id="endDate" >
+				
+				</div>
+				<div class="form-group">
 					<label for="minBid">How much money is your minimum bid?</label>
 					<input type="tel" class="form-control" name="minBid" id="minBid">
 				
@@ -197,7 +204,7 @@
 				</div>
 				<div class="form-group">
 				<br>
-				<br>
+	
 				
 					<div id="btnbox">
 					<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
@@ -257,6 +264,11 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/newAuction_js.js"></script>	
+	<script type="text/javascript" src="js/newAuction_js.js"></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
+	<script>
+	$("#endDate").datetimepicker({value:new Date(),step:10});
+	</script>
+		
 </body>
 </html>

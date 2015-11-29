@@ -9,12 +9,7 @@ function Logout(){
 	
 }
 
-function gotoAuction(){
-	
-	window.location.assign("newAuction.jsp");
-	
-	
-}
+
 
 /*
  * @author Danbee park
