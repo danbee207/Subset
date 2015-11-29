@@ -302,6 +302,54 @@ public class DBManagers {
 		return true;
 	}
 	
+	public boolean changeCustomer(Customer customer) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			try {
+				String sql1 = "UPDATE Customer"
+						+ "SET Rating=?, CreditCardNum=?"
+						+ "WHERE Customer=?";
+				ps1 = conn.prepareStatement(sql1);
+				ps1.setFloat(1, customer.getRating());
+				ps1.setLong(2, customer.getCreditCardNum());
+				ps1.setInt(3, customer.getSsn());
+				
+				String sql2 = "UPDATE Person"
+						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
+						+ "WHERE Person=?";
+				ps2 = conn.prepareStatement(sql2);
+				ps2.setInt(1, customer.getSsn());
+				ps2.setString(2, customer.getLast());
+				ps2.setString(3, customer.getFirst());
+				ps2.setString(4, customer.getAddress());
+				ps2.setInt(5, customer.getZipcode());
+				ps2.setLong(6, customer.getTelephone());
+				ps2.setString(7, customer.getEmail());
+				ps2.setString(8, customer.getPw());
+				ps2.setInt(1, customer.getSsn());
+				
+				return ps1.execute()&&ps2.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					ps2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
 	public boolean addItem(Item item) {
 		
 		Connection conn = getConnection();
