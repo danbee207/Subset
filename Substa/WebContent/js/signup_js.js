@@ -186,7 +186,7 @@ function checkingzip(zip){
 	var numbers = zip.value;
 	
 	isZip = $.isNumeric(numbers);
-	
+	if(number="") isTel =true;
 }
 
 function checkingTel(tel){
@@ -194,7 +194,8 @@ function checkingTel(tel){
 		var numbers = tel.value;
 		
 		isTel = $.isNumeric(numbers);
-		
+		if(number="") isTel =true;
+			
 }
 
 function gobackToIndex(){

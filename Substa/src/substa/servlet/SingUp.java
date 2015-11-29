@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import substa.beans.Customer;
 import substa.beans.User;
-import substa.model.DBManager;
 import substa.model.DBManagers;
 
 /**
@@ -92,6 +90,8 @@ public class SingUp extends HttpServlet {
 		
 		if(db.addCustomer(customer, credit)){
 			goIndex(response);
+		}else{
+			System.out.println("error");
 		}
 			
 		
