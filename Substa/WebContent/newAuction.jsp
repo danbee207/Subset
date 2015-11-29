@@ -150,8 +150,8 @@
 
 
 				<div id="imagePart">
-					<img src="#" alt="no image yet" class="img-rounded" id="previewImg"> <label
-						for="exampleInputFile">Upload image</label> <input type="file" name="ImageFile"
+					<img src="img/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
+					<input type="file" name="ImageFile"
 						id="ImageFile" onchange="readURL(this);">
 					<p class="help-block">Upload image file which you want to see
 						at auction page</p>
@@ -195,7 +195,18 @@
 					<label for="des">Tell your products in detail.</label>
 					<input tyep="textarea" class="form-control" name="desc" id="desc">
 				</div>
+				<div class="form-group">
+				<br>
+				<br>
+				
+					<div id="btnbox">
+					<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
+					<button type="button" class="btn btn-warning" onclick="goToServlet(this);">Sign in</button>
+					</div>
+				
 				</div>
+				</div>
+				
 			</div>
 		</form>
 	</div>

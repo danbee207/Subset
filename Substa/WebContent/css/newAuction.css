@@ -12,7 +12,7 @@
   color : rgb(35, 31, 32);
 }
 #containerBody{
-	width:100%;
+	width:70%;
 	padding : 3%;
 }
 #imagePart{
@@ -27,5 +27,11 @@
 	width : 50%;
 	height:100%;
 	float:right;
+}
+#btnBox{
+	padding : 20%;
+}
+img{
+	width : 40%;
 }
 
