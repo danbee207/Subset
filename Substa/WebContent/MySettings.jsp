@@ -1,14 +1,23 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="substa.beans.User"%>
+<%@ page import="java.lang.Boolean"%>
+<%@ page import="java.lang.String" %>
+
+<jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
+<jsp:useBean id="customerInfo" type="substa.beans.Customer" scope="session" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Substa - signup</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Substa</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/singup.css">
-
 </head>
-<body onload="onloadHide();">
+
+<body onload="onloadHide(<%=customerInfo.getAddress()%>);">
+
 	<div id=wrapper>
 
 		<div class="page-header">
@@ -17,14 +26,14 @@
 		<p class="lead">It's glad that you are our family! Please type
 			contents below!</p>
 
-		<form method="post" action="SingUp" name="signUp"
+		<form method="post" action="Mysetting" name="editCustomer"
 			class="form-horizontal" method="post" action="Singup">
 			<div class="form-group" id="nameDiv">
 				<label for="firstName" class="col-sm-4 control-label">First
 					Name</label>
 				<div class="col-sm-2">
 					<input type="text" class="form-control" name="firstName"
-						id="firstName" onchange="checkingnameFormat();">
+						id="firstName" onchange="checkingnameFormat();" value="<%=customerInfo.getFirst()%>">
 					<div id="firstNameGood">
 						<span class="glyphicon glyphicon-ok form-control-feedback"
 							aria-hidden="true"></span> <span id="inputSuccess2Status"
@@ -41,7 +50,7 @@
 					Name</label>
 				<div class="col-sm-2">
 					<input type="text" class="form-control" name="lastName"
-						id="lastName" onchange="checkingnameFormat();">
+						id="lastName" onchange="checkingnameFormat();" value="<%=customerInfo.getLast()%>">
 					<div id="lastNameGood">
 						<span class="glyphicon glyphicon-ok form-control-feedback"
 							aria-hidden="true"></span> <span id="inputSuccess2Status"
@@ -60,17 +69,8 @@
 				<div class="col-sm-5">
 					<input type="email" class="form-control" name="email" id="email"
 						placeholder="ex)abc@substa.com"
-						onchange="checkingEmailFormat(this); return false;">
-					<div id="emailGood">
-						<span class="glyphicon glyphicon-ok form-control-feedback"
-							aria-hidden="true"></span> <span id="inputSuccess2Status"
-							class="sr-only">(success)</span>
-					</div>
-					<div id="emailBad">
-						<span class="glyphicon glyphicon-remove form-control-feedback"
-							aria-hidden="true"></span> <span id="inputError2Status"
-							class="sr-only">(error)</span>
-					</div>
+						onchange="checkingEmailFormat(this); return false;" value="<%=customerInfo.getEmail()%>" disabled>
+
 				</div>
 			</div>
 			<div class="form-group" id="pwDiv">
@@ -78,7 +78,7 @@
 				<div class="col-sm-5">
 					<input type="password" class="form-control" name="password"
 						id="password" placeholder="Password"
-						onchange="checkingPasswordFormat(this);">
+						onchange="checkingPasswordFormat(this);" value="<%=customerInfo.getPw()%>">
 					<div id="pwGood">
 						<span class="glyphicon glyphicon-ok form-control-feedback"
 							aria-hidden="true"></span> <span id="inputSuccess2Status"
@@ -96,42 +96,34 @@
 				<div class="col-sm-5">
 					<input type="tel" class="form-control" name="ssn" id="ssn"
 						placeholder="Social Security Number"
-						onchange="checkingSSN(this);return false;">
-					<div id="ssnGood">
-						<span class="glyphicon glyphicon-ok form-control-feedback"
-							aria-hidden="true"></span> <span id="inputSuccess2Status"
-							class="sr-only">(success)</span>
-					</div>
-					<div id="ssnBad">
-						<span class="glyphicon glyphicon-remove form-control-feedback"
-							aria-hidden="true"></span> <span id="inputError2Status"
-							class="sr-only">(error)</span>
-					</div>
+						onchange="checkingSSN(this);return false;" value="<%=customerInfo.getSsn()%>" disabled>
+
 				</div>
 
 			</div>
 
-
+			
 
 			<div class="form-group">
 				<label for="street" class="col-sm-4 control-label">Street</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" name="street" id="street"
-						placeholder="Street Address">
+						placeholder="Street Address" >
 				</div>
 
 
 			</div>
+			
 			<div class="form-group">
 				<label for="city" class="col-sm-4 control-label">City</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" placeholder="City"
-						name="city" id="city" onchange="checkBlank(this);">
+						name="city" id="city" onchange="checkBlank(this);" >
 				</div>
 				<label for="
 							state" class="col-sm-1 control-label">State</label>
 				<div class="col-sm-1">
-					<select class="form-control" name="state" id="state">
+					<select class="form-control" name="state" id="state">	
 						<option>AL</option>
 						<option>AK</option>
 						<option>AS</option>
@@ -199,7 +191,7 @@
 				<label for="zipcode" class="col-sm-4 control-label">ZipCode</label>
 				<div class="col-sm-2">
 					<input type="tel" class="form-control" name="zipcode" id="zipcode"
-						onchange="checkingzip(this);">
+						onchange="checkingzip(this);" value="<%=customerInfo.getZipcode()%>">
 				</div>
 			</div>
 
@@ -207,79 +199,37 @@
 				<label for="tele" class="col-sm-4 control-label">Telephone</label>
 				<div class="col-sm-5">
 					<input type="tel" class="form-control" name="tele" id="tele"
-						onchange="checkingTel(this);">
+						onchange="checkingTel(this);" value="<%=customerInfo.getTelephone()%>">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="tele" class="col-sm-4 control-label">CardNumber</label>
+				<label for="cardN" class="col-sm-4 control-label">CardNumber</label>
 				<div class="col-sm-5">
 					<input type="tel" class="form-control" name="card" id="card"
-						onchange="checkingCard(this);">
+						onchange="checkingCard(this);" value="<%=customerInfo.getCreditCardNum()%>">
 				</div>
 			</div>
 			<br /> <br />
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-10">
-					<button type="button" class="btn btn-default"
-						onclick="
-							gobackToIndex();">Cancel</button>
-					<button type="button" class="btn btn-warning"
-						onclick="goToServlet(this);">Sign in</button>
+					<button type="button" class="btn btn-danger"
+						onclick="goToServlet(this);">I want to leave!</button>
+					<button type="button" class="btn btn-primary"
+						onclick="goToServlet(this);">Fix it!</button>
 				</div>
 
 			</div>
+			<input type="hidden" value="" id="type" name="type">
 		</form>
 
 	</div>
-	<div class="modal fade" id="IntroModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Before you sign up</h4>
-				</div>
-				<div class="modal-body">
-					<p >
-					If you do not follow, our web site hesitate to let you in our family. Below is <ins>essential</ins>, Our web site may let you in
-						when you type them all.</p>
-					<dl class="dl-horizontal">
-						<dt>E-mail</dt>
-						<dd>keeps email format,</dd>
-						<dt>Name</dt>
-						<dd>needs only character, it doesn't need number.</dd>
-						<dt>Password</dt>
-						<dd>needs length over than 8.</dd>
-						<dt>SSN</dt>
-						<dd>needs 9 number, but type <mark>123456789</mark> if you don't have it.</dd>
-					</dl>
-					<p>
-					 Also, Use only numbers at<mark>Zipcode and telephone</mark>.
-					<br>
-					</p>
-					
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 
-
-	<div class="alert alert-success" role="alert" id="alertGood">Good!
-		You are our family now!</div>
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/signup_js.js"></script>
+	<script type="text/javascript" src="js/mysetting.js"></script>
+
+
 </body>
 </html>
