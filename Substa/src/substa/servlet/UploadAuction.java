@@ -2,7 +2,9 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,11 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import substa.beans.Auction;
+import substa.beans.Customer;
 import substa.beans.Item;
+import substa.beans.Post;
 import substa.model.DBManager;
 import substa.model.DBManagers;
 
@@ -75,6 +81,8 @@ public class UploadAuction extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		HttpSession session = request.getSession(true);
+		
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
 		response.setDateHeader("Expires", 0);
@@ -101,6 +109,20 @@ public class UploadAuction extends HttpServlet {
 			String file = multi.getFilesystemName((String)multi.getFileNames().nextElement());
 			item.setImgsrc(file);
 			
+			//db
+			Auction auction = new Auction();
+			
+			
+			
+			//db
+			Post post = new Post();
+			Customer customer = (Customer)session.getAttribute("customerInfo");
+			post.setCusId(customer.getSsn());
+			
+			post.setStartDate(new Timestamp(System.currentTimeMillis()));
+			post.setEndDate(Timestamp.valueOf(request.getParameter("endDate")));
+			
+			//db
 			goIndex(response);
 			
 			

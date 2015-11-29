@@ -13,7 +13,7 @@ import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.User;
 import substa.beans.Item;
-import substa.beans.ItemType;
+
 
 public class DBManagers {
 
