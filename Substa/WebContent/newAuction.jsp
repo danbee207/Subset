@@ -150,9 +150,9 @@
 
 
 				<div id="imagePart">
-					<img src="" alt="no image yet" class="img-rounded"> <label
+					<img src="#" alt="no image yet" class="img-rounded" id="previewImg"> <label
 						for="exampleInputFile">Upload image</label> <input type="file" name="ImageFile"
-						id="ImageFile">
+						id="ImageFile" onchange="readURL(this);">
 					<p class="help-block">Upload image file which you want to see
 						at auction page</p>
 				</div>
