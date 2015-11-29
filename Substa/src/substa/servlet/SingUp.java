@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -90,12 +91,19 @@ public class SingUp extends HttpServlet {
 		long credit = Long.parseLong(request.getParameter("card"));
 		
 		if(db.addCustomer(customer, credit)){
-			
+			goIndex(response);
 		}
 			
 		
 		
 		
 		
+	}
+	private void goIndex(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html;charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		out.println("<script type = 'text/javascript'>");
+		out.println("location.href='index.jsp';");
+		out.println("</script>");
 	}
 }
