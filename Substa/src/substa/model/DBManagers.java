@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import substa.beans.Auction;
 import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.User;
