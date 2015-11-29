@@ -301,6 +301,147 @@ public class DBManagers {
 		return true;
 	}
 	
+public boolean addItem(Item item) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			
+			try{
+				String sql = "INSERT INTO Item(ItemName, ItemType, NumCopies, Description, img)"
+						+ " VALUES (?, ?, ?, ?, ?)";
+			
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, item.getItemName());
+				ps.setString(2, item.getItemType());
+				ps.setInt(3, item.getNumCopies());
+				ps.setString(4, item.getDescription());
+				ps.setString(5, item.getImgsrc());
+				
+				return ps.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
+	public int getLatestItemID() {
+		
+		int latestItemID = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			try{
+				String sql = "SELECT MAX(ItemID) AS ItemID"
+						+ "FROM Item";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					latestItemID = rs.getInt("ItemID");
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return latestItemID;
+	}
+	
+	public boolean addAuction(Auction auction) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			
+			try{
+				String sql = "INSERT INTO Item(BidIncrement, MinimumBid, Copies_Sold, Monitor, ItemId)"
+						+ " VALUES (?, ?, ?, ?, ?)";
+			
+				ps = conn.prepareStatement(sql);
+				ps.setFloat(1, auction.getBidInc());
+				ps.setFloat(2, auction.getMinBid());
+				ps.setInt(3, auction.getCopy());
+				ps.setInt(4, auction.getMornitor());
+				ps.setInt(5, auction.getItemId());
+				
+				return ps.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
+	public int getLatesetAuctionID() {
+		
+		int latestAuctionID = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			try{
+				String sql = "SELECT MAX(AuctionID) AS AuctionID"
+						+ "FROM Auction";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					latestAuctionID = rs.getInt("AuctionID");
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return latestAuctionID;
+	}
+	
+	public Item getItem(int itemID) {
+		
+		
+		return null;
+	}
 	
 	public ArrayList<Item> getBestSellers() {
 		ArrayList<Item> bestSellers = new ArrayList<Item>();
