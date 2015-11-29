@@ -519,34 +519,45 @@ public class DBManagers {
 		Connection conn = getConnection();
 		
 		if(conn != null) {
-			PreparedStatement ps = null;
-			ResultSet rs = null;
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
 			
 			try {
-				String sqlQuery = "SELECT A.ItemID "
+				String sqlQuery1 = "SELECT A.ItemID "
 						+ "FROM Sales S, Auction A "
 						+ "WHERE A.AuctionID = S.AuctionID"
 						+ "GRUOP BY A.ItemID"
 						+ "ORDER BY COUNT(*) DESC"
 						+ "LIMIT 3";
-				ps = conn.prepareStatement(sqlQuery);
-				rs = ps.executeQuery();
-				while(rs.next()) {
+				ps1 = conn.prepareStatement(sqlQuery1);
+				rs1 = ps1.executeQuery();
+				while(rs1.next()) {
+					
+					String sqlQuery2 = "SELECT * FROM Item WHERE ItemID = ?";
+					ps2 = conn.prepareStatement(sqlQuery2);
+					ps2.setInt(1, rs1.getInt("ItemID"));
+					rs2 = ps2.executeQuery();
+					
 					item = new Item();
-					item.setItemID(rs.getInt("ItemID"));
-					item.setItemName(rs.getString("ItemName"));
-					item.setItemType(rs.getString("ItemType"));
-					item.setNumCopies(rs.getInt("NumCopies"));
-					item.setDescription(rs.getString("Description"));
-					item.setImgsrc(rs.getString("img"));
+					item.setItemID(rs2.getInt("ItemID"));
+					item.setItemName(rs2.getString("ItemName"));
+					item.setItemType(rs2.getString("ItemType"));
+					item.setNumCopies(rs2.getInt("NumCopies"));
+					item.setDescription(rs2.getString("Description"));
+					item.setImgsrc(rs2.getString("img"));
+					
 					bestSellers.add(item);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				try {
-					ps.close();
-					rs.close();
+					ps1.close();
+					rs1.close();
+					ps2.close();
+					rs2.close();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
 				}
@@ -556,7 +567,5 @@ public class DBManagers {
 		
 		return bestSellers;
 	}
-	
-	
 	
 }
