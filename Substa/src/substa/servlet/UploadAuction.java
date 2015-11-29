@@ -17,6 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import substa.beans.Item;
 import substa.model.DBManager;
+import substa.model.DBManagers;
 
 /**
  * Servlet implementation class UploadAuction
@@ -27,7 +28,7 @@ import substa.model.DBManager;
 		@WebInitParam(name = "dbUser", value = "danpark"), @WebInitParam(name = "dbPass", value = "110142214") })
 public class UploadAuction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DBManager db;
+	private DBManagers db;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -35,7 +36,7 @@ public class UploadAuction extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
 
-		db = new DBManager();
+		db = new DBManagers();
 		db.setDbURL(config.getInitParameter("dbUrl"));
 		db.setDbuser(config.getInitParameter("dbUser"));
 		db.setDbpass(config.getInitParameter("dbPass"));

@@ -16,6 +16,7 @@ import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.User;
 import substa.model.DBManager;
+import substa.model.DBManagers;
 
 /**
  * Servlet implementation class UserLogin
@@ -29,7 +30,7 @@ import substa.model.DBManager;
 public class UserLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private DBManager db;
+	private DBManagers db;
 
 	/**
 	 * @see HttpServlet#HttpServlet()

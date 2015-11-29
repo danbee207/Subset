@@ -1,7 +1,7 @@
 /**
  * 
  */
-var isEmail = isPw = isSsn = isFirstN = isLastN = isTel= isZip = false;
+var isEmail = isPw = isSsn = isFirstN = isLastN = isTel= isZip = isCard= false;
 
 function onloadHide(){
 	
@@ -217,4 +217,13 @@ function goToServlet(btn){
 		
 	}
 }
-
+function checkingCard(cardNum){
+	
+	var numbers = cardNum.value;
+	
+	isCard = $.isNumeric(numbers);
+	if(cardNum.value.length>16 || cardNum.value.length <14)
+		isCard=false;
+	
+	
+}

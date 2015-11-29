@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import substa.beans.Customer;
+import substa.beans.User;
 import substa.model.DBManager;
+import substa.model.DBManagers;
 
 /**
  * Servlet implementation class SingUp
@@ -28,14 +30,14 @@ import substa.model.DBManager;
 public class SingUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private DBManager db;
+	private DBManagers db;
     /**
      * @see HttpServlet#HttpServlet()
      */
 	public void init(ServletConfig config) throws ServletException{
 		super.init();
 		
-		db= new DBManager();
+		db= new DBManagers();
 		db.setDbURL(config.getInitParameter("dbUrl"));
 		db.setDbuser(config.getInitParameter("dbUser"));
 		db.setDbpass(config.getInitParameter("dbPass"));
@@ -72,7 +74,7 @@ public class SingUp extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 
 		
-		Customer customer = new Customer();
+		User customer = new User();
 		customer.setFirst(request.getParameter("firstName"));
 		customer.setLast(request.getParameter("lastName"));
 		customer.setEmail(request.getParameter("email"));
@@ -85,14 +87,13 @@ public class SingUp extends HttpServlet {
 		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
 		customer.setTelephone(Long.parseLong(request.getParameter("tele")));
 		
-		customer.setRating(0);
-		customer.setCreditCardNum(0);
+		long credit = Long.parseLong(request.getParameter("card"));
 		
-		System.out.println(customer.getFirst() +" "+ customer.getLast() + " "+ customer.getEmail()+ 
-						 customer.getPw() + " "+ customer.getSsn() + " "+ customer.getZipcode() +
-						 customer .getTelephone() + " " + customer.getRating() + " " + customer.getCreditCardNum()
-						 );
-		System.out.println("address" + customer.getAddress());
+		if(db.addCustomer(customer, credit)){
+			
+		}
+			
+		
 		
 		
 		

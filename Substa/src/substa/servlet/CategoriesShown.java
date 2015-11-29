@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import substa.model.DBManager;
+import substa.model.DBManagers;
 
 /**
  * Servlet implementation class CategoriesShown
@@ -27,14 +28,14 @@ import substa.model.DBManager;
 public class CategoriesShown extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private DBManager db;
+	private DBManagers db;
     /**
      * @see HttpServlet#HttpServlet()
      */
 	public void init(ServletConfig config) throws ServletException{
 		super.init();
 		
-		db= new DBManager();
+		db= new DBManagers();
 		db.setDbURL(config.getInitParameter("dbUrl"));
 		db.setDbuser(config.getInitParameter("dbUser"));
 		db.setDbpass(config.getInitParameter("dbPass"));

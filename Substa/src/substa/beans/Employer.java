@@ -1,11 +1,11 @@
 package substa.beans;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Employer extends User{
 
 	private int level;
-	private Date startDate;
+	private Timestamp startDate;
 	private float hourlyRate;
 	
 	public Employer(){
@@ -29,10 +29,11 @@ public class Employer extends User{
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	public Date getStartDate() {
+	
+	public Timestamp getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Timestamp startDate) {
 		this.startDate = startDate;
 	}
 	public float getHourlyRate() {
