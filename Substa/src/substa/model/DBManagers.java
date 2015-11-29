@@ -14,7 +14,7 @@ import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.User;
 import substa.beans.Item;
-
+import substa.beans.Post;
 
 public class DBManagers {
 
@@ -302,7 +302,7 @@ public class DBManagers {
 		return true;
 	}
 	
-public boolean addItem(Item item) {
+	public boolean addItem(Item item) {
 		
 		Connection conn = getConnection();
 		
@@ -368,6 +368,39 @@ public boolean addItem(Item item) {
 		}
 		
 		return latestItemID;
+	}
+	
+	public int getManagerID() {
+		
+		int ManagerID = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			try{
+				String sql = "SELECT EmployeeID"
+						+ "FROM Employee"
+						+ "WHERE Level = 2";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					ManagerID = rs.getInt("EmployeeID");
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return ManagerID;
 	}
 	
 	public boolean addAuction(Auction auction) {
