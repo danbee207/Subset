@@ -312,7 +312,7 @@ public class DBManagers {
 			try {
 				String sql1 = "UPDATE Customer"
 						+ "SET Rating=?, CreditCardNum=?"
-						+ "WHERE Customer=?";
+						+ "WHERE CustomerID=?";
 				ps1 = conn.prepareStatement(sql1);
 				ps1.setFloat(1, customer.getRating());
 				ps1.setLong(2, customer.getCreditCardNum());
@@ -320,7 +320,7 @@ public class DBManagers {
 				
 				String sql2 = "UPDATE Person"
 						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
-						+ "WHERE Person=?";
+						+ "WHERE SSN=?";
 				ps2 = conn.prepareStatement(sql2);
 				ps2.setInt(1, customer.getSsn());
 				ps2.setString(2, customer.getLast());
@@ -331,6 +331,55 @@ public class DBManagers {
 				ps2.setString(7, customer.getEmail());
 				ps2.setString(8, customer.getPw());
 				ps2.setInt(1, customer.getSsn());
+				
+				return ps1.execute()&&ps2.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					ps2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
+public boolean changeEmployer(Employer employer) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			try {
+				String sql1 = "UPDATE Employee"
+						+ "SET Level=?, StartDate=?, HourlyRate=?"
+						+ "WHERE EmployeeID=?";
+				ps1 = conn.prepareStatement(sql1);
+				ps1.setInt(1, employer.getLevel());
+				ps1.setTimestamp(2, employer.getStartDate());
+				ps1.setFloat(3, employer.getHourlyRate());
+				ps1.setInt(4, employer.getSsn());
+				
+				String sql2 = "UPDATE Person"
+						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
+						+ "WHERE Person=?";
+				ps2 = conn.prepareStatement(sql2);
+				ps2.setInt(1, employer.getSsn());
+				ps2.setString(2, employer.getLast());
+				ps2.setString(3, employer.getFirst());
+				ps2.setString(4, employer.getAddress());
+				ps2.setInt(5, employer.getZipcode());
+				ps2.setLong(6, employer.getTelephone());
+				ps2.setString(7, employer.getEmail());
+				ps2.setString(8, employer.getPw());
+				ps2.setInt(1, employer.getSsn());
 				
 				return ps1.execute()&&ps2.execute();
 				
