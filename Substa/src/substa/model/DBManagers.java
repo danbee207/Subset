@@ -568,4 +568,49 @@ public class DBManagers {
 		return bestSellers;
 	}
 	
+	public ArrayList<Employer> getEmployees() {
+		
+		ArrayList<Employer> employees = new ArrayList<Employer>();
+		Employer employee = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT * FROM Person, Employee WHERE Person.SSN = Employee.EmployeeID";
+				ps = conn.prepareStatement(sqlQuery);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					employee = new Employer();
+					employee.setSsn(rs.getInt("SSN"));
+					employee.setLast(rs.getString("LastName"));
+					employee.setFirst(rs.getString("FirstName"));
+					employee.setAddress(rs.getString("Address"));
+					employee.setZipcode(rs.getInt("ZipCode"));
+					employee.setTelephone(rs.getLong("Telephone"));
+					employee.setEmail(rs.getString("Email"));
+					employee.setPw(rs.getString("pw"));
+					employee.setLevel(rs.getInt("Level"));
+					employee.setStartDate(rs.getTimestamp("StartDate"));
+					employee.setHourlyRate(rs.getFloat("HourlyRate"));
+					employees.add(employee);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return employees;
+	}
+	
 }
