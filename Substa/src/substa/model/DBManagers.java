@@ -7,12 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+import java.util.ArrayList;
 
 import substa.beans.Customer;
 import substa.beans.Employer;
-
 import substa.beans.User;
+import substa.beans.Item;
+import substa.beans.ItemType;
 
 public class DBManagers {
 
@@ -299,5 +300,52 @@ public class DBManagers {
 		}
 		return true;
 	}
-
+	
+	
+	public ArrayList<Item> getBestSellers() {
+		ArrayList<Item> bestSellers = new ArrayList<Item>();
+		Item item = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT A.ItemID "
+						+ "FROM Sales S, Auction A "
+						+ "WHERE A.AuctionID = S.AuctionID"
+						+ "GRUOP BY A.ItemID"
+						+ "ORDER BY COUNT(*) DESC"
+						+ "LIMIT 3";
+				ps = conn.prepareStatement(sqlQuery);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					item = new Item();
+					item.setItemID(rs.getInt("ItemID"));
+					item.setItemName(rs.getString("ItemName"));
+					item.setItemType(rs.getString("ItemType"));
+					item.setNumCopies(rs.getInt("NumCopies"));
+					item.setDescription(rs.getString("Description"));
+					item.setImgsrc(rs.getString("img"));
+					bestSellers.add(item);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return bestSellers;
+	}
+	
+	
+	
 }
