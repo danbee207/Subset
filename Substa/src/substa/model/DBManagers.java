@@ -407,7 +407,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			
 			try {
-				String sql = "DELETE Person"
+				String sql = "DELETE FROM Person"
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, customer.getSsn());
@@ -437,7 +437,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			
 			try {
-				String sql = "DELETE Person"
+				String sql = "DELETE FROM Person"
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, employer.getSsn());
@@ -664,10 +664,48 @@ public class DBManagers {
 		return true;
 	}
 
-	public Item getItem(int itemID) {
+	public ArrayList<Item> getItemByCategory(String category) {
+		ArrayList<Item> itemInCategory = new ArrayList<Item>();
+		Item item = null;
+		Connection conn = getConnection();
 		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img"
+						+ "FROM Post P, Auction A, Item I"
+						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemType = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, category);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					item = new Item();
+					item.setItemID(rs.getInt("ItemID"));
+					item.setItemName(rs.getString("ItemName"));
+					item.setItemType(rs.getString("ItemType"));
+					item.setNumCopies(rs.getInt("NumCopies"));
+					item.setDescription(rs.getString("Description"));
+					item.setImgsrc(rs.getString("img"));
+					itemInCategory.add(item);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
 		
-		return null;
+		return itemInCategory;
 	}
 	
 	public ArrayList<Item> getBestSellers() {
