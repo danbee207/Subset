@@ -2,6 +2,7 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -90,6 +91,12 @@ public class UserLogin extends HttpServlet {
 			if (customer == null) {
 				Employer employee = db.getEmployer(user);
 				session.setAttribute("employeeInfo", employee);
+				
+				ArrayList<Employer> employerList = db.getEmployees();
+				session.setAttribute("employerList", employerList);
+			
+				
+				
 				session.setAttribute("isCustomer", false);
 			} else {
 				session.setAttribute("customerInfo", customer);
