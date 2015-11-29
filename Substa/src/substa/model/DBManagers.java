@@ -350,7 +350,7 @@ public class DBManagers {
 		return true;
 	}
 	
-public boolean changeEmployer(Employer employer) {
+	public boolean changeEmployer(Employer employer) {
 		
 		Connection conn = getConnection();
 		
@@ -399,6 +399,66 @@ public boolean changeEmployer(Employer employer) {
 		return true;
 	}
 	
+	public boolean deleteCustomer(Customer customer) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			
+			try {
+				String sql = "DELETE Person"
+						+ "WHERE SSN=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, customer.getSsn());
+				
+				return ps.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean deleteEmployer(Employer employer) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			
+			try {
+				String sql = "DELETE Person"
+						+ "WHERE SSN=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, employer.getSsn());
+				
+				return ps.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+
 	public boolean addItem(Item item) {
 		
 		Connection conn = getConnection();
