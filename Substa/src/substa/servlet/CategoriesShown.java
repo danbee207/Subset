@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -74,7 +75,24 @@ public class CategoriesShown extends HttpServlet {
 		
 		String cate = request.getParameter("category");
 		
+		switch(cate){
+		case "Fashion" : break;
+		case "Men's Clothing" : break;
 		
+		
+		}
+		
+		
+		
+		
+	}
+	
+	private void goIndex(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html;charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		out.println("<script type = 'text/javascript'>");
+		out.println("location.href='Categories.jsp';");
+		out.println("</script>");
 	}
 
 }

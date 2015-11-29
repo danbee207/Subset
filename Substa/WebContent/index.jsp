@@ -19,9 +19,13 @@
 <body>
 	<%
 		boolean isCustomer = true;
+		boolean isLogin =false;
 		User LoginUser = (User) session.getAttribute("LoginUser");
-		if (LoginUser != null)
+		if (LoginUser != null){
 			isCustomer = (boolean) session.getAttribute("isCustomer");
+			isLogin = true;
+		}else
+			isLogin = false;
 	%>
 
 	<div id="wrapper">
@@ -34,13 +38,13 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> 
-					<span class="icon-bar" onclick="goCategories(this,<%=LoginUser%>);">Book</span> 
-					<span class="icon-bar" onclick="goCategories(this);">Electronics</span>
-					<span class="icon-bar" onclick="goCategories(this);">Fashion</span> 
-					<span class="icon-bar" onclick="goCategories(this);">Home & Garden</span> 
-					<span class="icon-bar" onclick="goCategories(this);">Motors</span> 
-					<span class="icon-bar" onclick="goCategories(this);">Sporting Goods</span> 
-					<span class="icon-bar" onclick="goCategories(this);">Toy & Hobbies</span>
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Book</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Electronics</span>
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Fashion</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Home & Garden</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Motors</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Sporting Goods</span> 
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Toy & Hobbies</span>
 				</button>
 			
 			</div>
@@ -54,70 +58,70 @@
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Books</a></li>
-							<li><a href="#">Textbooks</a></li>
-							<li><a href="#">Magazines</a></li>
-							<li><a href="#">E-Books</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Books</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Textbooks</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Magazines</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">E-Books</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Electronics<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">TV & Video</a></li>
-							<li><a href="#">Cell Phones</a></li>
-							<li><a href="#">Desktops</a></li>
-							<li><a href="#">Laptops</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">TV & Video</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Cell Phones</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Desktops</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Laptops</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Fashion
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Women's Clothing</a></li>
-							<li><a href="#">Men's Clothing</a></li>
-							<li><a href="#">Kids' Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Women's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Men's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Kids' Clothing</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Home
 							& Garden<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Kitchen</a></li>
-							<li><a href="#">Furniture</a></li>
-							<li><a href="#">Appliance</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Kitchen</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Furniture</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Appliance</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Flowers & Trees</a></li>
-							<li><a href="#">Gardening Supplies</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Flowers & Trees</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Gardening Supplies</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Mortors
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Cars</a></li>
-							<li><a href="#">Motorcylces</a></li>
-							<li><a href="#">Automotive Tools</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Cars</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Motorcylces</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Automotive Tools</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Sporting
 							Goods<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Team Sports</a></li>
-							<li><a href="#">Leisure Sports</a></li>
-							<li><a href="#">Water Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Team Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Leisure Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Water Sports</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Toy
 							& Hobbies <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action Figures</a></li>
-							<li><a href="#">Building Toys</a></li>
-							<li><a href="#">Baby Toys</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Action Figures</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Building Toys</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Baby Toys</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Games</a></li>
-							<li><a href="#">Videos</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Games</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Videos</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
