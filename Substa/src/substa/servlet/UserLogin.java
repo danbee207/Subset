@@ -38,7 +38,7 @@ public class UserLogin extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
 		// TODO Auto-generated constructor stub
-		db = new DBManager();
+		db = new DBManagers();
 		db.setDbURL(config.getInitParameter("dbUrl"));
 		db.setDbuser(config.getInitParameter("dbUser"));
 		db.setDbpass(config.getInitParameter("dbPass"));

@@ -14,7 +14,6 @@ import substa.beans.BidHistory;
 import substa.beans.Customer;
 import substa.beans.Employer;
 import substa.beans.Item;
-import substa.beans.Pair;
 import substa.beans.SalesRecord;
 import substa.beans.SoldItemAuctionInfo;
 import substa.beans.User;
@@ -169,7 +168,7 @@ public class DBManager {
 		}
 		return customer;
 	}
-
+/*
 	public Employer getEmployer(User user) {
 		Employer employee = null;
 		Connection conn = getConnection();
@@ -936,7 +935,7 @@ public class DBManager {
 	 * 
 	 * @Returns a Pair of Sales object <revenue, number of sales>; Null if query unsuccessful.
 	 *  Note: Pair might contain no elements
-	 */
+	 *//*
 	public Pair getSalesSummary(int year, int month) {
 		Pair p = null;
 		Connection conn = getConnection();
@@ -978,6 +977,7 @@ public class DBManager {
 	 * @Returns a Pair of Sales object <revenue, number of sales>; Null if query unsuccessful.
 	 *  Note: Pair might contain no elements
 	 */
+	/*
 	public Pair getSalesSummaryByItemID(int itemid) {
 		Pair p = null;
 		Connection conn = getConnection();
@@ -1015,7 +1015,7 @@ public class DBManager {
 	 * 
 	 * @Returns a Pair of Sales object <revenue, number of sales>; Null if query unsuccessful.
 	 *  Note: Pair might contain no elements
-	 */
+	 *//*
 	public Pair getSalesSummaryByItemType(String itemtype) {
 		Pair p = null;
 		Connection conn = getConnection();
@@ -1057,7 +1057,7 @@ public class DBManager {
 	 * 
 	 * @Returns a Pair of Sales object <revenue, number of sales>; Null if query unsuccessful.
 	 *  Note: Pair might contain no elements
-	 */
+	 *//*
 	public Pair getSalesSummaryBySellerID(int seller_id) {
 		Pair p = null;
 		Connection conn = getConnection();
@@ -1096,7 +1096,7 @@ public class DBManager {
 	 * 
 	 * @Returns a Pair of Sales object <revenue, number of sales>; Null if query unsuccessful.
 	 *  Note: Pair might contain no elements
-	 */
+	 *//*
 	public Pair getSalesSummaryByBuyerID(int buyer_id) {
 		Pair p = null;
 		Connection conn = getConnection();
@@ -1176,7 +1176,7 @@ public class DBManager {
 	 * 
 	 * @Returns a list of Pair object <employeeID, revenue> ; Null if query unsuccessful.
 	 *  Note: the list might be empty
-	 */
+	 *//*
 	public List<Pair> getHighestRevEmpl() {
 		List<Pair> list = null;
 		Pair p = null;
@@ -1221,7 +1221,7 @@ public class DBManager {
 	/* Determine which customer generated most total revenue
 	 * @Returns a list of Pair object <customerID, revenue> ; Null if query unsuccessful.
 	 *  Note: the list might be empty
-	 */
+	 *//*
 	public List<Pair> getHighestRevCust() {
 		List<Pair> list = null;
 		Pair p = null;
@@ -1266,7 +1266,7 @@ public class DBManager {
 	/* Produce a Best-Sellers list of items
 	 * @Returns a list of Item objects, up to 50 items; Null if query unsuccessful.
 	 *  Note: the list might be empty
-	 */
+	 *//*
 	public List<Item> getBestSellingItems() {
 		List<Item> list = null;
 		Item i = null;
@@ -1461,6 +1461,7 @@ public class DBManager {
 	 *  Note: the list might be empty
 	 * 
 	 * */
+	/*
 	public List<BidHistory> getAllBidHistory() {
 		List<BidHistory> list = null;
 		BidHistory b = null;
@@ -1496,7 +1497,7 @@ public class DBManager {
 			}
 		}
 		return list;
-	}
+	}*/
 	
 	
 	/* A history of all current and past auctions a customer has taken part in
@@ -1505,6 +1506,7 @@ public class DBManager {
 	 *  Note: the list might be empty
 	 * 
 	 * */
+	/*
 	public List<Integer> getAuctionHistory(int id) {
 		List<Integer> list = null;
 		Connection conn = getConnection();
@@ -1536,7 +1538,7 @@ public class DBManager {
 		}
 		return list;
 	}
-	
+	*/
 	
 	/* Items sold by a given seller and corresponding auction info
 	 * 
@@ -1544,6 +1546,7 @@ public class DBManager {
 	 *  Note: the list might be empty
 	 * 
 	 * */
+	/*
 	public List<SoldItemAuctionInfo> getSoldItemAuctionInfo(int id) {
 		List<SoldItemAuctionInfo> list = null;
 		SoldItemAuctionInfo i = null;
@@ -1584,13 +1587,14 @@ public class DBManager {
 		}
 		return list;
 	}
-	
+	*/
 	
 	
 	/* Items available of a particular type and corresponding auction info
 	 * @Returns a list of Pair object <ItemName, auctionID> ; Null if query unsuccessful.
 	 *  Note: the list might be empty
 	 */
+	/*
 	public List<Pair> getAuctionByItemType(String type) {
 		List<Pair> list = null;
 		Pair p = null;
@@ -1626,13 +1630,14 @@ public class DBManager {
 			}
 		}
 		return list;
-	}
+	}*/
 	
 	/* Items available with a particular keyword or set of keywords in the item name,
 	 *  and corresponding auction info
 	 * @Returns a list of Pair object <ItemName, auctionID> ; Null if query unsuccessful.
 	 *  Note: the list might be empty
 	 */
+	/*
 	public List<Pair> getItemsByKeyword(String keyword) {
 		List<Pair> list = null;
 		Pair p = null;
@@ -1674,6 +1679,6 @@ public class DBManager {
 	
 
 	
-	
+*/	
 
 }

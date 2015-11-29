@@ -86,17 +86,16 @@ public class SingUp extends HttpServlet {
 		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
 		customer.setTelephone(Long.parseLong(request.getParameter("tele")));
 		
-		long credit = Long.parseLong(request.getParameter("card"));
-		
-		if(db.addCustomer(customer, credit)){
-			goIndex(response);
-		}else{
-			System.out.println("error");
-		}
-			
+		long credit;
+		if(request.getParameter("card")!="")
+			credit = Long.parseLong(request.getParameter("card"));
+		else
+			credit =0 ;
 		
 		
-		
+		db.addCustomer(customer, credit);
+		goIndex(response);
+				
 		
 	}
 	private void goIndex(HttpServletResponse response) throws IOException {

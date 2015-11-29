@@ -7,16 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
-import substa.beans.BidHistory;
+
 import substa.beans.Customer;
 import substa.beans.Employer;
-import substa.beans.Item;
-import substa.beans.Pair;
-import substa.beans.SalesRecord;
-import substa.beans.SoldItemAuctionInfo;
+
 import substa.beans.User;
 
 public class DBManagers {
@@ -184,7 +179,7 @@ public class DBManagers {
 				while (rs.next()) {
 					employee = new Employer(user);
 					employee.setLevel(rs.getInt("Level"));
-					employee.setStartDate(rs.getDate("StartDate"));
+					employee.setStartDate((rs.getTimestamp("StartDate")));
 					employee.setHourlyRate(rs.getFloat("HourlyRate"));
 				}
 			} catch (SQLException e) {
@@ -242,7 +237,7 @@ public class DBManagers {
 	}
 	
 	public boolean addCustomer(User customer, long credit){
-		
+	
 		addUser(customer);
 		
 		Connection conn = getConnection();
@@ -275,7 +270,7 @@ public class DBManagers {
 	
 	public boolean addEmployer(User employer,int level, Timestamp start, float rate){
 		
-		addUser(employer);
+		System.out.println("adUser : " + addUser(employer));
 		
 		Connection conn = getConnection();
 		if (conn != null) {
