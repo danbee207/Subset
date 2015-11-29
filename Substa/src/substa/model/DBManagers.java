@@ -411,7 +411,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			
 			try{
-				String sql = "INSERT INTO Item(BidIncrement, MinimumBid, Copies_Sold, Monitor, ItemId)"
+				String sql = "INSERT INTO Auction(BidIncrement, MinimumBid, Copies_Sold, Monitor, ItemId)"
 						+ " VALUES (?, ?, ?, ?, ?)";
 			
 				ps = conn.prepareStatement(sql);
@@ -471,6 +471,42 @@ public class DBManagers {
 		return latestAuctionID;
 	}
 	
+	public boolean addPost(Post post) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			
+			try{
+				String sql = "INSERT INTO Post(CustomerID, AuctionID, ExpireDate, PostDate, ReservedPrice)"
+						+ " VALUES (?, ?, ?, ?, ?)";
+			
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, post.getCusId());
+				ps.setInt(2, post.getAucId());
+				ps.setTimestamp(3, post.getEndDate());
+				ps.setTimestamp(4, post.getStartDate());
+				ps.setFloat(5, post.getPrice());
+				
+				return ps.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+
 	public Item getItem(int itemID) {
 		
 		
