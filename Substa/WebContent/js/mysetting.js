@@ -5,7 +5,7 @@ var isPw =isFirstN = isLastN = isTel= isZip = isCard= false;
 
 function onloadHide(state){
 	
-	
+	console.log(state);
 	$("#nameDiv").attr("class","form-group");
 	$("#firstNameGood").hide();
 	$("#firstNameBad").hide();
@@ -19,8 +19,10 @@ function onloadHide(state){
 	var address = state.split(",");
 	$("#street").val(address[0]);
 	$("#city").val(address[1]);
-	
-	$('#state option:contains('+address[2]+')').attr('selected','selected');
+	console.log(address[2]);
+	var stateValue = 'opton[text="NY"]';
+	$('#state').find('opton[text="NY"]').attr('selected','selected');
+	console.log("1" +$('#state').find(stateValue).text());
 	
 	return false;
 }

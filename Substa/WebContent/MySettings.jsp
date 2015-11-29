@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="css/singup.css">
 </head>
 
-<body onload="onloadHide(<%=customerInfo.getAddress()%>);">
+<body onload="onloadHide('<%=customerInfo.getAddress()%>');">
 
 	<div id=wrapper>
 
