@@ -501,6 +501,90 @@ public class DBManagers {
 		return allItems;
 	}
 
+	public ArrayList<SalesRecord> getSalesByItemName(String itemName) {
+		
+		ArrayList<SalesRecord> salesRecordByItemName = new ArrayList<SalesRecord>();
+		SalesRecord salesRecord = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID"
+						+ "FROM Sales S, Auction A, Item I"
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, itemName);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					salesRecord = new SalesRecord();
+					salesRecord.setBuyerID(rs.getInt("BuyerID"));
+					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setDate(rs.getTimestamp("Date"));
+					salesRecord.setAuctionID(rs.getInt("AuctionID"));
+					salesRecordByItemName.add(salesRecord);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return salesRecordByItemName;
+	}
+	
+	public ArrayList<SalesRecord> getSalesByMonth(int month) {
+		
+		ArrayList<SalesRecord> salesRecordByMonth = new ArrayList<SalesRecord>();
+		SalesRecord salesRecord = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT * FROM Sales WHERE MONTH(Date) = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setInt(1, month);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					salesRecord = new SalesRecord();
+					salesRecord.setBuyerID(rs.getInt("BuyerID"));
+					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setDate(rs.getTimestamp("Date"));
+					salesRecord.setAuctionID(rs.getInt("AuctionID"));
+					salesRecordByMonth.add(salesRecord);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return salesRecordByMonth;
+	}
+	
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
 		ArrayList<String> mailingList = new ArrayList<String>();
@@ -987,47 +1071,6 @@ public class DBManagers {
 		} 
 		
 		return employees;
-	}
-	
-	public ArrayList<SalesRecord> getSalesByMonth(int month) {
-		
-		ArrayList<SalesRecord> salesRecordByMonth = new ArrayList<SalesRecord>();
-		SalesRecord salesRecord = null;
-		Connection conn = getConnection();
-		
-		if(conn != null) {
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			
-			try {
-				String sqlQuery = "SELECT * FROM Sales WHERE MONTH(Date) = ?";
-				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, month);
-				rs = ps.executeQuery();
-				
-				while(rs.next()) {
-					salesRecord = new SalesRecord();
-					salesRecord.setBuyerID(rs.getInt("BuyerID"));
-					salesRecord.setSellerID(rs.getInt("SellerID"));
-					salesRecord.setPrice(rs.getBigDecimal("Price"));
-					salesRecord.setDate(rs.getTimestamp("Date"));
-					salesRecord.setAuctionID(rs.getInt("AuctionID"));
-					salesRecordByMonth.add(salesRecord);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					ps.close();
-					rs.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				closeConnection(conn);
-			}
-		} 
-		
-		return salesRecordByMonth;
 	}
 	
 }
