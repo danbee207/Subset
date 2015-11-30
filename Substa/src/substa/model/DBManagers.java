@@ -15,6 +15,7 @@ import substa.beans.Employer;
 import substa.beans.User;
 import substa.beans.Item;
 import substa.beans.Post;
+import substa.beans.SalesRecord;
 
 public class DBManagers {
 
@@ -945,6 +946,47 @@ public class DBManagers {
 		} 
 		
 		return employees;
+	}
+	
+	public ArrayList<SalesRecord> getSalesByMonth(int month) {
+		
+		ArrayList<SalesRecord> salesRecordByMonth = new ArrayList<SalesRecord>();
+		SalesRecord salesRecord = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT * FROM Sales WHERE MONTH(Date) = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setInt(1, month);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					salesRecord = new SalesRecord();
+					salesRecord.setBuyerID(rs.getInt("BuyerID"));
+					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setDate(rs.getTimestamp("Date"));
+					salesRecord.setAuctionID(rs.getInt("AuctionID"));
+					salesRecordByMonth.add(salesRecord);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return salesRecordByMonth;
 	}
 	
 }
