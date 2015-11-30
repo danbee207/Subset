@@ -544,6 +544,50 @@ public class DBManagers {
 		return salesRecordByItemName;
 	}
 	
+	public ArrayList<SalesRecord> getSalesByCustomerName(String firstName, String lastName) {
+		
+		ArrayList<SalesRecord> salesRecordByCustomerName = new ArrayList<SalesRecord>();
+		SalesRecord salesRecord = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID"
+						+ "FROM Sales S, Auction A"
+						+ "WHERE (A.BuyerID = P.SSN OR A.SellerID = P.SSN) AND P.FirstName =? AND P.LastName = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, firstName);
+				ps.setString(2, lastName);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					salesRecord = new SalesRecord();
+					salesRecord.setBuyerID(rs.getInt("BuyerID"));
+					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setDate(rs.getTimestamp("Date"));
+					salesRecord.setAuctionID(rs.getInt("AuctionID"));
+					salesRecordByCustomerName.add(salesRecord);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return salesRecordByCustomerName;
+	}
+
 	public ArrayList<SalesRecord> getSalesByMonth(int month) {
 		
 		ArrayList<SalesRecord> salesRecordByMonth = new ArrayList<SalesRecord>();
