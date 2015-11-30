@@ -459,6 +459,47 @@ public class DBManagers {
 		
 		return true;
 	}
+	
+	public ArrayList<Item> getAllItems() {
+		Connection conn = getConnection();
+		ArrayList<Item> allItems = new ArrayList<Item>();
+		Item item = null;
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT * FROM Item";
+				ps = conn.prepareStatement(sqlQuery);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					item = new Item();
+					item.setItemID(rs.getInt("ItemID"));
+					item.setItemName(rs.getString("ItemName"));
+					item.setItemType(rs.getString("ItemType"));
+					item.setNumCopies(rs.getInt("NumCopies"));
+					item.setDescription(rs.getString("Description"));
+					item.setImgsrc(rs.getString("img"));
+					allItems.add(item);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return allItems;
+	}
 
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
