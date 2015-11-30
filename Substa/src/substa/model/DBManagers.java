@@ -459,6 +459,43 @@ public class DBManagers {
 		return true;
 	}
 
+	public ArrayList<String> getMailingList() {
+		Connection conn = getConnection();
+		ArrayList<String> mailingList = new ArrayList<String>();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT P.Email"
+						+ "FROM Person P"
+						+ "WHERE EXISTS (SELECT CustomerID"
+						+ "FROM Customer C"
+						+ "WHERE C.CustomerID = P.SSN)";
+				ps = conn.prepareStatement(sqlQuery);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					mailingList.add(rs.getString("Email"));
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return mailingList;
+	}
+	
 	public boolean addItem(Item item) {
 		
 		Connection conn = getConnection();
