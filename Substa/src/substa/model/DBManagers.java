@@ -496,6 +496,63 @@ public class DBManagers {
 		return mailingList;
 	}
 	
+	public ArrayList<Item> getPersonalSuggestion(Customer customer) {
+		
+		Connection conn = getConnection();
+		ArrayList<Item> suggestion = new ArrayList<Item>();
+		Item item = null;
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT A.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img"
+						+ "FROM Sales S, Auction A, Item I"
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND S.BuyerID IN ("
+						+ "	SELECT S.BuyerID"
+						+ "	FROM Sales S, Auction A"
+						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ("
+						+ "		SELECT A.ItemID"
+						+ "		FROM Auction A, Sales S"
+						+ "		WHERE S.AuctionID = A.AuctionID AND S.BuyerID = ?)"
+						+ "	)"
+						+ "GROUP BY A.ItemID"
+						+ "HAVING I.NumCopies > 0"
+						+ "ORDER BY COUNT(A.ItemID)"
+						+ "LIMIT 20";
+				
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setInt(1, customer.getSsn());
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					item = new Item();
+					item.setItemID(rs.getInt("ItemID"));
+					item.setItemName(rs.getString("ItemName"));
+					item.setItemType(rs.getString("ItemType"));
+					item.setNumCopies(rs.getInt("NumCopies"));
+					item.setDescription(rs.getString("Description"));
+					item.setImgsrc(rs.getString("img"));
+					suggestion.add(item);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return suggestion;
+	}
+	
 	public boolean addItem(Item item) {
 		
 		Connection conn = getConnection();
