@@ -77,7 +77,7 @@ public class Mysetting extends HttpServlet {
 
 		String type = request.getParameter("type");
 		
-		User customer = new User();
+		Customer customer = new Customer();
 		customer.setFirst(request.getParameter("firstName"));
 		customer.setLast(request.getParameter("lastName"));
 		customer.setEmail(request.getParameter("email"));
@@ -98,10 +98,12 @@ public class Mysetting extends HttpServlet {
 		
 		
 		
+		
 		if(type.equals("0")){				//fix it
 			//db
+			db.changeCustomer(customer);
 		}else{								//remove it
-			
+			db.deleteCustomer(customer.getSsn());
 			//db 
 
 			session.invalidate();
