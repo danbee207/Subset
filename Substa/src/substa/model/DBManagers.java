@@ -704,6 +704,47 @@ public class DBManagers {
 		return revenue;
 	}
 	
+	public int getRevenueByBuyerName(String firstName, String lastName) {
+		
+		int revenue = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT SUM(S.Price) AS Revenue"
+						+ "FROM Sales A"
+						+ "WHERE S.BuyerID = ("
+						+ "	SELECT P.SSN"
+						+ "	FROM Person P"
+						+ "	WHERE P.FirstName = ? AND P.LastName = ?)";
+				
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, firstName);
+				ps.setString(2, lastName);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					revenue = rs.getInt("Revenue");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return revenue;
+	}
+	
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
 		ArrayList<String> mailingList = new ArrayList<String>();
