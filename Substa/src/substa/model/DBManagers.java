@@ -1223,7 +1223,7 @@ public class DBManagers {
 		return auctionInfoByItemType;
 	}
 	
-	public ArrayList<AuctionDetailInfo> getAuctionInfoByItemName(String itemName) {
+	public ArrayList<AuctionDetailInfo> getAuctionInfoByItemName(ArrayList<String> keywords) {
 		
 		ArrayList<AuctionDetailInfo> auctionInfoByItemName = new ArrayList<AuctionDetailInfo>();
 		AuctionDetailInfo auctionInfo = null;
@@ -1234,29 +1234,34 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-						+ "FROM Item I, Auction A, Post P"
-						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID "
-						+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%'";
-				ps = conn.prepareStatement(sqlQuery);
-				ps.setString(1, itemName);
-				rs = ps.executeQuery();
-				
-				while(rs.next()) {
-					auctionInfo = new AuctionDetailInfo();
-					auctionInfo.setItemName(rs.getString("ItemName"));
-					auctionInfo.setItemType(rs.getString("ItemType"));
-					auctionInfo.setDescription(rs.getString("Description"));
-					auctionInfo.setImgSrc(rs.getString("img"));
-					auctionInfo.setAuctionID(rs.getInt("AuctionID"));
-					auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
-					auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
-					auctionInfo.setCopy(rs.getInt("Copies_Sold"));
-					auctionInfo.setSellerID(rs.getInt("CustomerID"));
-					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
-					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
-					auctionInfoByItemName.add(auctionInfo);
+				String sqlQuery = "";
+				for(int i = 0; i < keywords.size(); i++) {
+					sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
+							+ "FROM Item I, Auction A, Post P"
+							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID "
+							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%'";
+					ps = conn.prepareStatement(sqlQuery);
+					ps.setString(1, keywords.get(i));
+					rs = ps.executeQuery();
+					
+					while(rs.next()) {
+						auctionInfo = new AuctionDetailInfo();
+						auctionInfo.setItemName(rs.getString("ItemName"));
+						auctionInfo.setItemType(rs.getString("ItemType"));
+						auctionInfo.setDescription(rs.getString("Description"));
+						auctionInfo.setImgSrc(rs.getString("img"));
+						auctionInfo.setAuctionID(rs.getInt("AuctionID"));
+						auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
+						auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
+						auctionInfo.setCopy(rs.getInt("Copies_Sold"));
+						auctionInfo.setSellerID(rs.getInt("CustomerID"));
+						auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
+						auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
+						auctionInfoByItemName.add(auctionInfo);
+					}
+					ps.close();
+					rs.close();
 				}
 				
 			} catch(SQLException e) {
