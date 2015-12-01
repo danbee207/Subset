@@ -819,6 +819,79 @@ public class DBManagers {
 		return topRevenueEmployer;
 	}
 	
+	public ArrayList<Customer> getTopRevenueCustomer() {
+		ArrayList<Customer> topRevenueCustomer = new ArrayList<Customer>();
+		int topCustomerID = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
+			
+			try {
+				String sqlQuery1 = "SELECT S.SellerID,"
+						+ "FROM SellerTotalRev S"
+						+ "WHERE S.TotalRev = ("
+						+ "	SELECT MAX(S2.TotalRev)"
+						+ "	FROM SellerTotalRev S2)";
+				ps1 = conn.prepareStatement(sqlQuery1);
+				rs1 = ps1.executeQuery();
+				
+				while(rs1.next()) {
+					topCustomerID = rs1.getInt("SellerID");
+				}
+				
+				rs1.close();
+				
+				if(topCustomerID > 0) {
+					String sqlQuery2 = "SELECT *"
+							+ "FROM Person, Customer"
+							+ "WHERE CustomerID = SSN AND SSN = ?";
+					
+					ps2 = conn.prepareStatement(sqlQuery2);
+					ps2.setInt(1, topCustomerID);
+					rs2 = ps2.executeQuery();
+					
+					User user = null;
+					Customer customer = null;
+					
+					while(rs2.next()) {
+						user = new User();
+						user.setFirst(rs2.getString("FirstName"));
+						user.setLast(rs2.getString("LastName"));
+						user.setAddress(rs2.getString("Address"));
+						user.setZipcode(rs2.getInt("ZipCode"));
+						user.setTelephone(rs2.getLong("Telephone"));
+						user.setSsn(rs2.getInt("SSN"));
+						user.setEmail(rs2.getString("Email"));
+						user.setPw(rs2.getString("pw"));
+						customer = new Customer(user);
+						customer.setRating(rs2.getFloat("Rating"));
+						customer.setCreditCardNum(rs2.getLong("CreditCardNum"));
+						topRevenueCustomer.add(customer);
+					}
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					ps2.close();
+					rs1.close();
+					rs2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return topRevenueCustomer;
+	}
+	
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
 		ArrayList<String> mailingList = new ArrayList<String>();
