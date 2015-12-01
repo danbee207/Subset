@@ -523,7 +523,7 @@ public class DBManagers {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
 					salesRecord.setSellerID(rs.getInt("SellerID"));
-					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
 					salesRecordByItemName.add(salesRecord);
@@ -567,7 +567,7 @@ public class DBManagers {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
 					salesRecord.setSellerID(rs.getInt("SellerID"));
-					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
 					salesRecordByCustomerName.add(salesRecord);
@@ -608,7 +608,7 @@ public class DBManagers {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
 					salesRecord.setSellerID(rs.getInt("SellerID"));
-					salesRecord.setPrice(rs.getBigDecimal("Price"));
+					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
 					salesRecordByMonth.add(salesRecord);
