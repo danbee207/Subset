@@ -92,10 +92,6 @@ public class UserLogin extends HttpServlet {
 				Employer employee = db.getEmployer(user);
 				session.setAttribute("employeeInfo", employee);
 				
-				ArrayList<Employer> employerList = db.getEmployees();
-				session.setAttribute("employerList", employerList);
-			
-				
 				
 				session.setAttribute("isCustomer", false);
 			} else {
@@ -104,7 +100,6 @@ public class UserLogin extends HttpServlet {
 			}
 
 			String targetPage = request.getParameter("TargetPage");
-			System.out.println(targetPage);
 			response.sendRedirect(targetPage);
 		} else { // error
 			noUserInfoMsg(response);

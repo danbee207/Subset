@@ -155,7 +155,7 @@
 							<li><a href="newAuction.jsp" >Upload an Auction</a></li>
 							<li><a href="MySettings.jsp" >My Setting</a>
 							<% } else { %>
-							<li><a href="EmployeeManagement.jsp">Employee Management</a></li>
+							<li><a href="PreEmployeeManagement">Employee Management</a></li>
 							<li><a href="#">Customer Management</a></li>
 							<li><a href="#">History</a></li> <%
  	}
