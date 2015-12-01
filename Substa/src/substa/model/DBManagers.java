@@ -999,10 +999,10 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try{
-				String sql = "SELECT A.AuctionID, B.CustomerID, B.BidPrice, B.BidTime"
-						+ "FROM Bid B, Auction A"
-						+ "WHERE A.AuctionID = ? AND A.AuctionID = B.AuctionID"
-						+ "ORDER BY B.BidPrice DESC";
+				String sql = "SELECT *"
+						+ "FROM Bid"
+						+ "WHERE AuctionID = ?"
+						+ "ORDER BY B.BidTime DESC";
 				
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, auction.getAucId());
@@ -1012,8 +1012,10 @@ public class DBManagers {
 					bidHistory = new BidHistory();
 					bidHistory.setAuctionID(rs.getInt("AuctionID"));
 					bidHistory.setCustomerID(rs.getInt("CustomerID"));
+					bidHistory.setItemID(rs.getInt("ItemID"));
 					bidHistory.setBidPrice(rs.getFloat("BidPrice"));
 					bidHistory.setBidTime(rs.getTimestamp("BidTime"));
+					bidHistory.setMaxBid(rs.getFloat("MaximumBid"));
 					bidHistoryByAuction.add(bidHistory);
 				}
 				
@@ -1032,17 +1034,6 @@ public class DBManagers {
 		
 		return bidHistoryByAuction;
 	}
-	
-	/*
-	 HashMap<Integer, String> hmap = new HashMap<Integer, String>();
-
-      //Adding elements to HashMap
-      hmap.put(12, "Chaitanya");
-      hmap.put(2, "Rahul");
-      hmap.put(7, "Singh");
-      hmap.put(49, "Ajeet");
-      hmap.put(3, "Anuj");
-	 */
 	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {
 		
