@@ -412,7 +412,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-
+					<input type="hidden" name="ShowDetail" id="ShowDetail">
 					<%
 						if (employeeInfo.getLevel() >= 2) {
 					%>
@@ -451,7 +451,7 @@
 							<label for="SigninPassword">Password</label><input
 								type="password" name="signInPw" class="form-control">
 						</div>
-						<input type="hidden" value="index.jsp" name="TargetPage">
+						<input type="hidden" value="EmployeeManagement.jsp" name="TargetPage">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning"
@@ -500,7 +500,7 @@
 	<script type="text/javascript" src="js/employeeManagement.js"></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 	<script>
-
+	$("#startDate").datetimepicker({value:new Date(),step:10});
 	</script>
 </body>
 </html>

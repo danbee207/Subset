@@ -147,7 +147,7 @@ public class DBManager {
 			try {
 				String sqlQuery = "SELECT * FROM Customer WHERE CustomerID=?";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, user.getSsn());
+				ps.setLong(1, user.getSsn());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					customer = new Customer(user);

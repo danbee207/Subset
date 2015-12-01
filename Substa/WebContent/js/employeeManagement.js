@@ -1,7 +1,7 @@
 /**
  * 
  */
-$("#startDate").datetimepicker({value:new Date(),step:10});
+
 function loginReset(){
 	$("#singinModal").modal('show');
 }
@@ -10,7 +10,8 @@ function editEmployee(i,first,last,email,pw,ssn,level,hourR,tele,start,address,z
 	$("#ShowDetail").val(i);
 	
 	$("#firstName").val(first);
-	$("#lastNmae").val(last);
+	$("#lastName").val(last);
+	console.log(last);
 	$("#ssn").val(ssn);
 	$("#tele").val(tele);
 	$("#email").val(email);
@@ -30,11 +31,12 @@ function editEmployee(i,first,last,email,pw,ssn,level,hourR,tele,start,address,z
 	
 }
 function editEmployeeSave(){
-	
+	$("#emInfo").submit();
 }
 
 function deleteEmployee(){
-	
+	$("#ShowDetail").val(-2);
+	$("#emInfo").submit();
 }
 function addEmployee(){
 	

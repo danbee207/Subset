@@ -11,7 +11,7 @@ public class User {
 	private String address;
 	private int zipcode;
 	private long telephone;
-	private int ssn;
+	private long ssn;
 	private String email;
 	private String pw;
 	
@@ -45,10 +45,10 @@ public class User {
 	public void setTelephone(long telephone) {
 		this.telephone = telephone;
 	}
-	public int getSsn() {
+	public long getSsn() {
 		return ssn;
 	}
-	public void setSsn(int ssn) {
+	public void setSsn(long ssn) {
 		this.ssn = ssn;
 	}
 	public String getEmail() {

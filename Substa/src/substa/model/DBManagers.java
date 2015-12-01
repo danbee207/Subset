@@ -147,7 +147,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT * FROM Customer WHERE CustomerID=?";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, user.getSsn());
+				ps.setLong(1, user.getSsn());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					customer = new Customer(user);
@@ -178,7 +178,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT * FROM Employee WHERE EmployeeID=?";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, user.getSsn());
+				ps.setLong(1, user.getSsn());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					employee = new Employer(user);
@@ -213,7 +213,7 @@ public class DBManagers {
 						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 					ps = conn.prepareStatement(sql);
-					ps.setInt(1, user.getSsn());
+					ps.setLong(1, user.getSsn());
 					ps.setString(2, user.getLast());
 					ps.setString(3, user.getFirst());
 					ps.setString(4, user.getAddress());
@@ -250,7 +250,7 @@ public class DBManagers {
 			String sql = "INSERT INTO Customer (CustomerID, Rating, CreditCardNum)" + " VALUES (?, ?, ?)";
 			try {
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, customer.getSsn());
+				ps.setLong(1, customer.getSsn());
 				ps.setInt(2, 0);
 				ps.setLong(3, credit);
 				
@@ -282,7 +282,7 @@ public class DBManagers {
 			String sql = "INSERT INTO Employee (EmployeeID, Level, StartDate, HourlyRate) " + "VALUES (?, ?, ?, ?)";
 			try {
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, employer.getSsn());
+				ps.setLong(1, employer.getSsn());
 				ps.setInt(2, level);
 				ps.setTimestamp(3, start);
 				ps.setFloat(4, rate);
@@ -318,13 +318,13 @@ public class DBManagers {
 				ps1 = conn.prepareStatement(sql1);
 				ps1.setFloat(1, customer.getRating());
 				ps1.setLong(2, customer.getCreditCardNum());
-				ps1.setInt(3, customer.getSsn());
+				ps1.setLong(3, customer.getSsn());
 				
 				String sql2 = "UPDATE Person"
 						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
 						+ "WHERE SSN=?";
 				ps2 = conn.prepareStatement(sql2);
-				ps2.setInt(1, customer.getSsn());
+				ps2.setLong(1, customer.getSsn());
 				ps2.setString(2, customer.getLast());
 				ps2.setString(3, customer.getFirst());
 				ps2.setString(4, customer.getAddress());
@@ -332,7 +332,7 @@ public class DBManagers {
 				ps2.setLong(6, customer.getTelephone());
 				ps2.setString(7, customer.getEmail());
 				ps2.setString(8, customer.getPw());
-				ps2.setInt(1, customer.getSsn());
+				ps2.setLong(1, customer.getSsn());
 				
 				return ps1.execute()&&ps2.execute();
 				
@@ -364,16 +364,16 @@ public class DBManagers {
 						+ "SET Level=?, StartDate=?, HourlyRate=?"
 						+ "WHERE EmployeeID=?";
 				ps1 = conn.prepareStatement(sql1);
-				ps1.setInt(1, employer.getLevel());
+				ps1.setLong(1, employer.getLevel());
 				ps1.setTimestamp(2, employer.getStartDate());
 				ps1.setFloat(3, employer.getHourlyRate());
-				ps1.setInt(4, employer.getSsn());
+				ps1.setLong(4, employer.getSsn());
 				
 				String sql2 = "UPDATE Person"
 						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
 						+ "WHERE Person=?";
 				ps2 = conn.prepareStatement(sql2);
-				ps2.setInt(1, employer.getSsn());
+				ps2.setLong(1, employer.getSsn());
 				ps2.setString(2, employer.getLast());
 				ps2.setString(3, employer.getFirst());
 				ps2.setString(4, employer.getAddress());
@@ -381,7 +381,7 @@ public class DBManagers {
 				ps2.setLong(6, employer.getTelephone());
 				ps2.setString(7, employer.getEmail());
 				ps2.setString(8, employer.getPw());
-				ps2.setInt(1, employer.getSsn());
+				ps2.setLong(1, employer.getSsn());
 				
 				return ps1.execute()&&ps2.execute();
 				
@@ -401,7 +401,7 @@ public class DBManagers {
 		return true;
 	}
 	
-	public boolean deleteCustomer(Customer customer) {
+	public boolean deleteCustomer(long customerId) {
 		
 		Connection conn = getConnection();
 		
@@ -412,7 +412,7 @@ public class DBManagers {
 				String sql = "DELETE FROM Person"
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, customer.getSsn());
+				ps.setLong(1, customerId);
 				
 				return ps.execute();
 				
@@ -431,7 +431,7 @@ public class DBManagers {
 		return true;
 	}
 	
-	public boolean deleteEmployer(Employer employer) {
+	public boolean deleteEmployer(long employerId) {
 		
 		Connection conn = getConnection();
 		
@@ -442,7 +442,7 @@ public class DBManagers {
 				String sql = "DELETE FROM Person"
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, employer.getSsn());
+				ps.setLong(1, employerId);
 				
 				return ps.execute();
 				
@@ -957,7 +957,7 @@ public class DBManagers {
 						+ "LIMIT 20";
 				
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, customer.getSsn());
+				ps.setLong(1, customer.getSsn());
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -1055,7 +1055,7 @@ public class DBManagers {
 						+ " ORDER BY AuctionID DESC)";
 
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, customer.getSsn());
+				ps.setLong(1, customer.getSsn());
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -1444,7 +1444,7 @@ public class DBManagers {
 						+ " VALUES (?, ?, ?, ?, ?)";
 			
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, post.getCusId());
+				ps.setLong(1, post.getCusId());
 				ps.setInt(2, post.getAucId());
 				ps.setTimestamp(3, post.getEndDate());
 				ps.setTimestamp(4, post.getStartDate());

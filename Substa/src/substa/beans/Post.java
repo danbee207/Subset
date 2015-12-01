@@ -5,16 +5,16 @@ import java.sql.Timestamp;
 
 public class Post {
 	//셀러id / 옥션id / expire date / start date / reserve price
-	private int cusId;
+	private long cusId;
 	private int aucId;
 	private Timestamp endDate;
 	private Timestamp startDate;
 	private float price;
 	
-	public int getCusId() {
+	public long getCusId() {
 		return cusId;
 	}
-	public void setCusId(int cusId) {
+	public void setCusId(long cusId) {
 		this.cusId = cusId;
 	}
 	public int getAucId() {
