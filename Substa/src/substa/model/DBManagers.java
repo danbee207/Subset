@@ -629,6 +629,42 @@ public class DBManagers {
 		return salesRecordByMonth;
 	}
 	
+	public int getRevenueByItemName(String itemName) {
+		
+		int revenue = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT SUM(S.Price) AS Revenue"
+						+ "FROM Sales A, Auction A, Item I"
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, itemName);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					revenue = rs.getInt("Revenue");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return revenue;
+	}
+	
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
 		ArrayList<String> mailingList = new ArrayList<String>();
