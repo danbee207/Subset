@@ -4,8 +4,6 @@
 <%@ page import="substa.beans.User" %>
 <%@ page import="substa.beans.Employer"%>
 
-<jsp:useBean id="employerList"
-	type="java.util.ArrayList<substa.beans.Employer>" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,6 +19,7 @@
 	<%
 		User LoginUser = (User)session.getAttribute("LoginUser");
 		Employer employeeInfo = (Employer)session.getAttribute("employeeInfo");
+		ArrayList<Employer> employerList = (ArrayList<Employer>)session.getAttribute("employerList");
 		if(LoginUser!=null){
 	%>
 	<body><%}else{ %>

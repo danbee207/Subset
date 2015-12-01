@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.ServletConfig;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.Employer;
 import substa.beans.User;
 import substa.model.DBManagers;
 
@@ -65,7 +67,7 @@ public class EmployeeManagement extends HttpServlet {
 		processRuqest(request, response);
 	}
 
-	protected void processRuqest(HttpServletRequest request, HttpServletResponse response) {
+	protected void processRuqest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 
@@ -75,16 +77,20 @@ public class EmployeeManagement extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		int type = Integer.parseInt(request.getParameter("ShowDetail"));
+		
+		User user = new User();
+		user.setSsn(Long.parseLong(request.getParameter("ssn")));
+		user.setFirst(request.getParameter("FirstName"));
+		user.setLast(request.getParameter("lastName"));
+		user.setEmail(request.getParameter("email"));
+		user.setPw(request.getParameter("password"));
+		
+		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
+		user.setAddress(address);
+		user.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
+		
 		if(type ==-1){ //add
-			User user = new User();
-			user.setFirst(request.getParameter("FirstName"));
-			user.setLast(request.getParameter("lastName"));
-			user.setEmail(request.getParameter("email"));
-			user.setPw(request.getParameter("password"));
 			
-			String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
-			user.setAddress(address);
-			user.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
 			
 			db.addUser(user);
 			int level = Integer.parseInt(request.getParameter("level"));
@@ -95,11 +101,28 @@ public class EmployeeManagement extends HttpServlet {
 			
 			
 		}else if(type==-2){  //delete
-			
+		
+			db.deleteEmployer(Long.parseLong(request.getParameter("ssn")));
+		
 		}else{				//edit
+			Employer employee = new Employer(user);
+			employee.setLevel(Integer.parseInt(request.getParameter("level")));
+			employee.setHourlyRate(Float.parseFloat(request.getParameter("hourR")));
+			employee.setStartDate(Timestamp.valueOf(request.getParameter("startDate")));
 			
+			
+			db.changeEmployer(employee);
 		}
 
+		session.setAttribute("employerList", db.getEmployees());
+		gotoEmployee(response);
+	}
+	protected void gotoEmployee(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		out.println("<script type = 'text/javascript'>");
+		out.println("location.href='EmployeeManagement.jsp';");
+		out.println("</script>");
 	}
 
 }

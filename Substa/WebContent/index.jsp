@@ -4,6 +4,7 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer"%>
+<%@ page import="substa.model.DBManagers" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,6 +27,10 @@
 			isLogin = true;
 		}else
 			isLogin = false;
+		
+		DBManagers db = new DBManagers("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark","danpark","110142214");
+		
+		
 	%>
 
 	<div id="wrapper">
@@ -184,6 +189,13 @@
 		<div class="jumbotron">
 			<h1>Hello, Guest!</h1>
 			<p>Our site supports ~~~~.</p>
+			<form>
+				<div class="form-group">
+					<label></label>
+					<input type="text" id="search" name="search">
+					<button >Search</button>
+				</div>
+			</form>
 		</div>
 		
 		<h2>You are interested in...</h2>
