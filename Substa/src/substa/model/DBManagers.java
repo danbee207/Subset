@@ -893,25 +893,37 @@ public class DBManagers {
 		return topRevenueCustomer;
 	}
 	
-	public ArrayList<String> getMailingList() {
+	public ArrayList<Customer> getMailingList() {
 		Connection conn = getConnection();
-		ArrayList<String> mailingList = new ArrayList<String>();
+		ArrayList<Customer> mailingList = new ArrayList<Customer>();
+		Customer customer = null;
 		
 		if(conn != null) {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT P.Email"
-						+ "FROM Person P"
+				String sqlQuery = "SELECT *"
+						+ "FROM Person P, Customer C"
 						+ "WHERE EXISTS (SELECT CustomerID"
-						+ "FROM Customer C"
-						+ "WHERE C.CustomerID = P.SSN)";
+						+ "FROM Customer C2"
+						+ "WHERE C2.CustomerID = P.SSN)";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					mailingList.add(rs.getString("Email"));
+					customer = new Customer();
+					customer.setSsn(rs.getInt("SSN"));
+					customer.setLast(rs.getString("LastName"));
+					customer.setFirst(rs.getString("FirstName"));
+					customer.setAddress(rs.getString("Address"));
+					customer.setZipcode(rs.getInt("ZipCode"));
+					customer.setTelephone(rs.getLong("Telephone"));
+					customer.setEmail(rs.getString("Email"));
+					customer.setPw(rs.getString("pw"));
+					customer.setRating(rs.getFloat("Rating"));
+					customer.setCreditCardNum(rs.getLong("CreditCardNum"));
+					mailingList.add(customer);
 				}
 				
 			} catch(SQLException e) {
