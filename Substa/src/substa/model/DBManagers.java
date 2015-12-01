@@ -905,9 +905,9 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT *"
 						+ "FROM Person P, Customer C"
-						+ "WHERE EXISTS (SELECT CustomerID"
-						+ "FROM Customer C2"
-						+ "WHERE C2.CustomerID = P.SSN)";
+						+ "WHERE P.SSN = C.CustomerID AND P.SSN = (SELECT CustomerID"
+						+ "	FROM Customer C2"
+						+ "	WHERE C2.CustomerID = P.SSN)";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
 				
