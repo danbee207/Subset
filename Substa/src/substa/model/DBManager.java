@@ -701,6 +701,7 @@ public class DBManager {
 	 * @Returns a list of Sales object; Null if query unsuccessful.
 	 *  Note: The list might be empty
 	 */
+	/*
 	public List<SalesRecord> getSalesReport(int year, int month) {
 		SalesRecord sr = null;
 		List<SalesRecord> salesList = null;
@@ -746,7 +747,7 @@ public class DBManager {
 	 * 
 	 * @Returns a list of Sales object; Null if query unsuccessful.
 	 *  Note: The list might be empty
-	 */
+	 *//*
 	public List<SalesRecord> getSalesByItemName(String item_name) {
 		SalesRecord sr = null;
 		List<SalesRecord> salesList = null;
@@ -792,7 +793,7 @@ public class DBManager {
 	 * 
 	 * @Returns a list of Sales object; Null if query unsuccessful.
 	 *  Note: The list might be empty
-	 */
+	 *//*
 	public List<SalesRecord> getSalesBySellerName(String fname, String lname) {
 		SalesRecord sr = null;
 		List<SalesRecord> salesList = null;
@@ -841,6 +842,7 @@ public class DBManager {
 	 * @Returns a list of Sales object; Null if query unsuccessful.
 	 *  Note: The list might be empty
 	 */
+	/*
 	public List<SalesRecord> getSalesByBuyerName(String fname, String lname) {
 		SalesRecord sr = null;
 		List<SalesRecord> salesList = null;
@@ -888,7 +890,7 @@ public class DBManager {
 	 * 
 	 * @Returns a list of Sales object; Null if query unsuccessful.
 	 *  Note: The list might be empty
-	 */
+	 *//*
 	public List<SalesRecord> getSalesByCustomerName(String fname, String lname) {
 		SalesRecord sr = null;
 		List<SalesRecord> salesList = null;
