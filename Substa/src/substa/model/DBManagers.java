@@ -631,9 +631,9 @@ public class DBManagers {
 		return salesRecordByMonth;
 	}
 	
-	public int getRevenueByItemName(String itemName) {
+	public float getRevenueByItemName(String itemName) {
 		
-		int revenue = 0;
+		float revenue = 0;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -649,7 +649,7 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					revenue = rs.getInt("Revenue");
+					revenue = rs.getFloat("Revenue");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -667,9 +667,9 @@ public class DBManagers {
 		return revenue;
 	}
 	
-	public int getRevenueByItemType(String itemType) {
+	public float getRevenueByItemType(String itemType) {
 		
-		int revenue = 0;
+		float revenue = 0;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -688,7 +688,7 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					revenue = rs.getInt("Revenue");
+					revenue = rs.getFloat("Revenue");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -706,9 +706,9 @@ public class DBManagers {
 		return revenue;
 	}
 	
-	public int getRevenueByBuyerName(String firstName, String lastName) {
+	public float getRevenueByBuyerName(String firstName, String lastName) {
 		
-		int revenue = 0;
+		float revenue = 0;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -729,7 +729,7 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					revenue = rs.getInt("Revenue");
+					revenue = rs.getFloat("Revenue");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
