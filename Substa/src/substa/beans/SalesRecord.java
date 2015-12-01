@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class SalesRecord {
 	private int buyerID;
 	private int sellerID;
-	private BigDecimal price;
+	private Float price;
 	private Timestamp date;
 	private int auctionID;
 
@@ -26,11 +26,11 @@ public class SalesRecord {
 		this.sellerID = sellerID;
 	}
 
-	public BigDecimal getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
