@@ -1044,6 +1044,77 @@ public class DBManagers {
       hmap.put(3, "Anuj");
 	 */
 	
+	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {
+		
+		ArrayList<AuctionDetailInfo> auctionInfoBySellerName = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auctionInfo = null;
+		Connection conn = getConnection();
+		int sellerId = 0;
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
+			
+			try {
+				String sqlQuery1 = "SELECT SSN"
+						+ "FROM Person"
+						+ "WHERE FirstName = ? AND LastName = ? ";
+				ps1 = conn.prepareStatement(sqlQuery1);
+				ps1.setString(1, firstName);
+				ps1.setString(2, lastName);
+				rs1 = ps1.executeQuery();
+				while(rs1.next()) {
+					sellerId = rs1.getInt("SSN");
+				}
+				rs1.close();
+				
+				if(sellerId > 0) {
+					String sqlQuery2 = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
+							+ "FROM Item I, Auction A, Post P, Sales S"
+							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = S.AuctionID AND A.AuctionID = P.AuctionID AND "
+							+ "I.ItemID = A.ItemID AND P.CustomerID = ?";
+					ps2 = conn.prepareStatement(sqlQuery2);
+					ps2.setInt(1, sellerId);
+					rs2 = ps2.executeQuery();
+					
+					while(rs2.next()) {
+						auctionInfo = new AuctionDetailInfo();
+						auctionInfo.setItemName(rs2.getString("ItemName"));
+						auctionInfo.setItemType(rs2.getString("ItemType"));
+						auctionInfo.setDescription(rs2.getString("Description"));
+						auctionInfo.setImgSrc(rs2.getString("img"));
+						auctionInfo.setAuctionID(rs2.getInt("AuctionID"));
+						auctionInfo.setBidInc(rs2.getFloat("BidIncrement"));
+						auctionInfo.setMinBid(rs2.getFloat("MinimumBid"));
+						auctionInfo.setCopy(rs2.getInt("Copies_Sold"));
+						auctionInfo.setSellerID(rs2.getInt("CustomerID"));
+						auctionInfo.setEndDate(rs2.getTimestamp("ExpireDate"));
+						auctionInfo.setPrice(rs2.getFloat("ReservedPrice"));
+						auctionInfoBySellerName.add(auctionInfo);
+					}
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					ps2.close();
+					rs1.close();
+					rs2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return auctionInfoBySellerName;
+	}
+	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoByItemType(String itemType) {
 		
 		ArrayList<AuctionDetailInfo> auctionInfoByItemType = new ArrayList<AuctionDetailInfo>();
@@ -1056,7 +1127,7 @@ public class DBManagers {
 			
 			try {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.ExpireDate, P.ReservedPrice"
+						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
 						+ "FROM Item I, Auction A, Post P"
 						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ?";
 				ps = conn.prepareStatement(sqlQuery);
@@ -1073,6 +1144,7 @@ public class DBManagers {
 					auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
 					auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
 					auctionInfo.setCopy(rs.getInt("Copies_Sold"));
+					auctionInfo.setSellerID(rs.getInt("CustomerID"));
 					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
 					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
 					auctionInfoByItemType.add(auctionInfo);
