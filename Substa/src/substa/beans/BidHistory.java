@@ -6,8 +6,10 @@ import java.sql.Timestamp;
 public class BidHistory {
 	private int auctionID;
 	private int CustomerID;
+	private int itemID;
 	private Float BidPrice;
 	private Timestamp BidTime;
+	private Float maxBid;
 
 	public int getAuctionID() {
 		return auctionID;
@@ -25,6 +27,14 @@ public class BidHistory {
 		CustomerID = customerID;
 	}
 
+	public int getItemID() {
+		return itemID;
+	}
+	
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
+	}
+	
 	public Float getBidPrice() {
 		return BidPrice;
 	}
@@ -39,6 +49,14 @@ public class BidHistory {
 
 	public void setBidTime(Timestamp bidTime) {
 		BidTime = bidTime;
+	}
+	
+	public Float getMaxBid() {
+		return maxBid;
+	}
+	
+	public void setMaxBid(Float maxBid) {
+		this.maxBid = maxBid;
 	}
 
 }
