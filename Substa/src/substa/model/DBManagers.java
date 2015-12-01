@@ -16,6 +16,7 @@ import substa.beans.User;
 import substa.beans.Item;
 import substa.beans.Post;
 import substa.beans.SalesRecord;
+import substa.beans.BidHistory;
 
 public class DBManagers {
 
@@ -985,6 +986,62 @@ public class DBManagers {
 		
 		return suggestion;
 	}
+	
+	public ArrayList<BidHistory> getBidHistoryByAuction(Auction auction) {
+		
+		ArrayList<BidHistory> bidHistoryByAuction = new ArrayList<BidHistory>();
+		Connection conn = getConnection();
+		BidHistory bidHistory = null;
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try{
+				String sql = "SELECT A.AuctionID, B.CustomerID, B.BidPrice, B.BidTime"
+						+ "FROM Bid B, Auction A"
+						+ "WHERE A.AuctionID = ? AND A.AuctionID = B.AuctionID"
+						+ "ORDER BY B.BidPrice DESC";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, auction.getAucId());
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					bidHistory = new BidHistory();
+					bidHistory.setAuctionID(rs.getInt("AuctionID"));
+					bidHistory.setCustomerID(rs.getInt("CustomerID"));
+					bidHistory.setBidPrice(rs.getFloat("BidPrice"));
+					bidHistory.setBidTime(rs.getTimestamp("BidTime"));
+					bidHistoryByAuction.add(bidHistory);
+				}
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return bidHistoryByAuction;
+	}
+	
+	/*
+	 HashMap<Integer, String> hmap = new HashMap<Integer, String>();
+
+      //Adding elements to HashMap
+      hmap.put(12, "Chaitanya");
+      hmap.put(2, "Rahul");
+      hmap.put(7, "Singh");
+      hmap.put(49, "Ajeet");
+      hmap.put(3, "Anuj");
+	 */
 	
 	public boolean addItem(Item item) {
 		
