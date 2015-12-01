@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class BidHistory {
 	private int auctionID;
 	private int CustomerID;
-	private BigDecimal BidPrice;
+	private Float BidPrice;
 	private Timestamp BidTime;
 
 	public int getAuctionID() {
@@ -25,11 +25,11 @@ public class BidHistory {
 		CustomerID = customerID;
 	}
 
-	public BigDecimal getBidPrice() {
+	public Float getBidPrice() {
 		return BidPrice;
 	}
 
-	public void setBidPrice(BigDecimal bidPrice) {
+	public void setBidPrice(Float bidPrice) {
 		BidPrice = bidPrice;
 	}
 
