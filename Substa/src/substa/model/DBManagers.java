@@ -17,6 +17,7 @@ import substa.beans.Item;
 import substa.beans.Post;
 import substa.beans.SalesRecord;
 import substa.beans.BidHistory;
+import substa.beans.AuctionDetailInfo;
 
 public class DBManagers {
 
@@ -1042,6 +1043,56 @@ public class DBManagers {
       hmap.put(49, "Ajeet");
       hmap.put(3, "Anuj");
 	 */
+	
+	public ArrayList<AuctionDetailInfo> getAuctionInfoByItemType(String itemType) {
+		
+		ArrayList<AuctionDetailInfo> auctionInfoByItemType = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auctionInfo = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
+						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.ExpireDate, P.ReservedPrice"
+						+ "FROM Item I, Auction A, Post P"
+						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setString(1, itemType);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					auctionInfo = new AuctionDetailInfo();
+					auctionInfo.setItemName(rs.getString("ItemName"));
+					auctionInfo.setItemType(rs.getString("ItemType"));
+					auctionInfo.setDescription(rs.getString("Description"));
+					auctionInfo.setImgSrc(rs.getString("img"));
+					auctionInfo.setAuctionID(rs.getInt("AuctionID"));
+					auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
+					auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
+					auctionInfo.setCopy(rs.getInt("Copies_Sold"));
+					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
+					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
+					auctionInfoByItemType.add(auctionInfo);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return auctionInfoByItemType;
+	}
 	
 	public boolean addItem(Item item) {
 		
