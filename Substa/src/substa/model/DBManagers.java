@@ -745,6 +745,80 @@ public class DBManagers {
 		return revenue;
 	}
 	
+	public ArrayList<Employer> getTopRevenueEmployee() {
+		ArrayList<Employer> topRevenueEmployer = new ArrayList<Employer>();
+		int topEmployerID = 0;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
+			
+			try {
+				String sqlQuery1 = "SELECT R.EmployeeID,"
+						+ "FROM RepTotalRev R"
+						+ "WHERE R.TotalRev = ("
+						+ "	SELECT MAX(R2.TotalRev)"
+						+ "	FROM RepTotalRev R2)";
+				ps1 = conn.prepareStatement(sqlQuery1);
+				rs1 = ps1.executeQuery();
+				
+				while(rs1.next()) {
+					topEmployerID = rs1.getInt("EmployeeID");
+				}
+				
+				rs1.close();
+				
+				if(topEmployerID > 0) {
+					String sqlQuery2 = "SELECT *"
+							+ "FROM Person, Employee"
+							+ "WHERE EmployeeID = SSN AND SSN = ?";
+					
+					ps2 = conn.prepareStatement(sqlQuery2);
+					ps2.setInt(1, topEmployerID);
+					rs2 = ps2.executeQuery();
+					
+					User user = null;
+					Employer employer = null;
+					
+					while(rs2.next()) {
+						user = new User();
+						user.setFirst(rs2.getString("FirstName"));
+						user.setLast(rs2.getString("LastName"));
+						user.setAddress(rs2.getString("Address"));
+						user.setZipcode(rs2.getInt("ZipCode"));
+						user.setTelephone(rs2.getLong("Telephone"));
+						user.setSsn(rs2.getInt("SSN"));
+						user.setEmail(rs2.getString("Email"));
+						user.setPw(rs2.getString("pw"));
+						employer = new Employer(user);
+						employer.setLevel(rs2.getInt("Level"));
+						employer.setStartDate(rs2.getTimestamp("StartDate"));
+						employer.setHourlyRate(rs2.getFloat("HourlyRate"));
+						topRevenueEmployer.add(employer);
+					}
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					ps2.close();
+					rs1.close();
+					rs2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return topRevenueEmployer;
+	}
+	
 	public ArrayList<String> getMailingList() {
 		Connection conn = getConnection();
 		ArrayList<String> mailingList = new ArrayList<String>();
