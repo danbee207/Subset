@@ -1,6 +1,6 @@
 package substa.beans;
 
-public class Auction {
+public class Auction  {
 
 	private int aucId;
 	private float bidInc;

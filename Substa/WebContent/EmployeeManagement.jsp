@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="substa.beans.User" %>
 <%@ page import="substa.beans.Employer"%>
-<jsp:useBean id="LoginUser" type="substa.beans.User" scope="session" />
-<jsp:useBean id="employeeInfo" type="substa.beans.Employer"
-	scope="session" />
+
 <jsp:useBean id="employerList"
 	type="java.util.ArrayList<substa.beans.Employer>" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,7 +17,14 @@
 
 <link rel="stylesheet" href="css/employeeM.css">
 </head>
-<body>
+
+	<%
+		User LoginUser = (User)session.getAttribute("LoginUser");
+		Employer employeeInfo = (Employer)session.getAttribute("employeeInfo");
+		if(LoginUser!=null){
+	%>
+	<body><%}else{ %>
+ 	<body onload="loginReset();"><%} %>
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -421,7 +427,72 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade bs-example-modal-sm" id="singinModal"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Sing in</h4>
+				</div>
+				<form method="post" action="UserLogin" name="signIn">
+					<div class="modal-body">
 
+						<div class="form-group">
+							<label for="SigninId">ID</label> <input type="text"
+								name="signInId" class="form-control"
+								placeholder="ex)abc@substa.com">
+						</div>
+						<div class="form-group">
+							<label for="SigninPassword">Password</label><input
+								type="password" name="signInPw" class="form-control">
+						</div>
+						<input type="hidden" value="index.jsp" name="TargetPage">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning"
+							onclick="goTosignup();">Sign up</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Sign in</button>
+					</div>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<div class="modal fade bs-example-modal-sm" id="logoutModal"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Logout</h4>
+				</div>
+
+				<div class="modal-body">Do you want to log out ?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary" onclick="Logout()">Yes</button>
+				</div>
+
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
+	
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
@@ -429,7 +500,7 @@
 	<script type="text/javascript" src="js/employeeManagement.js"></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 	<script>
-	$("#startDate").datetimepicker({value:new Date(),step:10});
+
 	</script>
 </body>
 </html>

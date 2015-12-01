@@ -2,11 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="substa.beans.User"%>
 <%@ page import="java.lang.Boolean"%>
-
-<jsp:useBean id="LoginUser"  type="substa.beans.User" scope="session" />
+<%@ page import="substa.beans.Customer" %>
 <jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
-<jsp:useBean id="customerInfo" type="substa.beans.Customer"
-	scope="session" />
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,7 +17,13 @@
 <link rel="stylesheet" href="css/jquery.datetimepicker.css">
 
 </head>
-<body >
+	<%
+		User LoginUser = (User)session.getAttribute("LoginUser");
+		Customer customerInfo = (Customer)session.getAttribute("customerInfo");
+		if(LoginUser!=null){
+	%>
+	<body><%}else{ %>
+ 	<body onload="loginReset();"><%} %>
 
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -32,7 +36,7 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar" onclick="goCategories(this,<%=LoginUser%>);">Book</span>
+						class="icon-bar" onclick="goCategories(this,	<%=LoginUser%>);">Book</span>
 					<span class="icon-bar" onclick="goCategories(this);">Electronics</span>
 					<span class="icon-bar" onclick="goCategories(this);">Fashion</span>
 					<span class="icon-bar" onclick="goCategories(this);">Home &
@@ -195,7 +199,12 @@
 				</div>
 				<div class="form-group">
 					<label for="minBid">How much money is your minimum bid?</label>
-					<input type="tel" class="form-control" name="minBid" id="minBid">
+					<input type="text" class="form-control" name="minBid" id="minBid">
+				
+				</div>
+				<div class="form-group">
+					<label for="minBid">How much money is your reserve bid?</label>
+					<input type="text" class="form-control" name="reserveBid" id="reserveBid">
 				
 				</div>
 				<div class="form-group">
@@ -235,6 +244,45 @@
 </nav>
 	
 	</div>
+		<div class="modal fade bs-example-modal-sm" id="singinModal"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Sing in</h4>
+				</div>
+				<form method="post" action="UserLogin" name="signIn">
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label for="SigninId">ID</label> <input type="text"
+								name="signInId" class="form-control"
+								placeholder="ex)abc@substa.com">
+						</div>
+						<div class="form-group">
+							<label for="SigninPassword">Password</label><input
+								type="password" name="signInPw" class="form-control">
+						</div>
+						<input type="hidden" value="index.jsp" name="TargetPage">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning"
+							onclick="goTosignup();">Sign up</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Sign in</button>
+					</div>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 	<div class="modal fade bs-example-modal-sm" id="logoutModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">
@@ -260,6 +308,8 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
+	
+	
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"

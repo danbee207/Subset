@@ -1,7 +1,10 @@
 /**
  * 
  */
-
+$("#startDate").datetimepicker({value:new Date(),step:10});
+function loginReset(){
+	$("#singinModal").modal('show');
+}
 function editEmployee(i,first,last,email,pw,ssn,level,hourR,tele,start,address,zip){
 	
 	$("#ShowDetail").val(i);

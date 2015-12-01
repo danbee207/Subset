@@ -103,7 +103,8 @@ public class UserLogin extends HttpServlet {
 				session.setAttribute("isCustomer", true);
 			}
 
-			String targetPage = "index.jsp";
+			String targetPage = request.getParameter("TargetPage");
+			System.out.println(targetPage);
 			response.sendRedirect(targetPage);
 		} else { // error
 			noUserInfoMsg(response);

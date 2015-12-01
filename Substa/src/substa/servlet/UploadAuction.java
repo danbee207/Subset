@@ -108,21 +108,27 @@ public class UploadAuction extends HttpServlet {
 			
 			String file = multi.getFilesystemName((String)multi.getFileNames().nextElement());
 			item.setImgsrc(file);
-			
+			db.addItem(item);
+			int itemId = db.getLatestItemID();
 			//db
 			Auction auction = new Auction();
+			auction.setItemId(itemId);
+			auction.setMornitor(db.getManagerID());
+			auction.setCopy(1);
+			auction.setMinBid(Float.parseFloat(request.getParameter("minBid")));
 			
-			
-			
+			db.addAuction(auction);
 			//db
 			Post post = new Post();
 			Customer customer = (Customer)session.getAttribute("customerInfo");
 			post.setCusId(customer.getSsn());
-			
+			post.setAucId(db.getLatesetAuctionID());
 			post.setStartDate(new Timestamp(System.currentTimeMillis()));
 			post.setEndDate(Timestamp.valueOf(request.getParameter("endDate")));
-			
+			post.setPrice(Float.parseFloat(request.getParameter("reserveBid")));
+			db.addPost(post);
 			//db
+			
 			goIndex(response);
 			
 			

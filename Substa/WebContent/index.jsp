@@ -322,6 +322,7 @@
 							<label for="SigninPassword">Password</label><input
 								type="password" name="signInPw" class="form-control">
 						</div>
+						<input type="hidden" value="index.jsp" name="TargetPage">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning"
