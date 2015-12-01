@@ -1035,6 +1035,62 @@ public class DBManagers {
 		return bidHistoryByAuction;
 	}
 	
+	public ArrayList<AuctionDetailInfo> getTakenAuctions(Customer customer) {
+		ArrayList<AuctionDetailInfo> takenAuctions = new ArrayList<AuctionDetailInfo>();
+		Connection conn = getConnection();
+		AuctionDetailInfo takenAuction = null;
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, A.AuctionID, "
+						+ "A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
+						+ "FROM Item I, Auction A, Post P"
+						+ "WHERE I.ItemID = A.ItemID AND P.AuctionID = A.AuctionID AND A.AuctionID IN ("
+						+ "	SELECT B.AuctionID"
+						+ "	FROM Bid B"
+						+ "	WHERE B.CustomerID = ?"
+						+ "	GROUP BY B.AuctionID"
+						+ " ORDER BY AuctionID DESC)";
+
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setInt(1, customer.getSsn());
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					takenAuction = new AuctionDetailInfo();
+					takenAuction.setItemName(rs.getString("ItemName"));
+					takenAuction.setItemType(rs.getString("ItemType"));
+					takenAuction.setDescription(rs.getString("Description"));
+					takenAuction.setImgSrc(rs.getString("img"));
+					takenAuction.setAuctionID(rs.getInt("AuctionID"));
+					takenAuction.setBidInc(rs.getFloat("BidIncrement"));
+					takenAuction.setMinBid(rs.getFloat("MinimumBid"));
+					takenAuction.setCopy(rs.getInt("Copies_Sold"));
+					takenAuction.setSellerID(rs.getInt("CustomerID"));
+					takenAuction.setEndDate(rs.getTimestamp("ExpireDate"));
+					takenAuction.setPrice(rs.getFloat("ReservedPrice"));
+					takenAuctions.add(takenAuction);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return takenAuctions;
+	}
+	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {
 		
 		ArrayList<AuctionDetailInfo> auctionInfoBySellerName = new ArrayList<AuctionDetailInfo>();
