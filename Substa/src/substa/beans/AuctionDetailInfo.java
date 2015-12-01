@@ -11,6 +11,7 @@ public class AuctionDetailInfo {
 	private float bidInc;
 	private float minBid;
 	private int copy;
+	private int sellerId;
 	private Timestamp endDate;
 	private float price;
 	
@@ -76,6 +77,14 @@ public class AuctionDetailInfo {
 	
 	public void setCopy(int copy) {
 		this.copy = copy;
+	}
+	
+	public int getSellerID() {
+		return sellerId;
+	}
+	
+	public void setSellerID(int sellerId) {
+		this.sellerId = sellerId;
 	}
 	
 	public Timestamp getEndDate() {
