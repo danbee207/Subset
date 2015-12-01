@@ -1064,9 +1064,8 @@ public class DBManagers {
 				if(sellerId > 0) {
 					String sqlQuery2 = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
 							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-							+ "FROM Item I, Auction A, Post P, Sales S"
-							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = S.AuctionID AND A.AuctionID = P.AuctionID AND "
-							+ "I.ItemID = A.ItemID AND P.CustomerID = ?";
+							+ "FROM Item I, Auction A, Post P"
+							+ "WHERE P.ExpireDate > NOW() AND A.AuctionID = P.AuctionID AND I.ItemID = A.ItemID AND P.CustomerID = ?";
 					ps2 = conn.prepareStatement(sqlQuery2);
 					ps2.setInt(1, sellerId);
 					rs2 = ps2.executeQuery();
