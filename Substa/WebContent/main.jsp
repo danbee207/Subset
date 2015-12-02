@@ -5,16 +5,16 @@
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer"%>
 <%@ page import="substa.model.DBManagers"%>
-<%@ page import="substa.beans.Item" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="substa.beans.Item"%>
+<%@ page import="java.util.ArrayList"%>
 
-
+<jsp:useBean id="bestSellers"
+	type="java.util.ArrayList<substa.beans.Customer>" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Substa</title>
-<link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/index_css.css">
@@ -30,8 +30,6 @@
 			isLogin = true;
 		} else
 			isLogin = false;
-
-	
 	%>
 
 	<div id="wrapper">
@@ -42,7 +40,7 @@
 					class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-header">
-				
+
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> <span
@@ -62,10 +60,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<%if(isCustomer){ %>
+				<%
+					if (isCustomer) {
+				%>
 				<form action="CategoriesShown" method="get" id="listclicked">
-				
-				<input type="hidden" value="" name="category" id="category">
+
+					<input type="hidden" value="" name="category" id="category">
 				</form>
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -152,7 +152,10 @@
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Games</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Videos</a></li>
 						</ul></li>
-				</ul><%} %>
+				</ul>
+				<%
+					}
+				%>
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text">
 							<%
@@ -168,7 +171,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<%
 								if (LoginUser != null) {
-							
+
 									if (isCustomer) {
 							%>
 							<li><a href="#">My Bidding Process</a></li>
@@ -186,16 +189,22 @@
 								}
 								}
 							%>
-							<%if(LoginUser != null){ %>
+							<%
+								if (LoginUser != null) {
+							%>
 							<li class="divider"></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
-							<%}else{ %>
+							<%
+								} else {
+							%>
 							<li><a href="#" readonly>Substa</a>
 							<li class="divider"></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#singinModal">Sign in</a></li>
-							<%} %>
+							<%
+								}
+							%>
 						</ul></li>
 				</ul>
 			</div>
@@ -210,22 +219,29 @@
 		<div id="blankforBody"></div>
 		<div class="jumbotron" id="jumboTron1">
 			<h1>Welcome to Substa,</h1>
-			<h2 class="lead">Substa is a new auction Site. I hope you could find your like.</h2><br/>
+			<h2 class="lead">Substa is a new auction Site. I hope you could
+				find your like.</h2>
+			<br />
 			<form class="form-horizontal" method="post" action="SearchItem">
-				<div class="form-group" id="serarchDiv" >
+				<div class="form-group" id="serarchDiv">
 					<div class="col-sm-8">
-					<input type="text" id="search" name="search" size="10" class="form-control input-lg" placeholder="Samsung, Coffee Machine, Microwave">
+						<input type="text" id="search" name="search" size="10"
+							class="form-control input-lg"
+							placeholder="Samsung, Coffee Machine, Microwave">
 					</div>
 					<div class="col-sm-4">
-					<button type="button" class="btn btn-warning btn-lg" onclick="searchItem();">Search</button></div>
+						<button type="button" class="btn btn-warning btn-lg"
+							onclick="searchItem();">Search</button>
+					</div>
 				</div>
 			</form>
 		</div>
 		<div class="row">
-		<h2 class="col-md-11">Deadline Soon!</h2><a href="#" class="col-sm-1"
-				id="Interestingdetail"><h3> more</h3></a>
+			<h2 class="col-md-11">Deadline Soon!</h2>
+			<a href="#" class="col-sm-1" id="Interestingdetail"><h3>
+					more</h3></a>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
@@ -285,114 +301,92 @@
 			</div>
 		</div>
 
-		
-		<div class="row">
-		<h2 class="col-md-11">Best Sellers</h2>
-		</div>
 
 		<div class="row">
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="img/basic/person.png" >
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="img/basic/person.png">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="img/basic/person.png">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="img/basic/person.png">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
+			<h2 class="col-md-11">Most Popular Sellers</h2>
 		</div>
+		<%
+			for (int i = 0; i < bestSellers.size(); i++) {
+			if(i%4==0){
+		%>
+
+		<div class="row">
+			<%} %>
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+					<img src="img/basic/person.png">
+					<div class="caption">
+						<%
+							String name = bestSellers.get(i).getFirst() + " " + bestSellers.get(i).getLast();
+						%>
+						<h3><%=name%>
+						</h3>
+						<p><%=bestSellers.get(i).getEmail()%></p>
+						<p><%=bestSellers.get(i).getRating()%></p>
+						<p class="text-right">
+							<a href="#" class="btn btn-warning" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+			<%if(i%4==3){ %>
+		</div>
+		<%}
+			}
+		if(bestSellers.size()<4){
+		%>
+	</div>
+	<%} %>
+
+
 	</div>
 	<%
 		} else {
 	%>
-		<div id="containerBody">
-		
+	<div id="containerBody">
+
 		<div id="blankforBody"></div>
-		
+
 		<div class="jumbotron" id="jumboTron2">
-			<h1>Hello, <%=LoginUser.getFirst() %>!</h1>
-			<p class="lead"> Thanks to your work! I hope you have a good day!</p>
-			
+			<h1>
+				Hello,
+				<%=LoginUser.getFirst()%>!
+			</h1>
+			<p class="lead">Thanks to your work! I hope you have a good day!</p>
+
 		</div>
-		
-		
+
+
 		<p class="lead">Which function do you need?</p>
 		<div class="list-group">
-  <a href="PreCustomerManagement" class="list-group-item list-group-item-info">
-    <h4 class="list-group-item-heading">Customer Management</h4>
-    <p class="list-group-item-text">Mail list for Customers</p>
-  </a>
-  
-  <a href="PreEmployeeManagement" class="list-group-item">
-    <h4 class="list-group-item-heading">Employeee Management</h4>
-    <p class="list-group-item-text">Employer Information List / Auction's Mornitor List</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-info">
-    <h4 class="list-group-item-heading">Item Management</h4>
-    <p class="list-group-item-text">- Item List</p>
-  </a>
-  <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">Summery</h4>
-    <p class="list-group-item-text">- Monthly Sum </p>
-  </a>
-</div>
-
-
+			<a href="PreCustomerManagement"
+				class="list-group-item list-group-item-info">
+				<h4 class="list-group-item-heading">Customer Management</h4>
+				<p class="list-group-item-text">Mail list for Customers</p>
+			</a> <a href="PreEmployeeManagement" class="list-group-item">
+				<h4 class="list-group-item-heading">Employeee Management</h4>
+				<p class="list-group-item-text">Employer Information List /
+					Auction's Mornitor List</p>
+			</a> <a href="#" class="list-group-item list-group-item-info">
+				<h4 class="list-group-item-heading">Item Management</h4>
+				<p class="list-group-item-text">- Item List</p>
+			</a> <a href="#" class="list-group-item">
+				<h4 class="list-group-item-heading">Summery</h4>
+				<p class="list-group-item-text">- Monthly Sum</p>
+			</a>
 		</div>
+
+
+	</div>
 
 	<%
 		}
 	%>
 
 
-<%if(isCustomer){ %>
+
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
@@ -401,18 +395,7 @@
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
-	<%}else{ %>
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-	<div class="container" id="footer">
-		<div class="navbar-header" id=footerHeader>
-			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
-		</div>
-		<div class="navbar-footer navbar-right">
-			<h4>Copy@ Right Substa | Stony Brook University</h4>
-		</div>
-	</div>
-	</nav>
-<%} %>
+
 
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
