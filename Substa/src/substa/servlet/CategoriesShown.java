@@ -77,6 +77,8 @@ public class CategoriesShown extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		String cate = request.getParameter("category");
+		System.out.println(cate);
+		
 		ArrayList<AuctionDetailInfo> itemList =  db.getAuctionInfoByItemType(cate);
 		session.setAttribute("itemList", itemList);
 		

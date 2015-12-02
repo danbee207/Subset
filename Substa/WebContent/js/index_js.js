@@ -28,11 +28,13 @@ function goTosignup(){
  * user : user info, User object
  */
 function goCategories(btn,user){
-	console.log();
+	
 	if(user==false){											//if user doesn't log in, show log-in view
 		$('#singinModal').modal('show');			
 	}else{													//if user logs in, btn's value(categories name) sends
-		location.href="CategoriesShown/category?"+$(btn).text();
+		$("#category").val($(btn).text());
+		console.log($("#category").val());
+		$("#listclicked").submit();
 
 	}
 }

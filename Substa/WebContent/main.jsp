@@ -42,6 +42,7 @@
 					class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-header">
+				
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> <span
@@ -62,6 +63,10 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<%if(isCustomer){ %>
+				<form action="CategoriesShown" method="get" id="listclicked">
+				
+				<input type="hidden" value="" name="category" id="category">
+				</form>
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Book
@@ -216,15 +221,13 @@
 				</div>
 			</form>
 		</div>
-
-		<h2>Deadline Soon!</h2>
-		<div class="detailsBtn">
-			<a href="#" class="btn btn-default" role="button"
-				id="Interestingdetail"> more</a>
-		</div>
-
 		<div class="row">
-			<div class="col-sm-6 col-md-4">
+		<h2 class="col-md-11">Deadline Soon!</h2><a href="#" class="col-sm-1"
+				id="Interestingdetail"><h3> more</h3></a>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
@@ -238,7 +241,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-4">
+			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
@@ -252,7 +255,21 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-4">
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid:</p>
+						<p>Sale ends in:</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
@@ -270,8 +287,7 @@
 
 		
 		<div class="row">
-		<h2 class="col-md-9">Best Sellers</h2><a href="#" class="col-md-2"
-				id="Interestingdetail"><h3> more</h3></a>
+		<h2 class="col-md-11">Best Sellers</h2>
 		</div>
 
 		<div class="row">

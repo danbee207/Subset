@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.Customer;
 import substa.beans.Item;
 import substa.model.DBManagers;
 
@@ -76,12 +77,9 @@ public class MakeBaseInfoForIndex extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
-		ArrayList<Item> bestSellList = db.getBestSellers();
+		ArrayList<Customer> bestSellList = db.getMostSellCustomers();
 		session.setAttribute("bestSellers", bestSellList);
 		
-		String targetPage = "customerManagement.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/" + targetPage);
-		dispatcher.forward(request, response);
 		
 		gotoRealIndex(response);
 		

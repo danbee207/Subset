@@ -189,7 +189,20 @@
 			</div><!-- /.navbar-collapse -->
 		</nav>
 		<div>
-		
+		<table class="table table-bordered">
+		<% for(int i=0;i<itemList.size();i++){ 
+			if(i%4==0){
+			%><tr><%} %>
+			<td>
+			<img src="<%=itemList.get(i).getImgSrc() %>">
+			<h3><%=itemList.get(i).getItemName() %></h3>
+			<p>Type : <%=itemList.get(i).getItemType() %></p>
+			<p>Auction End Time : <%=itemList.get(i).getEndDate() %></p>
+			</td>
+			<%if(i%4==3){ %>
+			</tr>
+		<%}} %>
+		</table>
 		</div>
 	</div>
 		
