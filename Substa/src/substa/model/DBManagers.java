@@ -114,7 +114,7 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					user = new User();
-					user.setSsn(rs.getInt("SSN"));
+					user.setSsn(rs.getLong("SSN"));
 					user.setFirst(rs.getString("FirstName"));
 					user.setLast(rs.getString("LastName"));
 					user.setAddress(rs.getString("Address"));
@@ -523,7 +523,7 @@ public class DBManagers {
 				while(rs.next()) {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
-					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setSellerID(rs.getLong("SellerID"));
 					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
@@ -567,7 +567,7 @@ public class DBManagers {
 				while(rs.next()) {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
-					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setSellerID(rs.getLong("SellerID"));
 					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
@@ -608,7 +608,7 @@ public class DBManagers {
 				while(rs.next()) {
 					salesRecord = new SalesRecord();
 					salesRecord.setBuyerID(rs.getInt("BuyerID"));
-					salesRecord.setSellerID(rs.getInt("SellerID"));
+					salesRecord.setSellerID(rs.getLong("SellerID"));
 					salesRecord.setPrice(rs.getFloat("Price"));
 					salesRecord.setDate(rs.getTimestamp("Date"));
 					salesRecord.setAuctionID(rs.getInt("AuctionID"));
@@ -791,7 +791,7 @@ public class DBManagers {
 						user.setAddress(rs2.getString("Address"));
 						user.setZipcode(rs2.getInt("ZipCode"));
 						user.setTelephone(rs2.getLong("Telephone"));
-						user.setSsn(rs2.getInt("SSN"));
+						user.setSsn(rs2.getLong("SSN"));
 						user.setEmail(rs2.getString("Email"));
 						user.setPw(rs2.getString("pw"));
 						employer = new Employer(user);
@@ -822,7 +822,7 @@ public class DBManagers {
 	
 	public ArrayList<Customer> getTopRevenueCustomer() {
 		ArrayList<Customer> topRevenueCustomer = new ArrayList<Customer>();
-		int topCustomerID = 0;
+		long topCustomerID = 0;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -841,7 +841,7 @@ public class DBManagers {
 				rs1 = ps1.executeQuery();
 				
 				while(rs1.next()) {
-					topCustomerID = rs1.getInt("SellerID");
+					topCustomerID = rs1.getLong("SellerID");
 				}
 				
 				rs1.close();
@@ -852,7 +852,7 @@ public class DBManagers {
 							+ "WHERE CustomerID = SSN AND SSN = ?";
 					
 					ps2 = conn.prepareStatement(sqlQuery2);
-					ps2.setInt(1, topCustomerID);
+					ps2.setLong(1, topCustomerID);
 					rs2 = ps2.executeQuery();
 					
 					User user = null;
@@ -865,7 +865,7 @@ public class DBManagers {
 						user.setAddress(rs2.getString("Address"));
 						user.setZipcode(rs2.getInt("ZipCode"));
 						user.setTelephone(rs2.getLong("Telephone"));
-						user.setSsn(rs2.getInt("SSN"));
+						user.setSsn(rs2.getLong("SSN"));
 						user.setEmail(rs2.getString("Email"));
 						user.setPw(rs2.getString("pw"));
 						customer = new Customer(user);
@@ -913,7 +913,7 @@ public class DBManagers {
 				
 				while(rs.next()) {
 					customer = new Customer();
-					customer.setSsn(rs.getInt("SSN"));
+					customer.setSsn(rs.getLong("SSN"));
 					customer.setLast(rs.getString("LastName"));
 					customer.setFirst(rs.getString("FirstName"));
 					customer.setAddress(rs.getString("Address"));
@@ -1022,7 +1022,7 @@ public class DBManagers {
 				while(rs.next()) {
 					bidHistory = new BidHistory();
 					bidHistory.setAuctionID(rs.getInt("AuctionID"));
-					bidHistory.setCustomerID(rs.getInt("CustomerID"));
+					bidHistory.setCustomerID(rs.getLong("CustomerID"));
 					bidHistory.setItemID(rs.getInt("ItemID"));
 					bidHistory.setBidPrice(rs.getFloat("BidPrice"));
 					bidHistory.setBidTime(rs.getTimestamp("BidTime"));
@@ -1080,7 +1080,7 @@ public class DBManagers {
 					takenAuction.setBidInc(rs.getFloat("BidIncrement"));
 					takenAuction.setMinBid(rs.getFloat("MinimumBid"));
 					takenAuction.setCopy(rs.getInt("Copies_Sold"));
-					takenAuction.setSellerID(rs.getInt("CustomerID"));
+					takenAuction.setSellerID(rs.getLong("CustomerID"));
 					takenAuction.setEndDate(rs.getTimestamp("ExpireDate"));
 					takenAuction.setPrice(rs.getFloat("ReservedPrice"));
 					takenAuctions.add(takenAuction);
@@ -1107,7 +1107,7 @@ public class DBManagers {
 		ArrayList<AuctionDetailInfo> auctionInfoBySellerName = new ArrayList<AuctionDetailInfo>();
 		AuctionDetailInfo auctionInfo = null;
 		Connection conn = getConnection();
-		int sellerId = 0;
+		long sellerId = 0;
 		
 		if(conn != null) {
 			PreparedStatement ps1 = null;
@@ -1124,7 +1124,7 @@ public class DBManagers {
 				ps1.setString(2, lastName);
 				rs1 = ps1.executeQuery();
 				while(rs1.next()) {
-					sellerId = rs1.getInt("SSN");
+					sellerId = rs1.getLong("SSN");
 				}
 				rs1.close();
 				
@@ -1134,7 +1134,7 @@ public class DBManagers {
 							+ "FROM Item I, Auction A, Post P"
 							+ "WHERE P.ExpireDate > NOW() AND A.AuctionID = P.AuctionID AND I.ItemID = A.ItemID AND P.CustomerID = ?";
 					ps2 = conn.prepareStatement(sqlQuery2);
-					ps2.setInt(1, sellerId);
+					ps2.setLong(1, sellerId);
 					rs2 = ps2.executeQuery();
 					
 					while(rs2.next()) {
@@ -1147,7 +1147,7 @@ public class DBManagers {
 						auctionInfo.setBidInc(rs2.getFloat("BidIncrement"));
 						auctionInfo.setMinBid(rs2.getFloat("MinimumBid"));
 						auctionInfo.setCopy(rs2.getInt("Copies_Sold"));
-						auctionInfo.setSellerID(rs2.getInt("CustomerID"));
+						auctionInfo.setSellerID(rs2.getLong("CustomerID"));
 						auctionInfo.setEndDate(rs2.getTimestamp("ExpireDate"));
 						auctionInfo.setPrice(rs2.getFloat("ReservedPrice"));
 						auctionInfoBySellerName.add(auctionInfo);
@@ -1201,7 +1201,7 @@ public class DBManagers {
 					auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
 					auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
 					auctionInfo.setCopy(rs.getInt("Copies_Sold"));
-					auctionInfo.setSellerID(rs.getInt("CustomerID"));
+					auctionInfo.setSellerID(rs.getLong("CustomerID"));
 					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
 					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
 					auctionInfoByItemType.add(auctionInfo);
@@ -1255,7 +1255,7 @@ public class DBManagers {
 						auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
 						auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
 						auctionInfo.setCopy(rs.getInt("Copies_Sold"));
-						auctionInfo.setSellerID(rs.getInt("CustomerID"));
+						auctionInfo.setSellerID(rs.getLong("CustomerID"));
 						auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
 						auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
 						auctionInfoByItemName.add(auctionInfo);
@@ -1645,7 +1645,7 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				while(rs.next()) {
 					employee = new Employer();
-					employee.setSsn(rs.getInt("SSN"));
+					employee.setSsn(rs.getLong("SSN"));
 					employee.setLast(rs.getString("LastName"));
 					employee.setFirst(rs.getString("FirstName"));
 					employee.setAddress(rs.getString("Address"));
