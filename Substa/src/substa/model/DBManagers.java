@@ -972,20 +972,22 @@ public class DBManagers {
 		return mailingList;
 	}
 	
-	public ArrayList<Item> getPersonalSuggestion(Customer customer) {
+	public ArrayList<AuctionDetailInfo> getPersonalSuggestion(Customer customer) {
 		
 		Connection conn = getConnection();
-		ArrayList<Item> suggestion = new ArrayList<Item>();
-		Item item = null;
+		ArrayList<AuctionDetailInfo> suggestion = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auction = null;
 		
 		if(conn != null) {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT A.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
-						+ "FROM Sales S, Auction A, Item I "
-						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND S.BuyerID IN ( "
+				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, A.AuctionID, A.BidIncrement, "
+						+ "A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate "
+						+ "FROM Sales S, Auction A, Item I, Post P "
+						+ "WHERE NOW() < P.ExpireDate AND S.AuctionID = A.AuctionID AND P.AuctionID = A.AuctionID "
+						+ "AND A.ItemID = I.ItemID AND S.BuyerID IN ( "
 						+ "	SELECT S.BuyerID "
 						+ "	FROM Sales S, Auction A "
 						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ( "
@@ -1003,14 +1005,18 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					item = new Item();
-					item.setItemID(rs.getInt("ItemID"));
-					item.setItemName(rs.getString("ItemName"));
-					item.setItemType(rs.getString("ItemType"));
-					item.setNumCopies(rs.getInt("NumCopies"));
-					item.setDescription(rs.getString("Description"));
-					item.setImgsrc(rs.getString("img"));
-					suggestion.add(item);
+					auction = new AuctionDetailInfo();
+					auction.setItemName(rs.getString("ItemName"));
+					auction.setItemType(rs.getString("ItemType"));
+					auction.setDescription(rs.getString("Description"));
+					auction.setImgSrc(rs.getString("img"));
+					auction.setAuctionID(rs.getInt("AuctionID"));
+					auction.setBidInc(rs.getFloat("BidIncrement"));
+					auction.setMinBid(rs.getFloat("MinimumBid"));
+					auction.setCopy(rs.getInt("Copies_Sold"));
+					auction.setSellerID(rs.getLong("CustomerID"));
+					auction.setEndDate(rs.getTimestamp("ExpireDate"));
+					suggestion.add(auction);
 				}
 				
 			} catch(SQLException e) {
