@@ -1236,9 +1236,9 @@ public class DBManagers {
 							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
 							+ "FROM Item I, Auction A, Post P "
 							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID "
-							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%' ";
+							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE ? ";
 					ps = conn.prepareStatement(sqlQuery);
-					ps.setString(1, keywords.get(i));
+					ps.setString(1, "%" + keywords.get(i) + "%");
 					rs = ps.executeQuery();
 					
 					while(rs.next()) {
