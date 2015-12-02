@@ -337,7 +337,30 @@
 		<br/>
 		
 		<p class="lead">Which function do you need?</p>
-		
+		<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Customer Management</h4>
+    <p class="list-group-item-text">Mail list for Customers</p>
+  </a>
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Employeee Management</h4>
+    <p class="list-group-item-text">-Manage Employer Information <br/> -A</p>
+  </a>
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Customer Management</h4>
+    <p class="list-group-item-text">Mail list for Customers</p>
+  </a>
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Customer Management</h4>
+    <p class="list-group-item-text">Mail list for Customers</p>
+  </a>
+</div>
 		</div>
 
 	<%
