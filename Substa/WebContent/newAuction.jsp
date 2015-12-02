@@ -15,7 +15,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/newAuction.css">
 <link rel="stylesheet" href="css/jquery.datetimepicker.css">
-
+<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 	<%
 		User LoginUser = (User)session.getAttribute("LoginUser");
@@ -149,102 +149,99 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 	</div>
-	<div id="contentBody">
-		<div class="upperPart"></div>
-		<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data ">
-			<div id="uploadScene" class="container">
-
-
-				<div id="imagePart">
-					<img src="img/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
-					<input type="file" name="ImageFile"
-						id="ImageFile" onchange="readURL(this);">
-					<p class="help-block">Upload image file which you want to see
-						at auction page</p>
-				</div>
-				<div id="theOtherPart">
-				<div class="form-group" >
-					<label for="titleItem">Name</label> 
-					<input type="text" class="form-control" name="name" id="name">
-				</div>
-				<div class="form-group">
-					<label for="BigtypeItem">Type</label>
-					<select class="form-control" name="bType" id="bType" onchange="changeSubType(this);">
-						<option vlaue="0"></option>
-						<option value="1">Fashion</option>
-						<option value="2">Home & Garden</option>
-						<option></option>
-						<option></option>
-						<option></option>
-						
-					
-					</select>
-					<div id="subType">
-					<label for="smalltypeItem">SubType</label>
-					
-					<select class="form-control" name="sType" id="sType">
-						
-					</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="num"> How many do you have?  </label>
-					<input type="number" class="form-control" name="num" id="num" min="1">
-				
-				</div>
-				<div class="form-group">
-					<label for="endTime">When your auction is finished?</label>
-					<input type="text" class="form-control" name="endDate" id="endDate" >
-				
-				</div>
-				<div class="form-group">
-					<label for="minBid">How much money is your minimum bid?</label>
-					<input type="text" class="form-control" name="minBid" id="minBid">
-				
-				</div>
-				<div class="form-group">
-					<label for="minBid">How much money is your reserve bid?</label>
-					<input type="text" class="form-control" name="reserveBid" id="reserveBid">
-				
-				</div>
-				<div class="form-group">
-					<label for="des">Tell your products in detail.</label>
-					<input tyep="textarea" class="form-control" name="desc" id="desc">
-				</div>
-				<div class="form-group">
-				<br>
 	
-				
-					<div id="btnbox">
-					<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
-					<button type="button" class="btn btn-warning" onclick="goToServlet(this);">Sign in</button>
+	
+		<div id="contentBody">
+			<div class="upperPart"></div>
+			<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data ">
+				<div id="uploadScene" class="container">
+	
+	
+					<div id="imagePart">
+						<img src="img/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
+						<input type="file" name="ImageFile"
+							id="ImageFile" onchange="readURL(this);">
+						<p class="help-block">Upload image file which you want to see
+							at auction page</p>
 					</div>
-				
+					<div id="theOtherPart">
+					<div class="form-group" >
+						<label for="titleItem">Name</label> 
+						<input type="text" class="form-control" name="name" id="name">
+					</div>
+					<div class="form-group">
+						<label for="BigtypeItem">Type</label>
+						<select class="form-control" name="bType" id="bType" onchange="changeSubType(this);">
+							<option vlaue="0"></option>
+							<option value="1">Fashion</option>
+							<option value="2">Home & Garden</option>
+							<option></option>
+							<option></option>
+							<option></option>
+							
+						
+						</select>
+						<div id="subType">
+						<label for="smalltypeItem">SubType</label>
+						
+						<select class="form-control" name="sType" id="sType">
+							
+						</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="num"> How many do you have?  </label>
+						<input type="number" class="form-control" name="num" id="num" min="1">
+					
+					</div>
+					<div class="form-group">
+						<label for="endTime">When your auction is finished?</label>
+						<input type="text" class="form-control" name="endDate" id="endDate" >
+					
+					</div>
+					<div class="form-group">
+						<label for="minBid">How much money is your minimum bid?</label>
+						<input type="text" class="form-control" name="minBid" id="minBid">
+					
+					</div>
+					<div class="form-group">
+						<label for="minBid">How much money is your reserve bid?</label>
+						<input type="text" class="form-control" name="reserveBid" id="reserveBid">
+					
+					</div>
+					<div class="form-group">
+						<label for="des">Tell your products in detail.</label>
+						<input tyep="textarea" class="form-control" name="desc" id="desc">
+					</div>
+					<div class="form-group">
+					<br>
+		
+					
+						<div id="btnbox">
+						<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
+						<button type="button" class="btn btn-warning" onclick="goToServlet(this);">Sign in</button>
+						</div>
+					
+					</div>
+					</div>
+					
 				</div>
-				</div>
-				
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 
-
-
-
-
-	<div id="footer">
 	<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-   <div class="navbar-header" id=footerHeader>
-				<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
-			</div>
-			<div class="navbar-footer navbar-right">
-				<h4>Copy@ Right Substa | Stony Brook University</h4>
-			</div>
-  </div>
-</nav>
-	
+	<div class="container" id="footer">
+		<div class="navbar-header" id=footerHeader>
+			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
+		</div>
+		<div class="navbar-footer navbar-right">
+			<h4>Copy@ Right Substa | Stony Brook University</h4>
+		</div>
 	</div>
-		<div class="modal fade bs-example-modal-sm" id="singinModal"
+	</nav>
+	
+	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog modal-sm">
