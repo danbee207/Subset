@@ -5,12 +5,13 @@
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer"%>
 <%@ page import="substa.beans.Item"%>
+<%@ page import="substa.beans.AuctionDetailInfo"%>
 <%@ page import="java.util.ArrayList"%>
 
 <jsp:useBean id="bestSellers"
 	type="java.util.ArrayList<substa.beans.Customer>" scope="session" />
 <jsp:useBean id="deadlineItems"
-	type="java.util.ArrayList<substa.beans.Item>" scope="session" />
+	type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -231,11 +232,11 @@
 
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="<%=deadlineItems.get(i).getImgsrc() %>" alt="...">				
+					<img src="<%=deadlineItems.get(i).getImgSrc() %>" alt="...">				
 					<div class="caption">
 						<h3><%=deadlineItems.get(i).getItemName() %></h3>
 						<p>Categories:<%=deadlineItems.get(i).getItemType()%></p>
-						
+						<p>Auction End Time : <%=deadlineItems.get(i).getEndDate() %></p>
 						<p class="text-right">
 							<a href="#" class="btn btn-warning" role="button">Detail</a>
 						</p>
