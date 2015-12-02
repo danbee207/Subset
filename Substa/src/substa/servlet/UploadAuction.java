@@ -91,14 +91,14 @@ public class UploadAuction extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String realFolder = "";
-		String saveFolder = "/img";
+		String saveFolder = "/fileupload";
 		
 		int fileSize = 5*1024*1024;
-		realFolder = request.getRealPath(saveFolder);
+		realFolder = request.getServletContext().getRealPath(saveFolder);
 		try{
 			MultipartRequest multi = null;
 			
-			multi = new MultipartRequest(request, realFolder, fileSize,"utf-8",new DefaultFileRenamePolicy());
+			multi = new MultipartRequest(request, realFolder, fileSize,"euc-kr",new DefaultFileRenamePolicy());
 			
 			Item item = new Item();
 			item.setItemName(multi.getParameter("name"));
@@ -115,7 +115,7 @@ public class UploadAuction extends HttpServlet {
 			auction.setItemId(itemId);
 			auction.setMornitor(db.getManagerID());
 			auction.setCopy(1);
-			auction.setMinBid(Float.parseFloat(request.getParameter("minBid")));
+			auction.setMinBid(Float.parseFloat(multi.getParameter("minBid")));
 			
 			db.addAuction(auction);
 			//db
@@ -124,8 +124,10 @@ public class UploadAuction extends HttpServlet {
 			post.setCusId(customer.getSsn());
 			post.setAucId(db.getLatesetAuctionID());
 			post.setStartDate(new Timestamp(System.currentTimeMillis()));
-			post.setEndDate(Timestamp.valueOf(request.getParameter("endDate")));
-			post.setPrice(Float.parseFloat(request.getParameter("reserveBid")));
+			//yyyy-mm-dd hh:mm:ss
+			
+			post.setEndDate(Timestamp.valueOf(multi.getParameter("endDate")));
+			post.setPrice(Float.parseFloat(multi.getParameter("reserveBid")));
 			db.addPost(post);
 			//db
 			

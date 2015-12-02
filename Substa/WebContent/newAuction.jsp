@@ -120,6 +120,7 @@
 							<li><a href="#" onclick="goCategories(this);">Games</a></li>
 							<li><a href="#" onclick="goCategories(this);">Videos</a></li>
 						</ul></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text">
 							Hello, <b><%=LoginUser.getLast()%></b>!
@@ -150,25 +151,30 @@
 	
 		<div id="contentBody">
 			<div class="upperPart"></div>
-			<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data ">
+			<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data" >
 				<div id="uploadScene" class="container">
 	
 	
-					<div id="imagePart" >
+					<div id="imagePart" class="form-group">
 					
 						<img src="img/basic/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
 						
+						<div class="col-sm-10" id="fileDiv">
 						<input type="file" name="ImageFile"
 							id="ImageFile" onchange="readURL(this);">
-						
+						</div>
 					</div>
-					<div id="theOtherPart">
+					<div id="theOtherPart" class="form-horizontal">
 					<div class="form-group" >
-						<label for="titleItem">Name</label> 
+						<label for="titleItem"class="col-sm-4">Name</label> 
+						<div class="col-sm-5">
 						<input type="text" class="form-control" name="name" id="name">
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="BigtypeItem">Type</label>
+					
+						<label for="BigtypeItem" class="col-sm-4">Type</label>
+						<div class="col-sm-5">
 						<select class="form-control" name="bType" id="bType" onchange="changeSubType(this);">
 							<option value="8" selected="selected">Select Type</option>
 							<option value="1">Books</option>
@@ -181,45 +187,55 @@
 							
 						
 						</select>
-						<div id="subType">
-						<label for="smalltypeItem">SubType</label>
-						
+						</div>
+					</div>
+					<div id="subType" class="form-group">
+						<label for="smalltypeItem" class="col-sm-4">SubType</label>
+						<div class="col-sm-5">
 						<select class="form-control" name="sType" id="sType">
 							
 						</select>
+						 </div>
+					</div>
+					
+					<div class="form-group">
+						<label for="num" class="col-sm-4"> How many do you have?  </label>
+						<div class="col-sm-5">
+						<input type="number" class="form-control" name="num" id="num" min="1"  value="1">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="num"> How many do you have?  </label>
-						<input type="number" class="form-control" name="num" id="num" min="1">
-					
-					</div>
-					<div class="form-group">
-						<label for="endTime">When your auction is finished?</label>
+						<label for="endTime" class="col-sm-4">When your auction is finished?</label>
+						<div class="col-sm-5">
 						<input type="text" class="form-control" name="endDate" id="endDate" >
+						</div>
 					
 					</div>
 					<div class="form-group">
-						<label for="minBid">How much money is your minimum bid?</label>
+						<label for="minBid" class="col-sm-4">How much money is your minimum bid?</label>
+						<div class="col-sm-5">
 						<input type="text" class="form-control" name="minBid" id="minBid">
-					
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="minBid">How much money is your reserve bid?</label>
+						<label for="minBid" class="col-sm-4">How much money is your reserve bid?</label>
+						<div class="col-sm-5">
 						<input type="text" class="form-control" name="reserveBid" id="reserveBid">
-					
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="des">Tell your products in detail.</label>
-						<textarea class="form-control" name="desc" id="desc"></textarea>
+						<label for="des" class="col-sm-6">Tell your products in detail.</label>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" name="desc" id="desc" cols="9" rows="3"></textarea>
 					</div>
 					<div class="form-group">
 					<br>
 		
 					
-						<div id="btnbox">
+						<div id="btnbox" class="col-sm-4">
 						<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
-						<button type="button" class="btn btn-warning" onclick="goToServlet(this);">Sign in</button>
+						<button type="submit" class="btn btn-warning" >Upload</button>
 						</div>
 					
 					</div>
@@ -230,7 +246,7 @@
 		</div>
 	</div>
 
-	<nav class="navbar navbar-default navbar-fixed-bottom">
+
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
@@ -239,7 +255,7 @@
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
-	</nav>
+
 	
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
