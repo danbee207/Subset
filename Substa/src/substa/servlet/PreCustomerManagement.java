@@ -76,7 +76,7 @@ public class PreCustomerManagement extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		
-		//ArrayList<Customer> customerList;
+		ArrayList<Customer> customerList = db.get;
 		//session.setAttribute("customerList", customerList);
 		
 		String targetPage = "customerManagement.jsp";

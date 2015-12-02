@@ -334,33 +334,30 @@
 			<p class="lead"> Thanks to your work! I hope you have a good day!</p>
 			
 		</div>
-		<br/>
+		
 		
 		<p class="lead">Which function do you need?</p>
 		<div class="list-group">
-  <a href="#" class="list-group-item active">
+  <a href="PreCustomerManagement" class="list-group-item list-group-item-info">
     <h4 class="list-group-item-heading">Customer Management</h4>
     <p class="list-group-item-text">Mail list for Customers</p>
   </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item active">
+  
+  <a href="PreEmployeeManagement" class="list-group-item">
     <h4 class="list-group-item-heading">Employeee Management</h4>
-    <p class="list-group-item-text">-Manage Employer Information <br/> -A</p>
+    <p class="list-group-item-text">Employer Information List / Auction's Mornitor List</p>
+  </a>
+  <a href="#" class="list-group-item list-group-item-info">
+    <h4 class="list-group-item-heading">Item Management</h4>
+    <p class="list-group-item-text">- Item List</p>
+  </a>
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">Summery</h4>
+    <p class="list-group-item-text">- Monthly Sum </p>
   </a>
 </div>
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading">Customer Management</h4>
-    <p class="list-group-item-text">Mail list for Customers</p>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading">Customer Management</h4>
-    <p class="list-group-item-text">Mail list for Customers</p>
-  </a>
-</div>
+
+
 		</div>
 
 	<%
