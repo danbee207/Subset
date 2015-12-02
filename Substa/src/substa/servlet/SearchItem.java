@@ -80,8 +80,8 @@ public class SearchItem extends HttpServlet {
 		for(int i=0;i<searchType.length;i++){
 			searchList.add(searchType[i]);
 		}
-		ArrayList<AuctionDetailInfo> searchedList = db.getAuctionInfoByItemName(searchList);
-		session.setAttribute("searchedList", searchedList);
+		ArrayList<AuctionDetailInfo> itemList = db.getAuctionInfoByItemName(searchList);
+		session.setAttribute("itemList", itemList);
 		
 		changeSitesrc(response);
 

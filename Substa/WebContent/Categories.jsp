@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Customer"%>
+<%@ page import="substa.beans.AuctionDetailInfo" %>
+<%@ page import="java.util.ArrayList" %>
 
+<jsp:useBean id="itemList" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session"></jsp:useBean>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -120,48 +123,24 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text">
-							<%
-								if (LoginUser != null) {
-							%>Hello, <b><%=LoginUser.getLast()%></b>!<%
-								}
-							%>
+							Hello, <b><%=LoginUser.getLast()%></b>!
 						</p>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">My
 							Account<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<%
-								if (LoginUser == null || isCustomer) {
-							%>
-							<li class="disabled"><a hef="#">My Bidding Process</a>
-							<li class="disabled"><a href="#">History</a> <%
- 	} else {
- 		if (isCustomer) {
- %>
-							<li><a href="#">My Bidding Process</a>
-							<li><a href="#">History</a> <%
- 	} else {
- %>
-							<li><a href="#">Customer Management</a>
-							<li><a href="#">History</a> <%
- 	}
- 	}
- %>
+							
+							<li><a href="#">My Bidding Process</a></li>
+							<li><a href="#">History</a></li>
+							<li><a href="newAuction.jsp">Upload an Auction</a></li>
+							<li><a href="MySettings.jsp">My Setting</a>
+ 	
 							<li class="divider"></li>
-							<%
-								if (LoginUser == null) {
-							%>
-							<li><a href="#" data-toggle="modal"
-								data-target="#singinModal">Sign in</a></li>
-							<%
-								} else {
-							%>
+							
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
-							<%
-								}
-							%>
+							
 						</ul></li>
 				</ul>
 			</div>
@@ -209,201 +188,11 @@
 			    </ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+		<div>
 		
-		<div class="row">
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
-	
-	<nav>
-  		<div class="text-center">
-	  		<ul class="pagination">
-		  		<li>
-		      		<a href="#" aria-label="Previous">
-		        	<span aria-hidden="true">&laquo;</span>
-		      		</a>
-		    	</li>
-		    	<li><a href="#">1</a></li>
-		    	<li><a href="#">2</a></li>
-		    	<li><a href="#">3</a></li>
-		    	<li><a href="#">4</a></li>
-		    	<li><a href="#">5</a></li>
-		    	<li>
-		      		<a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      	</a>
-		    	</li>
-		  	</ul>
-		</div>
-	</nav>
-	
+		
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>

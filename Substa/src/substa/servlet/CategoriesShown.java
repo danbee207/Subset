@@ -2,7 +2,9 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.AuctionDetailInfo;
 import substa.model.DBManager;
 import substa.model.DBManagers;
 
@@ -74,20 +77,20 @@ public class CategoriesShown extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		String cate = request.getParameter("category");
+		ArrayList<AuctionDetailInfo> itemList =  db.getAuctionInfoByItemType(cate);
+		session.setAttribute("itemList", itemList);
 		
-		switch(cate){
-		case "Fashion" : break;
-		case "Men's Clothing" : break;
+		String targetPage = "Categories.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/" + targetPage);
+		dispatcher.forward(request, response);
 		
-		
-		}
-		
+		goCategory(response);
 		
 		
 		
 	}
 	
-	private void goIndex(HttpServletResponse response) throws IOException {
+	private void goCategory(HttpServletResponse response) throws IOException {
 		response.setContentType("text/html;charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script type = 'text/javascript'>");

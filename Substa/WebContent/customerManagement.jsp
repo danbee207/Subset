@@ -111,8 +111,8 @@
 							for (int i = 0; i < customerList.size(); i++) {
 						%>
 						<tr
-							onclick="editEmployee(<%=i%>,'<%=customerList.get(i).getFirst()%>','<%=customerList.get(i).getLast()%>',
-												'<%=customerList.get(i).getEmail()%>">
+							onclick="SendingEmail('<%=customerList.get(i).getFirst()%>','<%=customerList.get(i).getLast()%>',
+												'<%=customerList.get(i).getEmail()%>')">
 							<th scope="row"><%=i%></th>
 							<td><%=customerList.get(i).getFirst()%></td>
 							<td><%=customerList.get(i).getLast()%></td>

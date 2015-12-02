@@ -158,7 +158,7 @@
 	
 	
 					<div id="imagePart">
-						<img src="img/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
+						<img src="img/basic/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
 						<input type="file" name="ImageFile"
 							id="ImageFile" onchange="readURL(this);">
 						<p class="help-block">Upload image file which you want to see

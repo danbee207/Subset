@@ -162,12 +162,8 @@
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<%
-								if (LoginUser == null) {
-							%>
-							<li class="disabled"><a hef="#">My Bidding Process</a></li>
-							<li class="disabled"><a href="#">History</a></li>
-							<%
-								} else {
+								if (LoginUser != null) {
+							
 									if (isCustomer) {
 							%>
 							<li><a href="#">My Bidding Process</a></li>
@@ -185,20 +181,16 @@
 								}
 								}
 							%>
+							<%if(LoginUser != null){ %>
 							<li class="divider"></li>
-							<%
-								if (LoginUser == null) {
-							%>
-							<li><a href="#" data-toggle="modal"
-								data-target="#singinModal">Sign in</a></li>
-							<%
-								} else {
-							%>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
-							<%
-								}
-							%>
+							<%}else{ %>
+							<li><a href="#" readonly>Substa</a>
+							<li class="divider"></li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#singinModal">Sign in</a></li>
+							<%} %>
 						</ul></li>
 				</ul>
 			</div>
@@ -276,16 +268,16 @@
 			</div>
 		</div>
 
-		<h2>Best Sellers</h2>
-		<div class="detailsBtn">
-			<a href="#" class="btn btn-default" role="button"
-				id="Interestingdetail"> more</a>
+		
+		<div class="row">
+		<h2 class="col-md-9">Best Sellers</h2><a href="#" class="col-md-2"
+				id="Interestingdetail"><h3> more</h3></a>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="img/person.png" alt="">
+					<img src="img/basic/person.png" >
 					<div class="caption">
 						<h3>Name of Product</h3>
 						<p>Description of product...</p>
@@ -299,7 +291,7 @@
 			</div>
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="..." alt="...">
+					<img src="img/basic/person.png">
 					<div class="caption">
 						<h3>Name of Product</h3>
 						<p>Description of product...</p>
@@ -313,7 +305,7 @@
 			</div>
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="..." alt="...">
+					<img src="img/basic/person.png">
 					<div class="caption">
 						<h3>Name of Product</h3>
 						<p>Description of product...</p>
@@ -327,7 +319,7 @@
 			</div>
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="..." alt="...">
+					<img src="img/basic/person.png">
 					<div class="caption">
 						<h3>Name of Product</h3>
 						<p>Description of product...</p>
