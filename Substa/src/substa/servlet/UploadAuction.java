@@ -142,7 +142,7 @@ public class UploadAuction extends HttpServlet {
 		response.setContentType("text/html;charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script type = 'text/javascript'>");
-		out.println("location.href='index.jsp';");
+		out.println("location.href='main.jsp';");
 		out.println("</script>");
 	}
 }

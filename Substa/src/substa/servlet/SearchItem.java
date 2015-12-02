@@ -2,7 +2,9 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -12,27 +14,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import substa.beans.User;
+import substa.beans.AuctionDetailInfo;
+import substa.beans.Customer;
 import substa.model.DBManagers;
 
 /**
- * Servlet implementation class SingUp
+ * Servlet implementation class SearchItem
  */
-@WebServlet(
-		urlPatterns = { "/SingUp" }, 
-		initParams = { 
-				@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"), 
-				@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark"), 
-				@WebInitParam(name = "dbUser", value = "danpark"), 
-				@WebInitParam(name = "dbPass", value = "110142214")
-		})
-public class SingUp extends HttpServlet {
+ 
+@WebServlet(urlPatterns = { "/SearchItem" }, initParams = {
+		@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"),
+		@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu/danpark"),
+		@WebInitParam(name = "dbUser", value = "danpark"), @WebInitParam(name = "dbPass", value = "110142214") })
+public class SearchItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	private DBManagers db;
+    private DBManagers db;   
     /**
      * @see HttpServlet#HttpServlet()
      */
+    
 	public void init(ServletConfig config) throws ServletException{
 		super.init();
 		
@@ -53,6 +53,7 @@ public class SingUp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		processRequest(request,response);
 	}
 
 	/**
@@ -62,47 +63,36 @@ public class SingUp extends HttpServlet {
 		// TODO Auto-generated method stub
 		processRequest(request,response);
 	}
+	
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
 		HttpSession session = request.getSession(true);
-		
-		response.setHeader("Cache-Control", "no-cache");
-		
+
+		response.setHeader("Cache-Control", "no-cache"); // no cache for HTTP
+															// 1.1
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
+		
+		String searching = request.getParameter("search");
+		String[] searchType = searching.split(",");
+		ArrayList<String> searchList = new ArrayList<String>();
+		for(int i=0;i<searchType.length;i++){
+			searchList.add(searchType[i]);
+		}
+		ArrayList<AuctionDetailInfo> searchedList = db.getAuctionInfoByItemName(searchList);
+		session.setAttribute("searchedList", searchedList);
+		
+		changeSitesrc(response);
 
-		
-		User customer = new User();
-		customer.setFirst(request.getParameter("firstName"));
-		customer.setLast(request.getParameter("lastName"));
-		customer.setEmail(request.getParameter("email"));
-		customer.setPw(request.getParameter("password"));
-		customer.setSsn(Integer.parseInt(request.getParameter("ssn")));
-		
-		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
-		customer.setAddress(address);
-		
-		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
-		customer.setTelephone(Long.parseLong(request.getParameter("tele")));
-		
-		long credit;
-		if(request.getParameter("card")!="")
-			credit = Long.parseLong(request.getParameter("card"));
-		else
-			credit =0 ;
-		
-		
-		db.addCustomer(customer, credit);
-		goIndex(response);
-				
-		
 	}
-	private void goIndex(HttpServletResponse response) throws IOException {
-		response.setContentType("text/html;charset=euc-kr");
+	
+	protected void changeSitesrc(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script type = 'text/javascript'>");
-		out.println("location.href='main.jsp';");
+		out.println("location.href='Categories.jsp';");
 		out.println("</script>");
 	}
+
 }

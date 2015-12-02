@@ -894,6 +894,7 @@ public class DBManagers {
 	}
 	
 	public ArrayList<Customer> getMailingList() {
+	
 		Connection conn = getConnection();
 		ArrayList<Customer> mailingList = new ArrayList<Customer>();
 		Customer customer = null;

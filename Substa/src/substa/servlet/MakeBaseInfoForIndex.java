@@ -2,7 +2,9 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -12,21 +14,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import substa.beans.User;
+import substa.beans.Item;
 import substa.model.DBManagers;
 
 /**
- * Servlet implementation class SingUp
+ * Servlet implementation class MakeBaseInfoForIndex
  */
 @WebServlet(
-		urlPatterns = { "/SingUp" }, 
+		urlPatterns = { "/MakeBaseInfoForIndex" }, 
 		initParams = { 
 				@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"), 
 				@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark"), 
 				@WebInitParam(name = "dbUser", value = "danpark"), 
 				@WebInitParam(name = "dbPass", value = "110142214")
 		})
-public class SingUp extends HttpServlet {
+public class MakeBaseInfoForIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private DBManagers db;
@@ -53,6 +55,7 @@ public class SingUp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		processRequest(request,response);
 	}
 
 	/**
@@ -61,48 +64,35 @@ public class SingUp extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		processRequest(request,response);
+
 	}
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		
 		response.setHeader("Cache-Control", "no-cache");
 		
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
-
 		
-		User customer = new User();
-		customer.setFirst(request.getParameter("firstName"));
-		customer.setLast(request.getParameter("lastName"));
-		customer.setEmail(request.getParameter("email"));
-		customer.setPw(request.getParameter("password"));
-		customer.setSsn(Integer.parseInt(request.getParameter("ssn")));
+		ArrayList<Item> bestSellList = db.getBestSellers();
+		session.setAttribute("bestSellers", bestSellList);
 		
-		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
-		customer.setAddress(address);
+		String targetPage = "customerManagement.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/" + targetPage);
+		dispatcher.forward(request, response);
 		
-		customer.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
-		customer.setTelephone(Long.parseLong(request.getParameter("tele")));
+		gotoRealIndex(response);
 		
-		long credit;
-		if(request.getParameter("card")!="")
-			credit = Long.parseLong(request.getParameter("card"));
-		else
-			credit =0 ;
-		
-		
-		db.addCustomer(customer, credit);
-		goIndex(response);
-				
 		
 	}
-	private void goIndex(HttpServletResponse response) throws IOException {
-		response.setContentType("text/html;charset=euc-kr");
+	protected void gotoRealIndex(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script type = 'text/javascript'>");
 		out.println("location.href='main.jsp';");
 		out.println("</script>");
 	}
+
 }

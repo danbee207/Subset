@@ -5,6 +5,9 @@
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer"%>
 <%@ page import="substa.model.DBManagers"%>
+<%@ page import="substa.beans.Item" %>
+<%@ page import="java.util.ArrayList" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,8 +31,7 @@
 		} else
 			isLogin = false;
 
-		DBManagers db = new DBManagers("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark", "danpark",
-				"110142214");
+	
 	%>
 
 	<div id="wrapper">
@@ -210,65 +212,17 @@
 	<div id="containerBody">
 		<div id="blankforBody"></div>
 		<div class="jumbotron" id="jumboTron1">
-			<h1>Hello, Guest!</h1>
-			<p class="lead">Substa is a new auction Site. I hope you could find your like.</p>
-			<form>
-				<div class="form-group" id="serarchDiv">
-					<label></label> <input type="text" id="search" name="search">
-					<button>Search</button>
+			<h1>Welcome to Substa,</h1>
+			<h2 class="lead">Substa is a new auction Site. I hope you could find your like.</h2><br/>
+			<form class="form-horizontal" method="post" action="SearchItem">
+				<div class="form-group" id="serarchDiv" >
+					<div class="col-sm-8">
+					<input type="text" id="search" name="search" size="10" class="form-control input-lg" placeholder="Samsung, Coffee Machine, Microwave">
+					</div>
+					<div class="col-sm-4">
+					<button type="button" class="btn btn-warning btn-lg" onclick="searchItem();">Search</button></div>
 				</div>
 			</form>
-		</div>
-
-		<h2>You are interested in...</h2>
-		<div class="detailsBtn">
-			<a href="#" class="btn btn-default" role="button"
-				id="Interestingdetail"> more</a>
-		</div>
-
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<h2>Deadline Soon!</h2>
@@ -307,6 +261,71 @@
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid:</p>
+						<p>Sale ends in:</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h2>Best Sellers</h2>
+		<div class="detailsBtn">
+			<a href="#" class="btn btn-default" role="button"
+				id="Interestingdetail"> more</a>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+					<img src="img/person.png" alt="">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid:</p>
+						<p>Sale ends in:</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid:</p>
+						<p>Sale ends in:</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+					<img src="..." alt="...">
+					<div class="caption">
+						<h3>Name of Product</h3>
+						<p>Description of product...</p>
+						<p>Current High Bid:</p>
+						<p>Sale ends in:</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">Detail</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="..." alt="...">
 					<div class="caption">
@@ -411,7 +430,7 @@
 							<label for="SigninPassword">Password</label><input
 								type="password" name="signInPw" class="form-control">
 						</div>
-						<input type="hidden" value="index.jsp" name="TargetPage">
+						<input type="hidden" value="main.jsp" name="TargetPage">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning"

@@ -3,6 +3,7 @@ package substa.beans;
 import java.sql.Timestamp;
 
 public class AuctionDetailInfo {
+
 	private String itemName;
 	private String itemType;
 	private String description;
