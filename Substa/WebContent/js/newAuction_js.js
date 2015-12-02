@@ -2,9 +2,13 @@
 /**
  * @author Danbee Park
  */
-
-var fashion ={0 : "Men's Clothing", 1: "Women's Clothing",2:"Kids's Clothing"};
-var kitchen = {0 : "Kitchen", 1 : "Furniture", 2: "Appliance", 13:"Flowers & Trees",14: "Gardening Supplies"};
+var books = {0: "Books",1:"Textbooks",2:"Magazines" , 3: "E-books"};
+var electronics ={0:"TV & Video" ,1:"Cell Phones",2:"Desktops",3:"Laptops"};
+var motors ={0:"Cars",1:"Motorcycles",2:"Automotive Tools"};
+var sportingGoods={0: "Team Sports",1:"Leisure Sports",2:"Water Sports"};
+var toyHobbies ={0:"Action Figures",1:"Building Toys",2:"Baby Toys",3:"Games",4:"Videos"}
+var fashion ={0 : "Women's Clothing", 1: "Men's Clothing",2:"Kids' Clothing"};
+var homeGarden = {0 : "Kitchen", 1 : "Furniture", 2: "Appliance", 3:"Flowers & Trees",4: "Gardening Supplies"};
 
 $( document ).ready(function() {
 	$("#subType").hide();
@@ -27,8 +31,15 @@ function changeSubType(btype){
 	$("#sType").empty();
 	var SubtypeA;
 	switch(btypeVal){
-	case 1 : SubtypeA = fashion; break;
-	case 2 : SubtypeA = kitchen; break;
+	case 1 : SubtypeA = books; break;
+	case 2 : SubtypeA = electronics; break;
+	case 3 : SubtypeA = fashion; break;
+	case 4 : SubtypeA = homeGarden; break;
+	case 5 : SubtypeA = motors; break;
+	case 6 : SubtypeA = sportingGoods; break;
+	case 7 : SubtypeA = toyHobbies; break;
+	
+	
 	}
 	for(var key in SubtypeA) 
     {

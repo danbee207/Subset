@@ -29,96 +29,98 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp"><span class="SubstaLabel">Substa</span></a>
+				<a class="navbar-brand" href="main.jsp"><span class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-header">
+
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> 
-					<spanclass="icon-bar">Book</span> 
-					<span class="icon-bar">Electronics</span>
-					<span class="icon-bar">Fashion</span> 
-					<span class="icon-bar">Home	& Garden</span> 
-					<span class="icon-bar">Motors</span> 
-					<span class="icon-bar">Sporting Goods</span> 
-					<span class="icon-bar">Toy & Hobbies</span>
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar" onclick="goCategories(this);">Book</span>
+					<span class="icon-bar" onclick="goCategories(this);">Electronics</span>
+					<span class="icon-bar" onclick="goCategories(this);">Fashion</span>
+					<span class="icon-bar" onclick="goCategories(this);">Home & Garden</span> <span class="icon-bar"
+						onclick="goCategories(this);">Motors</span> <span
+						class="icon-bar" onclick="goCategories(this);">Sporting Goods</span> <span class="icon-bar"
+						onclick="goCategories(this);">Toy & Hobbies</span>
 				</button>
-				
+
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
+				<form action="CategoriesShown" method="get" id="listclicked">
+
+					<input type="hidden" value="" name="category" id="category">
+				</form>
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Book
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Books</a></li>
-							<li><a href="#">Textbooks</a></li>
-							<li><a href="#">Magazines</a></li>
-							<li><a href="#">E-Books</a></li>
+							<li><a href="#" onclick="goCategories(this);">Books</a></li>
+							<li><a href="#" onclick="goCategories(this);">Textbooks</a></li>
+							<li><a href="#" onclick="goCategories(this);">Magazines</a></li>
+							<li><a href="#" onclick="goCategories(this);">E-Books</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Electronics<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">TV & Video</a></li>
-							<li><a href="#">Cell Phones</a></li>
-							<li><a href="#">Desktops</a></li>
-							<li><a href="#">Laptops</a></li>
+							<li><a href="#" onclick="goCategories(this);">TV & Video</a></li>
+							<li><a href="#" onclick="goCategories(this);">Cell Phones</a></li>
+							<li><a href="#" onclick="goCategories(this);">Desktops</a></li>
+							<li><a href="#" onclick="goCategories(this);">Laptops</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Fashion
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Women's Clothing</a></li>
-							<li><a href="#">Men's Clothing</a></li>
-							<li><a href="#">Kids' Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this);">Women's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this);">Men's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this);">Kids' Clothing</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Home
-							& Garden<span class="caret"></span>
+						data-toggle="dropdown" role="button" aria-expanded="false">Home & Garden<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Kitchen</a></li>
-							<li><a href="#">Furniture</a></li>
-							<li><a href="#">Appliance</a></li>
+							<li><a href="#" onclick="goCategories(this);">Kitchen</a></li>
+							<li><a href="#" onclick="goCategories(this);">Furniture</a></li>
+							<li><a href="#" onclick="goCategories(this);">Appliance</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Flowers & Trees</a></li>
-							<li><a href="#">Gardening Supplies</a></li>
+							<li><a href="#" onclick="goCategories(this);">Flowers & Trees</a></li>
+							<li><a href="#" onclick="goCategories(this);">Gardening Supplies</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Mortors
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Cars</a></li>
-							<li><a href="#">Motorcylces</a></li>
-							<li><a href="#">Automotive Tools</a></li>
+							<li><a href="#" onclick="goCategories(this);">Cars</a></li>
+							<li><a href="#" onclick="goCategories(this);">Motorcylces</a></li>
+							<li><a href="#" onclick="goCategories(this);">Automotive Tools</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Sporting
-							Goods<span class="caret"></span>
+						data-toggle="dropdown" role="button" aria-expanded="false">Sporting Goods<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Team Sports</a></li>
-							<li><a href="#">Leisure Sports</a></li>
-							<li><a href="#">Water Sports</a></li>
+							<li><a href="#" onclick="goCategories(this);">Team Sports</a></li>
+							<li><a href="#" onclick="goCategories(this);">Leisure Sports</a></li>
+							<li><a href="#" onclick="goCategories(this);">Water Sports</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Toy
-							& Hobbies <span class="caret"></span>
+						data-toggle="dropdown" role="button" aria-expanded="false">Toy & Hobbies <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action Figures</a></li>
-							<li><a href="#">Building Toys</a></li>
-							<li><a href="#">Baby Toys</a></li>
+							<li><a href="#" onclick="goCategories(this);">Action Figures</a></li>
+							<li><a href="#" onclick="goCategories(this);">Building Toys</a></li>
+							<li><a href="#" onclick="goCategories(this);">Baby Toys</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Games</a></li>
-							<li><a href="#">Videos</a></li>
+							<li><a href="#" onclick="goCategories(this);">Games</a></li>
+							<li><a href="#" onclick="goCategories(this);">Videos</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -243,6 +245,6 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/index_js.js"></script>
+	<script type="text/javascript" src="js/categories.js"></script>
 </body>
 </html>

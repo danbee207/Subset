@@ -28,7 +28,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp"><span
+				<a class="navbar-brand" href="main.jsp"><span
 					class="SubstaLabel">Substa</span></a>
 			</div>
 

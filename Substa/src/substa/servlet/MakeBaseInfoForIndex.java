@@ -80,7 +80,7 @@ public class MakeBaseInfoForIndex extends HttpServlet {
 		ArrayList<Customer> bestSellList = db.getMostSellCustomers();
 		session.setAttribute("bestSellers", bestSellList);
 		
-		ArrayList<Item> deadlineItems = db.getDeadlineItems() ;
+		ArrayList<Item> deadlineItems = db.getDeadlineItems();
 		session.setAttribute("deadlineItems", deadlineItems);
 		
 		gotoRealIndex(response);

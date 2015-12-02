@@ -18,16 +18,13 @@ body{
 	margin-top: 40px;
 	
 }
-#wrapper{
-	background-color: #fbac47;
-}
+
 #footer{
 	bottom: 0;
    height: 60px;
    position: relative;
    width: 100%;
 
-	background-color: #fbac47;
 	
 }
 

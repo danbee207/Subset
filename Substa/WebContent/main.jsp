@@ -37,7 +37,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp"><span
+				<a class="navbar-brand" href="main.jsp"><span
 					class="SubstaLabel">Substa</span></a>
 			</div>
 			<div class="navbar-header">
@@ -48,11 +48,9 @@
 						class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Book</span>
 					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Electronics</span>
 					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Fashion</span>
-					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Home
-						& Garden</span> <span class="icon-bar"
+					<span class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Home & Garden</span> <span class="icon-bar"
 						onclick="goCategories(this,<%=isLogin%>);">Motors</span> <span
-						class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Sporting
-						Goods</span> <span class="icon-bar"
+						class="icon-bar" onclick="goCategories(this,<%=isLogin%>);">Sporting Goods</span> <span class="icon-bar"
 						onclick="goCategories(this,<%=isLogin%>);">Toy & Hobbies</span>
 				</button>
 
@@ -83,10 +81,8 @@
 						data-toggle="dropdown" role="button" aria-expanded="false">Electronics<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">TV
-									& Video</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Cell
-									Phones</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">TV & Video</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Cell Phones</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Desktops</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Laptops</a></li>
 						</ul></li>
@@ -95,26 +91,20 @@
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Women's
-									Clothing</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Men's
-									Clothing</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Kids'
-									Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Women's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Men's Clothing</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Kids' Clothing</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Home
-							& Garden<span class="caret"></span>
+						data-toggle="dropdown" role="button" aria-expanded="false">Home & Garden<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Kitchen</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Furniture</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Appliance</a></li>
 							<li class="divider"></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Flowers
-									& Trees</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Gardening
-									Supplies</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Flowers & Trees</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Gardening Supplies</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Mortors
@@ -131,24 +121,17 @@
 							Goods<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Team
-									Sports</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Leisure
-									Sports</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Water
-									Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Team Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Leisure Sports</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Water Sports</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Toy
-							& Hobbies <span class="caret"></span>
+						data-toggle="dropdown" role="button" aria-expanded="false">Toy & Hobbies <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Action
-									Figures</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Building
-									Toys</a></li>
-							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Baby
-									Toys</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Action Figures</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Building Toys</a></li>
+							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Baby Toys</a></li>
 							<li class="divider"></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Games</a></li>
 							<li><a href="#" onclick="goCategories(this,<%=isLogin%>);">Videos</a></li>
@@ -240,26 +223,12 @@
 
 		<div class="row">
 			<h2 class="col-md-11">Deadline Soon!</h2>
-			<a href="#" class="col-sm-1" id="Interestingdetail"><h3>
-					more</h3></a>
+			
 		</div>
 		<% for(int i=0;i<deadlineItems.size();i++){if(i%4==0){%>
 		<div class="row">
 		<%} %>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
+
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="<%=deadlineItems.get(i).getImgsrc() %>" alt="...">				
