@@ -52,8 +52,10 @@
 					</a>
 						<ul class="dropdown-menu" role="menu">
 
-							<li><a href="#">Employee Management</a></li>
-							<li><a href="#">Customer Management</a></li>
+							<li><a href="PreEmployeeManagement">Employee Management</a></li>
+							<li><a href="PreCustomerManagement">Customer Management</a></li>
+							<li><a href="#">Item Management</a></li>
+							<li><a href="#">Summary </a></li>
 							<li><a href="#">History</a></li>
 							<li class="divider"></li>
 
@@ -164,31 +166,8 @@
 		</nav>
 
 	</div>
-	<div class="modal fade bs-example-modal-sm" id="logoutModal"
-		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Logout</h4>
-				</div>
+	
 
-				<div class="modal-body">Do you want to log out ?</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary" onclick="Logout()">Yes</button>
-				</div>
-
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 	<div class="modal fade" id="infoView" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
