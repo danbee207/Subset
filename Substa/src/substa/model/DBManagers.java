@@ -905,7 +905,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT *"
 						+ "FROM Person P, Customer C"
-						+ "WHERE P.SSN = C.CustomerID AND P.SSN = (SELECT CustomerID"
+						+ "WHERE P.SSN = C.CustomerID AND P.SSN IN (SELECT CustomerID"
 						+ "	FROM Customer C2"
 						+ "	WHERE C2.CustomerID = P.SSN)";
 				ps = conn.prepareStatement(sqlQuery);
