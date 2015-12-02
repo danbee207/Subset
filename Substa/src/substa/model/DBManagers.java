@@ -320,8 +320,8 @@ public class DBManagers {
 				ps1.setLong(2, customer.getCreditCardNum());
 				ps1.setLong(3, customer.getSsn());
 				
-				String sql2 = "UPDATE Person"
-						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
+				String sql2 = "UPDATE Person "
+						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=? "
 						+ "WHERE SSN=?";
 				ps2 = conn.prepareStatement(sql2);
 				ps2.setLong(1, customer.getSsn());
@@ -360,8 +360,8 @@ public class DBManagers {
 			PreparedStatement ps1 = null;
 			PreparedStatement ps2 = null;
 			try {
-				String sql1 = "UPDATE Employee"
-						+ "SET Level=?, StartDate=?, HourlyRate=?"
+				String sql1 = "UPDATE Employee "
+						+ "SET Level=?, StartDate=?, HourlyRate=? "
 						+ "WHERE EmployeeID=?";
 				ps1 = conn.prepareStatement(sql1);
 				ps1.setLong(1, employer.getLevel());
@@ -369,8 +369,8 @@ public class DBManagers {
 				ps1.setFloat(3, employer.getHourlyRate());
 				ps1.setLong(4, employer.getSsn());
 				
-				String sql2 = "UPDATE Person"
-						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=?"
+				String sql2 = "UPDATE Person "
+						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=? "
 						+ "WHERE Person=?";
 				ps2 = conn.prepareStatement(sql2);
 				ps2.setLong(1, employer.getSsn());
@@ -409,7 +409,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			
 			try {
-				String sql = "DELETE FROM Person"
+				String sql = "DELETE FROM Person "
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
 				ps.setLong(1, customerId);
@@ -439,7 +439,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			
 			try {
-				String sql = "DELETE FROM Person"
+				String sql = "DELETE FROM Person "
 						+ "WHERE SSN=?";
 				ps = conn.prepareStatement(sql);
 				ps.setLong(1, employerId);
@@ -513,8 +513,8 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID"
-						+ "FROM Sales S, Auction A, Item I"
+				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID "
+						+ "FROM Sales S, Auction A, Item I "
 						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemName);
@@ -556,8 +556,8 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID"
-						+ "FROM Sales S, Auction A"
+				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID "
+						+ "FROM Sales S, Auction A "
 						+ "WHERE (A.BuyerID = P.SSN OR A.SellerID = P.SSN) AND P.FirstName =? AND P.LastName = ?";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, firstName);
@@ -640,8 +640,8 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT SUM(S.Price) AS Revenue"
-						+ "FROM Sales A, Auction A, Item I"
+				String sqlQuery = "SELECT SUM(S.Price) AS Revenue "
+						+ "FROM Sales A, Auction A, Item I "
 						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemName);
@@ -676,11 +676,11 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT SUM(S.Price) AS Revenue"
-						+ "FROM Sales A, Auction A"
-						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ("
-						+ "	SELECT I.ItemID"
-						+ "	FROM Item I"
+				String sqlQuery = "SELECT SUM(S.Price) AS Revenue "
+						+ "FROM Sales A, Auction A "
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ( "
+						+ "	SELECT I.ItemID "
+						+ "	FROM Item I "
 						+ "	WHERE I.ItemType = ?)";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemType);
@@ -715,11 +715,11 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT SUM(S.Price) AS Revenue"
-						+ "FROM Sales A"
-						+ "WHERE S.BuyerID = ("
-						+ "	SELECT P.SSN"
-						+ "	FROM Person P"
+				String sqlQuery = "SELECT SUM(S.Price) AS Revenue "
+						+ "FROM Sales A "
+						+ "WHERE S.BuyerID = ( "
+						+ "	SELECT P.SSN "
+						+ "	FROM Person P "
 						+ "	WHERE P.FirstName = ? AND P.LastName = ?)";
 				
 				ps = conn.prepareStatement(sqlQuery);
@@ -758,10 +758,10 @@ public class DBManagers {
 			ResultSet rs2 = null;
 			
 			try {
-				String sqlQuery1 = "SELECT R.EmployeeID,"
-						+ "FROM RepTotalRev R"
-						+ "WHERE R.TotalRev = ("
-						+ "	SELECT MAX(R2.TotalRev)"
+				String sqlQuery1 = "SELECT R.EmployeeID "
+						+ "FROM RepTotalRev R "
+						+ "WHERE R.TotalRev = ( "
+						+ "	SELECT MAX(R2.TotalRev) "
 						+ "	FROM RepTotalRev R2)";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
@@ -773,8 +773,8 @@ public class DBManagers {
 				rs1.close();
 				
 				if(topEmployerID > 0) {
-					String sqlQuery2 = "SELECT *"
-							+ "FROM Person, Employee"
+					String sqlQuery2 = "SELECT * "
+							+ "FROM Person, Employee "
 							+ "WHERE EmployeeID = SSN AND SSN = ?";
 					
 					ps2 = conn.prepareStatement(sqlQuery2);
@@ -832,10 +832,10 @@ public class DBManagers {
 			ResultSet rs2 = null;
 			
 			try {
-				String sqlQuery1 = "SELECT S.SellerID,"
-						+ "FROM SellerTotalRev S"
-						+ "WHERE S.TotalRev = ("
-						+ "	SELECT MAX(S2.TotalRev)"
+				String sqlQuery1 = "SELECT S.SellerID "
+						+ "FROM SellerTotalRev S "
+						+ "WHERE S.TotalRev = ( "
+						+ "	SELECT MAX(S2.TotalRev) "
 						+ "	FROM SellerTotalRev S2)";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
@@ -847,8 +847,8 @@ public class DBManagers {
 				rs1.close();
 				
 				if(topCustomerID > 0) {
-					String sqlQuery2 = "SELECT *"
-							+ "FROM Person, Customer"
+					String sqlQuery2 = "SELECT * "
+							+ "FROM Person, Customer "
 							+ "WHERE CustomerID = SSN AND SSN = ?";
 					
 					ps2 = conn.prepareStatement(sqlQuery2);
@@ -949,19 +949,19 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT A.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img"
-						+ "FROM Sales S, Auction A, Item I"
-						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND S.BuyerID IN ("
-						+ "	SELECT S.BuyerID"
-						+ "	FROM Sales S, Auction A"
-						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ("
-						+ "		SELECT A.ItemID"
-						+ "		FROM Auction A, Sales S"
-						+ "		WHERE S.AuctionID = A.AuctionID AND S.BuyerID = ?)"
-						+ "	)"
-						+ "GROUP BY A.ItemID"
-						+ "HAVING I.NumCopies > 0"
-						+ "ORDER BY COUNT(A.ItemID)"
+				String sqlQuery = "SELECT A.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
+						+ "FROM Sales S, Auction A, Item I "
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND S.BuyerID IN ( "
+						+ "	SELECT S.BuyerID "
+						+ "	FROM Sales S, Auction A "
+						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ( "
+						+ "		SELECT A.ItemID "
+						+ "		FROM Auction A, Sales S "
+						+ "		WHERE S.AuctionID = A.AuctionID AND S.BuyerID = ?) "
+						+ "	) "
+						+ "GROUP BY A.ItemID "
+						+ "HAVING I.NumCopies > 0 "
+						+ "ORDER BY COUNT(A.ItemID) "
 						+ "LIMIT 20";
 				
 				ps = conn.prepareStatement(sqlQuery);
@@ -1006,10 +1006,10 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try{
-				String sql = "SELECT *"
-						+ "FROM Bid"
-						+ "WHERE AuctionID = ?"
-						+ "ORDER BY B.BidTime DESC";
+				String sql = "SELECT * "
+						+ "FROM Bid "
+						+ "WHERE AuctionID = ? "
+						+ "ORDER BY B.BidTime DESC ";
 				
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, auction.getAucId());
@@ -1053,14 +1053,14 @@ public class DBManagers {
 			
 			try {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, A.AuctionID, "
-						+ "A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-						+ "FROM Item I, Auction A, Post P"
-						+ "WHERE I.ItemID = A.ItemID AND P.AuctionID = A.AuctionID AND A.AuctionID IN ("
-						+ "	SELECT B.AuctionID"
-						+ "	FROM Bid B"
-						+ "	WHERE B.CustomerID = ?"
-						+ "	GROUP BY B.AuctionID"
-						+ " ORDER BY AuctionID DESC)";
+						+ "A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+						+ "FROM Item I, Auction A, Post P "
+						+ "WHERE I.ItemID = A.ItemID AND P.AuctionID = A.AuctionID AND A.AuctionID IN ( "
+						+ "	SELECT B.AuctionID "
+						+ "	FROM Bid B "
+						+ "	WHERE B.CustomerID = ? "
+						+ "	GROUP BY B.AuctionID "
+						+ " ORDER BY AuctionID DESC) ";
 
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setLong(1, customer.getSsn());
@@ -1112,8 +1112,8 @@ public class DBManagers {
 			ResultSet rs2 = null;
 			
 			try {
-				String sqlQuery1 = "SELECT SSN"
-						+ "FROM Person"
+				String sqlQuery1 = "SELECT SSN "
+						+ "FROM Person "
 						+ "WHERE FirstName = ? AND LastName = ? ";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				ps1.setString(1, firstName);
@@ -1126,9 +1126,9 @@ public class DBManagers {
 				
 				if(sellerId > 0) {
 					String sqlQuery2 = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-							+ "FROM Item I, Auction A, Post P"
-							+ "WHERE P.ExpireDate > NOW() AND A.AuctionID = P.AuctionID AND I.ItemID = A.ItemID AND P.CustomerID = ?";
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+							+ "FROM Item I, Auction A, Post P "
+							+ "WHERE P.ExpireDate > NOW() AND A.AuctionID = P.AuctionID AND I.ItemID = A.ItemID AND P.CustomerID = ? ";
 					ps2 = conn.prepareStatement(sqlQuery2);
 					ps2.setLong(1, sellerId);
 					rs2 = ps2.executeQuery();
@@ -1180,9 +1180,9 @@ public class DBManagers {
 			
 			try {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-						+ "FROM Item I, Auction A, Post P"
-						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ?";
+						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+						+ "FROM Item I, Auction A, Post P "
+						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemType);
 				rs = ps.executeQuery();
@@ -1233,10 +1233,10 @@ public class DBManagers {
 				String sqlQuery = "";
 				for(int i = 0; i < keywords.size(); i++) {
 					sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-							+ "FROM Item I, Auction A, Post P"
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+							+ "FROM Item I, Auction A, Post P "
 							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID "
-							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%'";
+							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%' ";
 					ps = conn.prepareStatement(sqlQuery);
 					ps.setString(1, keywords.get(i));
 					rs = ps.executeQuery();
@@ -1321,7 +1321,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
 			try{
-				String sql = "SELECT MAX(ItemID) AS ItemID"
+				String sql = "SELECT MAX(ItemID) AS ItemID "
 						+ "FROM Item";
 				ps = conn.prepareStatement(sql);
 				rs = ps.executeQuery();
@@ -1353,8 +1353,8 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
 			try{
-				String sql = "SELECT EmployeeID"
-						+ "FROM Employee"
+				String sql = "SELECT EmployeeID "
+						+ "FROM Employee "
 						+ "WHERE Level = 2";
 				ps = conn.prepareStatement(sql);
 				rs = ps.executeQuery();
@@ -1422,7 +1422,7 @@ public class DBManagers {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
 			try{
-				String sql = "SELECT MAX(AuctionID) AS AuctionID"
+				String sql = "SELECT MAX(AuctionID) AS AuctionID "
 						+ "FROM Auction";
 				ps = conn.prepareStatement(sql);
 				rs = ps.executeQuery();
@@ -1491,8 +1491,8 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img"
-						+ "FROM Post P, Auction A, Item I"
+				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
+						+ "FROM Post P, Auction A, Item I "
 						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemType = ?";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, category);
@@ -1537,7 +1537,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
 						+ "FROM Post P, Auction A, Item I "
-						+ "WHERE P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID "
+						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID "
 						+ "ORDER BY P.ExpireDate ASC "
 						+ "LIMIT 3";
 				ps = conn.prepareStatement(sqlQuery);
@@ -1585,9 +1585,9 @@ public class DBManagers {
 			try {
 				String sqlQuery1 = "SELECT A.ItemID "
 						+ "FROM Sales S, Auction A "
-						+ "WHERE A.AuctionID = S.AuctionID"
-						+ " GROUP BY A.ItemID"
-						+ " ORDER BY COUNT(*) DESC"
+						+ "WHERE A.AuctionID = S.AuctionID "
+						+ " GROUP BY A.ItemID "
+						+ " ORDER BY COUNT(*) DESC "
 						+ " LIMIT 3";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
@@ -1694,7 +1694,7 @@ public class DBManagers {
 			try {
 				String sqlQuery1 = "SELECT S.SellerID "
 						+ "FROM Sales S, Auction A "
-						+ "WHERE A.AuctionID = S.AuctionID"
+						+ "WHERE A.AuctionID = S.AuctionID "
 						+ " GROUP BY S.SellerID"
 						+ " ORDER BY COUNT(*) DESC"
 						+ " LIMIT 3";
@@ -1758,8 +1758,8 @@ public class DBManagers {
 			
 			try {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
-							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
-							+ "FROM Item I, Auction A, Post P"
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+							+ "FROM Item I, Auction A, Post P "
 							+ "WHERE P.CustomerID = ? AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setLong(1, sellerId);
