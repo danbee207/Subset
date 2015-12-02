@@ -1679,4 +1679,72 @@ public class DBManagers {
 		return employees;
 	}
 	
+	public ArrayList<Customer> getMostSellCustomers() {
+		ArrayList<Customer> mostSellCustomers = new ArrayList<Customer>();
+		ArrayList<Long> mostSellCustomerIds = new ArrayList<Long>();
+		Customer customer = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
+			
+			try {
+				String sqlQuery1 = "SELECT S.SellerID "
+						+ "FROM Sales S, Auction A "
+						+ "WHERE A.AuctionID = S.AuctionID"
+						+ " GROUP BY S.SellerID"
+						+ " ORDER BY COUNT(*) DESC"
+						+ " LIMIT 3";
+				ps1 = conn.prepareStatement(sqlQuery1);
+				rs1 = ps1.executeQuery();
+				while(rs1.next()) {
+					mostSellCustomerIds.add(rs1.getLong("SellerID"));
+				}
+				ps1.close(); rs1.close();
+				
+				for(int i = 0; i < mostSellCustomerIds.size(); i++) {
+					String sqlQuery2 = "SELECT * FROM Person, Customer WHERE Customer.CustomerID = Person.SSN AND Person.SSN = ?";
+					ps2 = conn.prepareStatement(sqlQuery2);
+					ps2.setLong(1, mostSellCustomerIds.get(i));
+					rs2 = ps2.executeQuery();
+					
+					while(rs2.next()) {
+						customer = new Customer();
+						customer.setSsn(rs2.getLong("SSN"));
+						customer.setLast(rs2.getString("LastName"));
+						customer.setFirst(rs2.getString("FirstName"));
+						customer.setAddress(rs2.getString("Address"));
+						customer.setZipcode(rs2.getInt("ZipCode"));
+						customer.setTelephone(rs2.getLong("Telephone"));
+						customer.setEmail(rs2.getString("Email"));
+						customer.setPw(rs2.getString("pw"));
+						customer.setRating(rs2.getFloat("Rating"));
+						customer.setCreditCardNum(rs2.getLong("CreditCardNum"));
+						mostSellCustomers.add(customer);
+					}
+					ps2.close(); rs2.close();
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+					rs1.close();
+					ps2.close();
+					rs2.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return mostSellCustomers;
+	}
+	
 }
