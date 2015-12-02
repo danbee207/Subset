@@ -93,9 +93,9 @@
 			<div class="form-group" id="ssnDiv">
 				<label for="ssn" class="col-sm-4 control-label">SSN</label>
 				<div class="col-sm-5">
-					<input type="tel" class="form-control" name="ssn" id="ssn"
+					<input type="text" class="form-control" name="ssn" id="ssn"
 						placeholder="Social Security Number"
-						onchange="checkingSSN(this);return false;" value="<%=customerInfo.getSsn()%>" disabled>
+						value="<%=customerInfo.getSsn()%>" disabled>
 
 				</div>
 

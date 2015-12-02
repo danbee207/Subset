@@ -82,7 +82,7 @@ public class Mysetting extends HttpServlet {
 		customer.setLast(request.getParameter("lastName"));
 		customer.setEmail(request.getParameter("email"));
 		customer.setPw(request.getParameter("password"));
-		customer.setSsn(Integer.parseInt(request.getParameter("ssn")));
+		customer.setSsn(Long.parseLong(request.getParameter("ssn")));
 		
 		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
 		customer.setAddress(address);

@@ -4,12 +4,13 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.Employer"%>
-<%@ page import="substa.model.DBManagers"%>
 <%@ page import="substa.beans.Item"%>
 <%@ page import="java.util.ArrayList"%>
 
 <jsp:useBean id="bestSellers"
-	type="java.util.ArrayList<substa.beans.Customer>" scope="session"></jsp:useBean>
+	type="java.util.ArrayList<substa.beans.Customer>" scope="session" />
+<jsp:useBean id="deadlineItems"
+	type="java.util.ArrayList<substa.beans.Item>" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -236,13 +237,15 @@
 				</div>
 			</form>
 		</div>
+
 		<div class="row">
 			<h2 class="col-md-11">Deadline Soon!</h2>
 			<a href="#" class="col-sm-1" id="Interestingdetail"><h3>
 					more</h3></a>
 		</div>
-
+		<% for(int i=0;i<deadlineItems.size();i++){if(i%4==0){%>
 		<div class="row">
+		<%} %>
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
 					<img src="..." alt="...">
@@ -259,86 +262,68 @@
 			</div>
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="..." alt="...">
+					<img src="<%=deadlineItems.get(i).getImgsrc() %>" alt="...">				
 					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Description of product...</p>
-						<p>Current High Bid:</p>
-						<p>Sale ends in:</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="row">
-			<h2 class="col-md-11">Most Popular Sellers</h2>
-		</div>
-		<%
-			for (int i = 0; i < bestSellers.size(); i++) {
-			if(i%4==0){
-		%>
-
-		<div class="row">
-			<%} %>
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-					<img src="img/basic/person.png">
-					<div class="caption">
-						<%
-							String name = bestSellers.get(i).getFirst() + " " + bestSellers.get(i).getLast();
-						%>
-						<h3><%=name%>
-						</h3>
-						<p><%=bestSellers.get(i).getEmail()%></p>
-						<p><%=bestSellers.get(i).getRating()%></p>
+						<h3><%=deadlineItems.get(i).getItemName() %></h3>
+						<p>Categories:<%=deadlineItems.get(i).getItemType()%></p>
+						
 						<p class="text-right">
 							<a href="#" class="btn btn-warning" role="button">Detail</a>
 						</p>
 					</div>
 				</div>
 			</div>
-
-
+						
 			<%if(i%4==3){ %>
 		</div>
-		<%}
-			}
-		if(bestSellers.size()<4){
-		%>
+		<%break;}}if(deadlineItems.size()<3){ %>
 	</div>
 	<%} %>
+
+	<div class="row">
+		<h2 class="col-md-11">Most Popular Sellers</h2>
+	</div>
+	<%
+			for (int i = 0; i < bestSellers.size(); i++) {
+					if (i % 4 == 0) {
+		%>
+
+	<div class="row">
+		<%
+				}
+			%>
+		<div class="col-sm-5 col-md-3">
+			<div class="thumbnail">
+				<img src="img/basic/person.png">
+				<div class="caption">
+					<%
+							String name = bestSellers.get(i).getFirst() + " " + bestSellers.get(i).getLast();
+						%>
+					<h3><%=name%>
+					</h3>
+					<p><%=bestSellers.get(i).getEmail()%></p>
+					<p><%=bestSellers.get(i).getRating()%></p>
+					<p class="text-right">
+						<a href="#" class="btn btn-warning" role="button">Detail</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<%
+				if (i % 4 == 3) {
+			%>
+	</div>
+	<%break;
+			}
+				}
+				if (bestSellers.size() < 3) {
+		%>
+	</div>
+	<%
+		}
+	%>
 
 
 	</div>

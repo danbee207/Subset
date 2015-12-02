@@ -78,9 +78,10 @@ public class MakeBaseInfoForIndex extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		ArrayList<Customer> bestSellList = db.getMostSellCustomers();
-		System.out.println("bestSeller lenth : "  + bestSellList.size());
 		session.setAttribute("bestSellers", bestSellList);
 		
+		ArrayList<Item> deadlineItems = db.getDeadlineItems() ;
+		session.setAttribute("deadlineItems", deadlineItems);
 		
 		gotoRealIndex(response);
 		
