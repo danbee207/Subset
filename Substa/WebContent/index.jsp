@@ -211,9 +211,9 @@
 		<div id="blankforBody"></div>
 		<div class="jumbotron" id="jumboTron1">
 			<h1>Hello, Guest!</h1>
-			<p class="lead">Our site supports ~~~~.</p>
+			<p class="lead">Substa is a new auction Site. I hope you could find your like.</p>
 			<form>
-				<div class="form-group">
+				<div class="form-group" id="serarchDiv">
 					<label></label> <input type="text" id="search" name="search">
 					<button>Search</button>
 				</div>
