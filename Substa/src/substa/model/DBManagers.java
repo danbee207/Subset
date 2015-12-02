@@ -893,6 +893,40 @@ public class DBManagers {
 		return topRevenueCustomer;
 	}
 	
+	public boolean addSalesRecords() {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			
+			try {
+				String sqlQuery = "INSERT INTO Sales(BuyerID, SellerID, Price, Date, AuctionID) "
+						+ "SELECT B.CustomerID, P.CustomerID, MAX(B.BidPrice), P.ExpireDate, A.AuctionID "
+						+ "FROM Post P, Bid B, Auction A "
+						+ "WHERE P.ExpireDate < NOW() AND P.AuctionID = B.AuctionID AND "
+						+ "	P.AuctionID = A.AuctionID AND B.BidPrice >= P.ReservedPrice AND "
+						+ "	P.AuctionID NOT IN (SELECT AuctionID FROM Sales) "
+						+ "GROUP BY B.AuctionID";
+				ps = conn.prepareStatement(sqlQuery);
+				return ps.execute();
+					
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+				} catch(SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+			
+		}
+		
+		return true;
+	}
+	
 	public ArrayList<Customer> getMailingList() {
 	
 		Connection conn = getConnection();
