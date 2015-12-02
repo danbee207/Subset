@@ -354,7 +354,7 @@
 				<h4 class="list-group-item-heading">Employeee Management</h4>
 				<p class="list-group-item-text">Employer Information List /
 					Auction's Mornitor List</p>
-			</a> <a href="#" class="list-group-item list-group-item-info">
+			</a> <a href="ItemManagement" class="list-group-item list-group-item-info">
 				<h4 class="list-group-item-heading">Item Management</h4>
 				<p class="list-group-item-text">- Item List</p>
 			</a> <a href="#" class="list-group-item">

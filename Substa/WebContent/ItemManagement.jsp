@@ -62,7 +62,7 @@
 
 							<li><a href="PreEmployeeManagement">Employee Management</a></li>
 							<li><a href="PreCustomerManagement">Customer Management</a></li>
-							<li><a href="#">Item Management</a></li>
+							<li><a href="ItemManagement">Item Management</a></li>
 							<li><a href="#">Summary </a></li>
 							<li><a href="#">History</a></li>
 							<li class="divider"></li>
