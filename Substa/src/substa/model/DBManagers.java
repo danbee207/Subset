@@ -1747,4 +1747,53 @@ public class DBManagers {
 		return mostSellCustomers;
 	}
 	
+	public ArrayList<AuctionDetailInfo> getAuctionsBySellerID(long sellerId) {
+		ArrayList<AuctionDetailInfo> auctionBySeller = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auction = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
+							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice"
+							+ "FROM Item I, Auction A, Post P"
+							+ "WHERE P.CustomerID = ? AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setLong(1, sellerId);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					auction = new AuctionDetailInfo();
+					auction.setItemName(rs.getString("ItemName"));
+					auction.setItemType(rs.getString("ItemType"));
+					auction.setDescription(rs.getString("Description"));
+					auction.setImgSrc(rs.getString("img"));
+					auction.setAuctionID(rs.getInt("AuctionID"));
+					auction.setBidInc(rs.getFloat("BidIncrement"));
+					auction.setMinBid(rs.getFloat("MinimumBid"));
+					auction.setCopy(rs.getInt("Copies_Sold"));
+					auction.setSellerID(rs.getLong("CustomerID"));
+					auction.setEndDate(rs.getTimestamp("ExpireDate"));
+					auction.setPrice(rs.getFloat("ReservedPrice"));
+					auctionBySeller.add(auction);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		} 
+		
+		return auctionBySeller;
+	}
+	
 }
