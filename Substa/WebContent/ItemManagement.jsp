@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Employer"%>
-<%@ page import="substa.beans.Customer"%>
+<%@ page import="substa.beans.Item"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,7 +20,7 @@
 <%
 	User LoginUser = (User) session.getAttribute("LoginUser");
 	Employer employeeInfo = (Employer) session.getAttribute("employeeInfo");
-	ArrayList<Customer> customerList = (ArrayList<Customer>) session.getAttribute("customerList");
+	ArrayList<Item> itemAllList = (ArrayList<Item>) session.getAttribute("itemAllList");
 	if (LoginUser != null) {
 %>
 <body>
@@ -81,31 +81,35 @@
 		<div class="upperPart"></div>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Customer Mailing List</h3>
+				<h3 class="panel-title">Item Detail Information</h3>
 			</div>
 			<div class="panel-body">
 
-				
+			
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>E-mail</th>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Storage</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
-							for (int i = 0; i < customerList.size(); i++) {
+							for (int i = 0; i < itemAllList.size(); i++) {
 						%>
 						<tr
-							onclick="SendingEmail('<%=customerList.get(i).getFirst()%>','<%=customerList.get(i).getLast()%>',
-												'<%=customerList.get(i).getEmail()%>')">
+							onclick="ShowitemDetail('<%=itemAllList.get(i).getItemID()%>','<%=itemAllList.get(i).getItemName()%>,
+												'<%=itemAllList.get(i).getItemType()%>','<%=itemAllList.get(i).getImgsrc()%>',
+												'<%=itemAllList.get(i).getNumCopies()%>',
+												'<%=itemAllList.get(i).getDescription()%>');">
 							<th scope="row"><%=i%></th>
-							<td><%=customerList.get(i).getFirst()%></td>
-							<td><%=customerList.get(i).getLast()%></td>
-							<td><%=customerList.get(i).getEmail()%></td>
+							<td><%=itemAllList.get(i).getItemID()%></td>
+							<td><%=itemAllList.get(i).getItemName()%></td>
+							<td><%=itemAllList.get(i).getItemType()%></td>
+							<td><%=itemAllList.get(i).getNumCopies()%></td>
 						</tr>
 						<%
 							}
@@ -119,7 +123,7 @@
 
 	</div>
 	<div id="footer">
-		
+
 		<div class="container">
 			<div class="navbar-header" id=footerHeader>
 				<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
@@ -128,7 +132,7 @@
 				<h4>Copy@ Right Substa | Stony Brook University</h4>
 			</div>
 		</div>
-	
+
 
 	</div>
 
@@ -224,13 +228,73 @@
 								<textarea rows="10" cols="100" class="form-control" id="content"></textarea>
 							</div>
 						</div>
-					
 
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Send</button>
+					</div>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- /.modal -->
+	<div class="modal fade" id="itemDetail" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Send an email</h4>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Send</button>
-				</div>
+				<form class="form-horizontal">
+					<div class="modal-body">
+						<img src="" id="itemImg">
+						<div class="form-horizontal">
+						<div class="form-group">
+						<label for="title" class="col-sm-3">Title</label>
+						<div class="col-sm-5">
+						<input type="text" id="itemTitle" class="form-control">
+						</div>
+						</div>
+						<div class="form-group">
+						<label for="title" class="col-sm-3">Type</label>
+						<div class="col-sm-5">
+						<input type="text" id="itemType" class="form-control">
+						</div>
+						</div>
+						<div class="form-group">
+						<label for="title" class="col-sm-3">ID </label>
+						<div class="col-sm-2">
+						<input type="text" id="itemNum" class="form-control">
+						</div>
+						<label for="title" class="col-sm-2">Storage </label>
+						<div class="col-sm-2">
+						<input type="text" id="itemId" class="form-control">
+						</div>
+						</div>
+						<div class="form-group">
+						<label for="title" class="col-sm-3">Description </label>
+						<div class="col-sm-2">
+						<textarea id="itemdesc" class="form-control"></textarea>
+						</div>
+						
+						</div>
+						
+					
+					
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
 				</form>
 			</div>
 			<!-- /.modal-content -->
