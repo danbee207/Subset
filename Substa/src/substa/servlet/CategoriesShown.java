@@ -81,6 +81,7 @@ public class CategoriesShown extends HttpServlet {
 		System.out.println(cate);
 		
 		ArrayList<AuctionDetailInfo> itemList =  db.getAuctionInfoByItemType(cate);
+		System.out.println(cate + " "+itemList.size());
 		session.setAttribute("itemList", itemList);
 		
 		String targetPage = "Categories.jsp";

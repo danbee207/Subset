@@ -2,9 +2,12 @@ package substa.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -124,9 +127,14 @@ public class UploadAuction extends HttpServlet {
 			post.setCusId(customer.getSsn());
 			post.setAucId(db.getLatesetAuctionID());
 			post.setStartDate(new Timestamp(System.currentTimeMillis()));
-			//yyyy-mm-dd hh:mm:ss
 			
-			post.setEndDate(Timestamp.valueOf(multi.getParameter("endDate")));
+			String endDate = multi.getParameter("endDate");
+			SimpleDateFormat bfomratter = new SimpleDateFormat("Y-m-d h:m:s");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			Date d = bfomratter.parse(endDate);
+			String endDateFixed = formatter.format(d);
+			System.out.println(endDateFixed);
+			post.setEndDate(Timestamp.valueOf(endDateFixed));
 			post.setPrice(Float.parseFloat(multi.getParameter("reserveBid")));
 			db.addPost(post);
 			//db

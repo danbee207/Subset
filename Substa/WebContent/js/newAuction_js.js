@@ -2,13 +2,15 @@
 /**
  * @author Danbee Park
  */
-var books = {0: "Books",1:"Textbooks",2:"Magazines" , 3: "E-books"};
-var electronics ={0:"TV & Video" ,1:"Cell Phones",2:"Desktops",3:"Laptops"};
-var motors ={0:"Cars",1:"Motorcycles",2:"Automotive Tools"};
-var sportingGoods={0: "Team Sports",1:"Leisure Sports",2:"Water Sports"};
-var toyHobbies ={0:"Action Figures",1:"Building Toys",2:"Baby Toys",3:"Games",4:"Videos"}
-var fashion ={0 : "Women's Clothing", 1: "Men's Clothing",2:"Kids' Clothing"};
-var homeGarden = {0 : "Kitchen", 1 : "Furniture", 2: "Appliance", 3:"Flowers & Trees",4: "Gardening Supplies"};
+var books = {"Books": "Books","Textbooks":"Textbooks","Magazines":"Magazines" , "E-books": "E-books"};
+var electronics ={"TV & Video":"TV & Video" ,"Cell Phones":"Cell Phones","Desktops":"Desktops","Laptops":"Laptops"};
+var motors ={"Cars":"Cars","Motorcycles":"Motorcycles","Automotive Tools":"Automotive Tools"};
+var sportingGoods={"Team Sports": "Team Sports","Leisure Sports":"Leisure Sports","Water Sports":"Water Sports"};
+var toyHobbies ={"Action Figures":"Action Figures","Building Toys":"Building Toys","Baby Toys":"Baby Toys",
+				"Games":"Games","Videos":"Videos"};
+var fashion ={"Women's Clothing" : "Women's Clothing", "Men's Clothing": "Men's Clothing","Kids' Clothing":"Kids' Clothing"};
+var homeGarden = {"Kitchen" : "Kitchen", "Furniture" : "Furniture", "Appliance": "Appliance", "Flowers & Trees":"Flowers & Trees",
+			"Gardening Supplies": "Gardening Supplies"};
 
 $( document ).ready(function() {
 	$("#subType").hide();
@@ -64,4 +66,5 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 

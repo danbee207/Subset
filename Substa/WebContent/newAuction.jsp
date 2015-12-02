@@ -207,7 +207,7 @@
 					<div class="form-group">
 						<label for="endTime" class="col-sm-4">When your auction is finished?</label>
 						<div class="col-sm-5">
-						<input type="text" class="form-control" name="endDate" id="endDate" >
+						<input type="text" class="form-control" name="endDate" id="endDate">
 						</div>
 					
 					</div>
@@ -330,7 +330,8 @@
 	<script type="text/javascript" src="js/newAuction_js.js"></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 	<script>
-	$("#endDate").datetimepicker({value:new Date(),step:10});
+	
+	$("#endDate").datetimepicker({value:new Date(),step:10,format:'Y-m-d h:m:s',minDate:new Date()});
 	</script>
 		
 </body>

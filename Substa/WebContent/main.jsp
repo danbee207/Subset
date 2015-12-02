@@ -232,7 +232,12 @@
 
 			<div class="col-sm-5 col-md-3">
 				<div class="thumbnail">
-					<img src="<%=deadlineItems.get(i).getImgSrc() %>" alt="...">				
+				<%if(deadlineItems.get(i).getImgSrc()==null) {%>
+				<img src="img/basic/NotitemShown.png" alt="...">
+				
+				<%}else{ %>
+					<img src="FileDownload?file_name=<%=deadlineItems.get(i).getImgSrc() %>" alt="...">
+					<%} %>				
 					<div class="caption">
 						<h3><%=deadlineItems.get(i).getItemName() %></h3>
 						<p>Categories:<%=deadlineItems.get(i).getItemType()%></p>

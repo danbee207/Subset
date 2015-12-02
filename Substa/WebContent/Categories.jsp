@@ -195,7 +195,11 @@
 			if(i%4==0){
 			%><tr><%} %>
 			<td>
-			<img src="fileupload/<%=itemList.get(i).getImgSrc() %>">
+			<%if(itemList.get(i).getImgSrc()==null){ %>
+			<img src="img/basic/noimg.png">
+			<%}else{ %>
+			<img src="FileDownload?file_name=<%=itemList.get(i).getImgSrc() %>" alt="...">
+			<%} %>
 			<h3><%=itemList.get(i).getItemName() %></h3>
 			<p>Type : <%=itemList.get(i).getItemType() %></p>
 			<p>Auction End Time : <%=itemList.get(i).getEndDate() %></p>
