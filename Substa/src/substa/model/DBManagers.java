@@ -1236,9 +1236,9 @@ public class DBManagers {
 							+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
 							+ "FROM Item I, Auction A, Post P "
 							+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID "
-							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE '%?%' ";
+							+ "AND I.ItemID = A.ItemID AND I.ItemName LIKE ? ";
 					ps = conn.prepareStatement(sqlQuery);
-					ps.setString(1, keywords.get(i));
+					ps.setString(1, "%" + keywords.get(i) + "%");
 					rs = ps.executeQuery();
 					
 					while(rs.next()) {
@@ -1491,7 +1491,7 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
+				String sqlQuery = "SELECT * "
 						+ "FROM Post P, Auction A, Item I "
 						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemType = ?";
 				ps = conn.prepareStatement(sqlQuery);
@@ -1525,9 +1525,9 @@ public class DBManagers {
 		return itemInCategory;
 	}
 	
-	public ArrayList<Item> getDeadlineItems() {
-		ArrayList<Item> deadlineItems = new ArrayList<Item>();
-		Item item = null;
+	public ArrayList<AuctionDetailInfo> getDeadlineItems() {
+		ArrayList<AuctionDetailInfo> deadlineItems = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auctionDetailInfo = null;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -1535,7 +1535,7 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT I.ItemID, I.ItemName, I.ItemType, I.NumCopies, I.Description, I.img "
+				String sqlQuery = "SELECT * "
 						+ "FROM Post P, Auction A, Item I "
 						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID "
 						+ "ORDER BY P.ExpireDate ASC "
@@ -1544,14 +1544,18 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					item = new Item();
-					item.setItemID(rs.getInt("ItemID"));
-					item.setItemName(rs.getString("ItemName"));
-					item.setItemType(rs.getString("ItemType"));
-					item.setNumCopies(rs.getInt("NumCopies"));
-					item.setDescription(rs.getString("Description"));
-					item.setImgsrc(rs.getString("img"));
-					deadlineItems.add(item);
+					auctionDetailInfo = new AuctionDetailInfo();
+					auctionDetailInfo.setItemName(rs.getString("ItemName"));
+					auctionDetailInfo.setItemType(rs.getString("ItemType"));
+					auctionDetailInfo.setDescription(rs.getString("Description"));
+					auctionDetailInfo.setImgSrc(rs.getString("img"));
+					auctionDetailInfo.setAuctionID(rs.getInt("AuctionID"));
+					auctionDetailInfo.setBidInc(rs.getFloat("BidIncrement"));
+					auctionDetailInfo.setMinBid(rs.getFloat("MinimumBid"));
+					auctionDetailInfo.setCopy(rs.getInt("Copies_Sold"));
+					auctionDetailInfo.setSellerID(rs.getLong("CustomerID"));
+					auctionDetailInfo.setEndDate(rs.getTimestamp("ExpireDate"));
+					deadlineItems.add(auctionDetailInfo);
 				}
 				
 			} catch(SQLException e) {

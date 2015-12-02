@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import substa.beans.Customer;
 import substa.beans.Item;
+import substa.beans.AuctionDetailInfo;
 import substa.model.DBManagers;
 
 /**
@@ -80,7 +81,7 @@ public class MakeBaseInfoForIndex extends HttpServlet {
 		ArrayList<Customer> bestSellList = db.getMostSellCustomers();
 		session.setAttribute("bestSellers", bestSellList);
 		
-		ArrayList<Item> deadlineItems = db.getDeadlineItems();
+		ArrayList<AuctionDetailInfo> deadlineItems = db.getDeadlineItems();
 		session.setAttribute("deadlineItems", deadlineItems);
 		
 		gotoRealIndex(response);

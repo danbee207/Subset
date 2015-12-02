@@ -159,19 +159,18 @@
 			    <form class="navbar-form navbar-left" role="search">
 			      	<div class="input-group">
 			    		<span class="input-group-btn">
-							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" 
-								aria-haspopup="true" aria-expanded="false">
-							  Search by <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  	<li><a href="#">Product Name</a></li>
-							  	<li><a href="#">Product Type</a></li>
-							  	<li><a href="#">Seller Name</a></li>
-							</ul>
+							<div class="btn-group" data-toggle="buttons">
+							  	<label class="btn btn-warning active">
+							    	<input type="radio" name="options" id="option1" autocomplete="off" checked> Item Name
+							  	</label>
+							  	<label class="btn btn-warning">
+							    	<input type="radio" name="options" id="option2" autocomplete="off"> Seller Name
+							  	</label>
+							</div>
 			    		</span>
 			      		<input type="text" class="form-control" placeholder="Search for...">
 			      		<span class="input-group-btn">
-			        		<button class="btn btn-default" type="button">Search</button>
+			        		<button class="btn btn-warning" type="button">Search</button>
 			      		</span>
 			    	</div><!-- /input-group -->
 			    </form>
