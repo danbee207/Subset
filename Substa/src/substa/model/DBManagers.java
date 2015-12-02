@@ -903,14 +903,9 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT *"
-						+ "FROM Person P, Customer C"
-						+ "WHERE P.SSN = C.CustomerID AND P.SSN IN (SELECT CustomerID"
-						+ "	FROM Customer C2"
-						+ "	WHERE C2.CustomerID = P.SSN)";
+				String sqlQuery = "SELECT * FROM Person, Customer WHERE Customer.CustomerID = Person.SSN";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
-				
 				while(rs.next()) {
 					customer = new Customer();
 					customer.setSsn(rs.getLong("SSN"));
