@@ -4,25 +4,25 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class SalesRecord {
-	private int buyerID;
-	private int sellerID;
+	private long buyerID;
+	private long sellerID;
 	private Float price;
 	private Timestamp date;
 	private int auctionID;
 
-	public int getBuyerID() {
+	public long getBuyerID() {
 		return buyerID;
 	}
 
-	public void setBuyerID(int buyerID) {
+	public void setBuyerID(long buyerID) {
 		this.buyerID = buyerID;
 	}
 
-	public int getSellerID() {
+	public long getSellerID() {
 		return sellerID;
 	}
 
-	public void setSellerID(int sellerID) {
+	public void setSellerID(long sellerID) {
 		this.sellerID = sellerID;
 	}
 

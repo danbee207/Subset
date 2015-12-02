@@ -11,7 +11,7 @@ public class AuctionDetailInfo {
 	private float bidInc;
 	private float minBid;
 	private int copy;
-	private int sellerId;
+	private long sellerId;
 	private Timestamp endDate;
 	private float price;
 	
@@ -79,11 +79,11 @@ public class AuctionDetailInfo {
 		this.copy = copy;
 	}
 	
-	public int getSellerID() {
+	public long getSellerID() {
 		return sellerId;
 	}
 	
-	public void setSellerID(int sellerId) {
+	public void setSellerID(long sellerId) {
 		this.sellerId = sellerId;
 	}
 	

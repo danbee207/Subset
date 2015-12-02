@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class BidHistory {
 	private int auctionID;
-	private int CustomerID;
+	private long CustomerID;
 	private int itemID;
 	private Float BidPrice;
 	private Timestamp BidTime;
@@ -19,11 +19,11 @@ public class BidHistory {
 		this.auctionID = auctionID;
 	}
 
-	public int getCustomerID() {
+	public long getCustomerID() {
 		return CustomerID;
 	}
 
-	public void setCustomerID(int customerID) {
+	public void setCustomerID(long customerID) {
 		CustomerID = customerID;
 	}
 
