@@ -1034,7 +1034,7 @@ public class DBManagers {
 		return suggestion;
 	}
 	
-	public ArrayList<BidHistory> getBidHistoryByAuction(Auction auction) {
+	public ArrayList<BidHistory> getBidHistoryByAuction(int auctionID) {
 		
 		ArrayList<BidHistory> bidHistoryByAuction = new ArrayList<BidHistory>();
 		Connection conn = getConnection();
@@ -1051,7 +1051,7 @@ public class DBManagers {
 						+ "ORDER BY B.BidTime DESC ";
 				
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, auction.getAucId());
+				ps.setInt(1, auctionID);
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -1214,10 +1214,9 @@ public class DBManagers {
 		return true;
 	}
 
-	public ArrayList<AuctionDetailInfo> getAuctionInfoByAuctionID(int auctionID) {
+	public AuctionDetailInfo getAuctionInfoByAuctionID(int auctionID) {
 		
-		ArrayList<AuctionDetailInfo> auctionInfoByAuctionID = new ArrayList<AuctionDetailInfo>();
-		AuctionDetailInfo auctionInfo = null;
+		AuctionDetailInfo auctionInfo = new AuctionDetailInfo();
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -1234,7 +1233,6 @@ public class DBManagers {
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					auctionInfo = new AuctionDetailInfo();
 					auctionInfo.setItemName(rs.getString("ItemName"));
 					auctionInfo.setItemType(rs.getString("ItemType"));
 					auctionInfo.setDescription(rs.getString("Description"));
@@ -1246,7 +1244,6 @@ public class DBManagers {
 					auctionInfo.setSellerID(rs.getLong("CustomerID"));
 					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
 					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
-					auctionInfoByAuctionID.add(auctionInfo);
 				}
 				
 			} catch(SQLException e) {
@@ -1262,7 +1259,7 @@ public class DBManagers {
 			}
 		}
 		
-		return auctionInfoByAuctionID;
+		return auctionInfo;
 	}
 	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {
