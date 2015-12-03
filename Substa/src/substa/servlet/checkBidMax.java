@@ -11,22 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.Customer;
 import substa.model.DBManagers;
 
 /**
- * Servlet implementation class Bidding
+ * Servlet implementation class checkBidMax
  */
+
 @WebServlet(
-		urlPatterns = { "/Bidding" }, 
+		urlPatterns = { "/checkBidMax" }, 
 		initParams = { 
 				@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"), 
 				@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark"), 
 				@WebInitParam(name = "dbUser", value = "danpark"), 
 				@WebInitParam(name = "dbPass", value = "110142214")
 		})
-public class Bidding extends HttpServlet {
+public class checkBidMax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	private DBManagers db;
 
 	/**
@@ -46,12 +47,13 @@ public class Bidding extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processReqeust(request,response);
 	}
 
 	/**
@@ -59,10 +61,12 @@ public class Bidding extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processReqeust(request,response);
 	}
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
+	private void processReqeust(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub6
+		
 		HttpSession session = request.getSession(true);
 
 		response.setHeader("Cache-Control", "no-cache");
@@ -70,8 +74,8 @@ public class Bidding extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
-		
-	}
+		Customer customer = (Customer)session.getAttribute("customerInfo");
 	
+	}
 
 }

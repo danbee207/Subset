@@ -182,12 +182,12 @@
 		<div id="blankforBody"></div>
 		<div class="container">
 		<div class="page-header">
-			
+		<input type="hidden" value="0" id="needMaxBid">
 			  <h1><%=itemDetail.getItemName() %> <small> <%=itemDetail.getItemType() %></small></h1>
 			</div>
 		<div class="row">
 			<div class="col-sm-10">
-			<button type="button" class="btn btn-primary">Bid</button>
+			<button type="button" class="btn btn-primary" onclick="">Bid</button>
 			</div>
 		</div>
 		<div class="panel panel-default">

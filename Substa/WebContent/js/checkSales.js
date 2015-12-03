@@ -19,7 +19,7 @@ function handelResponseJson(data){
 	clearInterval(t);
 	t=setTimeout(poll,30000);
 }
-function handelResponseJson(data){
+function handleError(){
 	
 	clearInterval(t);
 	t=setTimeout(poll,30000);
