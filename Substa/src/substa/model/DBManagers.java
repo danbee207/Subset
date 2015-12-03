@@ -1118,6 +1118,42 @@ public class DBManagers {
 		return bidHistoryByAuction;
 	}
 	
+	public boolean addBid(BidHistory bid) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null){
+			PreparedStatement ps = null;
+			
+			try{
+				String sql = "INSERT INTO Bid(CustomerID, AuctionID, ItemID, BidTiem, MaximumBid, BidPrice)"
+						+ " VALUES (?, ?, ?, ?, ?, ?)";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setLong(1, bid.getCustomerID());
+				ps.setInt(2, bid.getAuctionID());
+				ps.setInt(3, bid.getItemID());
+				ps.setTimestamp(4, bid.getBidTime());
+				ps.setFloat(5, bid.getMaxBid());
+				ps.setFloat(6, bid.getBidPrice());
+				return ps.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					ps.close();
+					
+				}catch(SQLException ex){
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
 	public ArrayList<AuctionDetailInfo> getTakenAuctions(Customer customer) {
 		ArrayList<AuctionDetailInfo> takenAuctions = new ArrayList<AuctionDetailInfo>();
 		Connection conn = getConnection();
