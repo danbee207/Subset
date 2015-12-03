@@ -6,6 +6,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 <jsp:useBean id="itemList" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session"></jsp:useBean>
+<jsp:useBean id="suggestionList" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session"></jsp:useBean>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -212,8 +213,37 @@
 			</div>
 		<%}} if(itemList.size()%4!=3 && itemList.size()%4!=0){%></div><% }%>
 		
+		<div class="row">
+			<h2 class="col-md-11">Suggestions For You</h2>
+			
+		</div>
+		<% for(int i=0;i<suggestionList.size();i++){if(i%4==0){%>
+		<div class="row">
+		<%} %>
+
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+				<%if(suggestionList.get(i).getImgSrc()==null) {%>
+				<img src="img/basic/NotitemShown.png" alt="...">
+				
+				<%}else{ %>
+					<img src="FileDownload?file_name=<%=suggestionList.get(i).getImgSrc() %>" alt="...">
+					<%} %>				
+					<div class="caption">
+						<h3><%=suggestionList.get(i).getItemName() %></h3>
+						<p>Categories:<%=suggestionList.get(i).getItemType()%></p>
+					</div>
+				</div>
+			</div>
+						
+			<%if(i%4==3){ %>
+		</div>
+		<%break;}}if(suggestionList.size()<3){ %>
+		</div>
+		<%} %>
 		</div>
 	</div>
+	
 		
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
