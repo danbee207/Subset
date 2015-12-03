@@ -321,8 +321,13 @@
 						%>
 					<h3><%=name%>
 					</h3>
-					<p><%=bestSellers.get(i).getEmail()%></p>
-					<p><%=bestSellers.get(i).getRating()%></p>
+					<p>E-mail: <%=bestSellers.get(i).getEmail()%></p>
+					<p>Rate  :<%for(int j=0;j<bestSellers.get(i).getRating();j++){%>
+						 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<%}for(int j=0;j<5-bestSellers.get(i).getRating();j++){ %>
+						 <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+					<%} %>
+					</p>
 					<p class="text-right">
 						<a href="#" class="btn btn-warning" role="button" onclick="showbestSellersInfo(<%=i %>)" >Detail</a>
 						

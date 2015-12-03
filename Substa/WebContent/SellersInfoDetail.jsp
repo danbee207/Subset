@@ -155,8 +155,11 @@
 		<div id="contentBody">
 			<div class="upperPart"></div>
 			<div class="page-header">
-			  <h1><%= %><small>Subtext for header</small></h1>
+			<%String name = bestSellerInfo.getFirst() + " "+bestSellerInfo.getLast(); %>
+			  <h1><%=name%><small>One of the popular sellers!</small></h1>
 			</div>
+			
+			
 		</div>
 
 
