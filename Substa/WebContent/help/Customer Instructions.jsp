@@ -46,24 +46,33 @@
 					<div class="page-header">
   						<h1> Welcome our customer! <small> Upload an auction and Bid on it. </small></h1>
 					</div>
-					<h3>1.Change the personal information</h3>
+					<h3>1. Change the personal information</h3>
 					<p style="text-indent: 5em;">   Click 'My Account'-'My Setting' on the top-right. </p>
 					<p style="text-indent: 5em;">   Change your information. *Caution: Email & SSN are not changable.</p>
 					<p style="text-indent: 5em;">   After filling the information correctly, click the orange 'Fix it!' button</p>
 					<hr class="featurette-divider">
 					
-					<h3>2.Upload an auction</h3>
+					<h3>2. Upload an auction</h3>
 					<p style="text-indent: 5em;">   Click 'My Account'-'Upload an Auction' on the top-right. </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<p style="text-indent: 5em;">   Carefully fill out the form.</p>
 					<hr class="featurette-divider">
 					
-					<h3>3.Make a bid on a product</h3>
+					<h3>3. Make a bid on a product</h3>
 					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
 					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
 					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
-					<p style="text-indent: 5em;">   If you become a winner, an alarm will be shown.</p>
+					<hr class="featurette-divider">
+					
+					<h3>4. Make a bid on a product</h3>
+					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
+					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
+					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
+					<hr class="featurette-divider">
+					
+					<h3>4. Make a bid on a product</h3>
+					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
+					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
+					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
 					<hr class="featurette-divider">
 					
 					

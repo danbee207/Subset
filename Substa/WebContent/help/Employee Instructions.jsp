@@ -46,24 +46,36 @@
 					<div class="page-header">
   						<h1> Welcome our employee! <small> Manage employees and auctions. </small></h1>
 					</div>
-					<h3>1.Change the personal information</h3>
-					<p style="text-indent: 5em;">   Click 'My Account'-'My Setting' on the top-right. </p>
-					<p style="text-indent: 5em;">   Change your information. *Caution: Email & SSN are not changable.</p>
-					<p style="text-indent: 5em;">   After filling the information correctly, click the orange 'Fix it!' button</p>
+					<h3>1. Manage employees</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Employee Management' on the top-right. </p>
+					<p style="text-indent: 5em;">   You can manage employees by clicking an employee information.</p>
+					<p style="text-indent: 5em;">   Management level means employees's position (0:employee 2:manager).</p>
 					<hr class="featurette-divider">
 					
-					<h3>2.Upload an auction</h3>
-					<p style="text-indent: 5em;">   Click 'My Account'-'Upload an Auction' on the top-right. </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<h3>2. Monitor an auction</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Employee Management' on the top-right. </p>
+					<p style="text-indent: 5em;">   Check all of the ongoing auctions.</p>
+					<p style="text-indent: 5em;">   You can monitor one of them by clicking it.</p>
 					<hr class="featurette-divider">
 					
-					<h3>1.Sign Up</h3>
-					<p style="text-indent: 5em;">   . </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<h3>3. Customer mailing list</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Employee Management' on the top-right. </p>
+					<p style="text-indent: 5em;">   You can see the basic information of all customers.</p>
+					<hr class="featurette-divider">
+					
+					<h3>4. View all items</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Item Management' on the top-right. </p>
+					<p style="text-indent: 5em;">   You can see all of items before and after ending auctions.</p>
+					<hr class="featurette-divider">
+					
+					<h3>5. View sales report of particular month</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Summary' on the top-right. </p>
+					<p style="text-indent: 5em;">   Put a numerical value of month when you want to find about sales report.</p>
+					<hr class="featurette-divider">
+					
+					<h3>6. View employee & customer who makes most revenue</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'Summary' on the top-right. </p>
+					<p style="text-indent: 5em;">   You can check the information of them on bottom. </p>
 					<hr class="featurette-divider">
 					
 				</div>

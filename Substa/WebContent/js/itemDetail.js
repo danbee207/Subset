@@ -56,10 +56,15 @@ function goTobid(){
 }
 
 function handleResponse(data){
-	var json_obj = data;
-	if(json_obj.isMaxbid == true){
+	
+	var json_obj=$.parseJSON(data);
+	var value= json_obj.value;
+	var currentPrice = json_obj.currentValue;
+	var valueMax = json_obj.valueMax;
+	
+	if(json_obj.value == -1){//new
 		
-	}else{
+	}else{			//not new
 		
 	}
 }
