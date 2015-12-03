@@ -1137,6 +1137,51 @@ public class DBManagers {
 		return takenAuctions;
 	}
 	
+	public ArrayList<BidHistory> getTakenBids(Customer customer) {
+		ArrayList<BidHistory> takenBids = new ArrayList<BidHistory>();
+		Connection conn = getConnection();
+		BidHistory bidHistory = null;
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT * "
+						+ "FROM Bid B "
+						+ "WHERE B.CustomerID = ? "
+						+ "GROUP BY AuctionID ASC, BidTime DESC";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setLong(1, customer.getSsn());
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					bidHistory = new BidHistory();
+					bidHistory.setAuctionID(rs.getInt("AuctionID"));
+					bidHistory.setCustomerID(rs.getLong("CustomerID"));
+					bidHistory.setItemID(rs.getInt("ItemID"));
+					bidHistory.setBidPrice(rs.getFloat("BidPrice"));
+					bidHistory.setBidTime(rs.getTimestamp("BidTime"));
+					bidHistory.setMaxBid(rs.getFloat("MaximumBid"));
+					takenBids.add(bidHistory);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return takenBids;
+	}
+	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {
 		
 		ArrayList<AuctionDetailInfo> auctionInfoBySellerName = new ArrayList<AuctionDetailInfo>();
