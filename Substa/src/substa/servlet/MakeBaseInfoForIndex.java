@@ -78,6 +78,8 @@ public class MakeBaseInfoForIndex extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
+		ArrayList<Item> bestSoldItems = db.getBestSellers();
+		session.setAttribute("bestSoldItems", bestSoldItems);
 		ArrayList<Customer> bestSellList = db.getMostSellCustomers();
 		session.setAttribute("bestSellers", bestSellList);
 		

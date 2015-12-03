@@ -1222,9 +1222,17 @@ public class DBManagers {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
 						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
 						+ "FROM Item I, Auction A, Post P "
-						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
+						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setString(1, itemType);
+				if(itemType.equals("Men's Clothing")) {
+					ps.setString(1, "Men\'s Clothing");
+				} else if(itemType.equals("Women's Clothing")) {
+					ps.setString(1, "Women\'s Clothing");
+				} else if(itemType.equals("Kids' Clothing")) {
+					ps.setString(1, "Kids\' Clothing");
+				} else {
+					ps.setString(1, itemType);
+				}
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -1579,7 +1587,7 @@ public class DBManagers {
 						+ "FROM Post P, Auction A, Item I "
 						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID "
 						+ "ORDER BY P.ExpireDate ASC "
-						+ "LIMIT 3";
+						+ "LIMIT 4";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
 				
@@ -1632,7 +1640,7 @@ public class DBManagers {
 						+ "WHERE A.AuctionID = S.AuctionID "
 						+ " GROUP BY A.ItemID "
 						+ " ORDER BY COUNT(*) DESC "
-						+ " LIMIT 3";
+						+ " LIMIT 4";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
 				while(rs1.next()) {
