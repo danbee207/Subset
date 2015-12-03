@@ -7,6 +7,7 @@ public class BidHistory {
 	private int auctionID;
 	private long CustomerID;
 	private int itemID;
+	private String itemName;
 	private Float BidPrice;
 	private Timestamp BidTime;
 	private Float maxBid;
@@ -33,6 +34,14 @@ public class BidHistory {
 	
 	public void setItemID(int itemID) {
 		this.itemID = itemID;
+	}
+	
+	public String getItemName() {
+		return itemName;
+	}
+	
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 	
 	public Float getBidPrice() {
