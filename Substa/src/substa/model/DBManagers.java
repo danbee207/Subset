@@ -1110,7 +1110,7 @@ public class DBManagers {
 		return ownBidMax;
 	}
 	
-	public BidHistory getWinnersBid(int auctionID, long winnerID) {
+	public BidHistory getWinnersBid(int auctionID) {
 		
 		BidHistory winnersBid = new BidHistory();
 		Connection conn = getConnection();
@@ -1124,12 +1124,11 @@ public class DBManagers {
 			try {
 				String sqlQuery1 = "SELECT * "
 						+ "FROM Bid "
-						+ "WHERE CustomerID = ? AND AuctionID = ? "
+						+ "WHERE AuctionID = ? "
 						+ "ORDER BY BidTime DESC "
 						+ "LIMIT 1 ";
 				ps1 = conn.prepareStatement(sqlQuery1);
-				ps1.setLong(1, winnerID);
-				ps1.setInt(2, auctionID);
+				ps1.setInt(1, auctionID);
 				rs1 = ps1.executeQuery();
 				
 				while(rs1.next()) {
@@ -1149,8 +1148,7 @@ public class DBManagers {
 						+ "ORDER BY BidTime DESC "
 						+ "LIMIT 1 ";
 				ps2 = conn.prepareStatement(sqlQuery2);
-				ps2.setLong(1, winnerID);
-				ps2.setInt(2, auctionID);
+				ps2.setInt(1, auctionID);
 				rs2 = ps2.executeQuery();
 				
 				while(rs2.next()) {
