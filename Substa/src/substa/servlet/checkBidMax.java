@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
+import substa.beans.AuctionDetailInfo;
 import substa.beans.Customer;
 import substa.model.DBManagers;
 
@@ -64,7 +68,7 @@ public class checkBidMax extends HttpServlet {
 		processReqeust(request,response);
 	}
 
-	private void processReqeust(HttpServletRequest request, HttpServletResponse response) {
+	private void processReqeust(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub6
 		
 		HttpSession session = request.getSession(true);
@@ -75,7 +79,24 @@ public class checkBidMax extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		Customer customer = (Customer)session.getAttribute("customerInfo");
-	
+		AuctionDetailInfo itemDetail = (AuctionDetailInfo)session.getAttribute("itemDetail");
+		
+		float value = -1;
+		value = db.getOwnBidMax(itemDetail.getAuctionID(), customer.getSsn());
+		
+		JSONObject json = new JSONObject();
+		
+		
+		float valueMax = db.getWinnersBid(itemDetail.getAuctionID(), winnerID);
+		float currentValue; 
+		
+		json.put("RevenueValue", value);
+		json.put("valueMax", valueMax);
+		json.put("currentValue", currentValue);
+		
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
 	}
 
 }
