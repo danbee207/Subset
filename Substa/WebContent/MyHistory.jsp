@@ -169,17 +169,15 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Type</th>
-							<th>End Date</th>
 							<th>Price</th>
-							<th>Bid Increment</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%for(int i=0;i<myBidProcess.size();i++){ %>
 						<tr onclick="showAuctionDetail(<%=i%>)">
 							<th scope="row"><%=i %></th>
-							<td><%=myBidProcess.get(i) %></td>
-							<td><%=myBidProcess.get(i) %></td>
+							<td><%=myBidProcess.get(i). %></td>
+							<td><%=myBidProcess.get(i).getItemType() %></td>
 							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
 						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
 						   
@@ -202,7 +200,7 @@
 			</div>
 		</div>
 
-	<nav class="navbar navbar-default navbar-fixed-bottom">
+
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
@@ -211,7 +209,7 @@
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
-</nav>
+
 	
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -283,7 +281,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="bidProcess.js"></script>
 	
 	
 		

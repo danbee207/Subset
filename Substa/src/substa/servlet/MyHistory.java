@@ -1,8 +1,6 @@
 package substa.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -13,26 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import substa.beans.AuctionDetailInfo;
-import substa.beans.BidHistory;
-import substa.beans.Customer;
 import substa.model.DBManagers;
 
 /**
- * Servlet implementation class BidProcess
+ * Servlet implementation class MyHistory
  */
 
-@WebServlet(
-		urlPatterns = { "/BidProcess" }, 
-		initParams = { 
-				@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"), 
-				@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu:3306/danpark"), 
-				@WebInitParam(name = "dbUser", value = "danpark"), 
-				@WebInitParam(name = "dbPass", value = "110142214")
-		})
-public class BidProcess extends HttpServlet {
+@WebServlet(urlPatterns = { "/MyHistory" }, initParams = {
+		@WebInitParam(name = "jdbcDriver", value = "com.mysql.jdbc.Driver"),
+		@WebInitParam(name = "dbUrl", value = "jdbc:mysql://mysql2.cs.stonybrook.edu/danpark"),
+		@WebInitParam(name = "dbUser", value = "danpark"), @WebInitParam(name = "dbPass", value = "110142214") })
+
+public class MyHistory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	private DBManagers db;
 
 	/**
@@ -69,7 +60,7 @@ public class BidProcess extends HttpServlet {
 		processRequest(request,response);
 	}
 
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 
@@ -78,22 +69,8 @@ public class BidProcess extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
-		Customer customerInfo = (Customer)session.getAttribute("customerInfo");
-		ArrayList<BidHistory> myBidProcess=db.getTakenBids(customerInfo);
-		session.setAttribute("myBidProcess", myBidProcess);
-		
-		gotoBidProcess(response);
-		
-		
 		
 		
 	}
 
-	protected void gotoBidProcess(HttpServletResponse response) throws IOException {
-		response.setContentType("text/html; charset=euc-kr");
-		PrintWriter out = response.getWriter();
-		out.println("<script type = 'text/javascript'>");
-		out.println("location.href='bidProcess.jsp';");
-		out.println("</script>");
-	}
 }
