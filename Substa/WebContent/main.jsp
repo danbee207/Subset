@@ -165,7 +165,7 @@
 
 									if (isCustomer) {
 							%>
-							<li><a href="#">My Bidding Process</a></li>
+							<li><a href="BidProcess">My Bidding Process</a></li>
 							<li><a href="#">History</a></li>
 							<li><a href="newAuction.jsp">Upload an Auction</a></li>
 							<li><a href="MySettings.jsp">My Setting</a> <%
