@@ -5,6 +5,9 @@
 <%@ page import="substa.beans.Customer" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="substa.beans.AuctionDetailInfo" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %>
 
 <jsp:useBean id="bestSellerInfo" type="substa.beans.Customer" scope="session" />
 <jsp:useBean id="AuctListofBestSeller" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session" />
@@ -17,7 +20,7 @@
 <title>Substa</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/newAuction.css">
+<link rel="stylesheet" href="css/sellerInfoDetail.css">
 <link rel="stylesheet" href="css/jquery.datetimepicker.css">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
@@ -153,14 +156,75 @@
 	
 	
 		<div id="contentBody">
+		<div class="container">
 			<div class="upperPart"></div>
 			<div class="page-header">
 			<%String name = bestSellerInfo.getFirst() + " "+bestSellerInfo.getLast(); %>
-			  <h1><%=name%><small>One of the popular sellers!</small></h1>
+			  <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%=name%> <small>One of the popular sellers!</small></h1>
 			</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">Basic Information</div>
+			<div class="panel-body">
+
+				<dl>
+					<dt>E-mail</dt>
+					<dd><%=bestSellerInfo.getEmail()%></dd>
+				</dl>
+				<dl >
+					<dt>Rate</dt>
+					<dd><%for(int j=0;j<bestSellerInfo.getRating();j++){%>
+						 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<%}for(int j=0;j<5-bestSellerInfo.getRating();j++){ %>
+						 <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+					<%} %>
+					
+					</dd>
+				</dl>
+				<dl >
+					<dt>Telephone</dt>
+					<dd><%=bestSellerInfo.getTelephone()%></dd>
+				</dl>
 			
-			
+			</div>
 		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">What does he/she sell?</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Type</th>
+							<th>End Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%for(int i=0;i<AuctListofBestSeller.size();i++){ %>
+						<tr onclick="showAuctionDetail(<%=i%>)">
+							<th scope="row"><%=i %></th>
+							<td><%=AuctListofBestSeller.get(i).getItemName() %></td>
+							<td><%=AuctListofBestSeller.get(i).getItemType() %></td>
+							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
+						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
+						   
+						   		Date d = before.parse(AuctListofBestSeller.get(i).getEndDate().toString());	  
+						   		String fixedDate = after.format(d);
+						%>
+							<td><%=fixedDate %></td>
+						</tr>
+						<%} %>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+</div>
+	</div>
 
 
 	<div class="container" id="footer">
@@ -243,12 +307,9 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/newAuction_js.js"></script>
-	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
-	<script>
+	<script type="text/javascript" src="js/showSellerInfo.js"></script>
 	
-	$("#endDate").datetimepicker({value:new Date(),step:10,format:'Y-m-d h:m:s',minDate:new Date()});
-	</script>
+	
 		
 </body>
 </html>
