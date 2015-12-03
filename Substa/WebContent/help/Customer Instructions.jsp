@@ -63,18 +63,15 @@
 					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
 					<hr class="featurette-divider">
 					
-					<h3>4. Make a bid on a product</h3>
-					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
-					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
-					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
+					<h3>4. Check your history of biddings</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'My Bidding Process' on the top-right.</p>
+					<p style="text-indent: 5em;">   You can view all of your bidding what you have made.</p>
 					<hr class="featurette-divider">
 					
-					<h3>4. Make a bid on a product</h3>
-					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
-					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
-					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
+					<h3>5. Check your history of auctions</h3>
+					<p style="text-indent: 5em;">   Click 'My Account'-'History' on the top-right. </p>
+					<p style="text-indent: 5em;">   You can see all of auctions where you have taken.</p>
 					<hr class="featurette-divider">
-					
 					
 				</div>
 			</div>

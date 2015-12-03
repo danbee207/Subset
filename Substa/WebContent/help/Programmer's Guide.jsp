@@ -46,24 +46,19 @@
 					<div class="page-header">
   						<h1> Welcome a programmer! <small> How is Substa made? </small></h1>
 					</div>
-					<h3>1.Change the personal information</h3>
-					<p style="text-indent: 5em;">   Click 'My Account'-'My Setting' on the top-right. </p>
-					<p style="text-indent: 5em;">   Change your information. *Caution: Email & SSN are not changable.</p>
-					<p style="text-indent: 5em;">   After filling the information correctly, click the orange 'Fix it!' button</p>
+					<h3>1. E-R Diagram</h3>
+					<p style="text-indent: 5em;">   E-R diagram of the database. </p>
+					<img alt="..." src="C:\Users\CHUNGJUNG\Pictures\KakaoTalk_20150913_122613614.jpg">
 					<hr class="featurette-divider">
 					
-					<h3>2.Upload an auction</h3>
-					<p style="text-indent: 5em;">   Click 'My Account'-'Upload an Auction' on the top-right. </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<h3>2. DB Relational Models</h3>
+					<a href="https://docs.google.com/document/d/1NZT2fsgtJoWIOqjbE-POdiC3FbyFkxwCaNNE4PMy44c/edit?usp=sharing">
+						<p style="text-indent: 5em;">   Look at the Google Docs for more. </p></a>
 					<hr class="featurette-divider">
 					
-					<h3>1.Sign Up</h3>
-					<p style="text-indent: 5em;">   . </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<h3>3. SQL Queries</h3>
+					<a href="https://docs.google.com/document/d/1K_RUeENIVqV_o7IYGWcEESJ9UurmchiX3QUGMWH_zgM/edit?usp=sharing">
+						<p style="text-indent: 5em;">   Look at the Google Docs for more. </p></a>
 					<hr class="featurette-divider">
 					
 				</div>
