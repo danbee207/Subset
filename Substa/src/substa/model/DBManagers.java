@@ -1571,7 +1571,7 @@ public class DBManagers {
 		
 		return auctionInfoByItemType;
 	}
-	
+	 
 	public ArrayList<AuctionDetailInfo> getAuctionInfoByItemName(ArrayList<String> keywords) {
 		
 		ArrayList<AuctionDetailInfo> auctionInfoByItemName = new ArrayList<AuctionDetailInfo>();
