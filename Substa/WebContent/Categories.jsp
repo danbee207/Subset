@@ -159,20 +159,23 @@
 			      	<div>
 			      		<p class="text-left">
 							<div class="btn-group" data-toggle="buttons">
-							  	<button class="btn btn-default active" id="searchItembtn" onclick="searchSelectedbtn(0);">Item Name</button>
-							  	<button class="btn btn-default" id="searchSellerbtn" onclick="searchSelectedbtn(1);">Seller Name</button>
+  							<label class="btn btn-default active">
+   								 <input type="radio" name="options" id="itemSearch" autocomplete="on" onclick="searchSelectedbtn(0)"> Item Search </label>
+  							<label class="btn btn-default">
+   								 <input type="radio" name="options" id="sellerSearch" autocomplete="off" onclick="searchSelectedbtn(1)">Seller Search </label>
+  
 							</div>
 			    		
-			    		<form class="navbar-form navbar-left" role="search">
-			      			<input type="text" class="form-control" placeholder="Search for...">
-			        		<button class="btn btn-warning" type="button" onclick="gotoServlet()">Search</button>
+			    		<form class="navbar-form navbar-left" role="search" id="searchFrom">
+			      			<input type="text" class="form-control" placeholder="Search for..." name="search">
+			        		<button class="btn btn-warning" type="submit" >Search</button>
 			      		</form>
 			      		</p>
 			    	</div><!-- /input-group -->
 			    	<div>
 			    	<h2 class="col-md-11">Suggestions For You</h2>
 			
-					<!-- Sugeesgion List -->
+					<!-- Sugeestion List -->
 					<% for(int i=0;i<suggestionList.size();i++){
 						if(i%4==0){%>
 							<div class="row">

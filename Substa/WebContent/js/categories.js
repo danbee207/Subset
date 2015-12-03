@@ -21,11 +21,9 @@ function Logout(){
 function searchSelectedbtn(btn){
 	
 	if(btn==0){
-		$("#searchItembtn").attr("class","btn btn-default active");
-		$("#searchSellerbtn").attr("class","btn btn-default");
+		$("#searchFrom").attr("action","SearchItem");
 	}else{
-		$("#searchSellerbtn").attr("class","btn btn-default active");
-		$("#searchItembtn").attr("class","btn btn-default");
+		$("#searchFrom").attr("action","");
 	}
 	
 	
