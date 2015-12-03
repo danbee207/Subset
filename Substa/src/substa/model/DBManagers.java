@@ -1222,9 +1222,17 @@ public class DBManagers {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
 						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
 						+ "FROM Item I, Auction A, Post P "
-						+ "WHERE P.ExpireDate > NOW() AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
+						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setString(1, itemType);
+				if(itemType.equals("Men's Clothing")) {
+					ps.setString(1, "Men\'s Clothing");
+				} else if(itemType.equals("Women's Clothing")) {
+					ps.setString(1, "Women\'s Clothing");
+				} else if(itemType.equals("Kids' Clothing")) {
+					ps.setString(1, "Kids\' Clothing");
+				} else {
+					ps.setString(1, itemType);
+				}
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
