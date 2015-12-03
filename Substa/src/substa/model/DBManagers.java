@@ -1147,9 +1147,9 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT * "
-						+ "FROM Bid B "
-						+ "WHERE B.CustomerID = ? "
+				String sqlQuery = "SELECT B.AuctionID, B.CustomerID, B.ItemID, I.ItemName, B.BidPrice, B.BidTime, B.MaximumBid "
+						+ "FROM Bid B, Item I "
+						+ "WHERE B.CustomerID = ? AND B.ItemID = I.ItemID "
 						+ "GROUP BY AuctionID ASC, BidTime DESC";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setLong(1, customer.getSsn());
@@ -1160,6 +1160,7 @@ public class DBManagers {
 					bidHistory.setAuctionID(rs.getInt("AuctionID"));
 					bidHistory.setCustomerID(rs.getLong("CustomerID"));
 					bidHistory.setItemID(rs.getInt("ItemID"));
+					bidHistory.setItemName(rs.getString("ItemName"));
 					bidHistory.setBidPrice(rs.getFloat("BidPrice"));
 					bidHistory.setBidTime(rs.getTimestamp("BidTime"));
 					bidHistory.setMaxBid(rs.getFloat("MaximumBid"));
@@ -1180,6 +1181,65 @@ public class DBManagers {
 		}
 		
 		return takenBids;
+	}
+	
+	public ArrayList<AuctionDetailInfo> getAuctionInfoByAuctionID(String itemType) {
+		
+		ArrayList<AuctionDetailInfo> auctionInfoByItemType = new ArrayList<AuctionDetailInfo>();
+		AuctionDetailInfo auctionInfo = null;
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, "
+						+ "A.AuctionID, A.BidIncrement, A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate, P.ReservedPrice "
+						+ "FROM Item I, Auction A, Post P "
+						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND I.ItemID = A.ItemID AND I.ItemType = ? ";
+				ps = conn.prepareStatement(sqlQuery);
+				if(itemType.equals("Men's Clothing")) {
+					ps.setString(1, "Men\'s Clothing");
+				} else if(itemType.equals("Women's Clothing")) {
+					ps.setString(1, "Women\'s Clothing");
+				} else if(itemType.equals("Kids' Clothing")) {
+					ps.setString(1, "Kids\' Clothing");
+				} else {
+					ps.setString(1, itemType);
+				}
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					auctionInfo = new AuctionDetailInfo();
+					auctionInfo.setItemName(rs.getString("ItemName"));
+					auctionInfo.setItemType(rs.getString("ItemType"));
+					auctionInfo.setDescription(rs.getString("Description"));
+					auctionInfo.setImgSrc(rs.getString("img"));
+					auctionInfo.setAuctionID(rs.getInt("AuctionID"));
+					auctionInfo.setBidInc(rs.getFloat("BidIncrement"));
+					auctionInfo.setMinBid(rs.getFloat("MinimumBid"));
+					auctionInfo.setCopy(rs.getInt("Copies_Sold"));
+					auctionInfo.setSellerID(rs.getLong("CustomerID"));
+					auctionInfo.setEndDate(rs.getTimestamp("ExpireDate"));
+					auctionInfo.setPrice(rs.getFloat("ReservedPrice"));
+					auctionInfoByItemType.add(auctionInfo);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return auctionInfoByItemType;
 	}
 	
 	public ArrayList<AuctionDetailInfo> getAuctionInfoBySellerName(String firstName, String lastName) {

@@ -402,9 +402,10 @@
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
 		</div>
+		<a href="help/Home.jsp"> HELP </a>
 		<div class="navbar-footer navbar-right">
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
-		</div>
+		</div>	
 	</div>
 
 
