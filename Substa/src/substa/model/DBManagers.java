@@ -1071,9 +1071,8 @@ public class DBManagers {
 		return suggestion;
 	}
 	
-	public int hasBidMax(int auctionID) {
-		
-		int maxBidCount = 0;
+	public float getOwnBidMax(int auctionID, long customerID) {
+		float ownBidMax = 0;
 		Connection conn = getConnection();
 		
 		if(conn != null) {
@@ -1081,15 +1080,18 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT COUNT(*) AS Num"
+				String sqlQuery = "SELECT MaximumBid"
 						+ "FROM Bid "
-						+ "WHERE AuctionID = ? ";
+						+ "WHERE CustomerID = ? AND AuctionID = ? "
+						+ "ORDER BY MaximumBid DECS"
+						+ "LIMIT 1";
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setInt(1, auctionID);
+				ps.setLong(1, customerID);
+				ps.setInt(2, auctionID);
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					maxBidCount = rs.getInt(rs.getInt("Num"));
+					ownBidMax = rs.getFloat("MaximumBid");
 				}
 				
 			} catch (SQLException e) {
@@ -1105,13 +1107,7 @@ public class DBManagers {
 			}
 		} 
 		
-		return maxBidCount;
-	}
-	
-	public float getOwnBidMax() {
-		float ownBidMax = 0;
-		
-		
+		return ownBidMax;
 	}
 	
 	public BidHistory getWinnersBid(int auctionID, long winnerID) {
@@ -1120,36 +1116,57 @@ public class DBManagers {
 		Connection conn = getConnection();
 		
 		if(conn != null) {
-			PreparedStatement ps = null;
-			ResultSet rs = null;
+			PreparedStatement ps1 = null;
+			PreparedStatement ps2 = null;
+			ResultSet rs1 = null;
+			ResultSet rs2 = null;
 			
 			try {
-				String sqlQuery = "SELECT *"
+				String sqlQuery1 = "SELECT * "
 						+ "FROM Bid "
 						+ "WHERE CustomerID = ? AND AuctionID = ? "
 						+ "ORDER BY BidTime DESC "
 						+ "LIMIT 1 ";
-				ps = conn.prepareStatement(sqlQuery);
-				ps.setLong(1, winnerID);
-				ps.setInt(2, auctionID);
-				rs = ps.executeQuery();
+				ps1 = conn.prepareStatement(sqlQuery1);
+				ps1.setLong(1, winnerID);
+				ps1.setInt(2, auctionID);
+				rs1 = ps1.executeQuery();
 				
-				while(rs.next()) {
-					winnersBid.setAuctionID(rs.getInt("AuctionID"));
-					winnersBid.setCustomerID(rs.getLong("CustomerID"));
-					winnersBid.setItemID(rs.getInt("ItemID"));
-					winnersBid.setBidPrice(rs.getFloat("BidPrice"));
-					winnersBid.setBidTime(rs.getTimestamp("BidTime"));
-					winnersBid.setMaxBid(rs.getFloat("MaximumBid"));
-					winnersBid.setWinnerID(rs.getLong("WinnerID"));
+				while(rs1.next()) {
+					winnersBid.setAuctionID(rs1.getInt("AuctionID"));
+					winnersBid.setCustomerID(rs1.getLong("CustomerID"));
+					winnersBid.setItemID(rs1.getInt("ItemID"));
+					winnersBid.setBidTime(rs1.getTimestamp("BidTime"));
+					winnersBid.setMaxBid(rs1.getFloat("MaximumBid"));
+					winnersBid.setWinnerID(rs1.getLong("WinnerID"));
 				}
+				
+				ps1.close(); rs1.close();
+				
+				String sqlQuery2 = "SELECT BidPrice "
+						+ "FROM Bid "
+						+ "WHERE AuctionID = ? "
+						+ "ORDER BY BidTime DESC "
+						+ "LIMIT 1 ";
+				ps2 = conn.prepareStatement(sqlQuery2);
+				ps2.setLong(1, winnerID);
+				ps2.setInt(2, auctionID);
+				rs2 = ps2.executeQuery();
+				
+				while(rs2.next()) {
+					winnersBid.setBidPrice(rs2.getFloat("BidPrice"));
+				}
+				
+				ps2.close(); ps2.close();
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				try {
-					ps.close();
-					rs.close();
+					ps1.close();
+					rs1.close();
+					ps2.close();
+					rs2.close();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
 				}
