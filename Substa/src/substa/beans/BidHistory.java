@@ -11,6 +11,7 @@ public class BidHistory {
 	private Float BidPrice;
 	private Timestamp BidTime;
 	private Float maxBid;
+	private long winnerID;
 
 	public int getAuctionID() {
 		return auctionID;
@@ -66,6 +67,14 @@ public class BidHistory {
 	
 	public void setMaxBid(Float maxBid) {
 		this.maxBid = maxBid;
+	}
+	
+	public long getWinnerID() {
+		return winnerID;
+	}
+	
+	public void setWinnerID(long winnerID) {
+		this.winnerID = winnerID;
 	}
 
 }
