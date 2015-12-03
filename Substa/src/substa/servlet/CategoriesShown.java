@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.User;
+import substa.beans.Customer;
 import substa.beans.AuctionDetailInfo;
 import substa.model.DBManager;
 import substa.model.DBManagers;
@@ -83,6 +85,9 @@ public class CategoriesShown extends HttpServlet {
 		ArrayList<AuctionDetailInfo> itemList =  db.getAuctionInfoByItemType(cate);
 		System.out.println(cate + " "+itemList.size());
 		session.setAttribute("itemList", itemList);
+		
+		ArrayList<AuctionDetailInfo> suggestionList =  db.getPersonalSuggestion((User)session.getAttribute("LoginUser"));
+		session.setAttribute("suggestionList", suggestionList);
 		
 		String targetPage = "Categories.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/" + targetPage);

@@ -972,7 +972,7 @@ public class DBManagers {
 		return mailingList;
 	}
 	
-	public ArrayList<AuctionDetailInfo> getPersonalSuggestion(Customer customer) {
+	public ArrayList<AuctionDetailInfo> getPersonalSuggestion(User customer) {
 		
 		Connection conn = getConnection();
 		ArrayList<AuctionDetailInfo> suggestion = new ArrayList<AuctionDetailInfo>();
@@ -986,17 +986,16 @@ public class DBManagers {
 				String sqlQuery = "SELECT I.ItemName, I.ItemType, I.Description, I.img, A.AuctionID, A.BidIncrement, "
 						+ "A.MinimumBid, A.Copies_Sold, P.CustomerID, P.ExpireDate "
 						+ "FROM Sales S, Auction A, Item I, Post P "
-						+ "WHERE NOW() < P.ExpireDate AND S.AuctionID = A.AuctionID AND P.AuctionID = A.AuctionID "
-						+ "AND A.ItemID = I.ItemID AND S.BuyerID IN ( "
+						+ "WHERE NOW() < P.ExpireDate AND S.AuctionID = A.AuctionID AND P.AuctionID = A.AuctionID AND I.NumCopies > 0 "
+						+ "AND A.ItemID = I.ItemID AND S.BuyerID IN ("
 						+ "	SELECT S.BuyerID "
 						+ "	FROM Sales S, Auction A "
-						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ( "
-						+ "		SELECT A.ItemID "
-						+ "		FROM Auction A, Sales S "
-						+ "		WHERE S.AuctionID = A.AuctionID AND S.BuyerID = ?) "
+						+ "	WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ("
+						+ "	SELECT A.ItemID "
+						+ "	FROM Auction A, Sales S "
+						+ "	WHERE S.AuctionID = A.AuctionID AND S.BuyerID = ?) "
 						+ "	) "
 						+ "GROUP BY A.ItemID "
-						+ "HAVING I.NumCopies > 0 "
 						+ "ORDER BY COUNT(A.ItemID) "
 						+ "LIMIT 20";
 				
