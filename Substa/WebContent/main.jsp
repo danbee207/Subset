@@ -174,8 +174,8 @@
 							<li><a href="PreEmployeeManagement">Employee Management</a></li>
 							<li><a href="PreCustomerManagement">Customer Management</a></li>
 							<li><a href="ItemManagement">Item Management</a></li>
-							<li><a href="PreSummery">Summary</a>
-							<li><a href="#">History</a></li>
+							<li><a href="Summery">Summary</a>
+							
 							<%
 								}
 								}
@@ -381,7 +381,7 @@
 			</a> <a href="ItemManagement" class="list-group-item list-group-item-info">
 				<h4 class="list-group-item-heading">Item Management</h4>
 				<p class="list-group-item-text">- Item List</p>
-			</a> <a href="#" class="list-group-item">
+			</a> <a href="Summery" class="list-group-item">
 				<h4 class="list-group-item-heading">Summery</h4>
 				<p class="list-group-item-text">- Monthly Sum</p>
 			</a>
