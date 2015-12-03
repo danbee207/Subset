@@ -46,17 +46,17 @@
 					<div class="page-header">
   						<h1> Enjoy Substa! <small> Make an account to fully use our online auction </small></h1>
 					</div>
-					<h3>1.Sign Up</h3>
+					<h3>1. Sign Up</h3>
 					<p style="text-indent: 5em;">   Click 'My Account'-'Sign In' on the top-right. </p>
 					<p style="text-indent: 5em;">   You can make an account from the orange 'Sign Up' button.</p>
 					<p style="text-indent: 5em;">   After filling the sign-up sheet correctly, click the 'Sign In' button.</p>
 					<p style="text-indent: 5em;">   Now, you can experience our Substa auction!</p>
 					<hr class="featurette-divider">
-					<h3>2.Sign In</h3>
+					<h3>2. Sign In</h3>
 					<p style="text-indent: 5em;">   Click 'My Account'-'Sign In' on the top-right. </p>
 					<p style="text-indent: 5em;">   Sign in with your email address and password.</p>
 					<hr class="featurette-divider">
-					<h3>Contact on</h3>
+					<h3>***Contact on***</h3>
 					<p style="text-indent: 5em;">   Chungjung Lee, Chungjung.Lee@stonybrook.edu </p>
 					<p style="text-indent: 5em;">   Danbee Park, Danbee.Park@stonybrook.edu</p>
 					<hr class="featurette-divider">
