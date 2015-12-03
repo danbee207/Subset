@@ -7,6 +7,10 @@
 <%@ page import="substa.beans.Item"%>
 <%@ page import="substa.beans.AuctionDetailInfo"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %>
+
 
 <jsp:useBean id="bestSellers"
 	type="java.util.ArrayList<substa.beans.Customer>" scope="session" />
@@ -207,7 +211,7 @@
 			<h2 class="lead">Substa is a new auction Site. I hope you could
 				find your like.</h2>
 			<br />
-			<form class="form-horizontal" method="post" action="SearchItem">
+			<form class="form-horizontal" method="post" action="SearchItem" id="searchForm">
 				<div class="form-group" id="serarchDiv">
 					<div class="col-sm-8">
 						<input type="text" id="search" name="search" size="10"
@@ -215,8 +219,8 @@
 							placeholder="Samsung, Coffee Machine, Microwave">
 					</div>
 					<div class="col-sm-4">
-						<button type="button" class="btn btn-warning btn-lg"
-							onclick="searchItem();">Search</button>
+						<button class="btn btn-warning btn-lg"
+							onclick="searchItem(<%=isLogin%>);">Search</button>
 					</div>
 				</div>
 			</form>
@@ -226,7 +230,8 @@
 			<h2 class="col-md-11">Deadline Soon!</h2>
 			
 		</div>
-		<% for(int i=0;i<deadlineItems.size();i++){if(i%4==0){%>
+		<% for(int i=0;i<deadlineItems.size();i++){
+			if(i%4==0){%>
 		<div class="row">
 		<%} %>
 
@@ -241,7 +246,13 @@
 					<div class="caption">
 						<h3><%=deadlineItems.get(i).getItemName() %></h3>
 						<p>Categories:<%=deadlineItems.get(i).getItemType()%></p>
-						<p>Auction End Time : <%=deadlineItems.get(i).getEndDate() %></p>
+						<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
+						   SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
+						   
+						   Date d = before.parse(deadlineItems.get(i).getEndDate().toString());	  
+						   String fixedDate = after.format(d);
+						%>
+						<p>Auction End Time : <%=fixedDate %></p>
 						<p class="text-right">
 							<a href="#" class="btn btn-warning" role="button">Detail</a>
 						</p>

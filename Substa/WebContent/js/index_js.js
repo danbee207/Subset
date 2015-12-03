@@ -8,8 +8,12 @@ function Logout(){
 	location.href="Logout";
 	
 }
-function searchItem(){
-	
+function searchItem(isLogin){
+	if(isLogin){
+		$("#searchForm").submit();
+	}else{
+		$('#singinModal').modal('show');	
+	}
 }
 
 
