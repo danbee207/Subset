@@ -202,7 +202,7 @@
 			
 			<ul>
 			<li><strong>Number of Copies</strong> <%=itemDetail.getCopy() %> </li>
-			<li><strong>Seller ID</strong> <%=sellerInfo.getEmail() %> </li>
+			<li onclick="ShowSellersInfo?cusId=<%=sellerInfo.getSsn() %>"><strong>Seller ID</strong> <%=sellerInfo.getEmail() %> </li>
 			<li><strong>Description</strong> <%=itemDetail.getDescription() %> </li>
 			
 			</ul>

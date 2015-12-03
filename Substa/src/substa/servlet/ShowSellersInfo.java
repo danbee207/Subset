@@ -76,13 +76,11 @@ public class ShowSellersInfo extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
+		int bestSellerNum = Integer.parseInt(request.getParameter("cusId"));
 		
-		
-		ArrayList<Customer> bestSellList = (ArrayList<Customer>) session.getAttribute("bestSellers");
-		int bestSellerNum = Integer.parseInt(request.getParameter("bestSeller"));
-		
-		session.setAttribute("bestSellerInfo", bestSellList.get(bestSellerNum));
-		ArrayList<AuctionDetailInfo> AucListfromBestSeller = db.getAuctionsBySellerID(bestSellList.get(bestSellerNum).getSsn());
+		Customer cus = db.getCustomer(bestSellerNum);
+		session.setAttribute("bestSellerInfo",cus );
+		ArrayList<AuctionDetailInfo> AucListfromBestSeller = db.getAuctionsBySellerID(bestSellerNum);
 		session.setAttribute("AuctListofBestSeller", AucListfromBestSeller);
 		
 		gotoSellerInfo(response);

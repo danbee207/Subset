@@ -237,8 +237,8 @@
 		<div class="row">
 		<%} %>
 
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
+			<div class="col-sm-5 col-md-3" onclick="ShowItemDetail?auctionId=<%=deadlineItems.get(i).getAuctionID()%>">
+				<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=deadlineItems.get(i).getAuctionID()%>">
 				<%if(deadlineItems.get(i).getImgSrc()==null) {%>
 				<img src="img/basic/NotitemShown.png" alt="...">
 				
@@ -299,9 +299,7 @@
 	
 	<div class="row">
 		<h2 class="col-md-11">Most Popular Sellers</h2>
-		<form action="ShowSellersInfo" method="get" id="bestsellerInfo">
-			<input type="hidden" value="" name="bestSeller" id="bestSeller">
-		</form>
+		
 	</div>
 	<%
 			for (int i = 0; i < bestSellers.size(); i++) {
@@ -329,7 +327,7 @@
 					<%} %>
 					</p>
 					<p class="text-right">
-						<a href="#" class="btn btn-warning" role="button" onclick="showbestSellersInfo(<%=i %>)" >Detail</a>
+						<a href="#" class="btn btn-warning" role="button" onclick="ShowSellersInfo?cusId=<%=bestSellers.get(i).getSsn()%>" >Detail</a>
 						
 					</p>
 				</div>

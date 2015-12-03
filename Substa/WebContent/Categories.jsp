@@ -196,7 +196,7 @@
 			if(i%4==0){
 			%><div class="row"><%} %>
 			<div class="col-sm-5 col-md-3">
-			<div class="thumbnail" onclick="">
+			<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
 			<%if(itemList.get(i).getImgSrc()==null){ %>
 			<img class="minimizeImg" src="img/basic/NotitemShown.png">
 			<%}else{ %>
