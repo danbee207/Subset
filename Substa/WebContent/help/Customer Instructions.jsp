@@ -59,11 +59,11 @@
 					<p style="text-indent: 5em;">   .</p>
 					<hr class="featurette-divider">
 					
-					<h3>1.Sign Up</h3>
-					<p style="text-indent: 5em;">   . </p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
-					<p style="text-indent: 5em;">   .</p>
+					<h3>3.Make a bid on a product</h3>
+					<p style="text-indent: 5em;">   Click 'Details' button on an interesting item.</p>
+					<p style="text-indent: 5em;">   On the page about auction detail, you can see the bid history.</p>
+					<p style="text-indent: 5em;">   Put your bid price on the right side.</p>
+					<p style="text-indent: 5em;">   If you become a winner, an alarm will be shown.</p>
 					<hr class="featurette-divider">
 					
 					

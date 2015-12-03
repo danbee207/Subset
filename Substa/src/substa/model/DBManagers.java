@@ -1108,6 +1108,12 @@ public class DBManagers {
 		return maxBidCount;
 	}
 	
+	public float getOwnBidMax() {
+		float ownBidMax = 0;
+		
+		
+	}
+	
 	public BidHistory getWinnersBid(int auctionID, long winnerID) {
 		
 		BidHistory winnersBid = new BidHistory();

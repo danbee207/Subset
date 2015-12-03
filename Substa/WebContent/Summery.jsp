@@ -91,17 +91,17 @@
 					<div class="panel-body">
 						<form action="reportMonth">
 						<input type="text" class="form-control" id="reportMonth" name="reportMonth">
-						<button type="submit" class="btn btn-default">Search</button>
+						<button type="submit" class="btn btn-warning">Search</button>
 						</form>
 						
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">Sales Report</div>
+					<div class="panel-heading">Sales Report By Month</div>
 					<div class="panel-body">
-					<form>
+					<form action="MonthlyReport">
 					<input type="text" value="" id="MonthlyReport" name="MonthlyReport" placeholder="ex)3"> 
-					<button type="submit" id="montlyBtn"></button>
+					<button type="submit" class="btn btn-warning" id="btn btn-warning">Search</button>
 					</form>
 					</div>
 				</div>
@@ -116,7 +116,7 @@
 						</select>
 						
 						<input type="text" id="salesSearch">
-						<button type="button" class="btn btn-primary" onclick="findSales();">Search</button>
+						<button type="button" class="btn btn-warning" onclick="findSales();">Search</button>
 						</form>
 						
 					</div>
