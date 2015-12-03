@@ -21,10 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -45,7 +41,7 @@ import substa.model.DBManagers;
 public class UploadAuction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DBManagers db;
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -56,8 +52,6 @@ public class UploadAuction extends HttpServlet {
 		db.setDbURL(config.getInitParameter("dbUrl"));
 		db.setDbuser(config.getInitParameter("dbUser"));
 		db.setDbpass(config.getInitParameter("dbPass"));
-		
-		
 
 		try {
 			Class.forName(config.getInitParameter("jdbcDriver"));
@@ -90,168 +84,156 @@ public class UploadAuction extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-/*
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		HttpSession session = request.getSession(true);
-		
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Pragma", "no-cache");
-		response.setDateHeader("Expires", 0);
-		
-		response.setContentType("text/html; charset=utf-8");
-		
-		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-	
-		if(isMultipart){
-			
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			factory.setSizeThreshold(1*1024*1024);
-			
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			upload.setSizeMax(10*1024*1024);
-			
-			List<FileItem> items = upload.parseRequest(request);
-			Iterator iter = items.iterator();
-			
-			while(iter.hasNext()){
-				FileItem fileItem = (FileItem)iter.next();
-				
-				if(fileItem.isFormField()){
-					Item item = new Item();
-					item.setItemName(request.getParameter("name"));
-					item.setDescription(request.getParameter("desc"));
-					item.setItemType(request.getParameter("sType"));
-					item.setNumCopies(Integer.parseInt(request.getParameter("num")));
-					
-					
-					item.setImgsrc(file);
-					db.addItem(item);
-					int itemId = db.getLatestItemID();
-					//db
-					Auction auction = new Auction();
-					auction.setItemId(itemId);
-					auction.setMornitor(db.getManagerID());
-					auction.setCopy(1);
-					auction.setMinBid(Float.parseFloat(request.getParameter("minBid")));
-					
-					db.addAuction(auction);
-					//db
-					Post post = new Post();
-					Customer customer = (Customer)session.getAttribute("customerInfo");
-					post.setCusId(customer.getSsn());
-					post.setAucId(db.getLatesetAuctionID());
-					post.setStartDate(new Timestamp(System.currentTimeMillis()));
-					
-					String endDate = request.getParameter("endDate");
-					System.out.println("getDate"+endDate);
-					SimpleDateFormat bfomratter = new SimpleDateFormat("yyyy-m-d h:m:s");
-					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-					Date d = bfomratter.parse(endDate);
-					
-					System.out.println(d.toString());
-					String endDateFixed = formatter.format(d);
-					System.out.println(endDateFixed);
-					post.setEndDate(Timestamp.valueOf(endDateFixed));
-					post.setPrice(Float.parseFloat(request.getParameter("reserveBid")));
-					db.addPost(post);
-					//db
-				}else{
-					if(fileItem.getSize()>0){
-						String fieldName = fileItem.getFieldName();
-						String fileName = fileItem.getName();
-						String contentType = fileItem.getContentType();
-						
-						boolean isInMemory = fileItem.isInMemory();
-						long sizeBytes = fileItem.getSize();
-						
-						try{
-							File uploadedFile = new File(realDir,fileName);
-							fileItem.write(uploadedFile);
-							
-							fileItem.delete();
-						}catch(IOException e){
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-			
-			
-		}
-		
-		
-	}*/
+
+	/*
+	 * protected void processRequest(HttpServletRequest request,
+	 * HttpServletResponse response) throws Exception {
+	 * 
+	 * HttpSession session = request.getSession(true);
+	 * 
+	 * response.setHeader("Cache-Control", "no-cache");
+	 * response.setHeader("Pragma", "no-cache");
+	 * response.setDateHeader("Expires", 0);
+	 * 
+	 * response.setContentType("text/html; charset=utf-8");
+	 * 
+	 * boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+	 * 
+	 * if(isMultipart){
+	 * 
+	 * DiskFileItemFactory factory = new DiskFileItemFactory();
+	 * factory.setSizeThreshold(1*1024*1024);
+	 * 
+	 * ServletFileUpload upload = new ServletFileUpload(factory);
+	 * upload.setSizeMax(10*1024*1024);
+	 * 
+	 * List<FileItem> items = upload.parseRequest(request); Iterator iter =
+	 * items.iterator();
+	 * 
+	 * while(iter.hasNext()){ FileItem fileItem = (FileItem)iter.next();
+	 * 
+	 * if(fileItem.isFormField()){ Item item = new Item();
+	 * item.setItemName(request.getParameter("name"));
+	 * item.setDescription(request.getParameter("desc"));
+	 * item.setItemType(request.getParameter("sType"));
+	 * item.setNumCopies(Integer.parseInt(request.getParameter("num")));
+	 * 
+	 * 
+	 * item.setImgsrc(file); db.addItem(item); int itemId =
+	 * db.getLatestItemID(); //db Auction auction = new Auction();
+	 * auction.setItemId(itemId); auction.setMornitor(db.getManagerID());
+	 * auction.setCopy(1);
+	 * auction.setMinBid(Float.parseFloat(request.getParameter("minBid")));
+	 * 
+	 * db.addAuction(auction); //db Post post = new Post(); Customer customer =
+	 * (Customer)session.getAttribute("customerInfo");
+	 * post.setCusId(customer.getSsn());
+	 * post.setAucId(db.getLatesetAuctionID()); post.setStartDate(new
+	 * Timestamp(System.currentTimeMillis()));
+	 * 
+	 * String endDate = request.getParameter("endDate");
+	 * System.out.println("getDate"+endDate); SimpleDateFormat bfomratter = new
+	 * SimpleDateFormat("yyyy-m-d h:m:s"); SimpleDateFormat formatter = new
+	 * SimpleDateFormat("yyyy-mm-dd hh:mm:ss"); Date d =
+	 * bfomratter.parse(endDate);
+	 * 
+	 * System.out.println(d.toString()); String endDateFixed =
+	 * formatter.format(d); System.out.println(endDateFixed);
+	 * post.setEndDate(Timestamp.valueOf(endDateFixed));
+	 * post.setPrice(Float.parseFloat(request.getParameter("reserveBid")));
+	 * db.addPost(post); //db }else{ if(fileItem.getSize()>0){ String fieldName
+	 * = fileItem.getFieldName(); String fileName = fileItem.getName(); String
+	 * contentType = fileItem.getContentType();
+	 * 
+	 * boolean isInMemory = fileItem.isInMemory(); long sizeBytes =
+	 * fileItem.getSize();
+	 * 
+	 * try{ File uploadedFile = new File(realDir,fileName);
+	 * fileItem.write(uploadedFile);
+	 * 
+	 * fileItem.delete(); }catch(IOException e){ e.printStackTrace(); } } } }
+	 * 
+	 * 
+	 * }
+	 * 
+	 * 
+	 * }
+	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		HttpSession session = request.getSession(true);
-		
+
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
 		response.setDateHeader("Expires", 0);
 
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
-		
-		
-		String realFolder="";
-   		String saveFolder="/fileupload";
-   		
-   		int fileSize=5*1024*1024;
-   		
-   		realFolder=request.getRealPath(saveFolder);
-		try{
+
+		String realFolder = "";
+		String saveFolder = "/fileupload";
+
+		int fileSize = 5 * 1024 * 1024;
+
+		realFolder = request.getServletContext().getRealPath(saveFolder);
+		try {
+			File fileCheck = new File(realFolder);
+			if (!fileCheck.exists()) {
+				fileCheck.mkdirs();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
 			MultipartRequest multi = null;
-			
-			multi = new MultipartRequest(request, realFolder, fileSize,"euc-kr",new DefaultFileRenamePolicy());
-			
+
+			multi = new MultipartRequest(request, realFolder, fileSize, "euc-kr", new DefaultFileRenamePolicy());
+
 			Item item = new Item();
 			item.setItemName(multi.getParameter("name"));
 			item.setDescription(multi.getParameter("desc"));
 			item.setItemType(multi.getParameter("sType"));
 			item.setNumCopies(Integer.parseInt(multi.getParameter("num")));
-			
-			String file = multi.getFilesystemName((String)multi.getFileNames().nextElement());
+
+			String file = multi.getFilesystemName((String) multi.getFileNames().nextElement());
 			item.setImgsrc(file);
 			db.addItem(item);
 			int itemId = db.getLatestItemID();
-			//db
+			// db
 			Auction auction = new Auction();
 			auction.setItemId(itemId);
 			auction.setMornitor(db.getManagerID());
 			auction.setCopy(1);
 			auction.setMinBid(Float.parseFloat(multi.getParameter("minBid")));
-			
+
 			db.addAuction(auction);
-			//db
+			// db
 			Post post = new Post();
-			Customer customer = (Customer)session.getAttribute("customerInfo");
+			Customer customer = (Customer) session.getAttribute("customerInfo");
 			post.setCusId(customer.getSsn());
 			post.setAucId(db.getLatesetAuctionID());
 			post.setStartDate(new Timestamp(System.currentTimeMillis()));
-			
+
 			String endDate = multi.getParameter("endDate");
-			System.out.println("getDate"+endDate);
+			System.out.println("getDate" + endDate);
 			SimpleDateFormat bfomratter = new SimpleDateFormat("yyyy-m-d h:m:s");
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 			Date d = bfomratter.parse(endDate);
-			
+
 			System.out.println(d.toString());
 			String endDateFixed = formatter.format(d);
 			System.out.println(endDateFixed);
 			post.setEndDate(Timestamp.valueOf(endDateFixed));
 			post.setPrice(Float.parseFloat(multi.getParameter("reserveBid")));
 			db.addPost(post);
-			//db
-			
+			// db
+
 			goIndex(response);
-			
-			
-		}catch(NullPointerException e){
+
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void goIndex(HttpServletResponse response) throws IOException {
