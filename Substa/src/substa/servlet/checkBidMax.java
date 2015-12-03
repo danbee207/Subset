@@ -87,7 +87,7 @@ public class checkBidMax extends HttpServlet {
 		JSONObject json = new JSONObject();
 		
 		
-		float valueMax = db.getWinnersBid(itemDetail.getAuctionID(), winnerID);
+		float valueMax = db.getbid;
 		float currentValue; 
 		
 		json.put("RevenueValue", value);
