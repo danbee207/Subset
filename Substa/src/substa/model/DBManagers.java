@@ -1587,7 +1587,7 @@ public class DBManagers {
 						+ "FROM Post P, Auction A, Item I "
 						+ "WHERE NOW() < P.ExpireDate AND P.AuctionID = A.AuctionID AND A.ItemID = I.ItemID "
 						+ "ORDER BY P.ExpireDate ASC "
-						+ "LIMIT 3";
+						+ "LIMIT 4";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
 				
