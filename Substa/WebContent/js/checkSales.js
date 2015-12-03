@@ -14,7 +14,7 @@ function poll(){
 	
 }
 
-function handelResponseJson(data){
+function handleResponseJson(data){
 	
 	clearInterval(t);
 	t=setTimeout(poll,30000);
