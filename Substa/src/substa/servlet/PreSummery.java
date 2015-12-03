@@ -62,7 +62,7 @@ public class PreSummery extends HttpServlet {
 		processRuqest(request, response);
 	}
 	
-	private void processRuqest(HttpServletRequest request, HttpServletResponse response) {
+	private void processRuqest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 	
 		HttpSession session = request.getSession(true);
@@ -78,9 +78,11 @@ public class PreSummery extends HttpServlet {
 		session.setAttribute("topRevenueEmployer", topRevenueEmployer);
 		session.setAttribute("topRevenueCustomer", topRevenueCustomer);
 
+		gotoEmployee(response);
 	}
 
 	protected void gotoEmployee(HttpServletResponse response) throws IOException {
+		
 		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script type = 'text/javascript'>");

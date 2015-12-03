@@ -28,11 +28,3 @@ function searchSelectedbtn(btn){
 	
 	
 }
-function gotoServlet(btn){
-	if(btn==0){  //item
-		
-	}else{		//seller
-		
-	}
-	
-}
