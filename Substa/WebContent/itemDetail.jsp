@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Customer"%>
-
-
+<%@ page import="substa.beans.AuctionDetailInfo" %>
+<jsp:useBean id="itemDetail" type="substa.beans.AuctionDetailInfo" scope="session"/>
+<jsp:useBean id="sellerInfo" type="substa.beans.Customer" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -171,144 +172,75 @@
 	
 	<div id="containerBody">
 		<div id="blankforBody"></div>
-		
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-			  
-			    <form class="navbar-form navbar-left" role="search">
-			      	<div class="input-group">
-			    		<span class="input-group-btn">
-							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" 
-								aria-haspopup="true" aria-expanded="false">
-							  Search by <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  	<li><a href="#">Product Name</a></li>
-							  	<li><a href="#">Product Type</a></li>
-							  	<li><a href="#">Seller Name</a></li>
-							</ul>
-			    		</span>
-			      		<input type="text" class="form-control" placeholder="Search for...">
-			      		<span class="input-group-btn">
-			        		<button class="btn btn-default" type="button">Search</button>
-			      		</span>
-			    	</div><!-- /input-group -->
-			    </form>
-			</div><!-- /.navbar-collapse -->
-		</nav>
-		
-		<hr class="featurette-divider">
-		
-		<div class="row featurette">
-        	<div class="col-md-8 col-md-push-4">
-        		<div class="col-md-2 col-md-push-10">
-        			
-	        		<input type="text" class="form-control" placeholder="Bid Price">
-				    <span class="input-group-btn">
-				    	<button class="btn btn-primary" type="button">Bid Now</button>
-				    </span>
-        		</div>
-          		<div class="col-md-6 col-md-pull-2">
-          			<h2 class="featurette-heading">Name of Product</span></h2>
-          			<p class="lead">Seller Name: </p>
-          			<p class="lead">Current Bid: </p>
-          			<p class="lead">Ends In: </p>
-          		</div>
-           	</div>
-        	<div class="col-md-4 col-md-pull-8">
-          		<img class="featurette-image img-responsive center-block" data-src="..." alt="Product image">
-        	</div>
-      	</div>
-      	
-      	<div class="row">
-      		<h3>Description of the product</h3>
-      		<p>Description will be placed here.</p>
-      	</div>
-		
-		<hr class="featurette-divider">
-		
+		<div class="container">
+		<div class="page-header">
+			
+			  <h1><%=itemDetail.getItemName() %> <small> <%=itemDetail.getItemType() %></small></h1>
+			</div>
 		<div class="row">
-			<h4>Products Related To This Item</h4>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<div class="thumbnail">
-					<img src="..." alt="...">
-					<div class="caption">
-						<h3>Name of Product</h3>
-						<p>Current High Bid: </p>
-						<p>Sale ends in: </p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button">Detail</a> 
-						</p>
-					</div>
-				</div>
+			<div class="col-sm-10">
+			<button type="button" class="btn btn-primary">Bid</button>
 			</div>
 		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Basic Information</div>
+			<div class="panel-body">
+			<%if(itemDetail.getImgSrc()==null) {%>
+				<img src="img/basic/NotitemShown.png" alt="...">
+				
+				<%}else{ %>
+					<img src="FileDownload?file_name=<%=itemDetail.getImgSrc() %>" alt="...">
+					<%} %>	
 			
+			<ul>
+			<li><strong>Number of Copies</strong> <%=itemDetail.getCopy() %> </li>
+			<li><strong>Seller ID</strong> <%=sellerInfo.getEmail() %> </li>
+			<li><strong>Description</strong> <%=itemDetail.getDescription() %> </li>
+			
+			</ul>
+			</div>
+		
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Auction's History</div>
+			<div class="panel-body">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Type</th>
+							<th>End Date</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%for(int i=0;i<myHistory.size();i++){ %>
+						<tr onclick="showAuctionDetail(<%=i%>)">
+							<th scope="row"><%=i %></th>
+							<td><%=myHistory.get(i).getItemName() %></td>
+							<td><%=myHistory.get(i).getItemType() %></td>
+							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
+						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
+						   
+						   		Date d = before.parse(myHistory.get(i).getEndDate().toString());	  
+						   		String fixedDate = after.format(d);
+						%>
+							<td><%=fixedDate %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myHistory.get(i).getPrice()%></td>
+							
+						</tr>
+						<%} %>
+						
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
+		
+		
+		</div>	
 	</div>
 		
 	

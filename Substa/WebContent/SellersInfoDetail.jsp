@@ -160,7 +160,7 @@
 			<div class="upperPart"></div>
 			<div class="page-header">
 			<%String name = bestSellerInfo.getFirst() + " "+bestSellerInfo.getLast(); %>
-			  <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%=name%> <small>One of the popular sellers!</small></h1>
+			  <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%=name%> </h1>
 			</div>
 
 		<div class="panel panel-default">
@@ -205,7 +205,7 @@
 					</thead>
 					<tbody>
 						<%for(int i=0;i<AuctListofBestSeller.size();i++){ %>
-						<tr onclick="showAuctionDetail(<%=i%>)">
+						<tr onclick="ShowItemDetail?auctionId=<%=AuctListofBestSeller.get(i).getAuctionID()%>">
 							<th scope="row"><%=i %></th>
 							<td><%=AuctListofBestSeller.get(i).getItemName() %></td>
 							<td><%=AuctListofBestSeller.get(i).getItemType() %></td>
