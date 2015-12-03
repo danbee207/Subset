@@ -15,7 +15,10 @@ function searchItem(isLogin){
 		$('#singinModal').modal('show');	
 	}
 }
-
+function showbestSellersInfo(num){
+	$("#bestSeller").val(num);
+	$("#bestsellerInfo").submit();
+}
 
 /*
  * @author Danbee park

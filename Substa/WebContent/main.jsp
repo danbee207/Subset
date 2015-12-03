@@ -299,6 +299,9 @@
 	
 	<div class="row">
 		<h2 class="col-md-11">Most Popular Sellers</h2>
+		<form action="ShowSellersInfo" method="get" id="bestsellerInfo">
+			<input type="hidden" value="" name="bestSeller" id="bestSeller">
+		</form>
 	</div>
 	<%
 			for (int i = 0; i < bestSellers.size(); i++) {
@@ -321,7 +324,8 @@
 					<p><%=bestSellers.get(i).getEmail()%></p>
 					<p><%=bestSellers.get(i).getRating()%></p>
 					<p class="text-right">
-						<a href="#" class="btn btn-warning" role="button" onclick="">Detail</a>
+						<a href="#" class="btn btn-warning" role="button" onclick="showbestSellersInfo(<%=i %>)" >Detail</a>
+						
 					</p>
 				</div>
 			</div>

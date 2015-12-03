@@ -3,7 +3,11 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="java.lang.Boolean"%>
 <%@ page import="substa.beans.Customer" %>
-<jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="substa.beans.AuctionDetailInfo" %>
+
+<jsp:useBean id="bestSellerInfo" type="substa.beans.Customer" scope="session" />
+<jsp:useBean id="AuctListofBestSeller" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session" />
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -151,7 +155,7 @@
 		<div id="contentBody">
 			<div class="upperPart"></div>
 			<div class="page-header">
-			  <h1>Example page header <small>Subtext for header</small></h1>
+			  <h1><%= %><small>Subtext for header</small></h1>
 			</div>
 		</div>
 
