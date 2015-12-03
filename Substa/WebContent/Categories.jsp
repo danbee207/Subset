@@ -154,93 +154,78 @@
 	
 	<div id="containerBody">
 		<div id="blankforBody"></div>
-		<nav class="navbar navbar-default">
+		
 			<div class="container-fluid">
-			  
-			    <form class="navbar-form navbar-left" role="search">
-			      	<div class="input-group">
-			    		<span class="input-group-btn">
+			      	<div>
+			      		<p class="text-left">
 							<div class="btn-group" data-toggle="buttons">
-							  	<label class="btn btn-warning active">
-							    	<input type="radio" name="options" id="option1" autocomplete="off" checked> Item Name
-							  	</label>
-							  	<label class="btn btn-warning">
-							    	<input type="radio" name="options" id="option2" autocomplete="off"> Seller Name
-							  	</label>
+							  	<button class="btn btn-default active" id="searchItembtn" onclick="searchSelectedbtn(0);">Item Name</button>
+							  	<button class="btn btn-default" id="searchSellerbtn" onclick="searchSelectedbtn(1);">Seller Name</button>
 							</div>
-			    		</span>
-			      		<input type="text" class="form-control" placeholder="Search for...">
-			      		<span class="input-group-btn">
-			        		<button class="btn btn-warning" type="button">Search</button>
-			      		</span>
+			    		
+			    		<form class="navbar-form navbar-left" role="search">
+			      			<input type="text" class="form-control" placeholder="Search for...">
+			        		<button class="btn btn-warning" type="button" onclick="gotoServlet()">Search</button>
+			      		</form>
+			      		</p>
 			    	</div><!-- /input-group -->
-			    </form>
-			   
-			    <ul class="nav navbar-nav navbar-right">
-			      	<li class="dropdown">
-			        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			        	Sort by<span class="caret"></span></a>
-			        	<ul class="dropdown-menu">
-			          		<li><a href="#">Price: Low to High</a></li>
-			          		<li><a href="#">Price: High to Low</a></li>
-			          		<li><a href="#">Avg. Customer Review</a></li>
-			          		<li><a href="#">From the latest</a></li>
-			        	</ul>
-			      	</li>
-			    </ul>
-			</div><!-- /.navbar-collapse -->
-		</nav>
-		<div>
-		
-		<% for(int i=0;i<itemList.size();i++){ 
-			if(i%4==0){
-			%><div class="row"><%} %>
-			<div class="col-sm-5 col-md-3">
-			<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
-			<%if(itemList.get(i).getImgSrc()==null){ %>
-			<img class="minimizeImg" src="img/basic/NotitemShown.png">
-			<%}else{ %>
-			<img src="FileDownload?file_name=<%=itemList.get(i).getImgSrc() %>">
-			<%} %>
-			<div class="caption">
-			<h3><%=itemList.get(i).getItemName() %></h3>
-			<p>Type : <%=itemList.get(i).getItemType() %></p>
-			<p>Auction End Time : <%=itemList.get(i).getEndDate() %></p>
-			</div>
-			</div>
-			</div>
-			<%if(i%4==3){ %>
-			</div>
-		<%}} if(itemList.size()%4!=3 && itemList.size()%4!=0){%></div><% }%>
-		
-		<div class="row">
-			<h2 class="col-md-11">Suggestions For You</h2>
+			    	<div>
+			    	<h2 class="col-md-11">Suggestions For You</h2>
 			
-		</div>
-		<% for(int i=0;i<suggestionList.size();i++){if(i%4==0){%>
-		<div class="row">
-		<%} %>
-
-			<div class="col-sm-5 col-md-3">
-				<div class="thumbnail">
-				<%if(suggestionList.get(i).getImgSrc()==null) {%>
-				<img src="img/basic/NotitemShown.png" alt="...">
-				
-				<%}else{ %>
-					<img src="FileDownload?file_name=<%=suggestionList.get(i).getImgSrc() %>" alt="...">
-					<%} %>				
+					<!-- Sugeesgion List -->
+					<% for(int i=0;i<suggestionList.size();i++){
+						if(i%4==0){%>
+							<div class="row">
+						<%} %>
+						<div class="col-sm-5 col-md-3">
+							<div class="thumbnail">
+							<%if(suggestionList.get(i).getImgSrc()==null) {%>
+							<img src="img/basic/NotitemShown.png" alt="...">
+							
+							<%}else{ %>
+								<img src="FileDownload?file_name=<%=suggestionList.get(i).getImgSrc() %>" alt="...">
+								<%} %>				
+								<div class="caption">
+									<h3><%=suggestionList.get(i).getItemName() %></h3>
+									<p>Categories:<%=suggestionList.get(i).getItemType()%></p>
+								</div>
+							</div>
+						</div>
+									
+						<%if(i%4==3){ %>
+							</div>
+							<%break;
+							}
+						}if(suggestionList.size()<3){ %>
+						</div>
+						<%} %>
+			  		</div>
+			  	<div>	
+			  	<h2>Auctions List</h2>
+				<% for(int i=0;i<itemList.size();i++){ 
+					if(i%4==0){
+					%><div class="row"><%} %>
+					<div class="col-sm-5 col-md-3">
+					<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
+					<%if(itemList.get(i).getImgSrc()==null){ %>
+					<img class="minimizeImg" src="img/basic/NotitemShown.png">
+					<%}else{ %>
+					<img src="FileDownload?file_name=<%=itemList.get(i).getImgSrc() %>">
+					<%} %>
 					<div class="caption">
-						<h3><%=suggestionList.get(i).getItemName() %></h3>
-						<p>Categories:<%=suggestionList.get(i).getItemType()%></p>
+					<h3><%=itemList.get(i).getItemName() %></h3>
+					<p>Type : <%=itemList.get(i).getItemType() %></p>
+					<p>Auction End Time : <%=itemList.get(i).getEndDate() %></p>
 					</div>
-				</div>
+					</div>
+					</div>
+					<%if(i%4==3){ %>
+					</div>
+				<%}} if(itemList.size()%4!=3 && itemList.size()%4!=0){%></div><% }%>
+		
 			</div>
-						
-			<%if(i%4==3){ %>
-		</div>
-		<%break;}}if(suggestionList.size()<3){ %>
-		</div>
-		<%} %>
+
+		
 		</div>
 	</div>
 	

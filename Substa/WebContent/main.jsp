@@ -174,7 +174,7 @@
 							<li><a href="PreEmployeeManagement">Employee Management</a></li>
 							<li><a href="PreCustomerManagement">Customer Management</a></li>
 							<li><a href="ItemManagement">Item Management</a></li>
-							<li><a hef="">Summary</a>
+							<li><a href="PreSummery">Summary</a>
 							<li><a href="#">History</a></li>
 							<%
 								}
