@@ -1640,7 +1640,7 @@ public class DBManagers {
 						+ "WHERE A.AuctionID = S.AuctionID "
 						+ " GROUP BY A.ItemID "
 						+ " ORDER BY COUNT(*) DESC "
-						+ " LIMIT 3";
+						+ " LIMIT 4";
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
 				while(rs1.next()) {

@@ -12,6 +12,8 @@
 	type="java.util.ArrayList<substa.beans.Customer>" scope="session" />
 <jsp:useBean id="deadlineItems"
 	type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session" />
+<jsp:useBean id="bestSoldItems"
+	type="java.util.ArrayList<substa.beans.Item>" scope="session" />	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -255,6 +257,35 @@
 	</div>
 	<%} %>
 
+	<div class="row">
+			<h2 class="col-md-11">Check the Best-Sellers!</h2>
+			
+		</div>
+		<% for(int i=0;i<bestSoldItems.size();i++){if(i%4==0){%>
+		<div class="row">
+		<%} %>
+
+			<div class="col-sm-5 col-md-3">
+				<div class="thumbnail">
+				<%if(bestSoldItems.get(i).getImgsrc()==null) {%>
+				<img src="img/basic/NotitemShown.png" alt="...">
+				
+				<%}else{ %>
+					<img src="FileDownload?file_name=<%=bestSoldItems.get(i).getImgsrc() %>" alt="...">
+					<%} %>				
+					<div class="caption">
+						<h3><%=bestSoldItems.get(i).getItemName() %></h3>
+						<p>Categories:<%=bestSoldItems.get(i).getItemType()%></p>
+					</div>
+				</div>
+			</div>
+						
+			<%if(i%4==3){ %>
+		</div>
+		<%break;}}if(bestSoldItems.size()<3){ %>
+	</div>
+	<%} %>
+	
 	<div class="row">
 		<h2 class="col-md-11">Most Popular Sellers</h2>
 	</div>
