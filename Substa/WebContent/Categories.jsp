@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/index_css.css">
+<link rel="stylesheet" href="css/categories.css">
 </head>
 
 <body>
@@ -190,24 +190,28 @@
 			</div><!-- /.navbar-collapse -->
 		</nav>
 		<div>
-		<table class="table table-bordered">
+		
 		<% for(int i=0;i<itemList.size();i++){ 
 			if(i%4==0){
-			%><tr><%} %>
-			<td>
+			%><div class="row"><%} %>
+			<div class="col-sm-5 col-md-3">
+			<div class="thumbnail">
 			<%if(itemList.get(i).getImgSrc()==null){ %>
-			<img src="img/basic/noimg.png">
+			<img class="minimizeImg" src="img/basic/NotitemShown.png">
 			<%}else{ %>
-			<img src="FileDownload?file_name=<%=itemList.get(i).getImgSrc() %>" alt="...">
+			<img src="FileDownload?file_name=<%=itemList.get(i).getImgSrc() %>">
 			<%} %>
+			<div class="caption">
 			<h3><%=itemList.get(i).getItemName() %></h3>
 			<p>Type : <%=itemList.get(i).getItemType() %></p>
 			<p>Auction End Time : <%=itemList.get(i).getEndDate() %></p>
-			</td>
+			</div>
+			</div>
+			</div>
 			<%if(i%4==3){ %>
-			</tr>
-		<%}} %>
-		</table>
+			</div>
+		<%}} if(itemList.size()%4!=3 && itemList.size()%4!=0){%></div><% }%>
+		
 		</div>
 	</div>
 		

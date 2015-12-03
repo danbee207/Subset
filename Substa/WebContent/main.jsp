@@ -279,7 +279,7 @@
 					<p><%=bestSellers.get(i).getEmail()%></p>
 					<p><%=bestSellers.get(i).getRating()%></p>
 					<p class="text-right">
-						<a href="#" class="btn btn-warning" role="button">Detail</a>
+						<a href="#" class="btn btn-warning" role="button" onclick="">Detail</a>
 					</p>
 				</div>
 			</div>

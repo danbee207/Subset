@@ -58,12 +58,16 @@ public class FileDownload extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String fileName = request.getParameter("file_name");
+		
 		String saveFolder = "/fileupload";
-		String filePath = request.getServletContext().getRealPath(saveFolder);
-		String filePath2 = request.getServletContext().getRealPath(saveFolder+"/att");
+		String realFolder = request.getServletContext().getRealPath(saveFolder);
+		String realFolder2 = request.getServletContext().getRealPath(saveFolder+"/att");
+		
+		String filePath = realFolder +"/"+fileName;
+		String filePath2 = realFolder2 + "/"+fileName;
 		
 		String s = getFilePath(filePath,filePath2);
-	
+		System.out.println(s);
 		if(s==null || s.equals("")|| s.equals("null")){
 			//noimge
 			return;
@@ -80,7 +84,8 @@ public class FileDownload extends HttpServlet {
 			response.setHeader("Content-Disposition", "attatchement; filename ="+Encoding );
 			response.setHeader("Content-Length", String.valueOf((int)file.length()));
 			
-		
+			System.out.println(filePath);
+			
 			FileInputStream is = new FileInputStream(filePath);
 			ServletOutputStream sos = response.getOutputStream();
 			
@@ -98,14 +103,14 @@ public class FileDownload extends HttpServlet {
 		}
 	}
 
-	private String getFilePath(String...filePath) {
-		// TODO Auto-generated method stub
-		String file="";
-		for(String s : filePath){
-			File f= new File(s);
+	public String getFilePath(String... filePath) {
+		String file = "";	
+	
+		for(String s : filePath) {
+			File f = new File(s);
 			
-			if(f.exists()){
-				file=s;
+			if(f.exists()) {
+				file = s;
 				break;
 			}
 		}
