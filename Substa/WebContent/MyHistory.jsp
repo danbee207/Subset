@@ -4,11 +4,11 @@
 <%@ page import="java.lang.Boolean"%>
 <%@ page import="substa.beans.Customer" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="substa.beans.BidHistory" %>
+<%@ page import="substa.beans.AuctionDetailInfo" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %>
-<jsp:useBean id="myBidProcess" type="java.util.ArrayList<BidHistory>" scope="session"/>
+<jsp:useBean id="myHistory" type="java.util.ArrayList<substa.beans.AuctionDetailInfo>" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,9 +135,10 @@
 						<ul class="dropdown-menu" role="menu">
 
 
-							<li><a href="#">My Bidding Process</a></li>
-							<li><a href="#">History</a></li>
-							<li><a href="#">Upload an Auction</a></li>
+							
+							<li><a href="BidProcess">My Bidding Process</a></li>
+							<li><a href="newAuction.jsp">Upload an Auction</a></li>
+							<li><a href="MySettings.jsp">My Setting</a> 
 							<li class="divider"></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
@@ -169,24 +170,24 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Type</th>
+							<th>End Date</th>
 							<th>Price</th>
 						</tr>
 					</thead>
 					<tbody>
-						<%for(int i=0;i<myBidProcess.size();i++){ %>
+						<%for(int i=0;i<myHistory.size();i++){ %>
 						<tr onclick="showAuctionDetail(<%=i%>)">
 							<th scope="row"><%=i %></th>
-							<td><%=myBidProcess.get(i). %></td>
-							<td><%=myBidProcess.get(i).getItemType() %></td>
+							<td><%=myHistory.get(i).getItemName() %></td>
+							<td><%=myHistory.get(i).getItemType() %></td>
 							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
 						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
 						   
-						   		Date d = before.parse(myBidProcess.get(i).getEndDate().toString());	  
+						   		Date d = before.parse(myHistory.get(i).getEndDate().toString());	  
 						   		String fixedDate = after.format(d);
 						%>
 							<td><%=fixedDate %></td>
-							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myBidProcess.get(i).getPrice()%></td>
-							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myBidProcess.get(i).getBidInc()%></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myHistory.get(i).getPrice()%></td>
 							
 						</tr>
 						<%} %>
@@ -281,7 +282,8 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript"
+		src="js/myHistory.js"></script>
 	
 		
 </body>

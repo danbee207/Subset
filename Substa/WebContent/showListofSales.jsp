@@ -3,9 +3,14 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="java.lang.Boolean"%>
 <%@ page import="substa.beans.Customer" %>
-<jsp:useBean id="isCustomer" type="java.lang.Boolean" scope="session" />
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="substa.beans.SalesRecord" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.lang.String" %>
 
-
+<jsp:useBean id="searchedSaLesList" type="java.util.ArrayList<substa.beans.SalesRecord>" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +18,7 @@
 <title>Substa</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/newAuction.css">
+<link rel="stylesheet" href="css/sellerInfoDetail.css">
 <link rel="stylesheet" href="css/jquery.datetimepicker.css">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
@@ -132,9 +137,10 @@
 						<ul class="dropdown-menu" role="menu">
 
 
-							<li><a href="BidProcess">My Bidding Process</a></li>
 							<li><a href="MyHistory">History</a></li>
-							<li><a href="MySettings.jsp">My Setting</a>
+							<li><a href="newAuction.jsp">Upload an Auction</a></li>
+							<li><a href="MySettings.jsp">My Setting</a> 
+							<li class="divider"></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
 
@@ -148,103 +154,56 @@
 	
 	
 		<div id="contentBody">
+			<div class="container">
 			<div class="upperPart"></div>
-			<form method="post" action="UploadAuction" name="newAuction" enctype="multipart/form-data" >
-				<div id="uploadScene" class="container">
-	
-	
-					<div id="imagePart" class="form-group">
-					
-						<img src="img/basic/noimg.png" alt="no image yet" class="img-rounded" id="previewImg"><br><br><br/>
+			<div class="page-header">
+			
+			  <h1><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Monthly Report</h1>
+			</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">List of Sales</div>
+			<div class="panel-body">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Auction ID</th>
+							<th>Buyer SSN</th>
+							<th>Seller SSN</th>
+							<th>Max Bid</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%for(int i=0;i<searchedSaLesList.size();i++){ %>
+						<tr onclick="showAuctionDetail(<%=i%>)">
+							<th scope="row"><%=i %></th>
+							<td><%=searchedSaLesList.get(i).getAuctionID() %></td>
+							<td><%=searchedSaLesList.get(i).getBuyerID() %></td>
+							<td><%=searchedSaLesList.get(i).getSellerID() %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=searchedSaLesList.get(i).getPrice()%></td>							
+							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
+						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
+						   
+						   		Date d = before.parse(searchedSaLesList.get(i).getDate().toString());	  
+						   		String fixedDate = after.format(d);
+						%>
+							<td><%=fixedDate %></td>
+						</tr>
+						<%} %>
 						
-						<div class="col-sm-10" id="fileDiv">
-						<input type="file" name="ImageFile"
-							id="ImageFile" onchange="readURL(this);">
-						</div>
-					</div>
-					<div id="theOtherPart" class="form-horizontal">
-					<div class="form-group" >
-						<label for="titleItem"class="col-sm-4">Name</label> 
-						<div class="col-sm-5">
-						<input type="text" class="form-control" name="name" id="name">
-						</div>
-					</div>
-					<div class="form-group">
-					
-						<label for="BigtypeItem" class="col-sm-4">Type</label>
-						<div class="col-sm-5">
-						<select class="form-control" name="bType" id="bType" onchange="changeSubType(this);">
-							<option value="8" selected="selected">Select Type</option>
-							<option value="1">Books</option>
-							<option value="2">Electronics</option>
-							<option value="3">Fashion</option>
-							<option value="4">Home & Garden</option>
-							<option value="5">Motors</option>
-							<option value="6">Sporting Goods</option>
-							<option value="7">Toy & Hobbies</option>
-							
-						
-						</select>
-						</div>
-					</div>
-					<div id="subType" class="form-group">
-						<label for="smalltypeItem" class="col-sm-4">SubType</label>
-						<div class="col-sm-5">
-						<select class="form-control" name="sType" id="sType">
-							
-						</select>
-						 </div>
-					</div>
-					
-					<div class="form-group">
-						<label for="num" class="col-sm-4"> How many do you have?  </label>
-						<div class="col-sm-5">
-						<input type="number" class="form-control" name="num" id="num" min="1"  value="1">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="endTime" class="col-sm-4">When your auction is finished?</label>
-						<div class="col-sm-5">
-						<input type="text" class="form-control" name="endDate" id="endDate">
-						</div>
-					
-					</div>
-					<div class="form-group">
-						<label for="minBid" class="col-sm-4">How much money is your minimum bid?</label>
-						<div class="col-sm-5">
-						<input type="text" class="form-control" name="minBid" id="minBid">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="minBid" class="col-sm-4">How much money is your reserve bid?</label>
-						<div class="col-sm-5">
-						<input type="text" class="form-control" name="reserveBid" id="reserveBid">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="des" class="col-sm-6">Tell your products in detail.</label>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" name="desc" id="desc" cols="9" rows="3"></textarea>
-					</div>
-					<div class="form-group">
-					<br>
-		
-					
-						<div id="btnbox" class="col-sm-4">
-						<button type ="button" class="btn btn-default" onclick="history.back();">Cancel</button>
-						<button type="submit" class="btn btn-warning" >Upload</button>
-						</div>
-					
-					</div>
-					</div>
-					
-				</div>
-			</form>
+					</tbody>
+				</table>
+			
+			</div>
 		</div>
-	</div>
 
+			</div>
+		</div>
 
+	<nav class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container" id="footer">
 		<div class="navbar-header" id=footerHeader>
 			<a class="navbar-brand" href="#"><span class="SubstaLabel">Substa</span></a>
@@ -253,7 +212,7 @@
 			<h4>Copy@ Right Substa | Stony Brook University</h4>
 		</div>
 	</div>
-
+</nav>
 	
 	<div class="modal fade bs-example-modal-sm" id="singinModal"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -325,12 +284,9 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/newAuction_js.js"></script>
-	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
-	<script>
+	<script type="text/javascript" src="bidProcess.js"></script>
 	
-	$("#endDate").datetimepicker({value:new Date(),step:10,format:'Y-m-d h:m:s',minDate:new Date()});
-	</script>
+	
 		
 </body>
-</html>
+</html>	

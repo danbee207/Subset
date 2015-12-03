@@ -135,9 +135,9 @@
 						<ul class="dropdown-menu" role="menu">
 
 
-							<li><a href="#">My Bidding Process</a></li>
-							<li><a href="#">History</a></li>
-							<li><a href="#">Upload an Auction</a></li>
+							<li><a href="MyHistory">History</a></li>
+							<li><a href="newAuction.jsp">Upload an Auction</a></li>
+							<li><a href="MySettings.jsp">My Setting</a> 
 							<li class="divider"></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModal">Log out</a></li>
@@ -168,28 +168,25 @@
 						<tr>
 							<th>#</th>
 							<th>Name</th>
-							<th>Type</th>
-							<th>End Date</th>
-							<th>Price</th>
-							<th>Bid Increment</th>
+							<th>Bid Price</th>
+							<th>Bid Time</th>
+							<th>Max Bid</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%for(int i=0;i<myBidProcess.size();i++){ %>
 						<tr onclick="showAuctionDetail(<%=i%>)">
 							<th scope="row"><%=i %></th>
-							<td><%=myBidProcess.get(i) %></td>
-							<td><%=myBidProcess.get(i) %></td>
+							<td><%=myBidProcess.get(i).getItemName() %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=myBidProcess.get(i).getBidPrice() %></td>
 							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
 						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
 						   
-						   		Date d = before.parse(myBidProcess.get(i).getEndDate().toString());	  
+						   		Date d = before.parse(myBidProcess.get(i).getBidTime().toString());	  
 						   		String fixedDate = after.format(d);
 						%>
 							<td><%=fixedDate %></td>
-							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myBidProcess.get(i).getPrice()%></td>
-							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myBidProcess.get(i).getBidInc()%></td>
-							
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=myBidProcess.get(i).getMaxBid()%></td>							
 						</tr>
 						<%} %>
 						

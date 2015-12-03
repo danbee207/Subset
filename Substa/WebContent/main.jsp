@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="css/index_css.css">
 </head>
 
-<body>
+<body onload="poll()">
 	<%
 		boolean isCustomer = true;
 		boolean isLogin = false;
@@ -166,7 +166,7 @@
 									if (isCustomer) {
 							%>
 							<li><a href="BidProcess">My Bidding Process</a></li>
-							<li><a href="#">History</a></li>
+							<li><a href="MyHistory">History</a></li>
 							<li><a href="newAuction.jsp">Upload an Auction</a></li>
 							<li><a href="MySettings.jsp">My Setting</a> <%
  	} else {
@@ -480,5 +480,6 @@
 	<script type="text/javascript"
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index_js.js"></script>
+	<script type="text/javascript" src="js/checkSales.js"></script>
 </body>
 </html>
