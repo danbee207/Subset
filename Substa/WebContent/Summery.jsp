@@ -26,7 +26,7 @@
 		ArrayList<Employer> employerList = (ArrayList<Employer>)session.getAttribute("employerList");
 		if(LoginUser!=null){
 	%>
-	<body><%}else{ %>
+	<body onload="initialize();"><%}else{ %>
  	<body onload="loginReset();"><%} %>
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -85,50 +85,84 @@
 						Summery
 					</h1>
 				</div>
-				<div class="panel panel-default">
-				<div class="panel panel-default">
-					<div class="panel-heading">Sales Report</div>
-					<div class="panel-body">
-						<form action="reportMonth">
-						<input type="text" class="form-control" id="reportMonth" name="reportMonth">
-						<button type="submit" class="btn btn-warning">Search</button>
-						</form>
-						
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">Sales Report By Month</div>
-					<div class="panel-body">
-					<form action="MonthlyReport">
-					<input type="text" value="" id="MonthlyReport" name="MonthlyReport" placeholder="ex)3"> 
-					<button type="submit" class="btn btn-warning" id="btn btn-warning">Search</button>
-					</form>
-					</div>
-				</div>
+				
+				
 				<div class="panel panel-default">
 					<div class="panel-heading">Sales Search</div>
 					<div class="panel-body">
-
-						<form method="get" id="searSales">
-						<select class="form-control" id="searchType">
-						<option value="0">Item</option>
-						<option value="1">Customer</optoin>
-						</select>
 						
-						<input type="text" id="salesSearch">
-						<button type="button" class="btn btn-warning" onclick="findSales();">Search</button>
-						</form>
+			      		
+			      		<div class="btn-toolbar">
+							<div class="btn-group" data-toggle="buttons">
+  								<button type="button" class="btn btn-default active" id="searchItem" onclick="searchSelectedbtn(0)">Item Search</button>
+  								<button type="button" class="btn btn-default" id="searchSeller" onclick="searchSelectedbtn(1)">Seller Search</button>
+  								<button type="button" class="btn btn-default" id="searchMonth" onclick="searchSelectedbtn(2)">Monthly Search</button>
+   							</div>
+							
+			    		
+				    		<form class="navbar-form navbar-left" role="search" id="searchFrom">
+				      			<input type="text" class="form-control" placeholder="Search for..." name="search">
+							<button type="submit" class="btn btn-warning" >Search</button>
+				      		</form>
+				      		
+			      		</div>
+			    	</div><!-- /input-group -->
 						
-					</div>
+						
+					
 				</div>
+				<div class="panel panel-default">
 					<div class="panel-heading">Revenenue List Searching</div>
 					<div class="panel-body">
-						<form>
+					<div class="form-inline">
+							<div class="btn-group" data-toggle="buttons">
+  								<button type="button" class="btn btn-default active" id="searchItemRevenue" onclick="searchSelectedRevenue(0)">Item Search</button>
+  								<button type="button" class="btn btn-default" id="searchSellerRevenue" onclick="searchSelectedRevenue(1)">Seller Search</button>
+  								<button type="button" class="btn btn-default" id="searchTypeRevenue" onclick="searchSelectedRevenue(2)">Type Search</button>
+   							</div>
+				    			
+				      				<input type="text" class="form-control" id="inputTxt" onchange="selectRevenuechange(this)" placeholder="Search for..." name="search">
+				      			
+				      				<select onchange="selectRevenuechange(this)" id="selectTxt" class="form-control">
+				      				<option>Books</option>
+				      				<option>Textbooks</option>
+				      				<option>Magazines</option>
+				      				<option class="divider"></option>
+				      				<option>TV & Video</option>
+				      				<option>Cell Phones</option>
+				      				<option>Desktops</option>
+				      				<option>Laptops</option>
+				      				<option class="divider"></option>
+				      				<option>Team Sports</option>
+				      				<option>Leisure Sports</option>
+				      				<option>Water Sports</option>
+				      				<option class="divider"></option>
+				      				<option>Action Figures</option>
+				      				<option>Building Toys</option>
+				      				<option>Baby Toys</option>
+				      				<option>Games</option>
+				      				<option>Videos</option>
+				      				<option class="divider"></option>
+				      				<option>Women's Clothing</option>
+				      				<option>Men's Clothing</option>
+				      				<option>Kids' Clothing</option>
+				      				<option class="divider"></option>
+				      				<option>Kitchen</option>
+				      				<option>Furniture</option>
+				      				<option>Appliance</option>
+				      				<option>Flowers & Trees</option>
+				      				<option>Gardening Supplies</option>
+				      				
+				      				</select>
+				      				<input type="hidden" name="typeSearch" id="typeSearch">
+				      			
+				      		
+							<button type="button" class="btn btn-warning" onclick="getValuefromServlet();" >Search</button>
+				      		<div class="form-line">
+				      		<label class="form-control">Revenue </label><span id="revenueValue"></span>
+				      		</div>
 						
-						</form>
-						
-						
-
+						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">

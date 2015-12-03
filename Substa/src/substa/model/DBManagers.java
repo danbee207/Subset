@@ -714,7 +714,7 @@ public class DBManagers {
 			
 			try {
 				String sqlQuery = "SELECT SUM(S.Price) AS Revenue "
-						+ "FROM Sales A, Auction A "
+						+ "FROM Sales S, Auction A "
 						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID IN ( "
 						+ "	SELECT I.ItemID "
 						+ "	FROM Item I "
@@ -1107,13 +1107,13 @@ public class DBManagers {
 		
 		return maxBidCount;
 	}
-	
+	/*
 	public float getOwnBidMax() {
 		float ownBidMax = 0;
 		
 		
 	}
-	
+	*/
 	public BidHistory getWinnersBid(int auctionID, long winnerID) {
 		
 		BidHistory winnersBid = new BidHistory();

@@ -22,8 +22,13 @@ function searchSelectedbtn(btn){
 	
 	if(btn==0){
 		$("#searchFrom").attr("action","SearchItem");
+		$("#searchItem").attr("class","btn btn-default active");
+		$("#searchSeller").attr("class","btn btn-default");
 	}else{
-		$("#searchFrom").attr("action","");
+		$("#searchFrom").attr("action","SearchSeller");
+		$("#searchItem").attr("class","btn btn-defaul");
+		$("#searchSeller").attr("class","btn btn-default active");
+		
 	}
 	
 	

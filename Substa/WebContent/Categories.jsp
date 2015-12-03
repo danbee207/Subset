@@ -159,11 +159,8 @@
 			      	<div>
 			      		<p class="text-left">
 							<div class="btn-group" data-toggle="buttons">
-  							<label class="btn btn-default active">
-   								 <input type="radio" name="options" id="itemSearch" autocomplete="on" onclick="searchSelectedbtn(0)"> Item Search </label>
-  							<label class="btn btn-default">
-   								 <input type="radio" name="options" id="sellerSearch" autocomplete="off" onclick="searchSelectedbtn(1)">Seller Search </label>
-  
+							<button type="button" class="btn btn-default active" id="searchItem" onclick="searchSelectedbtn(0)">Item Search</button>
+  							<button type="button" class="btn btn-default" id="searchSeller" onclick="searchSelectedbtn(1)">Seller Search</button>
 							</div>
 			    		
 			    		<form class="navbar-form navbar-left" role="search" id="searchFrom">
