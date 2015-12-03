@@ -3,8 +3,16 @@
 <%@ page import="substa.beans.User"%>
 <%@ page import="substa.beans.Customer"%>
 <%@ page import="substa.beans.AuctionDetailInfo" %>
+<%@ page import="substa.beans.BidHistory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %>
+
 <jsp:useBean id="itemDetail" type="substa.beans.AuctionDetailInfo" scope="session"/>
 <jsp:useBean id="sellerInfo" type="substa.beans.Customer" scope="session"/>
+<jsp:useBean id="thisAucHistory" type="java.util.ArrayList<substa.beans.BidHistory>" scope="session"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -209,27 +217,24 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Name</th>
-							<th>Type</th>
-							<th>End Date</th>
-							<th>Price</th>
+							<th>*****@*******</th>
+							<th>Bid Price</th>
+							<th>Bid Time</th>
+							
 						</tr>
 					</thead>
 					<tbody>
-						<%for(int i=0;i<myHistory.size();i++){ %>
-						<tr onclick="showAuctionDetail(<%=i%>)">
+						<%for(int i=0;i<thisAucHistory.size();i++){ %>
+						<tr">
 							<th scope="row"><%=i %></th>
-							<td><%=myHistory.get(i).getItemName() %></td>
-							<td><%=myHistory.get(i).getItemType() %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=thisAucHistory.get(i).getBidPrice() %></td>
 							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
 						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
 						   
-						   		Date d = before.parse(myHistory.get(i).getEndDate().toString());	  
+						   		Date d = before.parse(thisAucHistory.get(i).getBidTime().toString());	  
 						   		String fixedDate = after.format(d);
-						%>
-							<td><%=fixedDate %></td>
-							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><%=myHistory.get(i).getPrice()%></td>
-							
+							%>
+							<td><%=fixedDate %></td>							
 						</tr>
 						<%} %>
 						

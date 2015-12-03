@@ -168,7 +168,44 @@ public class DBManagers {
 		}
 		return customer;
 	}
-
+	public Customer getCustomer(long user) {
+		Customer customer = null;
+		Connection conn = getConnection();
+		if (conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			try {
+				String sqlQuery = "SELECT * FROM Customer WHERE CustomerID=?";
+				ps = conn.prepareStatement(sqlQuery);
+				ps.setLong(1, user);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					customer = new Customer();
+					customer.setSsn(rs.getLong("SSN"));
+					customer.setFirst(rs.getString("FirstName"));
+					customer.setLast(rs.getString("LastName"));
+					customer.setAddress(rs.getString("Address"));
+					customer.setZipcode(rs.getInt("ZipCode"));
+					customer.setTelephone(rs.getLong("Telephone"));
+					customer.setEmail(rs.getString("Email"));
+					customer.setPw(rs.getString("pw"));
+					customer.setCreditCardNum(rs.getLong("CreditCardNum"));
+					customer.setRating(rs.getFloat("Rating"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		return customer;
+	}
 	public Employer getEmployer(User user) {
 		Employer employee = null;
 		Connection conn = getConnection();

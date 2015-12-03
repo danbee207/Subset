@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import substa.beans.AuctionDetailInfo;
+import substa.beans.BidHistory;
+import substa.beans.Customer;
 import substa.model.DBManagers;
 
 /**
@@ -74,7 +77,14 @@ public class ShowItemDetail extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		int auctionId = Integer.parseInt(request.getParameter("auctionId"));
-		AuctionDetailInfo aucInfo = db.get
+		AuctionDetailInfo aucInfo = db.getAuctionInfoByAuctionID(auctionId);
+		
+		Customer sellerInfo = db.getCustomer(aucInfo.getSellerID());
+		ArrayList<BidHistory> history = db.getBidHistoryByAuction(auctionId) ;
+
+		session.setAttribute("itemDetail", aucInfo);
+		session.setAttribute("sellerInfo", sellerInfo);
+		session.setAttribute("thisAucHistory", history);
 	}
 
 	
