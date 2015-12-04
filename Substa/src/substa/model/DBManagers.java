@@ -350,7 +350,7 @@ public class DBManagers {
 			PreparedStatement ps2 = null;
 			try {
 				String sql1 = "UPDATE Customer"
-						+ "SET Rating=?, CreditCardNum=?"
+						+ "SET Rating=?, CreditCardNum=? "
 						+ "WHERE CustomerID=?";
 				ps1 = conn.prepareStatement(sql1);
 				ps1.setFloat(1, customer.getRating());
@@ -399,7 +399,7 @@ public class DBManagers {
 			try {
 				String sql1 = "UPDATE Employee "
 						+ "SET Level=?, StartDate=?, HourlyRate=? "
-						+ "WHERE EmployeeID=?";
+						+ "WHERE EmployeeID=? ";
 				ps1 = conn.prepareStatement(sql1);
 				ps1.setLong(1, employer.getLevel());
 				ps1.setTimestamp(2, employer.getStartDate());
@@ -408,7 +408,7 @@ public class DBManagers {
 				
 				String sql2 = "UPDATE Person "
 						+ "SET SSN=?, LastName=?, FirstName=?, Address=?, ZipCode=?, Telephone=?, Email=?, pw=? "
-						+ "WHERE Person=?";
+						+ "WHERE Person=? ";
 				ps2 = conn.prepareStatement(sql2);
 				ps2.setLong(1, employer.getSsn());
 				ps2.setString(2, employer.getLast());
@@ -447,7 +447,7 @@ public class DBManagers {
 			
 			try {
 				String sql = "DELETE FROM Person "
-						+ "WHERE SSN=?";
+						+ "WHERE SSN=? ";
 				ps = conn.prepareStatement(sql);
 				ps.setLong(1, customerId);
 				
@@ -477,7 +477,7 @@ public class DBManagers {
 			
 			try {
 				String sql = "DELETE FROM Person "
-						+ "WHERE SSN=?";
+						+ "WHERE SSN=? ";
 				ps = conn.prepareStatement(sql);
 				ps.setLong(1, employerId);
 				
@@ -508,7 +508,7 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT * FROM Item";
+				String sqlQuery = "SELECT * FROM Item ";
 				ps = conn.prepareStatement(sqlQuery);
 				rs = ps.executeQuery();
 				
@@ -552,7 +552,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT S.BuyerID, S.SellerID, S.Price, S.Date, S.AuctionID "
 						+ "FROM Sales S, Auction A, Item I "
-						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ? ";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemName);
 				rs = ps.executeQuery();
@@ -637,7 +637,7 @@ public class DBManagers {
 			ResultSet rs = null;
 			
 			try {
-				String sqlQuery = "SELECT * FROM Sales WHERE MONTH(Date) = ? ORDER BY Date DESC";
+				String sqlQuery = "SELECT * FROM Sales WHERE MONTH(Date) = ? ORDER BY Date DESC ";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setInt(1, month);
 				rs = ps.executeQuery();
@@ -679,7 +679,7 @@ public class DBManagers {
 			try {
 				String sqlQuery = "SELECT SUM(S.Price) AS Revenue "
 						+ "FROM Sales A, Auction A, Item I "
-						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ?";
+						+ "WHERE S.AuctionID = A.AuctionID AND A.ItemID = I.ItemID AND I.ItemName = ? ";
 				ps = conn.prepareStatement(sqlQuery);
 				ps.setString(1, itemName);
 				rs = ps.executeQuery();
