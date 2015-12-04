@@ -68,7 +68,7 @@
 				<div class="col-sm-5">
 					<input type="email" class="form-control" name="email" id="email"
 						placeholder="ex)abc@substa.com"
-						onchange="checkingEmailFormat(this); return false;" value="<%=customerInfo.getEmail()%>" disabled>
+						onchange="checkingEmailFormat(this); return false;" value="<%=customerInfo.getEmail()%>" >
 
 				</div>
 			</div>
@@ -95,7 +95,7 @@
 				<div class="col-sm-5">
 					<input type="text" class="form-control" name="ssn" id="ssn"
 						placeholder="Social Security Number"
-						value="<%=customerInfo.getSsn()%>" disabled>
+						value="<%=customerInfo.getSsn()%>" >
 
 				</div>
 

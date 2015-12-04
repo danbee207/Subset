@@ -220,11 +220,11 @@
 								%>
 								<input type="tel" class="form-control" name="ssn" id="ssn"
 									placeholder="Social Security Number"
-									onchange="checkingSSN(this);return false;">
+									>
 								<%}else{ %>
 								<input type="tel" class="form-control" name="ssn" id="ssn"
 									placeholder="Social Security Number"
-									onchange="checkingSSN(this);return false;" readonly>
+									 readonly>
 								<%} %>
 
 							</div>
@@ -386,18 +386,18 @@
 						</div>
 
 
-
+					<input type="hidden" name="ShowDetail" id="ShowDetail">
 					</form>
 				</div>
 				<div class="modal-footer">
-					<input type="hidden" name="ShowDetail" id="ShowDetail">
+					
 					<%
 						if (employeeInfo.getLevel() >= 2) {
 					%>
 					<button type="button" class="btn btn-danger"
 						onclick="deleteEmployee();">Delete</button>
 					<button type="button" class="btn btn-primary"
-						onclick="editEmployeeSave">Save changes</button>
+						onclick="editEmployeeSave()">Save changes</button>
 					<%
 						}
 					%>

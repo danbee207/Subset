@@ -87,6 +87,7 @@ public class EmployeeManagement extends HttpServlet {
 		
 		String address = request.getParameter("street")+","+request.getParameter("city")+","+request.getParameter("state");
 		user.setAddress(address);
+		
 		user.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
 		
 		if(type ==-1){ //add
