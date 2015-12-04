@@ -1223,6 +1223,77 @@ public class DBManagers {
 		return bidHistoryByAuction;
 	}
 	
+	public boolean changeBidInc(int auctionID, float bidInc) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps1 = null;
+			
+			try {
+				String sql1 = "UPDATE Auction"
+						+ "SET BidIncrement=? "
+						+ "WHERE AuctionID=? ";
+				ps1 = conn.prepareStatement(sql1);
+				ps1.setFloat(1, bidInc);
+				ps1.setInt(2, auctionID);
+				
+				return ps1.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps1.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean isWinner(long customerID, int auctionID) {
+		
+		Connection conn = getConnection();
+		
+		if(conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			try {
+				String sql = "SELECT * "
+						+ "FROM Bid"
+						+ "WHERE AuctionID = ? "
+						+ "ORDER BY BidTime DESC"
+						+ "LIMIT 1";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, auctionID);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					long winnerID = rs.getLong("WinnerID");
+					return winnerID == customerID;
+				}
+				
+				return ps.execute();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+				closeConnection(conn);
+			}
+		}
+		
+		return true;
+	}
+	
 	public boolean addBid(BidHistory bid) {
 		
 		Connection conn = getConnection();

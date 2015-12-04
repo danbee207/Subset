@@ -47,8 +47,8 @@
   						<h1> Welcome a programmer! <small> How is Substa made? </small></h1>
 					</div>
 					<h3>1. E-R Diagram</h3>
-					<p style="text-indent: 5em;">   E-R diagram of the database. </p>
-					<img alt="..." src="C:\Users\CHUNGJUNG\Pictures\KakaoTalk_20150913_122613614.jpg">
+					<a href="https://docs.google.com/document/d/1riuoj7nrAym99JAJAebkBtiFZYoYdCjCT1KYzA7nhXk/edit?usp=sharing">
+						<p style="text-indent: 5em;">   Look at the Google Docs for more. </p></a>
 					<hr class="featurette-divider">
 					
 					<h3>2. DB Relational Models</h3>
