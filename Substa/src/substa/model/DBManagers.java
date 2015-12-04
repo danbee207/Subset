@@ -1009,7 +1009,7 @@ public class DBManagers {
 		return mailingList;
 	}
 	
-	public ArrayList<AuctionDetailInfo> getPersonalSuggestion(User customer) {
+	public ArrayList<AuctionDetailInfo> getPersonalSuggestion(long customerID) {
 		
 		Connection conn = getConnection();
 		ArrayList<AuctionDetailInfo> suggestion = new ArrayList<AuctionDetailInfo>();
@@ -1037,7 +1037,7 @@ public class DBManagers {
 						+ "LIMIT 20";
 				
 				ps = conn.prepareStatement(sqlQuery);
-				ps.setLong(1, customer.getSsn());
+				ps.setLong(1, customerID);
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
