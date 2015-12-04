@@ -82,6 +82,8 @@ public class BidProcess extends HttpServlet {
 		ArrayList<BidHistory> myBidProcess=db.getTakenBids(customerInfo);
 		session.setAttribute("myBidProcess", myBidProcess);
 		
+
+		
 		gotoBidProcess(response);
 		
 		
