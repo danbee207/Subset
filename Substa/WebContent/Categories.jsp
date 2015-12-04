@@ -165,7 +165,7 @@
 			    		
 			    		<form class="navbar-form navbar-left" role="search" id="searchFrom">
 			      			<input type="text" class="form-control" placeholder="Search for..." name="search">
-			        		<button class="btn btn-warning" type="submit" >Search</button>
+			        		<button class="btn btn-warning" type="button" onclick="searchSubmit()" >Search</button>
 			      		</form>
 			      		</p>
 			    	</div><!-- /input-group -->

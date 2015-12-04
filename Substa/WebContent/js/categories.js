@@ -33,3 +33,6 @@ function searchSelectedbtn(btn){
 	
 	
 }
+function searchSubmit(){
+	$("#searchFrom").submit();
+}
