@@ -68,7 +68,7 @@ function handleResponse(data){
 		if(currentPrice>value){
 			$("#BidMax").modal('show');
 		}else{
-			location.href="Bidding";
+			location.href="Bidding?futureMaxBid=-1";
 		}
 		
 	}
@@ -77,5 +77,5 @@ function handleError(){
 	window.alert("Error!");
 }
 function bidingReal(){
-	
+	$("#futureBidding").submit();
 }

@@ -1,6 +1,8 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import substa.beans.AuctionDetailInfo;
+import substa.beans.BidHistory;
+import substa.beans.Customer;
 import substa.model.DBManagers;
 
 /**
@@ -70,7 +75,63 @@ public class Bidding extends HttpServlet {
 		response.setHeader("Pragma", "no-cache"); // no cache for HTTP 1.0
 		response.setDateHeader("Expires", 0); // always expires
 		
+		float newMaxbid = Float.parseFloat(request.getParameter("futureBidding"));
 		
+		Customer customerInfo = (Customer)session.getAttribute("customerInfo");
+		AuctionDetailInfo itemDetail = (AuctionDetailInfo)session.getAttribute("itemDetail");
+		BidHistory aucHistory = db.getWinnersBid(itemDetail.getAuctionID());
+		/*
+		 * private int auctionID;
+			private long CustomerID;
+		private int itemID;
+		private String itemName;
+		private Float BidPrice;
+		private Timestamp BidTime;
+		private Float maxBid;
+		private long winnerID;
+		 * 
+		 */
+
+		float currentPrice = aucHistory.getBidPrice();
+
+		BidHistory temp = new BidHistory();
+		temp.setAuctionID(itemDetail.getAuctionID());
+		temp.setCustomerID(customerInfo.getSsn());
+		temp.setItemName(itemDetail.getItemName());
+		if(currentPrice>0 && currentPrice<100){
+			float newPrice = (float) (aucHistory.getBidPrice()+3.00);
+			temp.setBidPrice(newPrice);
+		}else if(currentPrice>=100 && currentPrice<500){
+			float newPrice = (float) (aucHistory.getBidPrice()+5.00);
+			temp.setBidPrice(newPrice);
+		}else if(currentPrice>=500){
+			float newPrice = (float) (aucHistory.getBidPrice()+10.00);
+			temp.setBidPrice(newPrice);
+		}
+		
+		temp.setWinnerID(customerInfo.getSsn());
+		// 1) create a java calendar instance
+		Calendar calendar = Calendar.getInstance();
+		 
+		// 2) get a java.util.Date from the calendar instance.
+//		    this date will represent the current instant, or "now".
+		java.util.Date now = calendar.getTime();
+		 
+		// 3) a java current time (now) instance
+		java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
+		temp.setBidTime(currentTimestamp );
+		
+		if(newMaxbid==-1){				//not new maxbid
+			float ownMax = db.getOwnBidMax(itemDetail.getAuctionID(), customerInfo.getSsn());
+			temp.setMaxBid(ownMax);
+				
+				
+			
+		}else{							//new maxbid
+			temp.setMaxBid(newMaxbid);
+		}
+		
+		db.addBid(temp);
 	}
 	
 

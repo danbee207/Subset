@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 
 import substa.beans.AuctionDetailInfo;
+import substa.beans.BidHistory;
 import substa.beans.Customer;
 import substa.model.DBManagers;
 
@@ -87,8 +88,10 @@ public class checkBidMax extends HttpServlet {
 		JSONObject json = new JSONObject();
 		
 		
-		float valueMax = db.getbid;
-		float currentValue; 
+		BidHistory aucHistory = db.getWinnersBid(itemDetail.getAuctionID());
+		
+		 float valueMax = aucHistory.getMaxBid();
+		 float currentValue = aucHistory.getBidPrice();
 		
 		json.put("RevenueValue", value);
 		json.put("valueMax", valueMax);

@@ -177,7 +177,7 @@
 						if(i%4==0){%>
 							<div class="row">
 						<%} %>
-						<div class="col-sm-5 col-md-3">
+						<div class="col-sm-5 col-md-3" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
 							<div class="thumbnail">
 							<%if(suggestionList.get(i).getImgSrc()==null) {%>
 							<img src="img/basic/NotitemShown.png" alt="...">
@@ -205,8 +205,8 @@
 				<% for(int i=0;i<itemList.size();i++){ 
 					if(i%4==0){
 					%><div class="row"><%} %>
-					<div class="col-sm-5 col-md-3">
-					<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
+					<div class="col-sm-5 col-md-3" onclick="ShowItemDetail?auctionId=<%=itemList.get(i).getAuctionID()%>">
+					<div class="thumbnail" >
 					<%if(itemList.get(i).getImgSrc()==null){ %>
 					<img class="minimizeImg" src="img/basic/NotitemShown.png">
 					<%}else{ %>

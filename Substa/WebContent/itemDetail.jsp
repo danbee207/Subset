@@ -292,7 +292,9 @@
         <h4 class="modal-title">Set BidMax</h4>
       </div>
       <div class="modal-body">
+      <form name="futureBidding" id="futureBidding" action="Bidding" method="post">
         <input type="text" id="futureMaxBid" name="futureMaxBid">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
