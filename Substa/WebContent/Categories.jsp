@@ -156,20 +156,7 @@
 		<div id="blankforBody"></div>
 		
 			<div class="container-fluid">
-			      	<div>
-			      		<p class="text-left">
-							<div class="btn-group" data-toggle="buttons">
-							<button type="button" class="btn btn-default active" id="searchItem" onclick="searchSelectedbtn(0)">Item Search</button>
-  							<button type="button" class="btn btn-default" id="searchSeller" onclick="searchSelectedbtn(1)">Seller Search</button>
-							</div>
-			    		
-			    		<form class="navbar-form navbar-left" role="search" id="searchFrom">
-			      			<input type="text" class="form-control" placeholder="Search for..." name="search">
-			        		<button class="btn btn-warning" type="button" onclick="searchSubmit()" >Search</button>
-			      		</form>
-			      		</p>
-			    	</div><!-- /input-group -->
-			    	<div>
+			      	
 			    	<h2 class="col-md-11">Suggestions For You</h2>
 			
 					<!-- Sugeestion List -->
