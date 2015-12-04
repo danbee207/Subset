@@ -1,6 +1,7 @@
 package substa.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
@@ -85,7 +86,15 @@ public class ShowItemDetail extends HttpServlet {
 		session.setAttribute("itemDetail", aucInfo);
 		session.setAttribute("sellerInfo", sellerInfo);
 		session.setAttribute("thisAucHistory", history);
+		
+		
 	}
 
-	
+	protected void gotoReportPage(HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		out.println("<script type = 'text/javascript'>");
+		out.println("location.href='itemDetail.jsp';");
+		out.println("</script>");
+	}
 }

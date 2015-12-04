@@ -237,8 +237,8 @@
 		<div class="row">
 		<%} %>
 
-			<div class="col-sm-5 col-md-3" onclick="ShowItemDetail?auctionId=<%=deadlineItems.get(i).getAuctionID()%>">
-				<div class="thumbnail" onclick="ShowItemDetail?auctionId=<%=deadlineItems.get(i).getAuctionID()%>">
+			<div class="col-sm-5 col-md-3" onclick="location.href='ShowItemDetail?auctionId=<%=deadlineItems.get(i).getAuctionID()%>';">
+				<div class="thumbnail" >
 				<%if(deadlineItems.get(i).getImgSrc()==null) {%>
 				<img src="img/basic/NotitemShown.png" alt="...">
 				
