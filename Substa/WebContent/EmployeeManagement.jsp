@@ -478,7 +478,9 @@
 	<script type="text/javascript" src="js/employeeManagement.js"></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 	<script>
-	$("#startDate").datetimepicker({value:new Date(),step:10});
+	$("#startDate").datetimepicker({value:new Date(),step:10,format:'Y-m-d h:m:s'});
+
+	
 	</script>
 </body>
 </html>

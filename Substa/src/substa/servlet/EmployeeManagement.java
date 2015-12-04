@@ -3,6 +3,9 @@ package substa.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -54,7 +57,12 @@ public class EmployeeManagement extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRuqest(request, response);
+		try {
+			processRuqest(request, response);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -64,10 +72,15 @@ public class EmployeeManagement extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRuqest(request, response);
+		try {
+			processRuqest(request, response);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	protected void processRuqest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected void processRuqest(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 
@@ -96,7 +109,15 @@ public class EmployeeManagement extends HttpServlet {
 			db.addUser(user);
 			int level = Integer.parseInt(request.getParameter("level"));
 			float money = Float.parseFloat(request.getParameter("hourR"));
-			Timestamp start = Timestamp.valueOf(request.getParameter("startDate"));
+			
+			String preStart = request.getParameter("startDate");
+			SimpleDateFormat bfomratter = new SimpleDateFormat("yyyy-m-d h:m");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			Date d = bfomratter.parse(preStart);
+			
+			String endDateFixed = formatter.format(d);
+			System.out.println(endDateFixed);
+			Timestamp start = (Timestamp.valueOf(endDateFixed));
 			
 			db.addEmployer(user, level, start, money);
 			

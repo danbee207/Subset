@@ -72,6 +72,7 @@ public class CheckDateServer extends HttpServlet {
 		ArrayList<AuctionDetailInfo> deadlineItems = db.getDeadlineItems();
 		session.setAttribute("deadlineItems", deadlineItems);
 		
+		db.addSalesRecords();
 		
 	}
 	

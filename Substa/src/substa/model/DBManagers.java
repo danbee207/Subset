@@ -799,7 +799,7 @@ public class DBManagers {
 						+ "FROM RepTotalRev R "
 						+ "WHERE R.TotalRev = ( "
 						+ "	SELECT MAX(R2.TotalRev) "
-						+ "	FROM RepTotalRev R2)";
+						+ "	FROM RepTotalRev R2)" ;
 				ps1 = conn.prepareStatement(sqlQuery1);
 				rs1 = ps1.executeQuery();
 				
