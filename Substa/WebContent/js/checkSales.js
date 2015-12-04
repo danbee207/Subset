@@ -1,7 +1,7 @@
 /**
  * 
  */
-
+var t=0;
 function poll(){
 	
 	$.ajax({

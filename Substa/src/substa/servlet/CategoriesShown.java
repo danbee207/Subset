@@ -79,14 +79,14 @@ public class CategoriesShown extends HttpServlet {
 		response.setDateHeader("Expires", 0); // always expires
 		
 		String cate = request.getParameter("category");
-		
+		Customer customer = (Customer)session.getAttribute("customerInfo");
 		System.out.println(cate);
 		
 		ArrayList<AuctionDetailInfo> itemList =  db.getAuctionInfoByItemType(cate);
 		System.out.println(cate + " "+itemList.size());
 		session.setAttribute("itemList", itemList);
 		
-		ArrayList<AuctionDetailInfo> suggestionList =  db.getPersonalSuggestion((User)session.getAttribute("LoginUser"));
+		ArrayList<AuctionDetailInfo> suggestionList =  db.getPersonalSuggestion(customer.getSsn());
 		session.setAttribute("suggestionList", suggestionList);
 		
 		String targetPage = "Categories.jsp";

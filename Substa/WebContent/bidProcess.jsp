@@ -158,7 +158,43 @@
 			
 			  <h1><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> My Bidding Process</h1>
 			</div>
+			
+		<div class="panel panel-default">
+			<div class="panel-heading">Which Bid makes me Winner?</div>
+			<div class="panel-body">
 
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Bid Price</th>
+							<th>Bid Time</th>
+							<th>Max Bid</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%for(int i=0;i<myBidProcess.size();i++){ %>
+						<tr onclick="showAuctionDetail(<%=i%>)">
+							<th scope="row"><%=i %></th>
+							<td><%=myBidProcess.get(i).getItemName() %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=myBidProcess.get(i).getBidPrice() %></td>
+							<% SimpleDateFormat before = new SimpleDateFormat("yyyy-m-dd hh:mm:ss");
+						  		 SimpleDateFormat after  = new SimpleDateFormat("yyyy/mm/dd hh:mm");
+						   
+						   		Date d = before.parse(myBidProcess.get(i).getBidTime().toString());	  
+						   		String fixedDate = after.format(d);
+						%>
+							<td><%=fixedDate %></td>
+							<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <%=myBidProcess.get(i).getMaxBid()%></td>							
+						</tr>
+						<%} %>
+						
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Basic Information</div>
 			<div class="panel-body">
